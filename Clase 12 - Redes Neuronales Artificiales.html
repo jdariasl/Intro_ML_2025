@@ -1,0 +1,1000 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Redes Neuronales Artificiales &#8212; 2021 Introducción al Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Clase 12 - Redes Neuronales Artificiales';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mapas Auto-Organizables" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html" />
+    <link rel="prev" title="U6. REDES NEURONALES ARTIFICIALES" href="titles/U6_description.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2021 Introducción al Machine Learning - Home"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2021 Introducción al Machine Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Course information
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Intro/Intro.html">Introdución para los laboratorios de Machine Learning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2001%20-%20Introducci%C3%B3n%20al%20Machine%20Learning.html">Introducción al Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab1/lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab1/lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab2/lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab2/lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Unsupervised%20Learning.html">Clustering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab3/lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab3/lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Redes Neuronales Artificiales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab4/lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab4/lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab5/lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab5/lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2019%20-%20An%C3%A1lisis%20de%20Componentes%20Principales.html">Reducción de dimensión: Análisis de Componentes Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html">Reducción de dimensión: Análisis Discriminante de Fisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab6/lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab6/lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jdariasl/ML_2020/blob/master/Clase 12 - Redes Neuronales Artificiales.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Clase 12 - Redes Neuronales Artificiales.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Redes Neuronales Artificiales</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-perceptron">El perceptrón</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento-del-perceptron">Entrenamiento del perceptrón</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-backpropagation">Algoritmo Backpropagation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primera-etapa">Primera etapa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-minibatch-and-online-learning">Batch, Minibatch and online learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas-de-las-aproximaciones-clasicas">Desventajas de las aproximaciones clásicas</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="redes-neuronales-artificiales">
+<h1>Redes Neuronales Artificiales<a class="headerlink" href="#redes-neuronales-artificiales" title="Link to this heading">#</a></h1>
+<section id="julian-d-arias-londono">
+<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
+<p>Profesor Titular<br />
+Departamento de Ingeniería de Sistemas<br />
+Universidad de Antioquia, Medellín, Colombia<br />
+<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
+<p>Una de las principales razones que inspiró la aparición de las redes neuronales artificiales (en inglés Artificial Neural Networks - ANN), es el hecho de que las tareas cognitivas complejas realizadas por el ser humano, requieren un nivel de paralelismo el cual es llevado a cabo a través de una compleja red de neuronas interconectadas.</p>
+<p><img alt="alt text" src="_images/NN.png" /></p>
+<p>Algunas estadísticas interesantes que nos ayudan a entender el poder de la red de neuronas en el ser humano:</p>
+<li>Se estima que el cerebro humano contiene una densa red de neuronas interconectadas de alrededor de $10^{11}$ neuronas.  </li>
+<li>Cada neurona se conecta en promedio con otras $10^{4}$ neuronas.</li>
+<li>La actividad de las neuronas es típicamente exitada o inhibida a través de las conexiones con otras neuronas.</li>
+<li>La velocidad de cambio de estado de una neurona en el mejor de los casos es del orden de $10^{−3}$ seg. Comparado con los computadores actuales es estramadamente lento. Sin embargo los humanos pueden tomar decisiones sorprendentemente complejas en muy poco tiempo. Por ejemplo Ud requiere aproximadamente $10^{−1}$ segs reconocer visualmente a su madre.</li></section>
+<section id="el-perceptron">
+<h2>El perceptrón<a class="headerlink" href="#el-perceptron" title="Link to this heading">#</a></h2>
+<p>Uno de los tipos más usados de RNA está basado en una unidad llamada Perceptrón. Un perceptrón toma un vector de valores reales como entrada, calcula una combinación lineal de dichas entradas y produce una salida 1 si el resultado es mayor a algún umbral y -1 en otro caso.</p>
+<p><img alt="alt text" src="_images/Perceptron01.jpg" /></p>
+<p>Si observamos con detenimiento, el perceptrón es equivalente a la regresión logística vista en las primeras clases del curso. El umbral que determina si la salida es 1 o -1 es igual al negativo del término independiente en la regresión logística. Formalmente, dada una muestra <span class="math notranslate nohighlight">\({\bf{x}} =  \left\lbrace x_1, x_2,..., x_d \right\rbrace \;\;\)</span>,              la salida <span class="math notranslate nohighlight">\(O({\bf{x}}) = O(x_1,x_2,...,x_d) \;\;\;\;\;\)</span>     computada por el perceptrón es:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}O(x_1,x_2,...,x_d) = \left\{
+                \begin{array}{ll}
+                  1\;\;\;{\rm{si}}\;\;\;w_0  + w_1 x_1  + w_2 x_2  +  \cdots  + w_d x_d  &gt; 0\\
+                  - 1\;\;{\rm{\text{en otro caso}}}
+                \end{array}
+              \right. \end{split}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(w_i\)</span> es una constante real o peso que determina la contribución de la entrada <span class="math notranslate nohighlight">\(x_i\)</span> a la salida del perceptrón.
+<b>Note</b> que <span class="math notranslate nohighlight">\(−w_ 0\)</span> es el umbral que la combinación sopesada de entradas <span class="math notranslate nohighlight">\(w_1x_1 + w_2x_2 + \cdots + w_d x_d \;\;\;\;\)</span> debe sobrepasar para que la salida del perceptrón sea 1.</p>
+<p>Una forma alternativa de pensar el perceptrón, y que para nosotros es familiar, es asumir que existe una entrada adicional con valor constante 1, <span class="math notranslate nohighlight">\(x_0 = 1\)</span>, de tal forma que la inecuación anterior se puede escribir como:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=0}^{d} w_ix_i &gt; 0\]</div>
+<p>o en forma matricial, simplemente <span class="math notranslate nohighlight">\({\bf{w}}^T{\bf{x}} &gt; 0\)</span>. La determinación del valor a la salida del perceptrón se representa normalmente como la función signo (<i>sgn</i>), entonces la función de salida del perceptrón se puede reescribir como:</p>
+<div class="math notranslate nohighlight">
+\[O({\bf{x}}) = sgn({\bf{w}}^T{\bf{x}})\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}sgn(u) = \left\{
+                \begin{array}{ll}
+                  1\;\;\;{\rm{si}}\;\;\;u  &gt; 0\\
+                  - 1\;\;{\rm{\text{en otro caso}}}
+                \end{array}
+              \right. \end{split}\]</div>
+<p>El perceptrón puede se visto como la representación de una superficie de decisión en el espacio <span class="math notranslate nohighlight">\(d\)</span>-dimensional en el cual se ubican las muestras. El perceptrón asigna valores 1 para las muestras (puntos) que se ubican a un lado del hiperplano y −1 para las que se ubican al otro lado.</p>
+<p><img alt="alt text" src="_images/Perceptron2.png" /></p>
+</section>
+<section id="entrenamiento-del-perceptron">
+<h2>Entrenamiento del perceptrón<a class="headerlink" href="#entrenamiento-del-perceptron" title="Link to this heading">#</a></h2>
+<p>Una forma de entrenar un vector de pesos es comenzar con pesos aleatorios, aplicar iterativamente el perceptrón a cada muestra de entrenamiento modificando los pesos cada vez que una muestra sea mal clasificada y repitiendo el procedimiento tantas veces como sea posible hasta que todas las muestras sean bien clasificadas. Es decir aplicar la regla:</p>
+<div class="math notranslate nohighlight">
+\[w_i \leftarrow w_i + \Delta w_i\]</div>
+<p>donde</p>
+<div class="math notranslate nohighlight">
+\[\Delta w_i = \eta (y_j - O({\bf{x}}_j))x _{ji}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(y_j\)</span> es la salida deceseada para la muestra <span class="math notranslate nohighlight">\({\bf{x}}_j\)</span>. Sin embargo este procedimiento solo funciona cuando las muestras son linealmente separales.</p>
+<p>Una forma alternativa que puede ser utilizada aún cuando las muestras no sean linealmente separables, es definir una medida de error e intentar minizarla a través de una regla de gradiente. Es decir, si asumimos:</p>
+<p>podemos utilizar la regla del gradiente descedente para encontrar el conjunto de pesos que hagan el error mínimo (no tiene que ser cero). Esta definición ya fue estudiada cuando vimos el modelo de regresión logística. El único inconveniente es que la salida del percetrón depende de la función <i>sgn</i> y la regla del gradiente necesita calcular la derivada. Sin embargo podemos asumir que si <span class="math notranslate nohighlight">\({\bf{w}}^T{\bf{x}}\;\;\)</span> tiende a 1 (o −1 según sea del caso), la aplicación de la función sgn obtendrá por consiguiente un buen resultado.</p>
+<p>Consideremos ahora el tipo de problemas que podremos resolver utilizando un solo perceptron.</p>
+<p><img alt="alt text" src="_images/ORANDXOR.png" /></p>
+<p>La gráfica anterior nos muestra 3 problemas de clasifiación haciendo una analogía a las funciones Booleanas OR, AND y XOR. Es posible observar que los dos primeros problemas de clasificación se pueden resolver a partir de una frontera de decisión lineal, sin embargo, en la última gráfica no es posible separa las círculos negros de los círculos blancos utilizando únicamente una función lineal.</p>
+<p>Como sabemos, la función XOR se puede construir a partir de funciones AND y funciones OR. De la misma forma podemos resolver el problema de la gráfica 3 utilizando la combinación de dos fronteras de decisión lineales:</p>
+<p><img alt="alt text" src="_images/XOR.png" /></p>
+<p>Si utilizamos la combinación de perceptrones mostrada en la figura, podremos obtener una salida del modelo <span class="math notranslate nohighlight">\(a=1\;\;\)</span> para la zona sombreada y una salida <span class="math notranslate nohighlight">\(a= 0\;\;\)</span> para el resto del espacio, obteniendo de esa manera una clasificación perfecta. La red de perceptrones interconectados de la figura anterior coresponde entonces a una <b>Red Neuronal Artificial</b>, en la que cada neurona es un perceptrón y la combinación de los perceptrones, que son modelos simples, permitió la solución de un problema más complejo.</p>
+<p>El problema que surge en este momento, es que el algoritmo de entrenamiento que fue descrito para un único perceptrón no puede ser aplicado en este caso, debido a que ahora en la salida de toda la red intervienen varios perceptrones, razón por la cual es necesario aplicar la función <i>sgn</i> antes de poder obtener la salida final de la red y por consiguiente el método de gradiente no puede ser aplicado porque la función de salida de la red nuevamente es NO derivable.</p>
+<p>Para poder resolver el problema, debemos entonces encontrar una función equivalente a la función <i>sgn</i>, pero que pueda ser derivable para poder usar el error cuadrático medio como criterio de entrenamiento. De manera similar al a regresión logística, una solución es usar la función sigmoide:</p>
+<div class="math notranslate nohighlight">
+\[
+f(u) = \frac{\exp(u)}{1 + \exp(u)}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">=</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x3134710&gt;]
+</pre></div>
+</div>
+<img alt="_images/a507c865b9d46ebb862220d6de21d6004d40d7d027acb8a051eb2b264b5fbf05.png" src="_images/a507c865b9d46ebb862220d6de21d6004d40d7d027acb8a051eb2b264b5fbf05.png" />
+</div>
+</div>
+<p>La función sigmoide es derivable: $<span class="math notranslate nohighlight">\(\frac{\partial f(u)}{\partial w_i} = f(u)(1-f(u))\frac{\partial u}{\partial w_i}\)</span>$.</p>
+<p>También es posible usar la función tangente hiperbólica:</p>
+<div class="math notranslate nohighlight">
+\[f(u) = \frac{\exp(u) - \exp(-u)}{\exp(u) + \exp(-u)}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x33d3b90&gt;]
+</pre></div>
+</div>
+<img alt="_images/6b8340bae2522243836d9b017c45945c1c36644a2c836ce7ecd239f17607415f.png" src="_images/6b8340bae2522243836d9b017c45945c1c36644a2c836ce7ecd239f17607415f.png" />
+</div>
+</div>
+<p>Si se observa con detenimiento veremos que el rango de valores que toma la función sigmoide está en el intervalo <span class="math notranslate nohighlight">\([0,1]\)</span>, mientras que la tangente hiperbólica está entre <span class="math notranslate nohighlight">\([-1,1]\;\)</span>. A las funciones de salida de los perceptrones se les conoce como <b> funciones de activación</b>.</p>
+<p>Utilizar funciones de activación nolineales, también permite que las fronteras de decisión no estén restringidas a rectas, permitiendo la definición de fronteras cada vez más complejas. Una red neuronal artificial es entonces un modelo que utiliza varias neuronas interconectadas y que puede a partir de ellas resolver problemas complejos como el mostrado en la siguiente figura.</p>
+<p><img alt="alt text" src="_images/RNA.png" /></p>
+<p>Como podemos observar en la figura, una Red Neuronal Artificial (RNA) tiene tres tipos de capas:</p>
+<li>La capa de entrada la cual recibe las características o variables de las muestras a ser evaluadas.  </li>
+<li>La o las capas ocultas son capas de perceptrones que permiten llevar a cabo la definición de fronteras complejas, como en el caso de la función XOR, en la cual se tenía una capa oculta con 2 perceptrones que llevaban a cabo funciones AND .</li>
+<li>La capa de salida en la que se encuentran los perceptrones que proporcionan la salida final de la red. Una RNA puede tener varias salidas, que pueden ser usadas en problemas de clasificación multi-clase, o en problemas de regresión en los que existen varias variables a predecir.</li><hr class="docutils" />
+<section id="algoritmo-backpropagation">
+<h3>Algoritmo Backpropagation<a class="headerlink" href="#algoritmo-backpropagation" title="Link to this heading">#</a></h3>
+<p>El algoritmo Backpropagation ajusta (aprende) los pesos de una red multicapa, dada una estructura de red con un conjunto fijo de unidades e interconexiones.</p>
+<p>El criterio de entrenamiento puede ser ajustado al tipo de problema e incluso pueden usarse diferentes criterios para problemas similares. Para explicar el principio de funcionamiento del algoritmo usaremos como criterio la minimización del error cuadrático medio entre las salidas de la red y los valores deseados (objetivos) para dichas salidas. El algoritmo utiliza un técnica de gradiente descendente para llevar a cabo el entrenamiento de la red.</p>
+<p>La principal diferencia en el caso de redes multicapa es que la función de error, utilizada como criterio para el entrenamiento, puede tener múltiples mínimos locales a diferencia de un solo perceptrón en el cual existe un sólo mínimo. Esto significa que desafortunadamente no se puede garantizar la convergencia a un mínimo global.</p>
+<p>Los perceptrones multicapa (<b>MultiLayer Perceptrón - MLP</b>) son por definición redes neuronales de propagación hacia adelante ya que la activación de las neuronas se hace desde la entrada (lugar donde se conectan las variables) hacia las neuronas de salida las cuales entregan la predicción deseada.</p>
+<p><img alt="alt text" src="_images/RNA2.png" /></p>
+<p>Para poder describir el algoritmo Backpropagation es necesario ponernos de acuerdo en la notación utilizada:</p>
+<li> La capa de entrada tendrá tantos nodos como variables (atributos o características), que notaremos $d$.</li>
+<li> Un nodo es una entrada a la red o una salida de alguna unidad en la red.</li>
+<li> Cada nodo tendrá un sub-índice que indicará la posición del nodo en la capa y un super-índice que indicará la capa a la cual pertence el nodo. $x_{ji}$ denota la entrada a partir del nodo $i$ a la unidad $j$, y $w_{ji}^{(1)}$ denota el correspondiente peso, el cual corresponde a la capa 1.</li>
+<li> El número de neuronas o unidades en cada capa es diferente y se denotará por $M_k$, donde $k$ hace referencia a la capa.</li><p>De acuerdo a la notación anterior, en la primera capa oculta se construyen <span class="math notranslate nohighlight">\(M_1\)</span> combinaciones lineales de las variables de entrada <span class="math notranslate nohighlight">\({\bf{x}}=\{x_1,x_2,...,x_d\;\;\;\}\)</span> de la forma:</p>
+<div class="math notranslate nohighlight">
+\[
+ a_j = \sum_{i=0}^{d} w_{ji}^{(1)} x_i
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(j=1,...,M_1\;\;\)</span> y el superíndice <span class="math notranslate nohighlight">\((1)\)</span> indica que los parámetros corresponden a la primera “capa” oculta de la red. Las activaciones <span class="math notranslate nohighlight">\(a_j\)</span> luego se transforman usando una función de activación <span class="math notranslate nohighlight">\(h(\cdot)\;\;\)</span> no lineal para dar:</p>
+<div class="math notranslate nohighlight">
+\[
+ z_j = h(a_j)
+\]</div>
+<p>Estos valores se combinan linealmente de nuevo para dar unidades de activación en otras capas ocultas o de salida</p>
+<div class="math notranslate nohighlight">
+\[
+a_k = \sum_{j=0}^{M_1} w_{kj}^{(2)} z_j
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(k=1,...,M_2\;\;\;\)</span>. Si la red sólo tiene una capa oculta, <span class="math notranslate nohighlight">\(M_2\;\;\)</span> será el número total de salidas.</p>
+<p>La diferencia fundamental entre una RNA entrenada para resolver un problema de regresión o un problema de clasificación, está en la función de activación de la capa de salida:</p>
+<li> Regresión: $y_k = a_k$ </li>
+<li> Clasificación: $y_k = \sigma(a_k)$ En problemas de clasificación de más de dos clases se utiliza comúnmente la función de activación softmax. <b>Consultar en qué consiste.</b></li><p>Combinando todas estas etapas se obtiene</p>
+<div class="math notranslate nohighlight">
+\[
+y_k({\bf{x}},{\bf{w}}) = \sigma\left( \sum_{j=1}^{M_1} w_{kj}^{(2)} h \left( \sum_{i=1}^{d} w_{ji}^{(1)} x_i + w_{j0}^{(1)} \right) + w_{k0}^{(2)}\right) 
+\]</div>
+<p>En la ecuación anterior, todos los parámetros se agrupan en el vector <span class="math notranslate nohighlight">\({\bf{w}}\)</span>. El modelo de red neuronal es una función no lineal de un conjunto de variables de entrada <span class="math notranslate nohighlight">\(\{x_i\}\)</span> a un conjunto de variables de salida <span class="math notranslate nohighlight">\(\{y_k\}\)</span> controlado por el vector de parámetros ajustables  <span class="math notranslate nohighlight">\({\bf{w}}\)</span>.</p>
+<p>El problema principal consiste entonces en encontrar valores adecuados para los parámetros de la red dado un conjunto de datos de entrenamiento. Es en este punto en el que necesitamos definir el algoritmo <b>Backpropagation</b>.</p>
+<p>Como ya sabemos, la regla de actualización a partir del algoritmo de gradiente descendente está dada por:</p>
+<div class="math notranslate nohighlight">
+\[
+{\bf{w}}{(\tau + 1)} = {\bf{w}}{(\tau)} - \eta \nabla E({\bf{w}}{(\tau)})
+\]</div>
+<p><span class="math notranslate nohighlight">\(\tau\)</span> denota la iteración del algoritmo.</p>
+<p>La función de error está dada por:</p>
+<div class="math notranslate nohighlight">
+\[
+E({\bf{w}})=\frac{1}{N}\sum_{n=1}^{N}E_n({\bf{w}})
+\]</div>
+<p>Esta aproximación hace parte de las técnicas que usan todo el conjunto de entrenamiento simultánemente es decir, calculan el error como la suma de los errores individuales por cada muestra, y se conocen como métodos <mark>Batch</mark> (lote).</p>
+<p>Si por el contrario la medida de error se calcula para cada muestra de entrenamiento y posteriormente se actualizan los pesos de la red, el algoritmo se conoce como <mark>On-Line</mark> y la regla de actualización está dada por:</p>
+<div class="math notranslate nohighlight">
+\[
+{\bf{w}}{(\tau + 1)} = {\bf{w}}{(\tau)} - \eta \nabla E_n({\bf{w}}{(\tau)})
+\]</div>
+<p>Cuando se usa la regla de actualización on-line, se suele hablar de <i>gradiente descendente secuencial</i> o <i>gradiente descendente estocástico</i>, ya que las actualizaciones se realizan con una sola muestra a la vez, y las muestras son evaluadas de manera aleatoria por varias razones. En primer lugar para evitar que el algoritmo presente problemas de convergencia si por ejemplo estamos resolviendo un problema de clasificación y las muestras están ordenadas por clase; podría suceder que el algoritmo ajuste la frontera de decisión para reducir el error en la primera clase sacrificando muchas muestras de la segunda clase. Posteriormente cuando comience a evaluar las muestras de la segunda clase moverá la frontera para reducir el error en éstas sin tener en cuenta el error en la primera clase. De esta manera podría permanecer en un círculo vicioso que evitaría la convergencia del algoritmo.</p>
+<p>Otra razón para el uso de muestras aleatorias en el gradiente descendente estocástico, es debido al hecho de que en problemas en los que el número de muestras es muy grande, no se utilizan todas las muestras en cada época de la red neuronal, sino que se usa un subconjunto de ellas.</p>
+<p>Actualmente se usa el concepto de <b>minibatch</b> para definir un entrenamiento en el que se el error es acumulado en subconjunto de muestras y con base en él se actualizan los pesos de la red. Es por lo tanto un punto intermedio entre el entrenamiento tipo batch y el on-line.</p>
+<p>El principal problema con el entrenamiento de una red neuronal es que para calcular el error en cada capa es necesario conocer la salida deseada, y en el caso de las capas ocultas la salida deseada es desconocida, precisamente por esa razón reciben su nombre.</p>
+<p>El algoritmo Backpropagation es entonces una forma eficiente de evaluar el gradiente de la función de error <span class="math notranslate nohighlight">\(E({\bf{w}})\)</span>.</p>
+<p>El algoritmo se realiza en dos etapas:</p>
+<li> Primera etapa: Evaluación de las derivadas de la función de error con respecto a los pesos. </li>
+<li> Segunda etapa: Las derivadas se emplean para realizar los ajustes de los pesos. </li></section>
+<section id="primera-etapa">
+<h3>Primera etapa<a class="headerlink" href="#primera-etapa" title="Link to this heading">#</a></h3>
+<p>Lo primero que debe hacer para poder llevar a cabo el entrenamiento es presentarle a la red el vector de entrada (muestra) y calcular las activaciones de las correspondientes unidades ocultas y de salida. Este proceso se conoce como propagación hacia adelante. En general en la red hacia adelante cada unidad calcula una suma ponderada de sus entradas</p>
+<div class="math notranslate nohighlight">
+\[
+a_j = \sum_i w_{ji}z_i
+\]</div>
+<p>que se transforma mediante una función de activación</p>
+<div class="math notranslate nohighlight">
+\[
+z_j = h(a_j)
+\]</div>
+<p>Con los valores de salida obtenidos a partir de propagar la red hacia adelante, se puede calcular el error.</p>
+<p>Teniendo en cuenta la función de error</p>
+<div class="math notranslate nohighlight">
+\[
+ E({\bf{w}})=\sum_{n=1}^{N}E_n({\bf{w}})
+\]</div>
+<p>la derivada de la función de error requiere resolver el problema de evaluar  <span class="math notranslate nohighlight">\(\nabla E_n({\bf{w}})\)</span>.</p>
+<p>Consideremos el modelo lineal simple en el que las salidas <span class="math notranslate nohighlight">\(y_k\)</span> son combinaciones lineales de las variables de entrada</p>
+<div class="math notranslate nohighlight">
+\[
+y_k=\sum_i w_{ki}x_i
+\]</div>
+<p>con una función de error</p>
+<div class="math notranslate nohighlight">
+\[
+E_n = \frac{1}{2}\sum_k(y_{nk} - t_{nk})^2
+\]</div>
+<p>donde <span class="math notranslate nohighlight">\(y _{nk} = y_k({\bf{x}}_n,{\bf{w}})\;\;\;\)</span> y <span class="math notranslate nohighlight">\(t _{nk}\;\;\;\)</span> es la salida deseada. <b>Note</b> que estamos considerando un modelo que tiene <span class="math notranslate nohighlight">\(k\)</span> salidas, razón por la cual el error de una muestra <span class="math notranslate nohighlight">\({\bf{x}}_n\)</span>, corresponde a la suma de los errores proporcionados por cada salida de la red para dicha muestra.  El gradiente de esta función con respecto a <span class="math notranslate nohighlight">\(w _{ji}\)</span> está dado como:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial E_n}{\partial w_{ij}} = \left( y_{nj} - t_{nj} \right) x_{ni} 
+\]</div>
+<p>que puede interpretarse como un cálculo local que incluye el producto del error <span class="math notranslate nohighlight">\(y_{nj} - t_{nj}\;\;\;\)</span> asociada a la salida del enlace <span class="math notranslate nohighlight">\(w_{ji}\)</span> y la variable <span class="math notranslate nohighlight">\(x_{ni}\)</span> asociada con la entrada de ese enlace.</p>
+<p>Si se considera la evaluación de <span class="math notranslate nohighlight">\(E_n\)</span> con respecto a un peso <span class="math notranslate nohighlight">\(w_{ji}\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial E_n}{\partial w_{ji}} = \frac{\partial E_n}{\partial a_j} \frac{\partial a_j}{\partial w_{ji}}  
+\]</div>
+<p>Se utiliza la notación</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_j = \frac{\partial E_n}{\partial a_j} 
+\]</div>
+<p>donde los <span class="math notranslate nohighlight">\(\delta\)</span>’s se conocen como errores. Igualmente</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial a_j}{\partial w_{ji}} = z_i 
+\]</div>
+<p>Haciendo las sustituciones anteriores se obtiene</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial E_n}{\partial w_{ji}} = \delta_j z_i
+\]</div>
+<p>La ecuación anterior indica que la derivada requerida se obtiene multiplicando el valor de <span class="math notranslate nohighlight">\(\delta\)</span> de la unidad en el lado de salida del peso, por el valor de <span class="math notranslate nohighlight">\(z\)</span> para la unidad en el lado de la entrada del peso.</p>
+<p>Como se ha visto, para las unidades de salida se tiene</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_k = y_k - t_k
+\]</div>
+<p>mientras que para evaluar los <span class="math notranslate nohighlight">\(\delta\)</span>’s para los nodos ocultos, se emplea la regla de la cadena para derivadas parciales</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_j \equiv \frac{\partial E_n}{\partial a_j}  = \sum_k \frac{\partial E_n}{\partial a_k} \frac{\partial a_k}{\partial a_j}  
+\]</div>
+<p>la cual evalúa todos los nodos <span class="math notranslate nohighlight">\(k\)</span> a los cuales la unidad <span class="math notranslate nohighlight">\(j\)</span> envía una conexión.</p>
+<p>Haciendo las sustituciones adecuadas</p>
+<div class="math notranslate nohighlight">
+\[
+\delta_j = \dot{h}(a_j)\sum_k w_{kj}\delta_k
+\]</div>
+<p>que expresa que el valor de <span class="math notranslate nohighlight">\(\delta\)</span> para una unidad escondida en particular puede obtenerse propagando los <span class="math notranslate nohighlight">\(\delta\)</span>’s hacia atrás desde unidades más altas (más cercanas a la salida) en la red. El procedimiento de propagación hacia atrás se puede resumir como:</p>
+<li> Aplicar un vector de entrada ${\bf{x}}_n$ a la red y propagarlo hacia adelante. </li>
+<li> Evaluar todos los $\delta_k$ para las unidades de salida. </li>
+<li> Propagar los $\delta$'s del paso anterior para obtener los $\delta_j$ de cada nodo oculto en la red. </li>
+<li> Usar $\partial E_n/ w_{ji} = \delta_j z_i \;\;$ para evaluar las derivadas requeridas. </li><p>Para los métodos basados en entrenamiento por lotes, la derivada del error se calcula como:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial E}{\partial w_{ji}} = \sum_n \frac{\partial E_n}{\partial w_{ji}}
+\]</div>
+<p>Todo el algoritmo de entrenamiento puede ser usado para múltiples capas ocultas y múltiples salidas. Tanto en problemas de regresión como en problemas de clasificación, cuya única diferencia desde el punto de vista del entrenamiento será el cálculo de los <span class="math notranslate nohighlight">\(\delta\)</span>’s para la capa de salida.</p>
+<p>Ej: Uso de la librería neurolab</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">datasets</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1500</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">make_moons</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">.05</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Problema de 2 clases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Caracteristica 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Caracteristica 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1500, 2)
+</pre></div>
+</div>
+<img alt="_images/a6b9e2caece46d36f124f6706b362a14f985fea92b6f88c8f0360501459cb1ad.png" src="_images/a6b9e2caece46d36f124f6706b362a14f985fea92b6f88c8f0360501459cb1ad.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">neurolab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span>
+<span class="c1"># Create train samples</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">X</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">T</span>
+<span class="c1"># Create network with 2 inputs, 5 neurons in input layer and 1 in output layer</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">nl</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">newff</span><span class="p">([[</span><span class="n">X</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()]],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="p">[</span><span class="n">nl</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">LogSig</span><span class="p">(),</span><span class="n">nl</span><span class="o">.</span><span class="n">trans</span><span class="o">.</span><span class="n">LogSig</span><span class="p">()])</span>
+<span class="c1"># Train process</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="c1"># Test</span>
+<span class="n">cmap_light</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;#AAAAFF&#39;</span><span class="p">,</span><span class="s1">&#39;#AAFFAA&#39;</span><span class="p">,</span><span class="s1">&#39;#FFAAAA&#39;</span><span class="p">,])</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mf">.5</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">.5</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="mf">.5</span><span class="p">,</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mf">.5</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+                         <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="c1">#print([xx[1,i],yy[j,1]])</span>
+        <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">net</span><span class="o">.</span><span class="n">sim</span><span class="p">([[</span><span class="n">xx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">],</span><span class="n">yy</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="mi">1</span><span class="p">]]])</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Problema de 2 clases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Caracteristica 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Caracteristica 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_light</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch: 15; Error: 0.48249993074701175;
+The goal of learning is reached
+</pre></div>
+</div>
+<img alt="_images/777a478ebd8fe4abef1c61f12610e9342fddb697e7ee6ed86c12e20825738414.png" src="_images/777a478ebd8fe4abef1c61f12610e9342fddb697e7ee6ed86c12e20825738414.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="batch-minibatch-and-online-learning">
+<h2>Batch, Minibatch and online learning<a class="headerlink" href="#batch-minibatch-and-online-learning" title="Link to this heading">#</a></h2>
+<p>Durante el entrenamiento de un MLP las siguientes cantidades deben ser estimadas en cada iteración:</p>
+<img src="Images/ForwardBackward.png" alt="FBI" width="500"/>
+<p>El entrenamiento que acumula todos los errores cometidos a partir de todas las meutras de entrenamiento antes de llevar a cabo la actualización de los pesos se conoce como <strong>Batch training</strong>. Desafortunadamente si el número de muestras es muy grande, el algoritmo presenta problemas de computo no sólo por la cantidad de cálculos sino de memoria necesaria para realizar la multiplicación de matrices. Pero el problema más significativo es que la trayectoria del gradiente Batch tiende a estancarse en puntos silla (<strong>saddle point</strong>) de la función de costo.</p>
+<p>Como alternativa el entrenamiento se puede realizar propagando una sola muestra hacia adelante y realizando la actualización de los pesos a partir del error que se comete con esa muestra. Los dos pasos son repetidos para todas las muestras de entrenamiento. Esta estrategia es llamada <strong>on-line learning</strong> y el algoritmo resultante es llamado <strong>Stochastic Gradient Descent (SGD)</strong>. Debido a que el algoritmo usa una muestra aleatoria a la vez, la convergencia al óptimo es más ruidosa, pero eso ayuda al algoritmo a escapar de óptimos locales y puntos silla.</p>
+<img src="Images/SGD_MB.png" alt="SGD" width="600"/>
+<p>Uno de los problemas del algoritmo SGD es que requiere muchas iteraciones para converger. Por consiguiente una solución intermedia, llamada <strong>Mini-batch gradient descent</strong>, parte las muestras de entrenamiento en mini-batchs, y se realiza los pasos forward y backward por cada mini-batch.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPClassifier</span>
+<span class="n">clf1</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;logistic&#39;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">learning_rate_init</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">learning_rate</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_iter_no_change</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">clf1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;1 ok&quot;</span><span class="p">)</span>
+<span class="n">clf2</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;logistic&#39;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">learning_rate_init</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">learning_rate</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_iter_no_change</span> <span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">clf2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;2 ok&quot;</span><span class="p">)</span>
+<span class="n">clf3</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;logistic&#39;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">learning_rate_init</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">learning_rate</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_iter_no_change</span> <span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">clf3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;3 ok&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">clf1</span><span class="o">.</span><span class="n">loss_curve_</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">clf2</span><span class="o">.</span><span class="n">loss_curve_</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mini-Batch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">clf3</span><span class="o">.</span><span class="n">loss_curve_</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;On-line&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 ok
+2 ok
+3 ok
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6ccc4f9150&gt;
+</pre></div>
+</div>
+<img alt="_images/4f7ac31785ec496363eb6428e1da392b38c2ac5e721a0621f66fd44ba757c015.png" src="_images/4f7ac31785ec496363eb6428e1da392b38c2ac5e721a0621f66fd44ba757c015.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf1</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;logistic&#39;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">learning_rate_init</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">learning_rate</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_iter_no_change</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">clf1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;1 ok&quot;</span><span class="p">)</span>
+<span class="n">clf2</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;logistic&#39;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">learning_rate_init</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">learning_rate</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_iter_no_change</span> <span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">clf2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;2 ok&quot;</span><span class="p">)</span>
+<span class="n">clf3</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">activation</span><span class="o">=</span><span class="s1">&#39;logistic&#39;</span><span class="p">,</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;sgd&#39;</span><span class="p">,</span> <span class="n">learning_rate_init</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">learning_rate</span> <span class="o">=</span> <span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n_iter_no_change</span> <span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">clf3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;3 ok&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">clf1</span><span class="o">.</span><span class="n">loss_curve_</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Batch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">clf2</span><span class="o">.</span><span class="n">loss_curve_</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mini-Batch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">clf3</span><span class="o">.</span><span class="n">loss_curve_</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;On-line&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 ok
+2 ok
+3 ok
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6cccbd37d0&gt;
+</pre></div>
+</div>
+<img alt="_images/4ed0760fd92309c382cbdc38f2c660e02be3f796bad4109844cd354f7549f219.png" src="_images/4ed0760fd92309c382cbdc38f2c660e02be3f796bad4109844cd354f7549f219.png" />
+</div>
+</div>
+</section>
+<section id="desventajas-de-las-aproximaciones-clasicas">
+<h2>Desventajas de las aproximaciones clásicas<a class="headerlink" href="#desventajas-de-las-aproximaciones-clasicas" title="Link to this heading">#</a></h2>
+<p><strong>Falta de flexibilidad</strong></p>
+<ul class="simple">
+<li><p>Las aproximaciones clásicas requieren una formulación completa si se desea cambiar la función de costo o evaluar una arquitectura ligeramente diferente.</p></li>
+<li><p>Una nueva arquitectura requiere el cálculo de todas las formulas de re-estimación de los parámetros y no saca ventaja de herramientas de cálculo simbólico.</p></li>
+<li><p>Algunos frameworks clasicos soportan regularización, pero no incluyen los avances más recientes a este respecto.</p></li>
+<li><p>Hay nuevas funciones de activación que evitan problemas con el desvanecimiento del gradiente cuando el número de capas es grande.</p></li>
+<li><p>Los frameworks clasicos no usan paralelismo.</p></li>
+<li><p>Los frameworks clásicos no permiten el uso de estrategias más avanzadas de entrenamiento como el Transfer learning</p></li>
+</ul>
+<p>[1] Simon Haykin, Neural Networks and Learning Machines, 3ra Edición, Prentice Hall, USA, 2009.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="titles/U6_description.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">U6. REDES NEURONALES ARTIFICIALES</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Clase%2013%20-%20Mapas%20Auto-Organizables.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mapas Auto-Organizables</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-perceptron">El perceptrón</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento-del-perceptron">Entrenamiento del perceptrón</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-backpropagation">Algoritmo Backpropagation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primera-etapa">Primera etapa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-minibatch-and-online-learning">Batch, Minibatch and online learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas-de-las-aproximaciones-clasicas">Desventajas de las aproximaciones clásicas</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - Deiry Sofía Navas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

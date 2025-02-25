@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Selección de Características &#8212; 2021 Introducción al Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Clase 17 - Selección de Características';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LASSO (Least Absolute Shrinkage and Selection Operator)" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html" />
+    <link rel="prev" title="U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS" href="titles/U8_description.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2021 Introducción al Machine Learning - Home"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2021 Introducción al Machine Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Course information
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Intro/Intro.html">Introdución para los laboratorios de Machine Learning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2001%20-%20Introducci%C3%B3n%20al%20Machine%20Learning.html">Introducción al Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab1/lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab1/lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab2/lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab2/lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Unsupervised%20Learning.html">Clustering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab3/lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab3/lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab4/lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab4/lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab5/lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab5/lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Selección de Características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2019%20-%20An%C3%A1lisis%20de%20Componentes%20Principales.html">Reducción de dimensión: Análisis de Componentes Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html">Reducción de dimensión: Análisis Discriminante de Fisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab6/lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/lab6/lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jdariasl/ML_2020/blob/master/Clase 17 - Selección de Características.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Clase 17 - Selección de Características.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Selección de Características</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-la-seleccion-de-variables">Ventajas de la selección de variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema">Problema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-de-seleccion">Criterios de selección</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-tipo-filtro">Criterios Tipo Filtro</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distancia-probabilistica">Distancia probabilística</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distancia-entre-clases">Distancia entre clases</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-basados-en-correlacion-y-en-medidas-de-teoria-de-la-informacion">Criterios basados en correlación y en medidas de teoría de la información</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas-de-cada-uno-de-los-tipos-de-criterio">Ventajas y Desventajas de cada uno de los tipos de criterio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtro">Filtro</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas">Ventajas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas">Desventajas</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper">Wrapper</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ventajas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Desventajas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrategias-de-busqueda">Estrategias de búsqueda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencial-hacia-adelante-sequential-forward-selection-sfs">1. Selección secuencial hacia adelante (Sequential Forward Selection - SFS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo">Algoritmo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencial-hacia-atras-sequential-backward-selection-sbs">2. Selección secuencial hacia atrás (Sequential Backward Selection - SBS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Algoritmo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-mas-l-menos-r-lrs">3. Selección Más-L Menos-R (LRS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Algoritmo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-bidireccional-bds">Busqueda Bidireccional (BDS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Algoritmo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs">Selección secuencia flotante (Sequential Floating Selection (SFFS y SFBS))</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-sffs-sfbs-es-analogo">Algoritmo SFFS (SFBS es análogo)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="seleccion-de-caracteristicas">
+<h1>Selección de Características<a class="headerlink" href="#seleccion-de-caracteristicas" title="Link to this heading">#</a></h1>
+<section id="julian-d-arias-londono">
+<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
+<p>Profesor Asociado<br />
+Departamento de Ingeniería de Sistemas<br />
+Universidad de Antioquia, Medellín, Colombia<br />
+<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="introduccion">
+<h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
+<p>En anteriores sesiones hemos discutido algunas razones por las cuales puede ser necesario reducir el número de variables en un problema de aprendizaje automático. Principalmente hemos aludido a la necesidad de llevar a cabo un proceso de reducción de dimensión, debido al problema conocido como “maldición de la dimensionalidad”, sin embargo, son múltiples los beneficios que podemos obtener.</p>
+<p>En primer lugar, si estamos usando un modelo paramétrico, usualmente el número de parámetros que deben ser ajustados durante el entrenamiento es proporcional al número de variables, razón por la cual si reducimos la dimensión del espacio de características, estaremos a su vez reduciendo la complejidad del modelo.</p>
+<p>Algunos beneficios adicionales pueden ser:</p>
+<ul>
+<li>Simplificar el análisis de resultados</li>
+<li>Mejorar el desempeño del sistema a través de una representación más estable</li>
+<li>Remover información redundante o irrelevante para el problema</li>
+<li>Descubrir estructuras subyacentes en los datos, o formas de representación gráfica más simples</li>
+</ul><p>Como ya fue comentando en sesiones anteriores, existen principalmente dos estrategias para reducir el número de variables: <b>selección de características</b> y <b>extracción de características</b>. Ambas requieren la definición de un criterio, en el caso de selección el criterio está asociado a encontrar el mejor subconjunto de variables, de todos los posibles subconjuntos. Mientras que en extracción el criterio está asociado a encontrar la mejor transformación (combinación de variables) sobre todas las transformaciones posibles. Por ahora nos centraremos en la estrategia de selección y en sesiones posteriores revisaremos las estrategias básicas de extracción.</p>
+</section>
+<section id="ventajas-de-la-seleccion-de-variables">
+<h2>Ventajas de la selección de variables<a class="headerlink" href="#ventajas-de-la-seleccion-de-variables" title="Link to this heading">#</a></h2>
+<ul>
+<li>Reducir variables que pueden ser costosas de obtener en términos computacionales</li>
+<li>Extraer reglas de clasificación o regresión, que conserven el sentido "físico" a partir del modelo, teniendo en cuenta que las características conservan su interpretación original.</li>
+<li>Manejo de características no numéricas</li>
+</ul><hr class="docutils" />
+<p>En primer lugar es necesario clarificar porqué razón es necesario llevar a cabo un análisis en conjunto de todas las variables, en lugar de realizar análisis individuales. La gráfica siguiente representa la capacidad discriminante de cuatro variables en un problema de clasificación.</p>
+<p><img alt="image alt &gt;" src="_images/Var12.png" />
+<img alt="image alt &lt;" src="_images/Var34.png" /></p>
+<p>Si realizamos un análisis individual, por ejemplo basado en el índice de correlación o el índice discriminante de Fisher, el resultado indicará que la mejor variable es la 1 y que la peor es la 4. Sin embargo, si el análisis evalúa diferentes subconjuntos de variables, podría darse cuenta que la únión de esas dos variables obteniene un resultado que, en conjunto, es mejor que cualquiera de las variables individuales, por lo que no sería una buena decisión eliminar la variable 4 usando como criterio únicamente un análisis individual de la capacidad discriminante de dicha característica.</p>
+</section>
+<section id="problema">
+<h2>Problema<a class="headerlink" href="#problema" title="Link to this heading">#</a></h2>
+<p>Dado un conjunto de variables <span class="math notranslate nohighlight">\(d\)</span>, ¿cuál es el mejor subconjunto de variables de tamaño <span class="math notranslate nohighlight">\(p\)</span>?</p>
+<p>Evaluar el criterio de optimalidad para todas las posibles combinaciones de <span class="math notranslate nohighlight">\(p\)</span> variables seleccionadas a partir de <span class="math notranslate nohighlight">\(d\)</span> variables, implica evaluar un número de combinación igual a:</p>
+<div class="math notranslate nohighlight">
+\[n_p = \frac{d!}{(d-p)!p!}\]</div>
+<p>el cual puede ser muy elevado incluso para valores moderados de <span class="math notranslate nohighlight">\(d\)</span> y <span class="math notranslate nohighlight">\(p\)</span>, por ejemplo, seleccionar las mejores 10 características de un conjunto total de 25, implica evaluar 3.268.760 subconjuntos diferentes de características, para lo cual se debió también evaluar el criterio de optimalidad en cada uno de ellos. Adicionalmente no existe un criterio para seleccionar <span class="math notranslate nohighlight">\(p\)</span>, razón por la cual el número de posibles combinaciones que deberían ser evaluadas puede crecer exponencialmente.</p>
+<p>A el análisis descrito en el párrafo anterior se le conoce como “<b>Fuerza bruta</b>”, y aunque entregaría el mejor resultado, no puede ser llevado a cabo en tiempos razonables, razón por la cual fue necesario desarrollar <b>métodos de búsqueda</b> cuyo objetivo es encontrar el mejor subconjunto de variables (aunque no pueden garantizar que lo encontrarán), sin necesidad de evaluar todas las posibles combinaciones de características.</p>
+<p>Los métodos subóptimos de selección de variables, constan de dos componentes: un criterio de selección y una estrategia de búsqueda.</p>
+</section>
+<section id="criterios-de-seleccion">
+<h2>Criterios de selección<a class="headerlink" href="#criterios-de-seleccion" title="Link to this heading">#</a></h2>
+<ul>
+<li><b>Filtro</b>: La función objetivo evalúa el subconjunto de características a partir de su contenido de información, típicamente se utiliza alguna distancia entre clases, medidas de dependiencia estadística o medidas basadas en teoría de la información.</li>
+    <li><b>Wrapper</b>: La función objetivo es un modelo de aprendizaje, el cual evalúa el subconjunto de características a partir de su capacidad predictiva ($1-Error$ en los datos de prueba), usando una metodología de validación apropiada.</li>
+</ul><section id="criterios-tipo-filtro">
+<h3>Criterios Tipo Filtro<a class="headerlink" href="#criterios-tipo-filtro" title="Link to this heading">#</a></h3>
+<p>A continuación veremos algunos ejemplos de funciones criterio tipo filtro que pueden usarse:</p>
+<section id="distancia-probabilistica">
+<h4>Distancia probabilística<a class="headerlink" href="#distancia-probabilistica" title="Link to this heading">#</a></h4>
+<p>La distancia probabilística mide la distancia entre dos distribuciones <span class="math notranslate nohighlight">\(p({\bf{x}}|c_1)\)</span> and <span class="math notranslate nohighlight">\(p({\bf{x}}|c_2)\)</span> y puede ser usada para la selección de características en problemas de clasificación:</p>
+<div class="math notranslate nohighlight">
+\[J_D(c_1,c_2) = \int [p({\bf{x}}|c_1) - p({\bf{x}}|c_2)]\log \left( \frac{p({\bf{x}}|c_1)}{p({\bf{x}}|c_2)} \right) \]</div>
+<p>Si se usa una distribución normal para describir las clases, como por ejemplo en las funciones discriminantes Gaussianas, la integral da como resultado:</p>
+<div class="math notranslate nohighlight">
+\[J_D = \frac{1}{2}(\mu_1 - {\bf{\mu}}_2)^T (\Sigma_1^{-1} + \Sigma_2^{-1})(\mu_1 - \mu_2) + Tr \{ 2\Sigma_1^{-1}\Sigma_2 - 2I \}\]</div>
+<p>Si el problema es de múltiples clases, existen variantes que pueden utilizarce, por ejemplo:</p>
+<div class="math notranslate nohighlight">
+\[J = \max_{i,j} J_D(c_i,c_j )\]</div>
+<div class="math notranslate nohighlight">
+\[J = \sum_{i &lt; j} J_D(c_i,c_j)p(c_i)p(c_j)\]</div>
+</section>
+<section id="distancia-entre-clases">
+<h4>Distancia entre clases<a class="headerlink" href="#distancia-entre-clases" title="Link to this heading">#</a></h4>
+<p>Se pueden usar diferentes medidas de distancia, por ejemplo distancia Euclidiana, Mahalanobis (Consultar), o por ejemplo una medida basada en el índice de Fisher, que utiliza el concepto de dispersión entre clases (<span class="math notranslate nohighlight">\(S_B = (\mu_1 - \mu_2)(\mu_1 - \mu_2)^T\)</span>) y de dispersión intra clase (<span class="math notranslate nohighlight">\(S_W = (\Sigma_1 + \Sigma_2)\)</span>), para definir el criterio:</p>
+<div class="math notranslate nohighlight">
+\[J = \frac{Tr\{S_B\}}{Tr\{S_W\}}\]</div>
+</section>
+<section id="criterios-basados-en-correlacion-y-en-medidas-de-teoria-de-la-informacion">
+<h4>Criterios basados en correlación y en medidas de teoría de la información<a class="headerlink" href="#criterios-basados-en-correlacion-y-en-medidas-de-teoria-de-la-informacion" title="Link to this heading">#</a></h4>
+<p>Este tipo de criterios están basados en la suposición de que los subconjuntos de características óptimos, contienen características altamente correlacionadas con la variable de salida y no correlacionadas con las demás variables de entrada. El mismo concepto visto en clases anteriores. Un posible criterio sería:</p>
+<div class="math notranslate nohighlight">
+\[ J = \frac{\sum_{i=1}^{p}\rho_{ic}}{\sum_{i=1}^{p}\sum_{j=i+1}^{p}\rho_{ij}}\]</div>
+<p>donde <span class="math notranslate nohighlight">\(\rho\)</span> es el coeficiente de correlación entre las variables indicadas por los subíndices, siendo <span class="math notranslate nohighlight">\(c\)</span> la variable de salida (variable a predecir). El coeficiente de correlación tiene la habilidad de medir el nivel de relación entre dos variables, pero únicamente evalúa la relación lineal. Una medida más robusta debería incluir relaciones no lineales, por ejemplo la <b> Información Mutua</b> es una medida de relación no lineal definida como:</p>
+<div class="math notranslate nohighlight">
+\[J = I(X_m;c) = H(c) - H(c|X_m)\]</div>
+<p>donde <span class="math notranslate nohighlight">\(I(X_m;c)\)</span> es la información mutua entre el subconjunto de variables <span class="math notranslate nohighlight">\(X_m\)</span> y la variable de salida <span class="math notranslate nohighlight">\(c\)</span>, <span class="math notranslate nohighlight">\(H(c)\)</span> es la entropía de la variable de salida <span class="math notranslate nohighlight">\(c\)</span> y <span class="math notranslate nohighlight">\(H(c|X_m)\)</span> es la entropía condicional de <span class="math notranslate nohighlight">\(c\)</span>, dado que se conoce <span class="math notranslate nohighlight">\(X_m\)</span>. En palabras, la información mutua corresponde a la reducción en la incertidumbre de la variapre <span class="math notranslate nohighlight">\(c\)</span> debido al conocimiento de las variables incluidas en el subconjunto <span class="math notranslate nohighlight">\(X_m\)</span>. Como vimos en las clases sobre árboles de deicisón, la entropía es en realidad un funcional, es una función que tiene como entrada otra función, la cual corresponde a la distribución de probabilidad de la variable bajo análisis. Por lo tanto la implementación de la Información mutua, depende del tipo de función de distribución que se asuma para cada una de las variables.</p>
+</section>
+</section>
+<section id="ventajas-y-desventajas-de-cada-uno-de-los-tipos-de-criterio">
+<h3>Ventajas y Desventajas de cada uno de los tipos de criterio<a class="headerlink" href="#ventajas-y-desventajas-de-cada-uno-de-los-tipos-de-criterio" title="Link to this heading">#</a></h3>
+</section>
+<section id="filtro">
+<h3>Filtro<a class="headerlink" href="#filtro" title="Link to this heading">#</a></h3>
+<section id="ventajas">
+<h4>Ventajas<a class="headerlink" href="#ventajas" title="Link to this heading">#</a></h4>
+<ul>
+<li>Rápida ejecución. Los filtro involucran generalmente cálculos no iterativos relacionados con el conjunto de datos, por lo cual son mucho más rápidos que el entrenamiento de un modelo de predicción.</li>
+<li>Generalidad. Debido a que los filtros evalúan las propiedades intrínsecas de los datos, más que las interacciones con un modelo de aprendizaje particular, sus resultados exhiben más generalidad, es decir que la solución puede ser "buena" para una familia más grande de modelos.</li>
+</ul></section>
+<section id="desventajas">
+<h4>Desventajas<a class="headerlink" href="#desventajas" title="Link to this heading">#</a></h4>
+<ul>
+<li>Tendencia a seleccionar subconjuntos de características grandes. Debido a que las funciones objetivo son usualmente monótonas, el filtro tiende a seleccionar el conjunto completo de variables como el mejor.</li>
+</ul></section>
+</section>
+<section id="wrapper">
+<h3>Wrapper<a class="headerlink" href="#wrapper" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h4>Ventajas<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<ul>
+<li>Exactitud. Los wrappers generalmente alcanzan mejores tasas de predicción que los filtros, debido a que ellos están ajustados especifícamente para reducir el error de validación.</li>
+<li>Capacidad de generalización. Debido a que los criterios wrappers usan una metodología de validación, tienen la capacidad de evitar el sobre ajuste y proporcionar mejor capacidad de generalización.</li>
+</ul></section>
+<section id="id2">
+<h4>Desventajas<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<ul>
+<li>Ejecución lenta. Debido a que el wrapper debe entrenar un clasificador por cada subconjunto de variables (o varios si se usa validación cruzada), el costo computacional puede ser muy alto.</li>
+<li>Falta de generalidad. Debido a que el criterio wrapper usa un modelo de predicción específico, el subconjunto de variables finalmente seleccionado, puede ser bueno para el modelo específico usado como criterio, pero no tan bueno para otros modelos.</li>
+</ul></section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="estrategias-de-busqueda">
+<h2>Estrategias de búsqueda<a class="headerlink" href="#estrategias-de-busqueda" title="Link to this heading">#</a></h2>
+<section id="seleccion-secuencial-hacia-adelante-sequential-forward-selection-sfs">
+<h3>1. Selección secuencial hacia adelante (Sequential Forward Selection - SFS)<a class="headerlink" href="#seleccion-secuencial-hacia-adelante-sequential-forward-selection-sfs" title="Link to this heading">#</a></h3>
+<p>En este método se comienza con un subconjunto de características vacío y se van adicionando características, una a la vez, hasta que se alcanza el conjunto final con el mayor criterio <span class="math notranslate nohighlight">\(J\)</span>. La característica adicionada en cada paso, es aquella que con la cual se maximice el criterio de selección.</p>
+<section id="algoritmo">
+<h4>Algoritmo<a class="headerlink" href="#algoritmo" title="Link to this heading">#</a></h4>
+ <ol>
+  <li>Inicializar el conjunto vacío $X_0 = \{\emptyset\}$</li>
+  <li>Seleccionar la siguiente característica $x^+ = \arg\max_{x \notin X_k } \left[ J(X_k + x)\right] $</li>
+  <li>Actualizar el conjunto de variables $X_{k + 1} = X_k + x^+; \; k=k+1$</li>
+  <li>Volver al paso 2. </li>
+</ol> <p>SFS presenta mejor desempeño cuando el conjunto óptimo tiene un número de características bajo. Sin embargo, su principal desventaja es que el método es incapaz de remover variables que se vuelven obsoletas después de la adición de otras características.</p>
+<p><b> Ejemplo:</b> Considere la siguiente función como un criterio válido:</p>
+<div class="math notranslate nohighlight">
+\[J(X) = -2x_1x_2 + 3x_1 + 5x_2 - 2x_1x_2x_3 + 7x_3 + 4x_4 - 2x_1x_2x_3x_4\]</div>
+<p><b>Solución:</b></p>
+<img src="./Images/SFS.png" alt="SFS" width="600"/></section>
+</section>
+<section id="seleccion-secuencial-hacia-atras-sequential-backward-selection-sbs">
+<h3>2. Selección secuencial hacia atrás (Sequential Backward Selection - SBS)<a class="headerlink" href="#seleccion-secuencial-hacia-atras-sequential-backward-selection-sbs" title="Link to this heading">#</a></h3>
+<p>El método SBS es análogo al método anterior pero comenzando con el conjunto completo y eliminando una característica a la vez. La característica eliminada es aquella para la cual el criterio <span class="math notranslate nohighlight">\(J\)</span> decresca en menor valor (o incluso aumente).</p>
+<section id="id3">
+<h4>Algoritmo<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+ <ol>
+  <li>Inicializar el conjunto lleno $X_0 = X$</li>
+  <li>Seleccionar la siguiente característica $x^- = \arg\max_{x \in X_k } \left[ J(X_k - x)\right] $</li>
+  <li>Actualizar el conjunto de variables $X_{k + 1} = X_k - x^-; \; k=k+1$</li>
+  <li>Volver al paso 2. </li>
+</ol> <p>SBS presenta mejor desempeño cuando el conjunto óptimo tiene un número de características elevado. Sin embargo, su principal desventaja es que el método es incapaz de reevaluar la utilidad de variables que fueron removidas en iteraciones previas.</p>
+</section>
+</section>
+<section id="seleccion-mas-l-menos-r-lrs">
+<h3>3. Selección Más-L Menos-R (LRS)<a class="headerlink" href="#seleccion-mas-l-menos-r-lrs" title="Link to this heading">#</a></h3>
+<p>Este es un método que permite algún nivel de retractación en el proceso de selección de características. Si <span class="math notranslate nohighlight">\(L &gt; R\)</span>, el algoritmo corresponde a un procedimiento hacia adelante, primero se adicionan <span class="math notranslate nohighlight">\(L\)</span> características al conjunto actual usando la estrategia SFS, y posteriormente se remueven las peores <span class="math notranslate nohighlight">\(R\)</span> características usando SBS.</p>
+<p>Si por el contrario <span class="math notranslate nohighlight">\(L &lt; R\)</span> el proceso es hacia atrá, comenzando con el conjunto completo, removiendo <span class="math notranslate nohighlight">\(R\)</span> y posteriormente adicionando <span class="math notranslate nohighlight">\(L\)</span> variables.</p>
+<section id="id4">
+<h4>Algoritmo<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+ <ol><li>Evalúe:</li>
+  <ul>
+<li>Si $L > R$ entonces</li>
+<ul>
+<li>Comience con el conjunto vacío $X_0 = \{\emptyset\}$</li>
+</ul>
+<li>De lo contrario:</li>
+  <ul>
+<li>Comience con el conjunto completo $X_0 = X$</li>
+<li>Vaya al paso 3</li>
+</ul>
+</ul>
+  <li>Repita $L$ veces</li>
+  <ul>
+<li>$x^+ = \arg\max_{x \notin X_k } \left[ J(X_k + x)\right] $</li>
+<li>$X_{k + 1} = X_k + x^+; \; k=k+1$</li>
+</ul>
+  <li>Reputa $R$ veces</li>
+   <ul>
+<li>$x^- = \arg\max_{x \in X_k } \left[ J(X_k - x)\right] $</li>
+<li>$X_{k + 1} = X_k - x^-; \; k=k+1$</li>
+</ul>
+  <li>Volver al paso 2. </li>
+</ol> <p>LRS intenta compensar la debilidad de los métodos SFS y SBS con capacidades de retractación. Sin embargo, su principal problema es la introducción de dos parámetros adicionales, <span class="math notranslate nohighlight">\(L\)</span> y <span class="math notranslate nohighlight">\(R\)</span>, y ninguna aproximación teórica que permita ajustarlos.</p>
+</section>
+</section>
+<section id="busqueda-bidireccional-bds">
+<h3>Busqueda Bidireccional (BDS)<a class="headerlink" href="#busqueda-bidireccional-bds" title="Link to this heading">#</a></h3>
+<p>En este caso los métodos SFS y SBS se ejecutan de manera simultánea, sin embargo para garantizar que el método converge a una solución, se establecen las siguientes reglas:</p>
+<ul>
+<li>Características seleccionadas por SFS para ser añadidas, no pueden ser removidas por SBS</li>
+<li>Características eliminadas por SBS no pueden ser añadidas por SFS</li>
+<li>Si por ejemplo, antes de que SFS intente adicionar una nueva característica, el método evalúa si dicha característica ya fue removida por SBS y, si fue removida previamente, intenta adicionar la segunda mejor variable. SBS opera de manera similar.</li>
+</ul><section id="id5">
+<h4>Algoritmo<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+ <ol><li>Comience SFS con el conjunto vacío $X_F = \{\emptyset\}$</li>
+  <li>Comience SBS con el conjunto completo $X_B = X$</li>
+   <li>Seleccione la mejor característica</li>
+  <ul>
+<li>$x^+ = \arg\max_{x \notin X_{F_k}, x \in X_{B_k} } \left[ J(X_{F_k} + x)\right] $</li>
+<li>$X_{F_{k + 1}} = X_{F_{k}} + x^+; \; k=k+1$</li>
+</ul>
+  <li>Remueva la peor característica</li>
+   <ul>
+<li>$x^- = \arg\max_{x \in X_{B_k}, x \notin X_{F_{k + 1}}} \left[ J(X_B - x)\right] $</li>
+<li>$X_{B_{k + 1}} = X_{B_k} - x^-; \; k=k+1$</li>
+</ul>
+  <li>Volver al paso 2. </li>
+</ol> </section>
+</section>
+<section id="seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs">
+<h3>Selección secuencia flotante (Sequential Floating Selection (SFFS y SFBS))<a class="headerlink" href="#seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs" title="Link to this heading">#</a></h3>
+<p>Este método es una extensión del método LRS, que incorpora propiedades flexibles de retractación. En lugar de fijar los valores de <span class="math notranslate nohighlight">\(L\)</span> y <span class="math notranslate nohighlight">\(R\)</span> previamente, esté método permite que los valores sean determinados a partir de los datos. La dimensionalidad del conjunto de características seleccionado “flota” hacia arriba y hacia abajo, durante las iteraciones del algoritmo.</p>
+<p>Existen dos métodos flotantes:</p>
+<ul>
+<li> <b>Sequential Floating Forward Selection</b>, el cual comienza con el conjunto vacío, el cual una vez terminado el paso hacia adelante, realiza pasos hacia atrás siempre y cuando se incremente el criterio de selección definido.</li>
+<li> <b>Sequential Floating Backward Selection</b>, el cual comienza con el conjunto completo y en el primer paso elimina variables. De manera análoga a SFFS, esté método adiciona variables en la medida en que éstas incrementen el criterio de selección.</li>
+</ul></section>
+<section id="algoritmo-sffs-sfbs-es-analogo">
+<h3>Algoritmo SFFS (SFBS es análogo)<a class="headerlink" href="#algoritmo-sffs-sfbs-es-analogo" title="Link to this heading">#</a></h3>
+ <ol>
+     <li>Comience con el conjunto vacío $X_0 = \{\emptyset\}$</li>
+     <li>Seleccione la mejor característica</li>
+         <ul>
+           <li>$x^+ = \arg\max_{x \notin X_{k}} \left[ J(X_{k} + x)\right] $</li>
+           <li>$X_{k + 1} = X_{k} + x^+; \; k=k+1$</li>
+        </ul>
+     <li>Seleccione la peor característica</li>
+        <ul>
+         <li>$x^- = \arg\max_{x \in X_{k}} \left[ J(X_k - x)\right] $</li>
+         </ul>
+     <li> Evalúe: </li>
+         <ul>
+            <li>Si $J(X_k - x^-) > J(X_k)$</li>
+               <ul>
+                  <li>$X_{k + 1} = X_{k} - x^-; \; k=k+1$</li>
+                  <li> Volver al paso 3. </li>
+               </ul>
+            <li>De lo contrario</li>
+              <ul>
+                 <li> Volver al paso 2. </li>
+              </ul>
+          </ul>    
+</ol> </section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="titles/U8_description.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LASSO (Least Absolute Shrinkage and Selection Operator)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-la-seleccion-de-variables">Ventajas de la selección de variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema">Problema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-de-seleccion">Criterios de selección</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-tipo-filtro">Criterios Tipo Filtro</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distancia-probabilistica">Distancia probabilística</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distancia-entre-clases">Distancia entre clases</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-basados-en-correlacion-y-en-medidas-de-teoria-de-la-informacion">Criterios basados en correlación y en medidas de teoría de la información</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas-de-cada-uno-de-los-tipos-de-criterio">Ventajas y Desventajas de cada uno de los tipos de criterio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtro">Filtro</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas">Ventajas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas">Desventajas</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper">Wrapper</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ventajas</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Desventajas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estrategias-de-busqueda">Estrategias de búsqueda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencial-hacia-adelante-sequential-forward-selection-sfs">1. Selección secuencial hacia adelante (Sequential Forward Selection - SFS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo">Algoritmo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencial-hacia-atras-sequential-backward-selection-sbs">2. Selección secuencial hacia atrás (Sequential Backward Selection - SBS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Algoritmo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-mas-l-menos-r-lrs">3. Selección Más-L Menos-R (LRS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Algoritmo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-bidireccional-bds">Busqueda Bidireccional (BDS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Algoritmo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs">Selección secuencia flotante (Sequential Floating Selection (SFFS y SFBS))</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-sffs-sfbs-es-analogo">Algoritmo SFFS (SFBS es análogo)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - Deiry Sofía Navas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
