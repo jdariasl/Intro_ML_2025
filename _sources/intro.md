@@ -1,6 +1,6 @@
 # Course information
 
-**2021 - Introducción al Machine Learning**
+**2025 - Introducción al Machine Learning**
 
 - [REGISTRO DE GRUPOS DE PROYECTO]() (solo un registro por grupo)
 
@@ -37,8 +37,8 @@ Una vez comience el semestre se compartirán algunos archivos que contienen algu
 
 Se realiza una avance parcial del proyecto que incluye partes I y II de la guía y la entrega final con el desarrollo completo.
 
-## Sesiones sincrónicas
+## Sesiones sincrónicas (Modalidad Virtual)
 
-Para acceder a las sesiones sincrónicas: Martes - Jueves: [zoom link](https://udea.zoom.us/j/95692318402) Laboratorios: Viernes [zoom link](https://udea.zoom.us/j/92740055099)
+Para acceder a las sesiones sincrónicas: Lunes - Jueves: [zoom link](https://udearroba.zoom.us/meeting/93906419036) Laboratorios: Martes [zoom link](https://udearroba.zoom.us/meeting/93906419036)
 
-Las grabaciones de las sesiones de Martes - Jueves pueden encontrarlas en: [zoom recordings](http://ingeniaudea.edu.co/zoom-recordings/recordings/docenciaingenia68@udea.edu.co/95692318402/2021-02-28) y de las sesiones de laboratorios en: [zoom recordings](http://ingeniaudea.edu.co/zoom-recordings/recordings/docenciaingenia68@udea.edu.co/92740055099/2021-02-28)
+Las grabaciones de las sesiones de Martes - Jueves pueden encontrarlas en: [zoom recordings](https://udearroba.zoom.us/meeting/93906419036)
