@@ -441,7 +441,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-contextualizacion-del-problema">Ejercicio 1: Contextualización del problema</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-entrenamiento">Ejercicio 2: entrenamiento</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-experimentar">Ejercicio 3: Experimentar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-validacion">Ejercicio 3: Validación</a></li>
 </ul>
             </nav>
         </div>
@@ -453,28 +453,36 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><strong>Recuerda que una vez abierto, Da clic en “Copiar en Drive”, de lo contrario no podras alamancenar tu progreso</strong></p>
-<p>Nota: no olvide ir ejecutando las celdas de código de arriba hacia abajo para que no tenga errores de importación de librerías o por falta de definición de variables.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-1-parte-2-regresion-logistica">
+<h1>Laboratorio 1 - Parte 2. Regresión logística<a class="headerlink" href="#laboratorio-1-parte-2-regresion-logistica" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L01.02&quot;, varname=&quot;student&quot;);
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
 # Ejecuta esta celda!
-%load_ext autoreload
-%autoreload 2
-#for local
-#import sys ; sys.path.append(&#39;../commons/utils/&#39;); sys.path.append(&#39;../commons/utils/data&#39;)
-!wget https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/commons/utils/general.py -O general.py
-from general import configure_lab1_p2
-configure_lab1_p2()
-from lab1 import *
-GRADER, x, y = part_2()
+from Labs.commons.utils.lab1 import *
+_, x, y = part_2()
 y = y.reshape(np.size(y), 1)
 </pre></div>
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="laboratorio-1-parte-2-regresion-logistica">
-<h1>Laboratorio 1 - Parte 2. Regresión logística<a class="headerlink" href="#laboratorio-1-parte-2-regresion-logistica" title="Link to this heading">#</a></h1>
 <section id="ejercicio-1-contextualizacion-del-problema">
 <h2>Ejercicio 1: Contextualización del problema<a class="headerlink" href="#ejercicio-1-contextualizacion-del-problema" title="Link to this heading">#</a></h2>
 <p>En esta sesión de laboratorio, vamos a resolver un problema de clasificación. Los variables que vamos a usar ya se encuentran cargadas:</p>
@@ -492,15 +500,15 @@ print(&quot; muestra de etiquetas a predecir \n&quot;, y[range(10)])
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Ejercicio de Codigo
 def clases_muestras_carac(X, Y):
-    &quot;&quot;&quot;Esta funcion es encargada retornar el numero clases, muestras 
+    &quot;&quot;&quot;Esta función debe retornar el numero clases, muestras 
         y caracteristicas del conjunto de datos X y Y
 
         X: matriz numpy con el conjunto de datos para entrenamiento
         Y: matriz numpy con el conjunto de etiquetas
         retorna:
-            numero de clases (int/float)
-            numero de muestras (int/float)
-            numero de caracteristicas (int/float)
+            número de clases (int/float)
+            número de muestras (int/float)
+            número de características (int/float)
     &quot;&quot;&quot;
     ##Pista: es de utilidad el metodo np.unique ?
     N,nf = 
@@ -511,34 +519,35 @@ def clases_muestras_carac(X, Y):
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio1&quot;, clases_muestras_carac)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
 </pre></div>
 </div>
 </div>
 </div>
 <p>En los problemas de clasificación, que lo permiten, es de utilidad visualizar los datos. De esta manera se puede determinar que modelos o algortimos pueden tener mejor rendimiento. En la siguiente función, se debe:</p>
 <ol class="arabic simple">
-<li><p>graficar los datos usando la función <a class="reference external" href="https://matplotlib.org/gallery/shapes_and_collections/scatter.html">scatter</a> de matplotlib. <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter">Recuerda consultar la documentación de la función</a></p></li>
-<li><p>Asginar un color Map diferente al de defecto. <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Aca pueder los valores posibles</a>.</p></li>
+<li><p>Graficar los datos usando la función <a class="reference external" href="https://matplotlib.org/gallery/shapes_and_collections/scatter.html">scatter</a> de matplotlib. <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter">Recuerda consultar la documentación de la función</a></p></li>
+<li><p>Asignar un color Map diferente al de defecto. <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Aca pueder los valores posibles</a>.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Ejercicio de Codigo
+import matplotlib.pyplot as plt
 def scatter_plot(X, Y):
-    &quot;&quot;&quot;Esta funcion es encargada de graficar usando un scatter plot
-       un problema de clasificacion.
+    &quot;&quot;&quot;Esta función es encargada de graficar los datos usando un scatter plot
+       (problema de clasificacion).
 
-        X: matriz numpy con el conjunto de datos para entrenamiento.
-           esta debera ser usada para los ejes del grafico. puede asumir
+        X: numpy array con el conjunto de datos para entrenamiento.
+           Ésta deberá ser usada para los ejes del gráfico. Puede asumir
            que solo va tener dos columnas
         Y: matriz numpy con el conjunto de etiquetas. Debera se usada
            para mostrar en diferentes colores, las etiquetas de cada una
            de las muestras
         retorna:
-            No retorna nada, el grafico debe aparecer
+            No retorna nada, sólo se debe generar el grafico
     &quot;&quot;&quot;
     ## puedes acceder con plt a la funcion adecuacada
     ## Pista: recuerda como indexar matrices
@@ -554,15 +563,6 @@ def scatter_plot(X, Y):
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-# ignora los graficos que se muestran 
-GRADER.run_test(&quot;ejercicio2&quot;, scatter_plot)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># usarla para ver el grafico
 # se debe ver dos nubes de puntos diferenciadas
 scatter_plot(x,y)
@@ -572,9 +572,9 @@ scatter_plot(x,y)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown  ¿El problema es linealmente separable? justifique su respuesta 
-respuesta_1 = &quot;&quot; #@param {type:&quot;string&quot;}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#¿Es el problema linealmente separable? justifique su respuesta 
+respuesta = &quot;&quot;
 </pre></div>
 </div>
 </div>
@@ -599,13 +599,12 @@ respuesta_1 = &quot;&quot; #@param {type:&quot;string&quot;}
 def sigmoidal(z):
     &quot;&quot;&quot;Función de activación Sigmoidal
 
-    z: es la varible a la que se le va aplicar el sigmoide.
-       es un array numpy de uan sola dimension
-    retorna: el valor del sigmiode
+    z: es la varible a la que se le va a aplicar la función sigmoide.
+       es un array numpy de una sola dimension
+    retorna: un vector con el valor de la función sigmoide aplicada a cada elemento del arreglo de entrada
 
     &quot;&quot;&quot;
     #Complete la siguiente línea con el código para calcular la salida de la función sigmoidal
-    # ¿Que metodo de np...{} es de utilidad?
     s = np.
     
     return s
@@ -613,15 +612,7 @@ def sigmoidal(z):
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio3&quot;, sigmoidal)
-</pre></div>
-</div>
-</div>
-</div>
-<p>La siguiente celda se sugiere la implementación de 3 métodos que nos ayudaran a implementar los otros conceptos.</p>
+<p>En la siguiente celda se sugiere la implementación de 3 métodos que nos ayudaran a implementar los otros conceptos.</p>
 <ol class="arabic simple">
 <li><p>Modelo de regresión logística(Esta función usa nuestra <code class="docutils literal notranslate"><span class="pre">sigmoidal</span></code>)</p></li>
 <li><p>Extensión de matriz</p></li>
@@ -632,21 +623,21 @@ GRADER.run_test(&quot;ejercicio3&quot;, sigmoidal)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def logistic_regression(X, W):
-    &quot;&quot;&quot;calcula la regresión logistica
-    X: los valores que corresponden a las caractersiticas
+    &quot;&quot;&quot;calcula la regresión logística
+    X: los valores que corresponden a las características
     W: son los pesos usadados para realizar la regresión
-    retorna: valor estimado por la regresion
+    retorna: valor estimado por la regresion logística
     &quot;&quot;&quot;
     #Con np.dot se realiza el producto matricial. Aquí X (extendida) tiene dim [Nxd] y W es dim [dx1]
     Yest = np.dot(X,W)
     Y_lest = sigmoidal(Yest)
    
-    return Y_lest    #Y estimado: Esta variable contiene ya tiene la salida de sigm(f(X,W))
+    return Y_lest    #Y estimado: Esta variable contiene la salida de sigm(f(X,W))
 
 def extension_matriz(X):
-    &quot;&quot;&quot;funcion que realiza la extension de la matriz X
-    X: los valores que corresponden a las caractersiticas sin extender
-    retorna: X_ext: matriz con unos extendidos
+    &quot;&quot;&quot;función que realiza la extensión de la matriz X
+    X: matriz con en el conjunto de muestras. array: [muestras x características]
+    retorna: X_ext: matriz extendida con un vector de unos
     &quot;&quot;&quot;
     #Obtenemos las dimensiones antes de exteneder la matriz
     muestras,caracterisitcas =X.shape
@@ -658,10 +649,10 @@ def extension_matriz(X):
 
 
 def potenciaPolinomio(X,grado):
-    &quot;&quot;&quot;calcula la potencia del polinomio
-    X: los valores que corresponden a las caractersiticas
-    grado: esl grado para realizar la potencia al polinomio
-    retorna: el valor de X despues elevarlo al grado del polinimoo indicado
+    &quot;&quot;&quot;Añade las variables asociadas a un polinomio de grado &gt; 1
+    X: matriz con en el conjunto de muestras (sin extender). array: [muestras x características]
+    grado: es el grado del polinomio que se va a usar como modelo
+    retorna: la matriz de datos con las nuevas características creadas.
     &quot;&quot;&quot;
     X2 = X.copy()
     
@@ -673,14 +664,14 @@ def potenciaPolinomio(X,grado):
     return X2
 
 def cost_logistic(Y_lest, Y):
-    &quot;&quot;&quot;calculo del error logistico
+    &quot;&quot;&quot;cálculo de la función de coste (entropía-cruzada)
        Si es diferente el Y_estimado con el Y_real cuenta como un error
        Y_lest: numpy array con los valores reales estimados
-       Y:  numpy array  valor con los valores reales de las etiquetas
-       retorna: costo logistico  -- numpy array
+       Y:  numpy array con los valores reales de las etiquetas
+       retorna: costo -- numpy array
     &quot;&quot;&quot;
-    f1 = Y*np.log(Y_lest)
-    f2 = (1-Y)*np.log(1-Y_lest)
+    f1 = Y*np.log(Y_lest + np.finfo(np.float32).eps)
+    f2 = (1-Y)*np.log(1-Y_lest + np.finfo(np.float32).eps)
     error = -np.sum(f1+f2)/Y.shape[0]
     return error
 </pre></div>
@@ -699,9 +690,9 @@ potenciaPolinomio(vector, 3)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown  Analizando lo anterior y asumiendo que el vector es representado como [x1, x2] ¿Cual seria la representación de `potenciaPolinomio(vector, 3)`? (usa ** para representar potencia, i.e x1**2 simboliza x1 elevado al cuadrado)
-respuesta_2 = &quot;&quot; #@param {type:&quot;string&quot;}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#Analizando lo anterior y asumiendo que el vector es representado como [x1, x2] ¿Cual seria la representación de `potenciaPolinomio(vector, 3)?
+respuesta = &quot;&quot;
 </pre></div>
 </div>
 </div>
@@ -718,8 +709,12 @@ Xtrain = x[ind[0:int(math.ceil(0.7*N))],:]
 Xtest = x[ind[int(math.ceil(0.7*N)):N],:]
 Ytrain = y[ind[0:int(math.ceil(0.7*N))]]
 Ytest = y[ind[int(math.ceil(0.7*N)):N]]
+
 # normalizamos
-Xtrain, Xtest = normalizar(Xtrain, Xtest)
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+Xtrain = scaler.fit_transform(Xtrain)
+Xtest = scaler.transform(Xtest)
 </pre></div>
 </div>
 </div>
@@ -746,13 +741,12 @@ Xtrain, Xtest = normalizar(Xtrain, Xtest)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de codigo
 def gradiente_descendente_logistic_poly(X,Y,grado,eta, iteraciones):
-    &quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple
+    &quot;&quot;&quot;Gradiente descendente para regresión logística
     X: Matriz de datos extendida
-    Y: vector con los valores a predecir
-    W: Vector de parámetros del modelo
+    Y: Vector con los valores a predecir
+    grado: Grado para usar en la transformacion polinómica
     eta: Taza de aprendizaje
-    grado: grado para usar en la transformacion polinomica
-    iteraciones: numero de iteraciones maxima
+    iteraciones: número máximo de iteraciones
 
     retorna: W el valor de de los parametros de regresión polinomica
     &quot;&quot;&quot;
@@ -774,7 +768,7 @@ def gradiente_descendente_logistic_poly(X,Y,grado,eta, iteraciones):
     for iter in range(iteraciones):
        
         #Aquí debe completar el código con la regla de actualización de los parámetros W para regresión
-        #logística. Tenga en cuenta los nombres de las variables ya creadas: W, X, Y
+        #logística. Tenga en cuenta los nombres de las variables ya creadas: W, X2, Y
  
         costo = cost_logistic(,)
         W =  
@@ -788,11 +782,10 @@ def gradiente_descendente_logistic_poly(X,Y,grado,eta, iteraciones):
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-# ignorar los print que se ejecutan
-GRADER.run_test(&quot;ejercicio4&quot;, gradiente_descendente_logistic_poly)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T2&#39;);
 </pre></div>
 </div>
 </div>
@@ -803,31 +796,32 @@ Vamos entrenar con 100 iteraciones y vamos a graficar el costo logistico y verif
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>iteraciones = 100
-w, costos_logistico = gradiente_descendente_logistic_poly(Xtrain,Ytrain,grado = 1, eta = 10, iteraciones = iteraciones)
+w, costos_logistico = gradiente_descendente_logistic_poly(Xtrain,Ytrain,grado = 1, eta = 0.1, iteraciones = iteraciones)
 print(&quot;este las dimensiones de w son:&quot;, w.shape)
 plt.plot(range(iteraciones), costos_logistico)
+plt.show()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown  ¿con base a los resultados anteriores, qué efecto tiene el grado en el comportamiento del costo? justifique
-respuesta_3 = &quot;&quot; #@param {type:&quot;string&quot;}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#¿Con base a los resultados anteriores, qué efecto tiene el grado en el comportamiento del costo?
+respuesta = &quot;&quot; 
 </pre></div>
 </div>
 </div>
 </div>
-<p>Como habiamos visto antes, el costo es nuestra medida de optimización, pero al final debemos evaluar que tambien esta realizando la tarea de clasificar. Entiende la siguiente función. Prestemos especial atención al bloque <code class="docutils literal notranslate"><span class="pre">if-else</span></code>.</p>
+<p>Como habiamos visto antes, el costo es nuestra medida de optimización, pero al final debemos evaluar qué tan bien esta realizando la tarea de clasificación. En este caso, a diferencia de la regresión, la métrica de evaluación y la función de coste son diferentes. Entiende la siguiente función, preste especial atención al bloque <code class="docutils literal notranslate"><span class="pre">if-else</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def evaluar_modelo (W, X_to_test, Y_True, grado):
-    &quot;&quot;&quot; funcion que evalua un modelo de clasificación
+    &quot;&quot;&quot; función que evalua un modelo de clasificación
 
-W: es un matriz con los parametros del modelo entrenados
-    X_to_test: conjunto de datos para usar en el evaluamiento del modelo
-    Y_True: valores reales para usar en el evaluamiento del modelo
+    W: es un matriz con los parametros del modelo entrenados
+    X_to_test: conjunto de datos para usar en la evaluación del modelo
+    Y_True: valores reales para usar en la evaluación del modelo
     grado: valor del polinomio a usar
 
     retorna: el error de clasificación.
@@ -855,7 +849,7 @@ W: es un matriz con los parametros del modelo entrenados
 </div>
 </div>
 </div>
-<p>Probemos la función al evaluar el w obtenido. Tener presente que para la evaluación usamos el X y Y adecuado. Recuerda usar el grado de acuerdo a la ultima ejecución.</p>
+<p>Evaluamos el w obtenido antes. Debemos tener presente que para la evaluación usamos el conjunto adecuado para esa tarea. Recuerda usar el grado de acuerdo a la ultima ejecución.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># recuerda que si entrenaste con grado = 2 debes asignar el mismo valor.
@@ -866,23 +860,23 @@ print(&quot;error en el conjunto de pruebas&quot;, error_test)
 </div>
 </div>
 </section>
-<section id="ejercicio-3-experimentar">
-<h2>Ejercicio 3: Experimentar<a class="headerlink" href="#ejercicio-3-experimentar" title="Link to this heading">#</a></h2>
+<section id="ejercicio-3-validacion">
+<h2>Ejercicio 3: Validación<a class="headerlink" href="#ejercicio-3-validacion" title="Link to this heading">#</a></h2>
 <p>En nuestro primer experimento vamos a evaluar el rendimiento del modelo usando varias tasas de aprendizaje y grados de polinimios. Vamos a dejar por ahora un numero de iteraciones fijas = 30. Para ello completa la siguiente función. Recuerda usar las funciones anteriores.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## ejercicio de codigo
 def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
     &quot;&quot;&quot; funcion para realizar experimentos.
-    Xtrain: conjunto de datos
-    Xtest:
-    Ytrain:
-    Ytest:
+    Xtrain: matriz con el conjunto de muestras de entrenamiento
+    Xtest: matriz con el conjunto de muestras de prueba
+    Ytrain: salida objetivo para el conjunto de muestras de entrenamiento
+    Ytest: salida objetivo para el conjunto de muestras de prueba
     tasas: Es una lista con los valores númericos de tasas de aprendizaje 
         para realizar los experimentos
     grados: Es una lista con los valores númericos de grados 
         para realizar los experimentos
-    retorna: un dataframe con el resultados de los experimentos
+    retorna: un dataframe con los resultados de los experimentos
     &quot;&quot;&quot;
     numero_iter = 30
 
@@ -905,18 +899,18 @@ def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-# ignorar los prints de &quot;costo despues de finalizar&quot;!
-GRADER.run_test(&quot;ejercicio5&quot;, experimentar)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T3&#39;);
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tasas = [10.0, 1.0, 0.1, 0.001]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Usa la función experimentar para ver los resultados que se obtienen en el problema de clasificación planteado en el laboratorio
+tasas = [10.0, 1.0, 0.1, 0.001]
 grados = [1,2,3]
 resultados = experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados)
 </pre></div>
@@ -933,9 +927,9 @@ resultados
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown  ¿con base a los resultados anteriores, qué efecto tiene la  tasa de aprendizaje en los errores de entrenamiento y de prueba? justifique
-respuesta_4 = &quot;&quot; #@param {type:&quot;string&quot;}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#¿con base en los resultados anteriores, qué efecto tiene la  tasa de aprendizaje en los errores de entrenamiento y de prueba?
+respuesta = &quot;&quot;
 </pre></div>
 </div>
 </div>
@@ -943,8 +937,8 @@ respuesta_4 = &quot;&quot; #@param {type:&quot;string&quot;}
 <p>Vamos entrenar nuevamente pero solo con los mejores parámetros. Si hay parametros empatados, el modelo que tenga menos parámetros deberia ser el mejor (recuerda que cuando aumentamos el grado del polinomio aumentamos el número de parametros del modelo).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># puedes usar el siguiente código para ordenar los resultados y ver los 3 primeros
-# resultados, usa esta salida, para ver cuales fueron los mejores parámetros
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># puede usar el siguiente código para ordenar los resultados y ver los 3 primeros
+# resultados, use esta salida, para ver cuáles fueron los mejores parámetros
 resultados.sort_values(by = [&#39;error_prueba&#39;, &#39;grado&#39;], ascending = True).head(3)
 </pre></div>
 </div>
@@ -952,9 +946,9 @@ resultados.sort_values(by = [&#39;error_prueba&#39;, &#39;grado&#39;], ascending
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿por qué se uso el error de prueba para ordenar la tabla de resultados en lugar del error de entrenamiento?
-respuesta_5 = &quot;&quot; #@param {type:&quot;string&quot;}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#¿por qué se uso el error de prueba para ordenar la tabla de resultados en lugar del error de entrenamiento?
+respuesta = &quot;&quot;
 </pre></div>
 </div>
 </div>
@@ -971,37 +965,12 @@ print(&quot;estos son los pesos para el modelo entrenando \n&quot;, W)
 </div>
 <p>Debemos recordar que el modelo creado se puede resumir en una ecuación usando los pesos de <span class="math notranslate nohighlight">\(w\)</span>. En el  siguiente ejemplo la ecuación estaria dada como: 2.0 + 3.0<em>x1 + 4.0</em>x2, para el caso del polinomio grado 1.</p>
 <p><img alt="vectorization" src="https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/commons/images/frontera_logistic.jpg" /></p>
-<p>Usando los valores del ultimo <span class="math notranslate nohighlight">\(w\)</span> entrenado podriamos construir la función que define nuestra frontera.</p>
+<p>Usando los valores del ultimo <span class="math notranslate nohighlight">\(\bf{w}\)</span> entrenado podriamos construir la función que define nuestra frontera.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown Escribe el modelo completo con sus variables y coeficientes de f(**x**,**w**) con la mejor frontera de decisión que encontró. Recuerda tener presente el grado del polinomio.
-respuesta_6 = &quot;0.0x1...&quot; #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>GRADER.check_tests()
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Integrantes
-codigo_integrante_1 =&#39;&#39; #@param {type:&quot;string&quot;}
-codigo_integrante_2 = &#39;&#39;  #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<p>esta linea de codigo va fallar, es de uso exclusivo del los profesores</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>GRADER.grade()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#Escriba el modelo completo con sus variables y coeficientes de f(**x**,**w**) con la mejor frontera de decisión que encontró. Recuerde tener presente el grado del polinomio.
+respuesta = &quot;0.0x1...&quot;
 </pre></div>
 </div>
 </div>
@@ -1021,13 +990,13 @@ codigo_integrante_2 = &#39;&#39;  #@param {type:&quot;string&quot;}
             mode: "python"
         },
         kernelOptions: {
-            name: "python36964bite6e4b44aef15498b8e6b096ea0e41af2",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python36964bite6e4b44aef15498b8e6b096ea0e41af2'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -1075,7 +1044,7 @@ codigo_integrante_2 = &#39;&#39;  #@param {type:&quot;string&quot;}
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-contextualizacion-del-problema">Ejercicio 1: Contextualización del problema</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-entrenamiento">Ejercicio 2: entrenamiento</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-experimentar">Ejercicio 3: Experimentar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-validacion">Ejercicio 3: Validación</a></li>
 </ul>
   </nav></div>
 

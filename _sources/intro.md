@@ -2,7 +2,7 @@
 
 **2025 - Introducción al Machine Learning**
 
-- [REGISTRO DE GRUPOS DE PROYECTO]() (solo un registro por grupo)
+- [REGISTRO DE GRUPOS DE PROYECTO](https://docs.google.com/forms/d/e/1FAIpQLSdmdbNJ6GNH4ee1gZegDvU5mHsNBaxYgmVQvhtzlVnJZjn0-A/viewform?usp=dialog) (solo un registro por grupo)
 
 ## Lecturas recomendadas
 
@@ -39,6 +39,11 @@ Se realiza una avance parcial del proyecto que incluye partes I y II de la guía
 
 ## Sesiones sincrónicas (Modalidad Virtual)
 
-Para acceder a las sesiones sincrónicas: Lunes - Jueves: [zoom link](https://udearroba.zoom.us/meeting/93906419036) Laboratorios: Martes [zoom link](https://udearroba.zoom.us/meeting/93906419036)
+Para acceder a las sesiones sincrónicas: Lunes - Jueves: [zoom link](https://udearroba.zoom.us/meeting/93906419036) 
 
+Laboratorios: - Presencial (Martes 8-10) [zoom link](https://udearroba.zoom.us/j/92063196721)
+              - Virtual (Martes 10-12) [zoom link](https://udearroba.zoom.us/meeting/93906419036)
+
+<!---
 Las grabaciones de las sesiones de Martes - Jueves pueden encontrarlas en: [zoom recordings](https://udearroba.zoom.us/meeting/93906419036)
+-->
