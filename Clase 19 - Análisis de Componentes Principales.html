@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,7 +445,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#veamos-algunas-proyecciones-posibles">Veamos algunas proyecciones posibles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalmente">Formalmente…</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-en-reconocimiento-de-rosotros-eigenfaces">Ejemplo en reconocimiento de rosotros (EigenFaces)</a><ul class="nav section-nav flex-column">
@@ -468,12 +467,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reduccion-de-dimension-analisis-de-componentes-principales">
 <h1>Reducción de dimensión: Análisis de Componentes Principales<a class="headerlink" href="#reduccion-de-dimension-analisis-de-componentes-principales" title="Link to this heading">#</a></h1>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Asociado<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
@@ -510,7 +503,6 @@ plt.show()
 <img alt="_images/63f39e2bdb92eb4670433e62f3e6911715b63729be69feaf81aaa2de99afcda1.png" src="_images/63f39e2bdb92eb4670433e62f3e6911715b63729be69feaf81aaa2de99afcda1.png" />
 </div>
 </div>
-</section>
 <section id="veamos-algunas-proyecciones-posibles">
 <h2>Veamos algunas proyecciones posibles<a class="headerlink" href="#veamos-algunas-proyecciones-posibles" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -560,7 +552,7 @@ cualquiera <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> sobr
 <div class="math notranslate nohighlight">
 \[z_i={\bf{u}}_1^T {\bf{x}}_i\]</div>
 <p>Graficamente:</p>
-<img src="./Images/PCA1.png" alt="SFS" width="400"/><p>Para intentar conservar la estructura original se puede plantear que la distancia entre el punto original y su proyección sea la más corta posible, por lo tanto si <span class="math notranslate nohighlight">\(r_i\)</span> es la distancia entre el punto <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> y su proyección sobre la dirección <span class="math notranslate nohighlight">\({\bf{u}}_1\)</span>, el objetivo es:</p>
+<img src="./Local/imgs/PCA1.png" alt="SFS" width="400"/><p>Para intentar conservar la estructura original se puede plantear que la distancia entre el punto original y su proyección sea la más corta posible, por lo tanto si <span class="math notranslate nohighlight">\(r_i\)</span> es la distancia entre el punto <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> y su proyección sobre la dirección <span class="math notranslate nohighlight">\({\bf{u}}_1\)</span>, el objetivo es:</p>
 <div class="math notranslate nohighlight">
 \[\mathop {\min }\limits_{{\bf{u}}_1} \sum_{i=1}^{N} r_{i}^{2} = \mathop {\min }\limits_{{\bf{u}}_1} \sum_{i=1}^{N} |{\bf{x}}_i - z_i {\bf{u}}_1|^{2}\]</div>
 <p>Lo que implica encontrar el vector <span class="math notranslate nohighlight">\({\bf{u}}_1\)</span> que maximice <span class="math notranslate nohighlight">\(z_i^{2}\)</span>, osea:</p>
@@ -1006,7 +998,6 @@ plt.grid()
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#veamos-algunas-proyecciones-posibles">Veamos algunas proyecciones posibles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalmente">Formalmente…</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-en-reconocimiento-de-rosotros-eigenfaces">Ejemplo en reconocimiento de rosotros (EigenFaces)</a><ul class="nav section-nav flex-column">

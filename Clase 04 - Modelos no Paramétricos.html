@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,7 +445,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-aprendizaje-no-parametricos">Modelos de aprendizaje no paramétricos</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-del-histograma">Método del histograma</a></li>
 </ul>
@@ -464,12 +463,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modelos-no-parametricos">
 <h1>Modelos no parámetricos<a class="headerlink" href="#modelos-no-parametricos" title="Link to this heading">#</a></h1>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Titular<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); 
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
@@ -505,9 +506,8 @@ CMAP_LIGHT = ListedColormap([&#39;#AAAAFF&#39;,&#39;#AAFFAA&#39;,&#39;#FFAAAA&#3
 <p>Con lo visto hasta ahora podemos establecer que el aprendizaje de máquina se puede ver como el ajuste de un modelo <span class="math notranslate nohighlight">\(p(y/{\bf{x}})\)</span> o <span class="math notranslate nohighlight">\(p({\bf{x}})\)</span>. El primer caso corresponde a un problema de aprendizaje supervisado (regresión o clasifiación) y en el segundo caso a uno no supervisado. Por consiguiente, los problemas de aprendizaje están muy relacionados con seleccionar y ajustar un modelo que describa la densidad de probabilidad de un conjunto de puntos, ese problema se conoce como <b>estimación de densidad</b>.</p>
 <p>Pueden existir varias formas de clasificar los modelos de estimación, pero tal vez la más importante es:</p>
 <li><b>Modelos de aprendizaje paramétricos</b>. </li><p>En los modelos paramétricos se hace una suposición sobre la forma que tiene la función de densidad, es decir se asume que los datos siguen un modelo predefinido. El modelo está descrito por una serie de parámetros que son ajustados al problema particular durante la etapa de entrenamiento. El número de parámetros es constante y de manera general son computacionalmente muy eficientes, pero pueden dar lugar a errores si las suposiciones hechas sobre el conjunto de datos no se cumplen.</p>
-<p><img alt="alt text" src="Images/MParametricos.png" /></p>
+<p><img alt="alt text" src="_images/MParametricos.png" /></p>
 <p>La figura anterior nos muestra dos ejemplos de modelos paramétricos. Asumir que un conjunto de datos sigue una función de densidad Gausiana (2 parámetros) o asumir que el comportamiento de un conjunto de datos se puede representar usando un polinomio de segundo orden (3 parámetros). Esto quiere decir que los modelos de aprendizaje vistos hasta ahora corresponde a la clase de modelos paramétricos.</p>
-</section>
 <section id="modelos-de-aprendizaje-no-parametricos">
 <h2>Modelos de aprendizaje no paramétricos<a class="headerlink" href="#modelos-de-aprendizaje-no-parametricos" title="Link to this heading">#</a></h2>
 <section id="metodo-del-histograma">
@@ -971,7 +971,6 @@ interact(nadayara, h=[0.0001,0.001,0.01,0.1,0.48859075319621886,0.5,0.6,0.7,0.8]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-aprendizaje-no-parametricos">Modelos de aprendizaje no paramétricos</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-del-histograma">Método del histograma</a></li>
 </ul>

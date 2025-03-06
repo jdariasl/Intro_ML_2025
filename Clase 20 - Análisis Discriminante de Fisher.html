@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,7 +445,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otros-ejemplos">Otros ejemplos:</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecciones-usando-pca">Proyecciones usando PCA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecciones-usando-lda">Proyecciones usando LDA</a><ul class="nav section-nav flex-column">
@@ -467,12 +466,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reduccion-de-dimension-analisis-discriminante-de-fisher">
 <h1>Reducción de dimensión: Análisis Discriminante de Fisher<a class="headerlink" href="#reduccion-de-dimension-analisis-discriminante-de-fisher" title="Link to this heading">#</a></h1>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Asociado<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
@@ -551,7 +544,7 @@ busca direcciones que son eficientes para discriminación, es decir que permiten
 <li> $n_1$ muestras clase 1 </li>
 <li> $n_2$ muestras clase 2 </li>
 <p>Consideremos la proyección de un punto (muestra) con respecto una dirección representada por un vector unitario <span class="math notranslate nohighlight">\({\bf{v}}\)</span></p>
-<img src="./Images/FDA2.png" alt="FDA2" width="300"/><p>El escalar <span class="math notranslate nohighlight">\({\bf{v}}^{T}{\bf{x}}_i\)</span> corresponde a la distancia de la proyección de <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> desde el origen.</p>
+<img src="./local/imgs/FDA2.png" alt="FDA2" width="300"/><p>El escalar <span class="math notranslate nohighlight">\({\bf{v}}^{T}{\bf{x}}_i\)</span> corresponde a la distancia de la proyección de <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> desde el origen.</p>
 <p>¿Cómo medir la separación de las proyecciones de diferentes clases?</p>
 <li> Sea $\widetilde{\mu}_1$ y $\widetilde{\mu}_2$ las medias de las proyecciones de las clases 1 y 2 respectivamente. </li>
 <li> Sea $\mu_1$ y $\mu_2$ las medias de las clases 1 y 2 en el espacio original. </li>
@@ -689,7 +682,6 @@ plt.hist(c[Y==0],color=&#39;yellow&#39;)
 \[J({\bf{V}}) = \frac{\det\left( {\bf{V}}^{T}{\bf{S}}_B{\bf{V}}\right) }{\det\left( {\bf{V}}^{T}{\bf{S}}_W{\bf{V}}\right) }\]</div>
 <p>donde <span class="math notranslate nohighlight">\({\bf{V}}\)</span> es llamada la matriz de proyección.</p>
 <p><img src="./Images/FDA4.png" alt="FDA4" width="600"/> Image taken from [1].</p>
-</section>
 <section id="otros-ejemplos">
 <h2>Otros ejemplos:<a class="headerlink" href="#otros-ejemplos" title="Link to this heading">#</a></h2>
 <p>Veamos un ejemplo usando la base de datos iris:</p>
@@ -791,7 +783,7 @@ for i in range(4):
         plt.subplot(4, 4, i * 4 + j + 1)
         plt.scatter(X_reconstructed[:,i], X_reconstructed[:,j],c=y)
         plt.axis(&#39;equal&#39;)       
-plt.figure(figsize=(8,8))  
+plt.show()  
 </pre></div>
 </div>
 </div>
@@ -876,7 +868,6 @@ plt.figure(figsize=(8,8))
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otros-ejemplos">Otros ejemplos:</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecciones-usando-pca">Proyecciones usando PCA</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecciones-usando-lda">Proyecciones usando LDA</a><ul class="nav section-nav flex-column">

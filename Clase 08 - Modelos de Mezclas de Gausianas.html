@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -422,9 +422,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -440,14 +438,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -459,12 +449,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modelos-de-mezcla-de-funciones-gausianas">
 <h1>Modelos de Mezcla de Funciones Gausianas<a class="headerlink" href="#modelos-de-mezcla-de-funciones-gausianas" title="Link to this heading">#</a></h1>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Titular<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <p>Hasta el momento hemos visto que existen dos posibles aproximaciones al problema de clasificación:</p>
 <li>Encontrar una función que represente la frontera de separación entre dos clases</li>
 <li>Separar las muestras por clases y estimar una función de densidad de probabilidad (fdp) por cada una de ellas</li><p>Los modelos pertenecientes a la primera aproximación se conocen como <b>Discriminativos</b>, debido a que para el ajuste de la frontera se utilizan las muestras de las dos clases al mismo tiempo y el criterio de ajuste del modelo está directamente relacionado con disminuir el error de clasificación.</p>
@@ -500,13 +484,12 @@ plt.xlabel(&#39;Caracteristica 1&#39;)
 plt.ylabel(&#39;Caracteristica 2&#39;)
 plt.scatter(XC1[0,:], XC1[1,:])
 plt.scatter(XC2[0,:], XC2[1,:],color=&#39;red&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f820e7ed410&gt;
-</pre></div>
-</div>
+<img alt="_images/fe0fc29c2c77b26cc15bf273f9ad6d84890c7f1cc5b70e2bc3b3057a2d5dae3b.png" src="_images/fe0fc29c2c77b26cc15bf273f9ad6d84890c7f1cc5b70e2bc3b3057a2d5dae3b.png" />
 </div>
 </div>
 <p>Si nuestro deseo es usar un clasificador basado en la fdp de cada clase, y por simplicidad decidimos usar un clasificador por función discriminante Gaussiana, es decir, ajustar una función de densidad Gausiana para cada una de las clases, el resultado obtenido sería el siguiente:</p>
@@ -1691,7 +1674,6 @@ Initialization converged: True	 time lapse 0.00505s	 ll -3.60150
 </div>
 <hr class="docutils" />
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1747,21 +1729,6 @@ Initialization converged: True	 time lapse 0.00505s	 ll -3.60150
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

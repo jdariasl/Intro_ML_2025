@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,7 +445,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diferencia-entre-funcion-de-costo-y-metrica-de-evaluacion">Diferencia entre función de costo y métrica de evaluación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-desempeno-para-problemas-de-clasificacion">Medidas de desempeño para problemas de Clasificación</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-un-problema-de-clasificacion-los-errores-no-son-todos-iguales">En un problema de clasificación los errores no son todos iguales</a></li>
@@ -478,18 +477,12 @@ document.write(`
 <p>Se recomienda revisar el siguiente enlace: <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/ML_2020/master/init.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
 import init; init.init(force_download=False); 
 </pre></div>
 </div>
 </div>
 </div>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Asociado<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
@@ -499,7 +492,6 @@ import matplotlib.pyplot as plt
 </div>
 </div>
 </div>
-</section>
 <section id="diferencia-entre-funcion-de-costo-y-metrica-de-evaluacion">
 <h2>Diferencia entre función de costo y métrica de evaluación<a class="headerlink" href="#diferencia-entre-funcion-de-costo-y-metrica-de-evaluacion" title="Link to this heading">#</a></h2>
 <p>Como vimos en las primeras sesiones de clase, a la hora de definir una tarea de ML es necesario establecer la plantilla de modelo que se va a usar, junto con eel criterio de entrenmiento o función de costo y el algoritmo de entrenamiento. La función de costo es una medida que nos permite realizar la optimización del modelo y que debe cumplir ciertas restricciones, como el hecho de ser continua, pero su valor no necesariamente tiene una interpretación directa de cara al problema que se está resolviendo. Por esa razón es necesario utilizar médidas de evaluación, que permitan establecer el desempeño del modelo de ML.</p>
@@ -516,7 +508,7 @@ import matplotlib.pyplot as plt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
-Image(&quot;./Images/confusion_matix_example.png&quot;, width = 600)
+Image(&quot;./Local/imgs/confusion_matix_example.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -639,7 +631,7 @@ Normalized confusion matrix
 <p>En un problema de múltiples clases:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Images/CM.png&quot;, width = 600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Local/imgs/CM.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -809,7 +801,7 @@ BACC = 0.8
 <p>La curva ROC (Receiver Operator Characteristic) se utiliza como una medida de desempeño esperado de un sistema de clasificación. La grafica muestra el desempeño en términos de Sensibilidad vs 1 - Especificidad, para diferentes umbrales de decisión. El área bajo la curva ROC (AUC) se usa como medida de desempeño en varias aplicaciones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Images/roc.jpg&quot;, width = 300)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Local/imgs/roc.jpg&quot;, width = 300)
 </pre></div>
 </div>
 </div>
@@ -1044,7 +1036,6 @@ R^2 = 0.745604070176843
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diferencia-entre-funcion-de-costo-y-metrica-de-evaluacion">Diferencia entre función de costo y métrica de evaluación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-de-desempeno-para-problemas-de-clasificacion">Medidas de desempeño para problemas de Clasificación</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#en-un-problema-de-clasificacion-los-errores-no-son-todos-iguales">En un problema de clasificación los errores no son todos iguales</a></li>

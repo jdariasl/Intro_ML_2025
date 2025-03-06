@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,7 +445,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intuicion">Intuición</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion">Definición</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-de-impureza">Medida de impureza</a><ul class="nav section-nav flex-column">
@@ -479,13 +478,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="arboles-de-decision">
 <h1>Árboles de decisión<a class="headerlink" href="#arboles-de-decision" title="Link to this heading">#</a></h1>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Titular<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
-</section>
 <section id="intuicion">
 <h2>Intuición<a class="headerlink" href="#intuicion" title="Link to this heading">#</a></h2>
 <p>Los modelos vistos en la clase anterior (GMM) nos permitieron evidenciar que algunos problemas de clasificación imponen retos adicionales en el diseño y ajuste de los modelos predictivos, debido a que no siempre podemos asumir que las muestras de una misma clase están agrupadas en el espacio de características, sino que por el contrario puede formar diferentes conglomerados (clusters).</p>
@@ -550,7 +542,7 @@ axes.set_title(&#39;Problema de regresion&#39;);
 <h2>Definición<a class="headerlink" href="#definicion" title="Link to this heading">#</a></h2>
 <p>El aprendizaje de árboles de decisión es un método para la predicción de variables a partir de funciones discretas, en los cuales la función aprendida es representada a través de un árbol de decisión. Son en general métodos de aprendizaje inductivo muy empleados, pueden representarse en forma de conjuntos de reglas <b>if-then</b> y han sido aplicados con éxito en el desarrollo de sistemas de apoyo al diagnóstico médico, riesgo de crédito y solicitud de préstamos, entre otros.</p>
 <p>Una particularidad de los árboles de decisión es que no utilizan todo el conjunto de características en cada nivel, sino que por el contrario utilizan diferentes características en cada nivel decisión.</p>
-<p><img alt="alt text" src="Images/Arbol.png" /></p>
+<p><img alt="alt text" src="_images/Arbol.png" /></p>
 <li>Los círculos representan los nodos internos, que son variables y umbrales.</li>
 <li> Los cuadros representan las hojas o nodos terminales y determinan la clase o el valor de salida que asignará el modelo a las muestras que se ubiquen en dicho nodo.</li>
 <li>El nodo superior es la raíz del árbol.</li><p>Existen diferentes métodos de aprendizade de árboles de decisión, algunos de ellos pueden ser empleados tanto en problemas de regresión como en problemas de clasificación. El algoritmo básico para el aprendizaje de árboles de decisión es conocido como ID3 y fue propuesto por Ross Quinlan en 1986. El algoritmo ID3 construye la estructura del árbol de arriba hacia abajo y utiliza en cada decisión una sola variable. Dicho algoritmo fue evolucionando y posteriormente se publicaron las versiones C4.5 y C5.0, que incluyeron modificaciones en la selección de los umbrales a evaluar. Sin embargo, los principios de funcionamiento general continuaron siendo los mismos.</p>
@@ -727,7 +719,7 @@ plt.show()
 <section id="comite-de-maquinas-metodos-de-ensamble">
 <h2>Comité de Máquinas (Métodos de ensamble)<a class="headerlink" href="#comite-de-maquinas-metodos-de-ensamble" title="Link to this heading">#</a></h2>
 <p>Es usual en el aprendizaje de máquina no dejar la responsabilidad de la decisión a un solo modelo, sino por el contrario combinar la decisión de varios modelos para tomar una decisión final. Existen muchas maneras de combinar modelos de ML, lo que se conoce como métodos de ensamble. La más sencilla es entrenar modelos diferentes diferentes (<strong>ensamble de modelos</strong>) con el objetivo de combinar las fortalezas de cada uno y tomar la decisión basada en concenso. A este método se le conoce como <strong>voting</strong>.</p>
-<p><img src="./Images/Voting.jpg"
+<p><img src="./Local/imgs/Voting.jpg"
      alt="Árbol de decisión"
      width="600px" /></p>
 <div class="cell docutils container">
@@ -800,7 +792,7 @@ plt.show()
 <h2>Bagging<a class="headerlink" href="#bagging" title="Link to this heading">#</a></h2>
 <p>Sin embargo existen otras alternativas que usan como modelos bases un mismo modelo de ML, pero modifican las estrategias de combinación. Una de esas estrategias es conocida como <b>Bagging</b> “Bootstrap Agreggating”, la cual consiste en realizar <span class="math notranslate nohighlight">\(B\)</span> muestreos (con substitución) a partir del conjunto de entrenamiento y entrenar un modelos a partir de cada uno de los conjuntos de muestras.</p>
 <p>La decisión final se toma dependiendo de si el problema es de clasificación o de regresión, si el problema es de clasificación se utiliza la regla del mayor voto (moda) y si por el contrario el problema es de regresión se usa el promedio de las predicción de cada clasificador. Este tipo de aproximaciones permiten reducir la varianza en el error obtenido por el modelo predictivo.</p>
-<p><img alt="alt text" src="Images/Bagging.jpeg" /></p>
+<p><img alt="alt text" src="_images/Bagging.jpeg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.ensemble import BaggingClassifier
@@ -1168,7 +1160,6 @@ plt.show()
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intuicion">Intuición</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion">Definición</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medida-de-impureza">Medida de impureza</a><ul class="nav section-nav flex-column">

@@ -244,7 +244,7 @@
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,7 +445,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-perceptron">El perceptrón</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento-del-perceptron">Entrenamiento del perceptrón</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-backpropagation">Algoritmo Backpropagation</a></li>
@@ -467,23 +466,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="redes-neuronales-artificiales">
 <h1>Redes Neuronales Artificiales<a class="headerlink" href="#redes-neuronales-artificiales" title="Link to this heading">#</a></h1>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Titular<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <p>Una de las principales razones que inspiró la aparición de las redes neuronales artificiales (en inglés Artificial Neural Networks - ANN), es el hecho de que las tareas cognitivas complejas realizadas por el ser humano, requieren un nivel de paralelismo el cual es llevado a cabo a través de una compleja red de neuronas interconectadas.</p>
-<p><img alt="alt text" src="Images/NN.png" /></p>
+<p><img alt="alt text" src="_images/NN.png" /></p>
 <p>Algunas estadísticas interesantes que nos ayudan a entender el poder de la red de neuronas en el ser humano:</p>
 <li>Se estima que el cerebro humano contiene una densa red de neuronas interconectadas de alrededor de $10^{11}$ neuronas.  </li>
 <li>Cada neurona se conecta en promedio con otras $10^{4}$ neuronas.</li>
 <li>La actividad de las neuronas es típicamente exitada o inhibida a través de las conexiones con otras neuronas.</li>
-<li>La velocidad de cambio de estado de una neurona en el mejor de los casos es del orden de $10^{−3}$ seg. Comparado con los computadores actuales es estramadamente lento. Sin embargo los humanos pueden tomar decisiones sorprendentemente complejas en muy poco tiempo. Por ejemplo Ud requiere aproximadamente $10^{−1}$ segs reconocer visualmente a su madre.</li></section>
-<section id="el-perceptron">
+<li>La velocidad de cambio de estado de una neurona en el mejor de los casos es del orden de $10^{−3}$ seg. Comparado con los computadores actuales es estramadamente lento. Sin embargo los humanos pueden tomar decisiones sorprendentemente complejas en muy poco tiempo. Por ejemplo Ud requiere aproximadamente $10^{−1}$ segs reconocer visualmente a su madre.</li><section id="el-perceptron">
 <h2>El perceptrón<a class="headerlink" href="#el-perceptron" title="Link to this heading">#</a></h2>
 <p>Uno de los tipos más usados de RNA está basado en una unidad llamada Perceptrón. Un perceptrón toma un vector de valores reales como entrada, calcula una combinación lineal de dichas entradas y produce una salida 1 si el resultado es mayor a algún umbral y -1 en otro caso.</p>
-<p><img alt="alt text" src="Images/Perceptron01.jpg" /></p>
+<p><img alt="alt text" src="_images/Perceptron01.jpg" /></p>
 <p>Si observamos con detenimiento, el perceptrón es equivalente a la regresión logística vista en las primeras clases del curso. El umbral que determina si la salida es 1 o -1 es igual al negativo del término independiente en la regresión logística. Formalmente, dada una muestra <span class="math notranslate nohighlight">\({\bf{x}} =  \left\lbrace x_1, x_2,..., x_d \right\rbrace \;\;\)</span>,              la salida <span class="math notranslate nohighlight">\(O({\bf{x}}) = O(x_1,x_2,...,x_d) \;\;\;\;\;\)</span>     computada por el perceptrón es:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}O(x_1,x_2,...,x_d) = \left\{
@@ -509,7 +501,7 @@ Universidad de Antioquia, Medellín, Colombia<br />
                 \end{array}
               \right. \end{split}\]</div>
 <p>El perceptrón puede se visto como la representación de una superficie de decisión en el espacio <span class="math notranslate nohighlight">\(d\)</span>-dimensional en el cual se ubican las muestras. El perceptrón asigna valores 1 para las muestras (puntos) que se ubican a un lado del hiperplano y −1 para las que se ubican al otro lado.</p>
-<p><img alt="alt text" src="Images/Perceptron2.png" /></p>
+<p><img alt="alt text" src="_images/Perceptron2.png" /></p>
 </section>
 <section id="entrenamiento-del-perceptron">
 <h2>Entrenamiento del perceptrón<a class="headerlink" href="#entrenamiento-del-perceptron" title="Link to this heading">#</a></h2>
@@ -523,10 +515,10 @@ Universidad de Antioquia, Medellín, Colombia<br />
 <p>Una forma alternativa que puede ser utilizada aún cuando las muestras no sean linealmente separables, es definir una medida de error e intentar minizarla a través de una regla de gradiente. Es decir, si asumimos:</p>
 <p>podemos utilizar la regla del gradiente descedente para encontrar el conjunto de pesos que hagan el error mínimo (no tiene que ser cero). Esta definición ya fue estudiada cuando vimos el modelo de regresión logística. El único inconveniente es que la salida del percetrón depende de la función <i>sgn</i> y la regla del gradiente necesita calcular la derivada. Sin embargo podemos asumir que si <span class="math notranslate nohighlight">\({\bf{w}}^T{\bf{x}}\;\;\)</span> tiende a 1 (o −1 según sea del caso), la aplicación de la función sgn obtendrá por consiguiente un buen resultado.</p>
 <p>Consideremos ahora el tipo de problemas que podremos resolver utilizando un solo perceptron.</p>
-<p><img alt="alt text" src="Images/ORANDXOR.png" /></p>
+<p><img alt="alt text" src="_images/ORANDXOR.png" /></p>
 <p>La gráfica anterior nos muestra 3 problemas de clasifiación haciendo una analogía a las funciones Booleanas OR, AND y XOR. Es posible observar que los dos primeros problemas de clasificación se pueden resolver a partir de una frontera de decisión lineal, sin embargo, en la última gráfica no es posible separa las círculos negros de los círculos blancos utilizando únicamente una función lineal.</p>
 <p>Como sabemos, la función XOR se puede construir a partir de funciones AND y funciones OR. De la misma forma podemos resolver el problema de la gráfica 3 utilizando la combinación de dos fronteras de decisión lineales:</p>
-<p><img alt="alt text" src="Images/XOR.png" /></p>
+<p><img alt="alt text" src="_images/XOR.png" /></p>
 <p>Si utilizamos la combinación de perceptrones mostrada en la figura, podremos obtener una salida del modelo <span class="math notranslate nohighlight">\(a=1\;\;\)</span> para la zona sombreada y una salida <span class="math notranslate nohighlight">\(a= 0\;\;\)</span> para el resto del espacio, obteniendo de esa manera una clasificación perfecta. La red de perceptrones interconectados de la figura anterior coresponde entonces a una <b>Red Neuronal Artificial</b>, en la que cada neurona es un perceptrón y la combinación de los perceptrones, que son modelos simples, permitió la solución de un problema más complejo.</p>
 <p>El problema que surge en este momento, es que el algoritmo de entrenamiento que fue descrito para un único perceptrón no puede ser aplicado en este caso, debido a que ahora en la salida de toda la red intervienen varios perceptrones, razón por la cual es necesario aplicar la función <i>sgn</i> antes de poder obtener la salida final de la red y por consiguiente el método de gradiente no puede ser aplicado porque la función de salida de la red nuevamente es NO derivable.</p>
 <p>Para poder resolver el problema, debemos entonces encontrar una función equivalente a la función <i>sgn</i>, pero que pueda ser derivable para poder usar el error cuadrático medio como criterio de entrenamiento. De manera similar al a regresión logística, una solución es usar la función sigmoide:</p>
@@ -569,7 +561,7 @@ plt.plot(u,g)
 </div>
 <p>Si se observa con detenimiento veremos que el rango de valores que toma la función sigmoide está en el intervalo <span class="math notranslate nohighlight">\([0,1]\)</span>, mientras que la tangente hiperbólica está entre <span class="math notranslate nohighlight">\([-1,1]\;\)</span>. A las funciones de salida de los perceptrones se les conoce como <b> funciones de activación</b>.</p>
 <p>Utilizar funciones de activación nolineales, también permite que las fronteras de decisión no estén restringidas a rectas, permitiendo la definición de fronteras cada vez más complejas. Una red neuronal artificial es entonces un modelo que utiliza varias neuronas interconectadas y que puede a partir de ellas resolver problemas complejos como el mostrado en la siguiente figura.</p>
-<p><img alt="alt text" src="Images/RNA.png" /></p>
+<p><img alt="alt text" src="_images/RNA.png" /></p>
 <p>Como podemos observar en la figura, una Red Neuronal Artificial (RNA) tiene tres tipos de capas:</p>
 <li>La capa de entrada la cual recibe las características o variables de las muestras a ser evaluadas.  </li>
 <li>La o las capas ocultas son capas de perceptrones que permiten llevar a cabo la definición de fronteras complejas, como en el caso de la función XOR, en la cual se tenía una capa oculta con 2 perceptrones que llevaban a cabo funciones AND .</li>
@@ -785,10 +777,10 @@ The goal of learning is reached
 <section id="batch-minibatch-and-online-learning">
 <h2>Batch, Minibatch and online learning<a class="headerlink" href="#batch-minibatch-and-online-learning" title="Link to this heading">#</a></h2>
 <p>Durante el entrenamiento de un MLP las siguientes cantidades deben ser estimadas en cada iteración:</p>
-<img src="Images/ForwardBackward.png" alt="FBI" width="500"/>
+<img src="Local/imgs/ForwardBackward.png" alt="FBI" width="500"/>
 <p>El entrenamiento que acumula todos los errores cometidos a partir de todas las meutras de entrenamiento antes de llevar a cabo la actualización de los pesos se conoce como <strong>Batch training</strong>. Desafortunadamente si el número de muestras es muy grande, el algoritmo presenta problemas de computo no sólo por la cantidad de cálculos sino de memoria necesaria para realizar la multiplicación de matrices. Pero el problema más significativo es que la trayectoria del gradiente Batch tiende a estancarse en puntos silla (<strong>saddle point</strong>) de la función de costo.</p>
 <p>Como alternativa el entrenamiento se puede realizar propagando una sola muestra hacia adelante y realizando la actualización de los pesos a partir del error que se comete con esa muestra. Los dos pasos son repetidos para todas las muestras de entrenamiento. Esta estrategia es llamada <strong>on-line learning</strong> y el algoritmo resultante es llamado <strong>Stochastic Gradient Descent (SGD)</strong>. Debido a que el algoritmo usa una muestra aleatoria a la vez, la convergencia al óptimo es más ruidosa, pero eso ayuda al algoritmo a escapar de óptimos locales y puntos silla.</p>
-<img src="Images/SGD_MB.png" alt="SGD" width="600"/>
+<img src="Local/imgs/SGD_MB.png" alt="SGD" width="600"/>
 <p>Uno de los problemas del algoritmo SGD es que requiere muchas iteraciones para converger. Por consiguiente una solución intermedia, llamada <strong>Mini-batch gradient descent</strong>, parte las muestras de entrenamiento en mini-batchs, y se realiza los pasos forward y backward por cada mini-batch.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -931,7 +923,6 @@ plt.legend()
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-perceptron">El perceptrón</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento-del-perceptron">Entrenamiento del perceptrón</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-backpropagation">Algoritmo Backpropagation</a></li>

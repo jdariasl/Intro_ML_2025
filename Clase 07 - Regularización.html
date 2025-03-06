@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,7 +445,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobreajuste">Sobreajuste</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parada-anticipada">Parada anticipada</a></li>
 </ul>
@@ -467,18 +466,12 @@ document.write(`
 <h1>Sobreajuste y Regularización<a class="headerlink" href="#sobreajuste-y-regularizacion" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/ML_2020/master/init.py
-import init; init.init(force_download=False); 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False);  
 </pre></div>
 </div>
 </div>
 </div>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Asociado<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
@@ -488,7 +481,6 @@ import matplotlib.pyplot as plt
 </div>
 </div>
 </div>
-</section>
 <section id="sobreajuste">
 <h2>Sobreajuste<a class="headerlink" href="#sobreajuste" title="Link to this heading">#</a></h2>
 <p>El sobreajuste es un fenómeno que puede ocurrir en el ajuste de modelos estadísticos o de aprendizaje automático, en el que el modelo se aprende muy bien la respuesta a las muestras que han sido usadas durante el entrenamiento, pero no captura la estructura subyacente de los datos, razón por la cual no puede <b>generalizar</b> correctamente, es decir, hacer predicciones precisas sobre nuevas muestras. El comportamiento opuesto al sobreajuste es el <b>subajuste</b>, en cuyo caso el modelo no puede ajustarse a los datos de entrenamiento. Ningunos de los dos comportamientos es deseado, ya que en ninguno de los dos casos el modelo adquiere la capacidad de realizar predicciones apropiadas.</p>
@@ -540,7 +532,7 @@ reg.PrintOverfittingReg()
 </ul>
 <p>De esa manera podemos garantizar que el conjunto de test no ha sido usado ni para el ajuste de los parámetros del modelo, ni para la selección de los hiperparámetros del mismo. En todos los casos, se deben hacer varias repeticiones usando metodologı́as como validación cruzada o bootstrapping, para obtener medidas de desempeño ± IC.</p>
 <p>Adicionalmente, en modelos muy flexibles que cuentan con un número de parámetros muy elevado (por ejemplo en las redes neuronales artificiales), se suele usar una estrategia para evitar el sobreajuste llamada parada anticipada. Esta estrategia consiste en evaluar el error en el conjunto de entrenamiento y el error en el conjunto de validación durante cada época o iteración del algoritmo de entrenamiento, cuando el error de validación deja de reducirse, aunque el error de entrenamiento continúe disminuyendo, el algoritmo de entrenamiento se detiene. Esto evita que el algoritmo continúe ajustándose a los datos de entrenamiento, pero deje de representar la estructura subyacente en los datos del problema que se está modelando.</p>
-<img src="./Images/ParadaAnticipada.png" alt="ParadaAnticipada" width="600"/><p>En Sklearn:</p>
+<img src="./Local/imgs/ParadaAnticipada.png" alt="ParadaAnticipada" width="600"/><p>En Sklearn:</p>
 <p><strong>early_stopping: bool</strong>, default=False</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Whether to use early stopping to terminate training when validation score is not improving. If set to true, it will automatically set aside 10% of training data as validation and terminate training when validation score is not improving by at least tol for n_iter_no_change consecutive epochs. The split is stratified, except in a multilabel setting. Only effective when solver=&#39;sgd&#39; or &#39;adam&#39;.
 </pre></div>
@@ -566,18 +558,16 @@ $<span class="math notranslate nohighlight">\({\bf{w}} = \left( {\bf{X}}^T {\bf{
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
 import matplotlib.pyplot as plt
-data = np.genfromtxt(&quot;DataFiles/ex2data2.txt&quot;,delimiter=&quot;,&quot;)
+data = np.genfromtxt(&quot;local/data/ex2data2.txt&quot;,delimiter=&quot;,&quot;)
 X = data[:, [0, 1]]; Y = data[:, 2];
 plt.plot(X[Y.flat==1,0],X[Y.flat==1,1],&#39;r+&#39;)
 plt.plot(X[Y.flat==0,0],X[Y.flat==0,1],&#39;bo&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4f7a8f8fd0&gt;]
-</pre></div>
-</div>
-<img alt="_images/92e03f50955c7d4decd75809bc13c36bf994cd899ef69f2b68a9180eb7a565df.png" src="_images/92e03f50955c7d4decd75809bc13c36bf994cd899ef69f2b68a9180eb7a565df.png" />
+<img alt="_images/9135b3f155259a5be48e7e6ee9290842df1fdf01f9ea6d6826739cbf7fe99eaf.png" src="_images/9135b3f155259a5be48e7e6ee9290842df1fdf01f9ea6d6826739cbf7fe99eaf.png" />
 </div>
 </div>
 <p>Veamos la frontera que produce una regresión logística estándar, en este caso para un polinomio de grado 6.</p>
@@ -639,7 +629,7 @@ plt.plot(X[Y.flat==0,0],X[Y.flat==0,1],&#39;bo&#39;)
 </div>
 </div>
 <p>La restricción que estamos usando en el término de regularización corresponde a la norma <span class="math notranslate nohighlight">\(L_2\)</span> del vector <span class="math notranslate nohighlight">\(\bf{w}\)</span>. También es posible usar otro tipo de normas, entre ellas la norma <span class="math notranslate nohighlight">\(L_1\)</span> es también muy usada, ya que garantiza no sólo que la magnitud de los pesos en el vector <span class="math notranslate nohighlight">\(\bf{w}\)</span> no se desboder, sino que además causa que algunos de los pesos tomen un valor de cero. La regresión con este tipo de regularización se conoce como LASSO y será analizada en detalle más adelante en el curso.</p>
-<img src="./Images/L1L2.png" alt="ParadaAnticipada" width="600"/><div class="cell docutils container">
+<img src="./Local/imgs/L1L2.png" alt="ParadaAnticipada" width="600"/><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn import linear_model, datasets
 diabetes=datasets.load_diabetes()
@@ -752,7 +742,6 @@ print(clf.coef_)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobreajuste">Sobreajuste</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parada-anticipada">Parada anticipada</a></li>
 </ul>

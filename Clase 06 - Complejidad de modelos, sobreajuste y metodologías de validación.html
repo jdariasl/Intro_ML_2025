@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -446,10 +446,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><font color="blue">Complejidad de modelos </font></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supongamos-que-tenemos-un-dataset-de-un-problema-de-clasificacion">Supongamos que tenemos un dataset de un problema de clasificación</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supongamos-que-tenemos-un-dataset-de-un-problema-de-clasificacion">Supongamos que tenemos un dataset de un problema de clasificación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-se-veria-la-frontera-de-clasificacion-usando-un-fdg">¿Cómo se vería la frontera de clasificación usando un FDG?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-vs-variance">Bias vs Variance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#veamos-un-ejemplo">Veamos un ejemplo:</a></li>
@@ -494,18 +491,12 @@ document.write(`
 <h1><font color='blue'>Complejidad de modelos </font><a class="headerlink" href="#complejidad-de-modelos" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/ML_2020/master/init.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
 import init; init.init(force_download=False); 
 </pre></div>
 </div>
 </div>
 </div>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Asociado<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
@@ -516,7 +507,7 @@ import matplotlib.pyplot as plt
 </div>
 </div>
 <section id="supongamos-que-tenemos-un-dataset-de-un-problema-de-clasificacion">
-<h3>Supongamos que tenemos un dataset de un problema de clasificación<a class="headerlink" href="#supongamos-que-tenemos-un-dataset-de-un-problema-de-clasificacion" title="Link to this heading">#</a></h3>
+<h2>Supongamos que tenemos un dataset de un problema de clasificación<a class="headerlink" href="#supongamos-que-tenemos-un-dataset-de-un-problema-de-clasificacion" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from library.regularization import plot_ellipse
@@ -541,7 +532,6 @@ plt.grid()
 <img alt="_images/9cb9bb9f571cae38c599ed79a2782ea93836f991ad60f5998589c0ee93137eea.png" src="_images/9cb9bb9f571cae38c599ed79a2782ea93836f991ad60f5998589c0ee93137eea.png" />
 </div>
 </div>
-</section>
 </section>
 <section id="como-se-veria-la-frontera-de-clasificacion-usando-un-fdg">
 <h2>¿Cómo se vería la frontera de clasificación usando un FDG?<a class="headerlink" href="#como-se-veria-la-frontera-de-clasificacion-usando-un-fdg" title="Link to this heading">#</a></h2>
@@ -632,7 +622,7 @@ Fronteras(clf,100,5)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
-Image(&quot;./Images/biasVVariance.png&quot;, width = 600)
+Image(&quot;./Local/imgs/biasVVariance.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -643,7 +633,7 @@ Image(&quot;./Images/biasVVariance.png&quot;, width = 600)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Images/tradeoff.png&quot;, width = 600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Local/imgs/tradeoff.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -776,7 +766,7 @@ plt.grid();
 <p>En primer lugar se divide el conjunto de datos de manera aleatoria en dos subconjuntos: Training y Test, típicamente 80% - 20% respectivamente. El conjunto de entrenamiento a su vez se divide nuevamente de manera aleatoria en <span class="math notranslate nohighlight">\(k\)</span> subconjuntos disyuntos, se usan <span class="math notranslate nohighlight">\(k-1\)</span> suubconjuntos para entrenar y el conjunto restante para validar; dicho proceso se repite <span class="math notranslate nohighlight">\(k\)</span> veces. El proceso de entrenamiento y validación se utliza para seleccionar los hiperparámetros del modelo y el conjuto de test para evaluar el desempeño una vez escogido el mejor subconjunto de parámetros.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Images/grid_search_cross_validation.png&quot;, width = 600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Local/imgs/grid_search_cross_validation.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -903,7 +893,7 @@ kf = KFold(n_splits=n)
 <p>En este la partición de las muestras entre entrenamiento y validación se realiza utilizando aleatoriamente definiendo un porcentaje para entrenamiento/validación y un número de repeticiones. La diferencia fundamental con la metodología anterior es que en el caso de Bootstrapping es posible que una misma muestra se repita en dos subconjuntos de validación. Adicionalmente en el caso de validación cruzada los porcentajes de entrenamiento y validación están definidos implícitamente por el número de folds, mientras que en Bootstrapping no.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Images/bootstrap_concept.png&quot;, width = 600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Local/imgs/bootstrap_concept.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -2001,10 +1991,7 @@ plt.show()
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><font color="blue">Complejidad de modelos </font></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#supongamos-que-tenemos-un-dataset-de-un-problema-de-clasificacion">Supongamos que tenemos un dataset de un problema de clasificación</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supongamos-que-tenemos-un-dataset-de-un-problema-de-clasificacion">Supongamos que tenemos un dataset de un problema de clasificación</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#como-se-veria-la-frontera-de-clasificacion-usando-un-fdg">¿Cómo se vería la frontera de clasificación usando un FDG?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-vs-variance">Bias vs Variance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#veamos-un-ejemplo">Veamos un ejemplo:</a></li>

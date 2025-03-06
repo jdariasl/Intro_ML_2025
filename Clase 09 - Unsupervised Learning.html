@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -532,6 +532,7 @@ distxy = pdist(X, metric=&#39;euclidean&#39;)
 plt.figure()
 dn = dendrogram(Z)
 plt.xlabel(&#39;points&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -549,6 +550,7 @@ Z = linkage(distxy, method=&#39;complete&#39;)
 plt.figure()
 dn = dendrogram(Z)
 plt.xlabel(&#39;points&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -607,6 +609,7 @@ Z = linkage(distxy, method=&#39;ward&#39;)
 plt.figure()
 dn = dendrogram(Z)
 plt.xlabel(&#39;points&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -624,6 +627,7 @@ Z = linkage(distxy, method=&#39;weighted&#39;)
 plt.figure()
 dn = dendrogram(Z)
 plt.xlabel(&#39;points&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -639,6 +643,7 @@ plt.xlabel(&#39;points&#39;)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.figure()
 dn = dendrogram(Z,color_threshold=0.5*max(Z[:,2]))#defaul 0.7*max(Z[:,2]).
 plt.xlabel(&#39;points&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -658,7 +663,7 @@ plt.xlabel(&#39;points&#39;)
 <li><p>No permite backtracking</p></li>
 <li><p>Puede sufrir el efecto de la cadena:</p></li>
 </ul>
-<p><img alt="alt text" src="Images/Chaineffect.png" /></p>
+<p><img alt="alt text" src="_images/Chaineffect.png" /></p>
 </section>
 </section>
 <section id="metodos-de-clustering">
@@ -674,8 +679,8 @@ plt.xlabel(&#39;points&#39;)
 <p><span class="math notranslate nohighlight">\(\mu_k\)</span> corresponde al centroide del cluster <span class="math notranslate nohighlight">\(k\)</span>-ésimo y <span class="math notranslate nohighlight">\(C_k\)</span> representa todo el conjunto de muestras pertenecientes al cluster <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <p>El algoritmo K-means es una popular variante del algoritmo EM, que permite hacer agrupamientos de forma simple. En primer lugar se asume que todos los closters son igualmente probables, es decir <span class="math notranslate nohighlight">\(\omega_i = 1/M\)</span>, y que la desviación es igual en todos, por consiguiente únicamente se pone enfásis en encontrar las medias de cada cluster, que en este contexto se conocen como <b>centroides</b>. Todos los puntos en un cluster están más cercanos a su centroide que al centroide de cualquier otro cluster.</p>
 <p>Una forma iterativa de resolver el problema se conoce como el algoritmo de Lloyd. El algoritmo consiste en los siguiente:</p>
-<img src="./Images/Lloyd.png" alt="algoritmo k-means" width="600"/><p>El resultado del algoritmo se puede entrender a través de un diagra de Voronoi:</p>
-<p><img alt="alt text" src="Images/K-means.gif" /></p>
+<img src="./Local/imgs/Lloyd.png" alt="algoritmo k-means" width="600"/><p>El resultado del algoritmo se puede entrender a través de un diagra de Voronoi:</p>
+<p><img alt="alt text" src="_images/K-means.gif" /></p>
 <p>El procedimiento se puede extender a cualquier dimensión:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -840,6 +845,7 @@ plt.grid(True)
 plt.xlabel(&#39;Number of clusters&#39;)
 plt.ylabel(&#39;Percentage of variance explained (%)&#39;)
 plt.title(&#39;Elbow for KMeans clustering&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>

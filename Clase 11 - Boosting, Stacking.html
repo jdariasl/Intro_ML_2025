@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,7 +445,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-boosting-adaboost">Adapting Boosting (Adaboost)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting">Gradient Boosting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking">Stacking</a><ul class="nav section-nav flex-column">
@@ -465,12 +464,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="boosting">
 <h1>Boosting<a class="headerlink" href="#boosting" title="Link to this heading">#</a></h1>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Asociado<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
@@ -479,12 +472,11 @@ Universidad de Antioquia, Medellín, Colombia<br />
 </div>
 </div>
 <p>Como vimos en la clase anterior, en Machine Learning los métodos de ensamble sigen la idea de entrenar múltiples modelos simples y combinar sus respuestas para producir un mejor resultado. A diferencia del Bagging en Boosting la combinación se hace de manera secuencial y no paralela:</p>
-<p><img alt="alt text" src="Images/Boosting1.png" /></p>
+<p><img alt="alt text" src="_images/Boosting1.png" /></p>
 <p>La idea central de los métodos de Boosting es entrenar modelos secuencialmente haciendo que los modelos subsiguientes se enfoquen en las muestras que no han podido ser modeladas correctamente por los modelos anteriores. Cada modelo tiene un peso diferente dentro de la decisión final. La forma de asignar el peso a las muestras y a los clasificadores dependen del método de Boosting particular.</p>
-<p><img alt="alt text" src="Images/Boosting2.png" /></p>
+<p><img alt="alt text" src="_images/Boosting2.png" /></p>
 <p>Imágenes tomadas de: <a class="reference external" href="https://quantdare.com/what-is-the-difference-between-bagging-and-boosting/">https://quantdare.com/what-is-the-difference-between-bagging-and-boosting/</a></p>
 <p>Los dos métodos reducen el error por varianza; boosting es mejor para reducir el bias pero puede presentar problemas de sobreajuste, razón por la cual algunos métodos de boosting requieren un ajuste cuidados de parámetros de regularización.</p>
-</section>
 <section id="adapting-boosting-adaboost">
 <h2>Adapting Boosting (Adaboost)<a class="headerlink" href="#adapting-boosting-adaboost" title="Link to this heading">#</a></h2>
 <p>En Adaboost el modelo de ensamble se define como una suma sopesada de <span class="math notranslate nohighlight">\(M\)</span> modelos débiles:</p>
@@ -507,7 +499,7 @@ Universidad de Antioquia, Medellín, Colombia<br />
 </li>
 <li><p>El modelo obtenido será igual a <span class="math notranslate nohighlight">\(F({\bf{x}}) = \text{sign}\left(\sum_{m=1}^M \alpha_m f_m({\bf{x}})\right)\)</span></p></li>
 </ul>
-<p><img alt="alt text" src="Images/AdaBoostAlgorithm2.png" /></p>
+<p><img alt="alt text" src="_images/AdaBoostAlgorithm2.png" /></p>
 <p>Imagen tomada de: <a class="reference external" href="https://towardsdatascience.com/understanding-adaboost-2f94f22d5bfe">https://towardsdatascience.com/understanding-adaboost-2f94f22d5bfe</a></p>
 <p>Los pesos de cada una de las muestras dentro del algoritmo AdaBoost pueden ser tenidos en cuenta de dos formas:</p>
 <ul class="simple">
@@ -515,7 +507,7 @@ Universidad de Antioquia, Medellín, Colombia<br />
 <li><p>Los pesos de cada muestra se pueden usar con clasificadores base que puedan tratar cada muestra con una importancia diferente. En el caso de los árboles de decisión, se puede, por ejemplo, usar el peso de cada muestra para medir la ganancia de información. Cuando se estima la probabilidad de quedar a cada lado de una partición <span class="math notranslate nohighlight">\(a\)</span>, en lugar de contar 1 por cada muestra, se usa el peso de dicha muestra (sample_weight).</p></li>
 </ul>
 <p>Para el caso de sklearn los pesos de las muestras se pueden pasar como parámetro durante el llamado al método fit:</p>
-<p><img alt="alt text" src="Images/Sample_Weight.png" /></p>
+<p><img alt="alt text" src="_images/Sample_Weight.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.ensemble import AdaBoostClassifier
@@ -646,7 +638,7 @@ La función de salida en el paso <span class="math notranslate nohighlight">\(m 
 \gamma_m = \arg\min_{\gamma} \sum_{i=1}^{N} L\left(y_i, F_{m-1}({\bf{x}}_i)) - \gamma f_m({\bf{x}}_i) \right)
 \end{equation*}</p>
 <p>Los algoritmos para clasificación y regresión sólo difieren en la función de opérdida <span class="math notranslate nohighlight">\(L\)</span>.</p>
-<p><img alt="alt text" src="Images/Gradient_Boosting3.png" /></p>
+<p><img alt="alt text" src="_images/Gradient_Boosting3.png" /></p>
 <p>Aunque el Gradient Boosting puede ser implementado para cualquier clasificador base, el algoritmo más usado usa <strong>árboles de decisión</strong> como modelos base.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -728,7 +720,7 @@ plt.ylabel(&#39;Accuracy&#39;)
 <section id="stacking">
 <h2>Stacking<a class="headerlink" href="#stacking" title="Link to this heading">#</a></h2>
 <p>Staking es similar al primer algoritmo de ensamble descrito en la clase anterior, en el que se usan modelos base diferentes entrenados sobre el mismo conjunto de datos. Sin embargo, a diferencia del ensamble de modelos en el que la decisión final se toma en consenso entre los clasificadores base (<strong>voting</strong>), en Stacking la combinación de los modelos se realiza usando un modelo adicional (meta-modelo), en un areglo de dos capas. En la primera capa se entrenan los modelos base y en la segunda se entrena un nuevo modelo que toma como entradas las salidas de los modelos en la primera capa y produce la decisión final.</p>
-<p><img src="./Images/Stacking.png"
+<p><img src="./Local/imgs/Stacking.png"
      alt="Árbol de decisión"
      width="500px" /></p>
 <div class="cell docutils container">
@@ -865,7 +857,6 @@ plt.show()
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapting-boosting-adaboost">Adapting Boosting (Adaboost)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting">Gradient Boosting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacking">Stacking</a><ul class="nav section-nav flex-column">

@@ -244,7 +244,7 @@
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,7 +445,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-time-bptt">Backpropagation through time (BPTT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales-recurrentes-bidireccionales">Redes Neuronales Recurrentes Bidireccionales</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-short-term-memory-rnn-lstm">Long Short Term Memory RNN (LSTM)</a></li>
@@ -464,12 +463,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="redes-neuronales-recurrentes">
 <h1>Redes Neuronales Recurrentes<a class="headerlink" href="#redes-neuronales-recurrentes" title="Link to this heading">#</a></h1>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Asociado<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
@@ -479,19 +472,18 @@ Universidad de Antioquia, Medellín, Colombia<br />
 </div>
 <p>Las redes neuronales recurrentes (En inglés Recurrent Neural Networks - RNN) son una familia de redes neuronales para procesar datos secuenciales, las cuales se basan en el principio de compartir parámetros a lo largo de diferentes partes del modelo, lo que permite aplicar el modelo a datos con estructuras diferentes (por ejemplo diferentes longitudes) y generalizar sobre ellos. Si por el contrario se tuviera un párametro para cada índice de tiempo, no se podría generalizar a longitudes de secuencias no vistas durante el entrenamiento, o compartir patrones detectados por el modelo a lo largo de diferentes longitudes de secuencias y posiciones en el tiempo; dicha propiedad es particularmente importante cuando una pieza de información específica puede ocurrir en múltiples posiciones dentro de una secuencia [1].</p>
 <p>La red permanece Feed-forward pero mantiene el estado interno a través de nodos de contexto los cuales influencian la capa oculta en entradas subsecuentes. Existen diferentes arquitecturas de RNN, las más conocidas son (Figura tomada de <a href="https://www.ibm.com/developerworks/library/cc-cognitive-recurrent-neural-networks/index.html">Link</a>.):</p>
-<p><img alt="alt text" src="Images/RNN2.png" /></p>
+<p><img alt="alt text" src="_images/RNN2.png" /></p>
 <p>Las RNN pueden resolver diferentes paradigmas de aprendizaje, es decir, tienen la capacidad de ajustarse a diferentes configuraciones en los datos. El diagrama construido por <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">Andrej Karpathy</a> representa muy bien dicha capacidad:</p>
-<p><img alt="alt text" src="Images/RNN-Topol.jpeg" /></p>
+<p><img alt="alt text" src="_images/RNN-Topol.jpeg" /></p>
 <p>El primer caso corresponde a una MLP convencional en la cual se tiene una salida por cada entrada y no existe información compartida a través de las capas ocultas. El segundo caso corresponde a un problema en el que a una entrada, el modelo debe producir una salida compuesta de varios elementos, como por ejemplo un sistema al cual se le presente una imágen y proporcione como salida una descripción o listado de los objetos en la imágen (problema conocido como caption generation). La tercera opción corresponde a un problema en el que al sistema se le presenta una secuencia y el modelo debe proporcionar una única salida para toda la secuencia, por ejemplo en el problema de <em>Sentiment Analysis</em>, usualmente el objetivo es que el sistema catalogue un texto como positivo o negativo. El cuarto caso corresponde a problemas en los que la entrada es una secuencia y la salida otra, sin que necesariamente ambas secuencias deban tener la misma longitud (esta configuración también se conoce como sequence-to-sequence). Un ejemplo de este tipo de paradigmas se presenta en la traducción automática de textos en la que la oración en el lenguaje original puede tener un número mayor o menor de palabras que en el lenguaje objetivo. El quinto caso corresponde a un problema en el que para cada entrada el sistema debe proporcionar una salida (la longitud de las secuencias entrada y salida es la misma), a este tipo de paradigmas corresponde la predicción de series de tiempo, el etiquetado morfosintáctico, varias tareas en Bioinformática, entre otros.</p>
 <p>La arquitectura Elman de las RNN es la más comunmente usada. De acuerdo con la notación definida en la primera figura, la descripción matemática de una red de este tipo con una sola capa oculta y una capa de salida estaría dada por:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}{\bf{a}}^{(t)} = {\bf{b}} + {\bf{V}}{\bf{h}}^{(t-1)} + {\bf{U}}{\bf{x}}^{(t)},\\ {\bf{h}}^{(t)} = \tanh({\bf{a}}^{(t)}), \\ {\bf{o}}^{(t)} = {\bf{c}} + {\bf{W}}{\bf{h}}^{(t)}\end{split}\]</div>
 <p>donde <span class="math notranslate nohighlight">\(\bf{V}\)</span> corresponde a la matriz de pesos que conectan la salida de una neurona en el tiempo anterior para usarla como entrada en el tiempo actual. <span class="math notranslate nohighlight">\(\bf{U}\)</span> es la matriz de pesos para las entradas de la red y <span class="math notranslate nohighlight">\(\bf{W}\)</span> es la matriz de pesos que conecta el estado de la neurona interna con la neurona de la capa de salida. <span class="math notranslate nohighlight">\(\bf{b}\)</span> y <span class="math notranslate nohighlight">\(\bf{c}\)</span> son vectores con los términos independientes de la capa oculta y la capa de salida respectivamente. La salida <span class="math notranslate nohighlight">\({\bf{y}}^{(t)}\)</span> de la red estará determinada por la función de activación aplicada sobre los valores <span class="math notranslate nohighlight">\({\bf{o}}^{(t)}\)</span>.</p>
-</section>
 <section id="backpropagation-through-time-bptt">
 <h2>Backpropagation through time (BPTT)<a class="headerlink" href="#backpropagation-through-time-bptt" title="Link to this heading">#</a></h2>
 <p>Para incorporar las habilidades descritas, una RNN incluye la capacidad de mantener memoria interna y usar la información almacenada a través de lazos de realimentación y de esa manera darle soporte al modelamiento temporal, es decir, a la condición de dependencia estadística de observaciones consecutivas. Como se puede observar en la siguiente figura, la salida de las neuronas en la capa oculta, es usada nuevamente como entrada a la misma capa. Figura tomada de <a href="https://future-tech-association.org/2018/01/16/kotoba_kioku_tech/">Link</a>.</p>
-<p><img alt="alt text" src="Images/RNN3.png" /></p>
+<p><img alt="alt text" src="_images/RNN3.png" /></p>
 <p>El entrenamiento de una RNN puede realizarse usando el algoritmo Backpropagation descrito en clases anteriores, teniendo en cuenta  el modelo desdoblado mostrado en la primera figura. Es decir, es necesario propagar la red hacia adelante, almacenar todas las salidas parciales de las diferentes neuronas en cada una de las capas y tiempos <span class="math notranslate nohighlight">\(t\)</span>, y a partir de la función de costo definida, propagar el error hacia atrás. La pérdida total para una secuencia de valores <span class="math notranslate nohighlight">\(\bf{x}\)</span> y su correspondiente secuencia de salida <span class="math notranslate nohighlight">\(\bf{y}\)</span> (tenga en cuenta que la red puede tener múltiples salidas, entonces cada salida corresponde a un vector), corresponderá entonces a la suma de las pérdidas para cada uno de los tiempos en la secuencia. La función de costo de la red será entonces:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}L(\{ {\bf{x}}^{(1)},{\bf{x}}^{(2)},\cdots,{\bf{x}}^{(\tau)} \}, \{ {\bf{y}}^{(1)},{\bf{y}}^{(2)},\cdots,{\bf{y}}^{(\tau)} \}) \\
@@ -586,15 +578,15 @@ The maximum number of train epochs is reached
 <section id="redes-neuronales-recurrentes-bidireccionales">
 <h2>Redes Neuronales Recurrentes Bidireccionales<a class="headerlink" href="#redes-neuronales-recurrentes-bidireccionales" title="Link to this heading">#</a></h2>
 <p>En algunos problemas la información necesaria para hacer la predicción en un punto de la secuencia, implica conocer información del pasado, pero también del futuro. Por ejemplo en problemas de reconocimiento de voz o traducción, es usual que se requiera conocer la información de la secuencia completa. Las Bidirectional RNN (BRNN) corresponden a una modificación de las RNN en las que se incluye una capa adicional que en lugar de transmitir la información del tiempo <span class="math notranslate nohighlight">\((t)\)</span> al tiempo <span class="math notranslate nohighlight">\((t + 1)\)</span>, lo hace al contrario. Las dos capas ocultas en este caso no tiene interconexión entre ellas, pero si con la capa de salida.</p>
-<p><img alt="alt text" src="Images/RNN_arc_3.png" /></p>
+<p><img alt="alt text" src="_images/RNN_arc_3.png" /></p>
 <p>Este tipo de arquitecturas se emplean tanto en casos en los que para cada entrada se requiere producir una salida, como en casos en los que se desea producir una única salida para toda la secuencia.</p>
 </section>
 <section id="long-short-term-memory-rnn-lstm">
 <h2>Long Short Term Memory RNN (LSTM)<a class="headerlink" href="#long-short-term-memory-rnn-lstm" title="Link to this heading">#</a></h2>
 <p>El principal problema de las RNN convencionales es su incapacidad para aprender dependencias de orden superior en los datos, es decir, que el modelo capture información que le permita determinar la influencia que tiene un dato visto por el modelo hace varios tiempos atrás con respecto a la salida del modelo en el tiempo actual. Incluso, que pueda capturar depdencias cortas y dependencias largas al mismo tiempo. Esto sucede debido a que si se analizan con detenimiento las funciones de actualización de los parámetros, la matriz <span class="math notranslate nohighlight">\(\bf{V}\)</span> que contiene los pesos de los lazos de realimentación se multiplica así misma <span class="math notranslate nohighlight">\((\tau-1)\)</span> veces, lo que implica que si sus valores son inferiores a cero, terminan desvaneciendose y si son muy grandes, terminarán divergiendo. A este hecho se suma que la aplicación consecutiva de múltiples funciones de activación, terminan por desvaner el resultado.</p>
-<p><img alt="alt text" src="Images/sigmoid_vanishing_gradient.png" /></p>
+<p><img alt="alt text" src="_images/sigmoid_vanishing_gradient.png" /></p>
 <p>Este problema ha sido estudiado ampliamente y se han propuesto múltiples alternativas desde finales de los años 80 y comienzos de los 90. De todas las arquitecturas propuestas, la de mayor éxito es una en la que se reemplazan los perceptrones por otro tipo de unidades básicas, llamadas celulas. Las redes neuronales recurrentes compuestas por dichas célculas se conocen con el nombre de Long-Short-Term-Memory Neural Networks (LSTM). Las LSTM fueron propuestas en 1997 y tienen la capacidad de aprender dependencias de tiempo corto, largo y así mismo de decir cuándo olvidar.</p>
-<p><img alt="alt text" src="Images/LSTM2.jpeg" /></p>
+<p><img alt="alt text" src="_images/LSTM2.jpeg" /></p>
 </section>
 <section id="exponential-weighted-average">
 <h2>Exponential Weighted Average<a class="headerlink" href="#exponential-weighted-average" title="Link to this heading">#</a></h2>
@@ -634,7 +626,7 @@ plt.show()
 </div>
 <p>Como se puede observar en la gráfica anterior, el parámetro <span class="math notranslate nohighlight">\(\beta\)</span> controla si la salida del promedio toma más en cuenta el dato actual (línea roja), o el histórico (línea azul).</p>
 <p>Las LSTM usan el mismo principio para controlar el nivel de memoria o de dependencia en el tiempo, pero en lugar de usar un parámetro constante, definen <b>compuertas</b> que son entrenadas como parte del algoritmo de entrenamiento y que deciden cuándo mantener y cuándo olvidar la información precedente. Una celula LSTM contiene tres compuertas, que se representan en la gráfica por la letra <span class="math notranslate nohighlight">\(\sigma\)</span>, las cuales representan funciones sigmoide que garantizan que dichos valores están en el intervalo <span class="math notranslate nohighlight">\((0,1)\)</span>. Adicionalmente, una célula LSTM define una variable adicional llamada <b>estado</b>. Las tres compuertas le permiten a la célula olvidar su estado o no, escribir o no, y leer o no.</p>
-<p><img alt="alt text" src="Images/LSTM2.png" /></p>
+<p><img alt="alt text" src="_images/LSTM2.png" /></p>
 <p>Usando la notación de la gráfica anterior, para el tiempo <span class="math notranslate nohighlight">\(t\)</span> y la célula <span class="math notranslate nohighlight">\(l\)</span>, la célula estará descrita por las siguientes funciones:</p>
 <div class="math notranslate nohighlight">
 \[f_l^{(t)} = \sigma \left( b_l^f + \sum_j U_{l,j}^f x_j^{(t)} + \sum_j V_{l,j}^f h_j^{(t-1)}\right)\]</div>
@@ -1070,7 +1062,6 @@ plt.show()
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-time-bptt">Backpropagation through time (BPTT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales-recurrentes-bidireccionales">Redes Neuronales Recurrentes Bidireccionales</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-short-term-memory-rnn-lstm">Long Short Term Memory RNN (LSTM)</a></li>

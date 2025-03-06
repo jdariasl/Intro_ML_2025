@@ -244,7 +244,7 @@
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,7 +445,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-competicion">Proceso de Competición</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-cooperativo">Proceso cooperativo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-adaptacion">Proceso de Adaptación</a></li>
@@ -463,12 +462,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="mapas-auto-organizables">
 <h1>Mapas Auto-Organizables<a class="headerlink" href="#mapas-auto-organizables" title="Link to this heading">#</a></h1>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Asociado<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
@@ -478,7 +471,7 @@ Universidad de Antioquia, Medellín, Colombia<br />
 </div>
 <p>Los Mapas Auto-Organizables (En inglés: Self-Organizing Maps - SOM), son un tipo de red neuronal que permiten resolver problemas no supervisados. Los SOM están basados un concepto conocido como <i>aprendizaje competitivo</i>; en el cual las neuronas de la capa de salida compiten entre ellas por estar activadas o “despedidas”. Sólo una neurona de salida puede estar activada en un determinado tiempo.</p>
 <p>En un SOM las neuronas estan ubicadas en los nodos de una cuadrícula, la cual usualmente tiene una o dos dimensiones. Durante el entrenamiento, las neuronas se van ajustando selectivamente a diferentes patrones de entrada (estímulos), en un proceso de aprendizaje competitivo. La ubicación de las neuronas activadas (winning neurons), van formando un mapa topográfico que se relaciona con los patrones de entrada, en el cual la ubicación espacial de las neuronas en la cuadrícula es un indicador de características estadísticas intrínsecas contenidas en los datos de entrada [1].</p>
-<p><img alt="alt text" src="Images/scheme2.png" /></p>
+<p><img alt="alt text" src="_images/scheme2.png" /></p>
 <p>Existen principalmente dos tipos de mapas:</p>
 <ul>
 <li>Modelo de Willshaw-von der Malsburg</li>
@@ -491,7 +484,6 @@ Universidad de Antioquia, Medellín, Colombia<br />
 <li><b>Cooperación</b>: Teniendo en cuenta la neurona ganadora, se define la vecindad de las neuronas excitadas, lo que permite generar el mapa topográfico.</li>
 <li><b>Adaptación sináptica</b>: Es el paso de adaptación, en el que se reajustan los pesos de la red, para favorecer las neuronas actividas</li>
 </ul>
-</section>
 <section id="proceso-de-competicion">
 <h2>Proceso de Competición<a class="headerlink" href="#proceso-de-competicion" title="Link to this heading">#</a></h2>
 <p>Para mantener la notación utilizada en la gráfica, supongamos que <span class="math notranslate nohighlight">\(m\)</span> es la dimensión del espacio de entrada, es decir el número de características. Cada muestra estará entonces representada por un vector <span class="math notranslate nohighlight">\({\bf{x}}=[x_1,x_2,...,x_m]^T\)</span>. El vector de pesos sinápticos de cada neurona en la red tiene la misma dimensión del espacio de entrada. Para la neurona <span class="math notranslate nohighlight">\(j\)</span>, el vector estará dado por <span class="math notranslate nohighlight">\({\bf{w}}=[w_{j1},w_{j2},...,w_{jm}]^T\)</span>, para <span class="math notranslate nohighlight">\(j=1,2,...,K\)</span>.</p>
@@ -896,7 +888,6 @@ UMAT = u.show(som, distance2=1, row_normalized=False, show_data=True, contooor=F
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-competicion">Proceso de Competición</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-cooperativo">Proceso cooperativo</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proceso-de-adaptacion">Proceso de Adaptación</a></li>

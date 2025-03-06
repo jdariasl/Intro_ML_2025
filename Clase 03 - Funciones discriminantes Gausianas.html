@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -445,12 +445,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento">Entrenamiento</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procedimiento-para-clasificar-una-nueva-muestra">Procedimiento para clasificar una nueva muestra</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nota">NOTA:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento">Entrenamiento</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procedimiento-para-clasificar-una-nueva-muestra">Procedimiento para clasificar una nueva muestra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nota">NOTA:</a></li>
 </ul>
             </nav>
         </div>
@@ -466,18 +463,12 @@ document.write(`
 <h1>Modelos de clasificación empleando funciones de densidad Gausianas<a class="headerlink" href="#modelos-de-clasificacion-empleando-funciones-de-densidad-gausianas" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/ML_2020/master/init.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
 import init; init.init(force_download=False); 
 </pre></div>
 </div>
 </div>
 </div>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Asociado<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Bibliotecas
@@ -533,13 +524,13 @@ plt.scatter(X2[:,0], X2[:,1], c=Y2,cmap=&#39;Accent&#39;);
 \[\hat{\Sigma} = \frac{1}{N}\sum_{i=1}^{N} ({\bf{x}}_i - \hat{\mu})({\bf{x}}_i - \hat{\mu})^T\]</div>
 <p>Si el modelo de clasificación que pretendemos implementar corresponde entonces a un modelo basado en funciones discriminantes Gausianas, el procedimiento que debemos seguir es el siguiente:</p>
 <section id="entrenamiento">
-<h3>Entrenamiento<a class="headerlink" href="#entrenamiento" title="Link to this heading">#</a></h3>
+<h2>Entrenamiento<a class="headerlink" href="#entrenamiento" title="Link to this heading">#</a></h2>
 <li>Tomar el conjunto de muestras de entrenamiento y separarlas en $C$ subconjuntos, donde $C$ es el número de clases a reconocer, es decir que cada subconjunto contiene únicamente muestras de una clase. </li>
 <li>Utilizar cada uno de los subconjuntos y estimar los valores del vector de medias y la matriz de covarianza.</li>
 <li>Con los valores de media y covarianza definir una función $p$ (Ecuación 1.), para cada una de las clases.</li>
 </section>
 <section id="procedimiento-para-clasificar-una-nueva-muestra">
-<h3>Procedimiento para clasificar una nueva muestra<a class="headerlink" href="#procedimiento-para-clasificar-una-nueva-muestra" title="Link to this heading">#</a></h3>
+<h2>Procedimiento para clasificar una nueva muestra<a class="headerlink" href="#procedimiento-para-clasificar-una-nueva-muestra" title="Link to this heading">#</a></h2>
 <p>Cuando al sistema ingrese una nueva muestra, es decir un vector <span class="math notranslate nohighlight">\({\bf{x}}\)</span>* , para el que no conocemos su clase y deseamos predecirla, deberemos entonces:</p>
 <li>Evaluar ${\bf{x}}^*$ en cada una de las funciones $p_j$, para cada una las clases, $j=1,...,C$. Con esto vamos a establecer la probabilidad de que la muestra nueva pertenezca a cada una de las clases, de acuerdo con el modelo que hemos asumido (Gausiano)</li>
 <li>La clase asignada a la muestra ${\bf{x}}^*$, será la clase para la cual la probabilidad sea mayor.</li><div class="math notranslate nohighlight">
@@ -741,12 +732,11 @@ plt.grid()
 <img alt="_images/a0d0701b5e891c9bf438cdca9a158c138411dfff211307247d02f8307fdde2a8.png" src="_images/a0d0701b5e891c9bf438cdca9a158c138411dfff211307247d02f8307fdde2a8.png" />
 </div>
 </div>
-</section>
 <hr class="docutils" />
-<section id="nota">
-<h3>NOTA:<a class="headerlink" href="#nota" title="Link to this heading">#</a></h3>
-<p>El modelo visto en esta clase corresponde a un tipo de modelo de clasificación <b>Generativo</b>, porque en la clasificación se realiza modelando cada clase de manera independiente, utilizando un modelo basado en funciones de densidad de probabilidad, que una vez ajustadas, se pueden usar como generadoras de muestras de cada una de las clases. Por otro lado, el modelo de clasificación basado en regresión logística que vimos en la clase anterior, corresponde a un modelo de clasificación <b>Discriminativo</b> porque en ese caso, el modelo se entrenó con muestras de las dos clases al mismo tiempo y el objetivo no era describir una clase u otra, sino, diferenciarlas.</p>
 </section>
+<section id="nota">
+<h2>NOTA:<a class="headerlink" href="#nota" title="Link to this heading">#</a></h2>
+<p>El modelo visto en esta clase corresponde a un tipo de modelo de clasificación <b>Generativo</b>, porque en la clasificación se realiza modelando cada clase de manera independiente, utilizando un modelo basado en funciones de densidad de probabilidad, que una vez ajustadas, se pueden usar como generadoras de muestras de cada una de las clases. Por otro lado, el modelo de clasificación basado en regresión logística que vimos en la clase anterior, corresponde a un modelo de clasificación <b>Discriminativo</b> porque en ese caso, el modelo se entrenó con muestras de las dos clases al mismo tiempo y el objetivo no era describir una clase u otra, sino, diferenciarlas.</p>
 </section>
 </section>
 
@@ -814,12 +804,9 @@ plt.grid()
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento">Entrenamiento</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#procedimiento-para-clasificar-una-nueva-muestra">Procedimiento para clasificar una nueva muestra</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nota">NOTA:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#entrenamiento">Entrenamiento</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#procedimiento-para-clasificar-una-nueva-muestra">Procedimiento para clasificar una nueva muestra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nota">NOTA:</a></li>
 </ul>
   </nav></div>
 
