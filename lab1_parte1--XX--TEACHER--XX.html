@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -500,8 +500,10 @@ you are judaarlo@gmail.com .... wait for the cell below to complete signup
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>using course session introml::udea.pre.20251
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------
+using course session introml::udea.pre.20251
 success!! you are logged in
+-------------
 </pre></div>
 </div>
 </div>
@@ -602,8 +604,10 @@ you are judaarlo@gmail.com .... wait for the cell below to complete signup
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>using course session introml::udea.pre.20251
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------
+using course session introml::udea.pre.20251
 success!! you are logged in
+-------------
 </pre></div>
 </div>
 </div>
@@ -786,7 +790,7 @@ respuesta = &#39;&#39;
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Ejercicio de codigo
-def gradiente_descendente(X, Y, eta, iteraciones):
+def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
     &quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple
     X: Matriz de datos
     Y: vector con los valores a predecir
@@ -801,7 +805,10 @@ def gradiente_descendente(X, Y, eta, iteraciones):
     X_ext = extension_matriz(X)
     caracterisitcas, N = num_muestras_carac(X_ext)
     #Inicializamos el vector de parámetros con ceros
-    W = np.zeros((1,caracterisitcas))
+    if w_ini is not None:
+        W = w_ini
+    else:    
+        W = np.zeros((1,caracterisitcas))
     W = W.reshape(np.size(W), 1)    
     # incializamos vector para almacenar costos
     costos = np.zeros(iteraciones)
@@ -919,7 +926,7 @@ def grader_02(functions, variables, caller_userid):
             
         # check model weights
         
-        if (t_W!=s_W).any():
+        if not np.allclose(t_W,s_W):
             msg += f&quot;&quot;&quot;
             &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt; 
             for &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
@@ -943,7 +950,7 @@ def grader_02(functions, variables, caller_userid):
         s_W, s_costos = s_gradiente_descendente(input_data, output_target, eta, input_dim, w_ini = w_ini)
         
         # check model weights
-        if (t_W!=s_W).any():
+        if not np.allclose(t_W,s_W):
             msg += f&quot;&quot;&quot;
             &lt;b&gt;Incorrect estimation of model parameters for non-zero initialization&lt;/b&gt; 
             for &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
@@ -1034,10 +1041,23 @@ teacher.set_grader(teacher.course_id, &quot;L01.01&quot;, &#39;T2&#39;,
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-                    <b>T2 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
-                    <p/><pre>----- grader message -------</pre><b>correct</b><pre>----------------------------</pre>
+                    <b>T2 submitted.</b> <b><font color="blue">your grade is 0</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>Incorrect estimation of model parameters</b> 
+            for <tt>initial dim </tt>=5 and <tt>n_samples</tt>=373<hr/>
+            Expecting result <pre>[[ 1.59498106e-06]
+ [ 1.11932778e-05]
+ [-4.94140749e-05]
+ [ 1.13162335e-05]
+ [ 5.73074564e-07]
+ [ 4.40343038e-06]]</pre> <br/>
+            but got <pre>[[ 1.59498106e-06]
+ [ 1.11932778e-05]
+ [-4.94140749e-05]
+ [ 1.13162335e-05]
+ [ 5.73074564e-07]
+ [ 4.40343038e-06]]</pre><br/><pre>----------------------------</pre>
                     <p/><p/>
-                    <div style="font-size:10px"><b>SUBMISSION CODE</b> 7FostzcPr4fYVOIvw+KcIvL5juHpeG5Simh8BG4A53NUeyYbWm/AvbXM0mK4+EpGOlXX7gU7L4maTKLMZpd0U/sEn+gIkULiwOvAdQxHroalhZzJ4go7kDu4yp/Ep0J1eE+Poym2ygm4ZK9HZPqDbg==</div>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> 71Kif+m3/Ryl0PoYk2dj0xTpor9RVb9MZz+IRSmO8dDBx+Vx2tFWpgXa5M0mmq/53/1V/+C7PVcimuCeXmOt2Me1jlh5SRuq2ewVWkjSfVhvP9JZ9z7N1BSgYcw0NHRdWJKZHXNAwigSGdEXsHhMoQ==</div>
                     </div></div>
 </div>
 </section>
@@ -2145,45 +2165,6 @@ plt.show()
 import init
 from local.lib.rlxmoocapi import utils
 student_notebook_fname = utils.convert_this_notebook_to_student()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/javascript">IPython.notebook.save_checkpoint();</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipynbname in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (2024.1.0.0)
-Requirement already satisfied: ipykernel in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipynbname) (6.19.3)
-Requirement already satisfied: pyzmq&gt;=17 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.0.1)
-Requirement already satisfied: psutil in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.9.4)
-Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
-Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
-Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
-Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
-Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
-Requirement already satisfied: debugpy&gt;=1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.6.4)
-Requirement already satisfied: traitlets&gt;=5.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.8.0)
-Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
-Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
-Requirement already satisfied: packaging in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.2)
-Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
-Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.11 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (3.0.36)
-Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
-Requirement already satisfied: pygments&gt;=2.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.19.1)
-Requirement already satisfied: decorator in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (5.1.1)
-Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
-Requirement already satisfied: backcall in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.0)
-Requirement already satisfied: stack-data in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.6.2)
-Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (5.1.0)
-Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.8.2)
-Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.8.3)
-Requirement already satisfied: platformdirs&gt;=2.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-core&gt;=4.9.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.6.0)
-Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.0)
-Requirement already satisfied: wcwidth in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.11-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.5)
-Requirement already satisfied: six&gt;=1.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (1.16.0)
-Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
-Requirement already satisfied: executing&gt;=1.2.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (1.2.0)
-Requirement already satisfied: pure-eval in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.2)
-NOTEBOOK name is lab1_parte1--XX--TEACHER--XX.ipynb
-student notebook writen to &#39;lab1_parte1.ipynb&#39;
 </pre></div>
 </div>
 </div>

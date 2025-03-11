@@ -244,7 +244,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -614,7 +614,7 @@ respuesta = &#39;&#39;
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Ejercicio de codigo
-def gradiente_descendente(X, Y, eta, iteraciones):
+def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
     &quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple
     X: Matriz de datos
     Y: vector con los valores a predecir
@@ -629,7 +629,10 @@ def gradiente_descendente(X, Y, eta, iteraciones):
     X_ext = extension_matriz(X)
     caracterisitcas, N = num_muestras_carac(X_ext)
     #Inicializamos el vector de parámetros con ceros
-    W = np.zeros((1,caracterisitcas))
+    if w_ini is not None:
+        W = w_ini
+    else:    
+        W = np.zeros((1,caracterisitcas))
     W = W.reshape(np.size(W), 1)    
     # incializamos vector para almacenar costos
     costos = np.zeros(iteraciones)
