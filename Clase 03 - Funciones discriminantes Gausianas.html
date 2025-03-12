@@ -195,7 +195,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul class="current">
@@ -503,7 +509,7 @@ plt.scatter(X2[:,0], X2[:,1], c=Y2,cmap=&#39;Accent&#39;);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c8056a744c144b6e37e36732d4c8bfc1e1d2a1e0f26a4773e1643555dfb1a45a.png" src="_images/c8056a744c144b6e37e36732d4c8bfc1e1d2a1e0f26a4773e1643555dfb1a45a.png" />
+<img alt="_images/55f08c1fc0ae9d7bade39ce329d42099da0c4f29d75fe0857a98bb734c0e9363.png" src="_images/55f08c1fc0ae9d7bade39ce329d42099da0c4f29d75fe0857a98bb734c0e9363.png" />
 </div>
 </div>
 <p>Si asumimos por ejemplo que la fdp de cada clase en la figura anterior la vamos a modelar usando funciones de probabilidad Gausianas, entonces la fdp de cada una estará dada por la función:</p>
@@ -605,14 +611,12 @@ plt.scatter(X2[:,0], X2[:,1], c=Y2,cmap=&#39;Accent&#39;);
 import ipywidgets as widgets
 
 interact(FuncionDiscriminanteGaussiana,Tipo=[(&#39;Igual Matriz de Covarianza&#39;, 1), (&#39;Diferente Matriz de Covarianza&#39;, 0)])
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1da199095db24c2986e0a041cb9d9c03", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.FuncionDiscriminanteGaussiana(Tipo=1)&gt;
-</pre></div>
-</div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ff36c3d5372c4e61bd17e1f77cdbb577", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <hr class="docutils" />
 <div class="cell docutils container">
@@ -628,7 +632,7 @@ def plot_ellipse(ax, mu ,sigma):
     w,h = 4* np.sqrt(vals)
     
     ax.tick_params(axis=&#39;both&#39;,which=&#39;major&#39;,labelsize=10)
-    ellipse = Ellipse(mu,w,h,theta,color=&#39;k&#39;)
+    ellipse = Ellipse(mu,w,h,angle=theta,color=&#39;k&#39;)
     ellipse.set_alpha(0.2)
     ax.add_artist(ellipse)
 </pre></div>
@@ -655,7 +659,7 @@ plot_ellipse(ax,Mean2,Cov)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f472c730265c175acd51fab566315495e6f9511ce275bb6aa7efb42e93a032db.png" src="_images/f472c730265c175acd51fab566315495e6f9511ce275bb6aa7efb42e93a032db.png" />
+<img alt="_images/281f0fc33bdeb40ae0ad207e2cef820374b65433da605cdeb67295dbe89afc6d.png" src="_images/281f0fc33bdeb40ae0ad207e2cef820374b65433da605cdeb67295dbe89afc6d.png" />
 </div>
 </div>
 <p>Caso 2. Si las matrices de covarianza se consideran diagonales. En este caso lo que se asume es todas las características se consideran estadísticamente independientes pero no de igual varinza. En este caso las clases se consideran agrupadas en parábolas cuyo eje principal puede estar a lo largo de cualquiera de las características. Este modelo es equivalente al clasificador conocido como <b>Naïve Bayes Classifier</b> o clasificador Bayesiano ingenuo (<mark>Conslutar</mark>).</p>
@@ -679,7 +683,7 @@ plot_ellipse(ax,Mean2,Cov2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/33f704c58d222e4d6e7d57dce05a0574e3a170823bba41352d90de689f58c5aa.png" src="_images/33f704c58d222e4d6e7d57dce05a0574e3a170823bba41352d90de689f58c5aa.png" />
+<img alt="_images/00f73f845d4f9d3ae48e687b1fa659b242f7cfd4e50c028a09c9bfb0228cba11.png" src="_images/00f73f845d4f9d3ae48e687b1fa659b242f7cfd4e50c028a09c9bfb0228cba11.png" />
 </div>
 </div>
 <p>Los tres casos anteriores corresponden a:</p>
@@ -719,9 +723,9 @@ cs3 = plt.contour(xx, yy, Z3, colors=&#39;darkorange&#39;)
 h1,_ = cs1.legend_elements()
 h2,_ = cs2.legend_elements()
 h3,_ = cs3.legend_elements()
-plt.legend([h1[0], h2[0], h3[0]], [&#39;Caso 1&#39;,&#39;Caso 2&#39;, &#39;Caso 3&#39;])
-for i in range(len(labels)):
-    cs1.collections[i].set_label(labels[i])
+
+labels = [&#39;Discriminante lineal&#39;,&#39;Naive Bayes&#39;, &#39;Discriminante cuadrático&#39;]
+plt.legend([h1[0], h2[0], h3[0]], labels)
 plt.xlabel(&#39;$x_1$&#39;)
 plt.ylabel(&#39;$x_2$&#39;)
 plt.grid()
@@ -729,7 +733,7 @@ plt.grid()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a0d0701b5e891c9bf438cdca9a158c138411dfff211307247d02f8307fdde2a8.png" src="_images/a0d0701b5e891c9bf438cdca9a158c138411dfff211307247d02f8307fdde2a8.png" />
+<img alt="_images/2c8fd78bd004578c854d792a88212b2544d999fe8246cf683b9bc3b140fd61b1.png" src="_images/2c8fd78bd004578c854d792a88212b2544d999fe8246cf683b9bc3b140fd61b1.png" />
 </div>
 </div>
 <hr class="docutils" />

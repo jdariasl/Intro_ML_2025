@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Laboratorio 3 - Parte 1. Comparación de metodos de clusterización &#8212; 2025 Introducción al Machine Learning</title>
+    <title>Laboratorio 3 - Parte 1. GMM para clasificación y clustering &#8212; 2025 Introducción al Machine Learning</title>
   
   
   
@@ -195,7 +195,13 @@
             </li>
         </ul>
         <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
@@ -435,7 +441,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</h1>
+    <h1>Laboratorio 3 - Parte 1. GMM para clasificación y clustering</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -462,8 +468,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-3-parte-1-comparacion-de-metodos-de-clusterizacion">
-<h1>Laboratorio 3 - Parte 1. Comparación de metodos de clusterización<a class="headerlink" href="#laboratorio-3-parte-1-comparacion-de-metodos-de-clusterizacion" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-3-parte-1-gmm-para-clasificacion-y-clustering">
+<h1>Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em><a class="headerlink" href="#laboratorio-3-parte-1-gmm-para-clasificacion-y-clustering" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
@@ -500,7 +506,7 @@ _ = part_1()
 </div>
 <section id="ejercicio-1-contextualizacion-del-problema">
 <h2>Ejercicio 1: Contextualización del problema<a class="headerlink" href="#ejercicio-1-contextualizacion-del-problema" title="Link to this heading">#</a></h2>
-<p>A continuación se leen los datos de un problema de clasificación. El problema corresponde a la clasificación de dígitos escritos a mano. Los datos fueron preprocesados para reducir el número de características y solo se van usar los digitos 0 al 4. La técnica usada para realizar la reducción de dimensión es PCA, la cual ya fue usada en el curso de Modelos y Simulación I, y será analizada en detalle más adelante en el curso. Al ejecutar la celda de código, también se podrá visualizar una muestra de los datos usados.</p>
+<p>A continuación se leen los datos de un problema de clasificación. El problema corresponde a la clasificación de dígitos escritos a mano. Los datos fueron preprocesados para reducir el número de características y solo se van usar los digitos 0 al 4. La técnica usada para realizar la reducción de dimensión es PCA, la cual ya fue usada en el curso de Modelos y Simulación I, y será nuevamente analizada en detalle más adelante en este curso. Al ejecutar la celda de código, también se podrá visualizar una muestra de los datos usados.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>digits = load_digits(n_class=5)
@@ -508,8 +514,8 @@ _ = part_1()
 pca = PCA(0.99, whiten=True)
 data = pca.fit_transform(digits.data)
 #---------- Datos a usar ----------------------
-x = data
-y = digits.target
+x = data[:-1]
+y = digits.target[:-1]
 
 plot_digits(digits.data)
 </pre></div>
@@ -519,12 +525,33 @@ plot_digits(digits.data)
 <img alt="_images/ef23b572d2a3f831f0d78833dfd034192100f97b05230a569a904bb672caf004.png" src="_images/ef23b572d2a3f831f0d78833dfd034192100f97b05230a569a904bb672caf004.png" />
 </div>
 </div>
-<p>Vamos realizar algunas pruebas para determinar cuál metodología de validación es más adecuada. En el ejercicio de código, vamos usar las librerias de scikit-learn:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Echemos un vistazo a la distribución de las clases
+from local.lib.util import plot_samples_per_class
+plot_samples_per_class(y)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6df8f1088dc2238dc4c5863eab27a2b7263c0fccf51099ba50912b466ac045d9.png" src="_images/6df8f1088dc2238dc4c5863eab27a2b7263c0fccf51099ba50912b466ac045d9.png" />
+</div>
+</div>
+<p>Para poder realizar la validación de nuestro algoritmo, realizaremos una partición de los datos. Como sabemos, existen dos principales alternativas:</p>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html?highlight=stratifiedkfold#sklearn.model_selection.StratifiedKFold">StratifiedKFold</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html">KFold</a></p></li>
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ShuffleSplit.html">ShuffleSplit</a></p></li>
 </ol>
-<p>En la función debes seleccionar la función de sklearn adecuada para lograr el efecto deseado y completar el código donde es señalado</p>
+<p>En el siguiente ejercicio, instancie dos objetos de cada una de las</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+cv1 = ...
+cv2 = ...
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
@@ -712,36 +739,30 @@ def get_muestras_by_cv (method, X, Y):
     &quot;&quot;&quot;
     idx = 0
     results = pd.DataFrame()
-    
     if method == 1:
         #completa el codigo con el metodo adecuado
         cv = ShuffleSplit(n_splits=3)
-        for n, (train_index, test_index) in enumerate (cv.split(X,Y)):
-            y_train, y_test = Y[train_index], Y[test_index]
-            
-            # iterar sobre las etiquetas
-            for label in np.unique(y_train):
-                results.loc[idx, &#39;etiqueta de clase&#39;] = label
-                results.loc[idx, &#39;folds&#39;] = n
-                results.loc[idx, &#39;numero de muestras entrenamiento&#39;] = (y_train == label).sum()
-                idx = idx+1
         
     elif method == 2:
         #completa el codigo con el metodo adecuado
         cv = StratifiedKFold(n_splits=3)
-        for n, (train_index, test_index ) in enumerate (cv.split(X,Y)):
-            y_train, y_test = Y[train_index], Y[test_index]
-            len(np.unique(y_train))
-            # iterar sobre las etiquetas
-            for label in np.unique(y_train):
-            
-                results.loc[idx, &#39;etiqueta de clase&#39;] = label
-                results.loc[idx, &#39;folds&#39;] = n             
-                results.loc[idx, &#39;numero de muestras entrenamiento&#39;] = (y_train == label).sum()
-                idx = idx+1
     else:
         print(&quot;el metodo no es valido!&quot;)
-        
+        return results
+    count_training = 0
+    count_testing = 0 
+    for n, (train_index, test_index) in enumerate (cv.split(X,Y)):
+        y_train, y_test = Y[train_index], Y[test_index]
+        count_training += len(y_train)
+        count_testing += len(y_test)
+        # iterar sobre las etiquetas
+        for label in np.unique(y_train):
+            results.loc[idx, &#39;etiqueta de clase&#39;] = label
+            results.loc[idx, &#39;folds&#39;] = n
+            results.loc[idx, &#39;numero de muestras entrenamiento&#39;] = (y_train == label).sum()
+            idx = idx+1    
+        print(count_training)
+        print(count_testing)
     return (results)
 </pre></div>
 </div>
@@ -788,6 +809,20 @@ cvs
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>810
+91
+1620
+182
+2430
+273
+600
+301
+1201
+601
+1802
+901
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -817,28 +852,28 @@ cvs
       <th>0</th>
       <td>0.0</td>
       <td>0.0</td>
-      <td>161.0</td>
+      <td>154.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1.0</td>
       <td>0.0</td>
-      <td>162.0</td>
+      <td>160.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2.0</td>
       <td>0.0</td>
-      <td>163.0</td>
+      <td>162.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>3</th>
       <td>3.0</td>
       <td>0.0</td>
-      <td>160.0</td>
+      <td>170.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
@@ -852,63 +887,63 @@ cvs
       <th>5</th>
       <td>0.0</td>
       <td>1.0</td>
-      <td>161.0</td>
+      <td>162.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>6</th>
       <td>1.0</td>
       <td>1.0</td>
-      <td>165.0</td>
+      <td>166.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>7</th>
       <td>2.0</td>
       <td>1.0</td>
-      <td>152.0</td>
+      <td>157.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>8</th>
       <td>3.0</td>
       <td>1.0</td>
-      <td>165.0</td>
+      <td>159.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>9</th>
       <td>4.0</td>
       <td>1.0</td>
-      <td>167.0</td>
+      <td>166.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>10</th>
       <td>0.0</td>
       <td>2.0</td>
-      <td>160.0</td>
+      <td>158.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>11</th>
       <td>1.0</td>
       <td>2.0</td>
-      <td>166.0</td>
+      <td>165.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>12</th>
       <td>2.0</td>
       <td>2.0</td>
-      <td>161.0</td>
+      <td>160.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
       <th>13</th>
       <td>3.0</td>
       <td>2.0</td>
-      <td>163.0</td>
+      <td>167.0</td>
       <td>Bootstrapping</td>
     </tr>
     <tr>
@@ -1120,14 +1155,6 @@ def GMMClassifierTrain(M,tipo,X,Y):
         
     #Debe retornar un objeto que contenga todos los modelos entrenados  
     return GMMs 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio2&quot;, GMMClassifierTrain)
 </pre></div>
 </div>
 </div>
