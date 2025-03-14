@@ -195,7 +195,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
@@ -470,6 +476,12 @@ import init; init.init(force_download=False);
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -523,7 +535,7 @@ show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e921d92d64522f53dbfe1302b16027fb208d04c283bb32d6e6a332a33a190e97.png" src="_images/e921d92d64522f53dbfe1302b16027fb208d04c283bb32d6e6a332a33a190e97.png" />
+<img alt="_images/24581f190d6ebb82b344c415186bf37cc8ea7f0bbd0cb7bf953148608e0da8e6.png" src="_images/24581f190d6ebb82b344c415186bf37cc8ea7f0bbd0cb7bf953148608e0da8e6.png" />
 </div>
 </div>
 <p>En el cual definimos un ancho para los intervalos y un número de intervalos y simplemente contamos el número de puntos que cayeron en cada intervalo. En una dimensión, si la línea real es dividida en un número de celdas iguales, la estimación de densidad para un punto <span class="math notranslate nohighlight">\(x\)</span> cualquiera será:</p>
@@ -532,10 +544,12 @@ show()
 <p>donde <span class="math notranslate nohighlight">\(n_j\)</span> es el número de muestras en la celda de ancho <span class="math notranslate nohighlight">\(dx\)</span> que contiene a <span class="math notranslate nohighlight">\(x\)</span>. <span class="math notranslate nohighlight">\(N_c\)</span> es el número de celdas. El histograma también puede ser construido en 2 o más dimensiones, tal como se muestra en la siguiente figura.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from mpl_toolkits.mplot3d import Axes3D
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+#from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 fig = plt.figure()
-ax = Axes3D(fig)
+#ax = Axes3D(fig)
+ax = fig.add_subplot(projection=&#39;3d&#39;)
 x, y = np.random.rand(2, 100) * 4
 hist, xedges, yedges = np.histogram2d(x, y, bins=4)
 
@@ -555,7 +569,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/59400f4e147e6941c2d55ad40aefc84e974cd3186ff7146685be8683dda0dce2.png" src="_images/59400f4e147e6941c2d55ad40aefc84e974cd3186ff7146685be8683dda0dce2.png" />
+<img alt="_images/e2edc605d8e20c519941fa0c618a4b6493e16383bec042484d6fa831ee9e525f.png" src="_images/e2edc605d8e20c519941fa0c618a4b6493e16383bec042484d6fa831ee9e525f.png" />
 </div>
 </div>
 <p>En este caso, tenemos 2 variables y cada una se divide en un número finito de celdas. Si todas las celdas son de igual tamaño, la estimación de probabilidad para una muestra <span class="math notranslate nohighlight">\(\bf{x}\)</span>, será:</p>
@@ -578,58 +592,50 @@ plt.show()
 <p>Ej: Supongamos que queremos predecir el índice de precio de vivienda (House Price Index or HPI) con base en dos variables: la edad del inmueble y el valor de la hipoteca.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sys
-sys.path.insert(0, &#39;./library/&#39;)
-import plotHPI as plothpi
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.library import plotHPI as plothpi
 
 plothpi.plot_hpi()
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;module &#39;matplotlib.pyplot&#39; from &#39;/home/julian/.local/lib/python3.7/site-packages/matplotlib/pyplot.py&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/c808f5e71f38c6bcfc2978a9c3463bb5d3383eccb3af5e146b30caf94cccab37.png" src="_images/c808f5e71f38c6bcfc2978a9c3463bb5d3383eccb3af5e146b30caf94cccab37.png" />
+<img alt="_images/7a243419a4a07e9bc06f2832a7ca7a9489a5f803f1eea5fcf61b0806de17219a.png" src="_images/7a243419a4a07e9bc06f2832a7ca7a9489a5f803f1eea5fcf61b0806de17219a.png" />
 </div>
 </div>
 <p>Veamos que sucede si utilizamos algún modelo paramétrico como una regresión de órden uno u órden dos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plothpi.Poli1()
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fa782831d30&gt;
-</pre></div>
-</div>
-<img alt="_images/69ade8788317b59f128344b1485d1734498412e842ab69dfd710df2c721c84d5.png" src="_images/69ade8788317b59f128344b1485d1734498412e842ab69dfd710df2c721c84d5.png" />
+<img alt="_images/f473905ced585e6d1d6611291f5604d4d004a4d4552cb2db6e6dd74be432806e.png" src="_images/f473905ced585e6d1d6611291f5604d4d004a4d4552cb2db6e6dd74be432806e.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plothpi.Poli2()
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fa7bc5a4e10&gt;
-</pre></div>
-</div>
-<img alt="_images/2d16ed9f91a69cc13e399551171ffa6a5217c77081c449d895ff7d7b6b842ce4.png" src="_images/2d16ed9f91a69cc13e399551171ffa6a5217c77081c449d895ff7d7b6b842ce4.png" />
+<img alt="_images/e11c61bb1de042f386ddd64d6e159de0d4294ffcb16d50670ab1fc1057c12d5c.png" src="_images/e11c61bb1de042f386ddd64d6e159de0d4294ffcb16d50670ab1fc1057c12d5c.png" />
 </div>
 </div>
 <p>Como podemos observar la aproximación a los puntos no es muy buena. Veamos que sucede si utilizamos el método del histograma, recordemos que en este caso es necesario definir el tamaño de las celdas y el punto donde comienza la primera celda.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plothpi.HisPlot()
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/af3bb03a1d1397d144548327c7b728154869f51662562152878c8d7974919ed6.png" src="_images/af3bb03a1d1397d144548327c7b728154869f51662562152878c8d7974919ed6.png" />
+<img alt="_images/6eda4ef9a2ca8dcd389ad5192fc783bea472bd380b7bc9315743bb8e46f01440.png" src="_images/6eda4ef9a2ca8dcd389ad5192fc783bea472bd380b7bc9315743bb8e46f01440.png" />
 </div>
 </div>
 <p>Podemos observar que la forma de la función es arbitraria, sin embargo como el conjunto de puntos con los que se cuenta para ajustar el sistemas es pequeño, la función tampoco se adapta muy bien. De manera general se puede decir que el método del histograma:</p>
@@ -692,20 +698,18 @@ interact(DiscriminatorKNN, k=[1,2,3,4,5,10,20,100,150]);
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1f8b1fb2f49c46248ebad10f8f6dd0d0", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6ea1d4a9708149b4b2439413a5f339cc", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Si aplicamos el método de <span class="math notranslate nohighlight">\(k\)</span>-vecinos al problema de predicción de HPI, obtendremos lo siguiente:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plothpi.knn_un(n_neighbors=2)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f351d223b10&gt;
-</pre></div>
-</div>
-<img alt="_images/3c923e8863403ebf85318081acc71898265059dcee3a1959c6fad8dedf9b95e6.png" src="_images/3c923e8863403ebf85318081acc71898265059dcee3a1959c6fad8dedf9b95e6.png" />
+<img alt="_images/c348e3e9729a56f6e0ac0cc9a3843d65577fc82c22db29d1cb0e6dd53b649d95.png" src="_images/c348e3e9729a56f6e0ac0cc9a3843d65577fc82c22db29d1cb0e6dd53b649d95.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -715,7 +719,10 @@ interact(DiscriminatorKNN, k=[1,2,3,4,5,10,20,100,150]);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2345733cf8a38e5f6a8411c5259e0539c35b0f05523963306d4724e028cbaadb.png" src="_images/2345733cf8a38e5f6a8411c5259e0539c35b0f05523963306d4724e028cbaadb.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes3D: title={&#39;center&#39;: &#39;K-NN Regression function, k = 4&#39;}, xlabel=&#39;Edad&#39;, ylabel=&#39;Tasa de impuesto&#39;, zlabel=&#39;HPI x10^3&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/c52082c100af7b49fe1b9756ee72cfd6fcd383f3fa6e54180bcfdf88ade3a695.png" src="_images/c52082c100af7b49fe1b9756ee72cfd6fcd383f3fa6e54180bcfdf88ade3a695.png" />
 </div>
 </div>
 <p>Más allá de la forma que toma la función de salida es necesario que notemos algo importante. Si observamos con detenimiento las funciones obtenidas, veremos que una de las dos variables no es tenida en cuenta en la regresión, es decir el valor es constante siempre y cuando la otra no cambie. Este fecnómeno es debido a que una de las variables toma valores en el rango de 100 mil a 300 mil, mientras que la otra toma volres en el rango de 20 a 60. Como el método de  k -vecinos está basado en una medida de distancia, es claro que la distancia de la variable Hipoteca será mucho más grande en magnitud, que la distancia de la variable edad. Por esa razón una variable opaca la otra, aunque eso no significa que la variable Hipoteca sea más importante para la predicción.</p>
@@ -730,10 +737,10 @@ interact(DiscriminatorKNN, k=[1,2,3,4,5,10,20,100,150]);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fdf4e95c210&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes3D: title={&#39;center&#39;: &#39;K-NN Regression function, k = 2&#39;}, xlabel=&#39;Edad&#39;, ylabel=&#39;Tasa de impuesto&#39;, zlabel=&#39;HPI x10^3&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/f0af463bf9dcf4c549ba46024af2f767b29bde935106aa103be8cf63c6ef76fc.png" src="_images/f0af463bf9dcf4c549ba46024af2f767b29bde935106aa103be8cf63c6ef76fc.png" />
+<img alt="_images/c1d58cf6e776f520aded736edd8595f7171fe3c0c45676f1581404400940de27.png" src="_images/c1d58cf6e776f520aded736edd8595f7171fe3c0c45676f1581404400940de27.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -743,10 +750,10 @@ interact(DiscriminatorKNN, k=[1,2,3,4,5,10,20,100,150]);
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7fb200b09dd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes3D: title={&#39;center&#39;: &#39;K-NN Regression function, k = 50&#39;}, xlabel=&#39;Edad&#39;, ylabel=&#39;Tasa de impuesto&#39;, zlabel=&#39;HPI x10^3&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/829603d4fcd2a87997b99d7b167f368dc90d0e22f40361cfaa79606b76ee5408.png" src="_images/829603d4fcd2a87997b99d7b167f368dc90d0e22f40361cfaa79606b76ee5408.png" />
+<img alt="_images/612186d3065404e219a5e96d11b7504931ffa2d0602f1758595aef77a1aeedd6.png" src="_images/612186d3065404e219a5e96d11b7504931ffa2d0602f1758595aef77a1aeedd6.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -779,15 +786,15 @@ def DistributionPW(h=0.5):
     for i in range(len(x)):
         pred.append(plothpi.parzenW(X,x[i],h))
     ax2.plot(x,pred,&#39;-o&#39;)
-    ax1.hist(Normal1,normed=True,color=&#39;steelblue&#39;)
-    ax1.hist(Normal2,normed=True,color=&#39;steelblue&#39;)
+    ax1.hist(Normal1,density=True,color=&#39;steelblue&#39;)
+    ax1.hist(Normal2,density=True,color=&#39;steelblue&#39;)
     fig.show()
 interact(DistributionPW, h=[0.01,0.05,0.1,0.5,1,2,3,4,5,6]); 
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a13622d01abc4aee91d7e7678d8a0d8f", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5d44e31afd884e1e8240d2a95c16d494", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Como el valor entregado por la función de ventana de Parzen corresponde a una estimación de la función de densidad de probabilidad, para problemas de clasificación debemos dividir las muestras de entrenamiento en cada una de las clases y estimar la probabilidad de una muestra nueva en cada una de ellas usando la ecuación (1). Es decir, es el mismo procedimiento descrito en la clase anterior pero cambiando la función que estima la fdp.</p>
 <div class="cell docutils container">
@@ -807,19 +814,18 @@ def DiscriminatorParzen(h=0.01):
             p = np.array([p1,p2,p3]);
             Z[i,j]= p.argmax(axis=0)
     print(&#39;Listo.&#39;)        
-    plt.figure()
+    ax = plt.subplot()
     plt.title(u&#39;Clasificación Ventana de Parzen h = &#39; + str(h), fontsize=14)
     plt.xlabel(u&#39;Característica 1&#39;)
     plt.ylabel(u&#39;Característica 2&#39;)
-    plt.pcolormesh(xx, yy, Z.T, cmap=CMAP_LIGHT)
-    plt.scatter(X[:,1], X[:,2], c=y);
-    plt.show()
-interact(DiscriminatorParzen, h=[0.001,0.01,0.1,1,2,3,4,5,6]); 
+    ax.pcolormesh(xx, yy, Z.T, cmap=CMAP_LIGHT)
+    ax.scatter(X[:,1], X[:,2], c=y);
+interact(DiscriminatorParzen, h=[0.001,0.01,0.1,1,2,3,4,5,6]);
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a9d229e82f254c1d86a12d4410dbe85d", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ce9e43028b874068ac02bcbae1bd6b9e", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Para el caso de <strong>regresión</strong>, es necesario estimar el valor esperado de la distribución condicional. La formulación del modelo puede hacerse de maneras difirentes, el modelo más usado es:</p>
 <li>Estimador de Nadaraya-Watson: $$y^* = \frac{\sum_{i=1}^N K(u_i)y_i}{\sum_{i=1}^N K(u_i)}, \;\; u_i = \frac{dist({\bf{x}}^*,{\bf{x}}_i)}{h}$$
@@ -827,55 +833,47 @@ interact(DiscriminatorParzen, h=[0.001,0.01,0.1,1,2,3,4,5,6]);
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plothpi.ParzenPlot_un(0.1)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f2073690f10&gt;
-</pre></div>
-</div>
-<img alt="_images/e0f4a3dfd066e3251ab63c162bb79e531a744323cab110021fa9408092dd8e42.png" src="_images/e0f4a3dfd066e3251ab63c162bb79e531a744323cab110021fa9408092dd8e42.png" />
+<img alt="_images/b596a67c82ba4f7d0ec0e7220e248f681f38bd17f045f785b1b35d94d4ce21b3.png" src="_images/b596a67c82ba4f7d0ec0e7220e248f681f38bd17f045f785b1b35d94d4ce21b3.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plothpi.ParzenPlot_un(1e5)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f20736a8650&gt;
-</pre></div>
-</div>
-<img alt="_images/f5eabf938d73a6942523b156f4ba5ce244675f495fc60577991699d475a5909f.png" src="_images/f5eabf938d73a6942523b156f4ba5ce244675f495fc60577991699d475a5909f.png" />
+<img alt="_images/56765f1b7922f054886f99b87d87a1175606dd75be7743207f77de1762b2bb1a.png" src="_images/56765f1b7922f054886f99b87d87a1175606dd75be7743207f77de1762b2bb1a.png" />
 </div>
 </div>
 <p>Si usamos el estimador de Nadaraya-Watson en el problema de predicción de HPI (<strong>previa</strong> normalización de variables) obtendremos:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plothpi.ParzenPlot_n(0.3)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f94af442cd0&gt;
-</pre></div>
-</div>
-<img alt="_images/3627c0669a4db59796eb3c6cb550b112b8605328ebc0ed1715ee9ba00753d2c8.png" src="_images/3627c0669a4db59796eb3c6cb550b112b8605328ebc0ed1715ee9ba00753d2c8.png" />
+<img alt="_images/caa3aad3ae53881cf7f8bf7086e4f365bd17a6cadc58500c2b2ce128cd851a60.png" src="_images/caa3aad3ae53881cf7f8bf7086e4f365bd17a6cadc58500c2b2ce128cd851a60.png" />
 </div>
 </div>
 <p>Note que a diferencia de los métodos anteriores, en este caso se obtiene una función suave debido a que la medida de similitud (la función kernel), es una función suave.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plothpi.ParzenPlot_n(100)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.Axes3DSubplot at 0x7f20782fc350&gt;
-</pre></div>
-</div>
-<img alt="_images/78cd6b13430fcb25ce199694b56de8a9cab795860f4ca502b39186ce1b1976ac.png" src="_images/78cd6b13430fcb25ce199694b56de8a9cab795860f4ca502b39186ce1b1976ac.png" />
+<img alt="_images/ab9c514f1941bfc1b213e2145c2cb1dfc2f36cae08460ecda57526d05cf3ab1a.png" src="_images/ab9c514f1941bfc1b213e2145c2cb1dfc2f36cae08460ecda57526d05cf3ab1a.png" />
 </div>
 </div>
 <p>Sin embargo, si el valor de h se hace más pequeño, la función se hace más aguda en cada uno de los puntos del conjunto de entrenamiento, debido a que la similitud es más estricta, sólo muestras de entrenamiento muy cercanos a la muestra sobre la cual se quiere hacer la predicción, aportarán a la misma. Escoger el valor correcto para <span class="math notranslate nohighlight">\(h\)</span> puede no ser una tarea facil. Un estimador muy usado es el conocido como “Silverman bandwidth” (<mark>consultar</mark>)</p>
@@ -900,7 +898,7 @@ interact(nadayara, h=[0.0001,0.001,0.01,0.1,0.48859075319621886,0.5,0.6,0.7,0.8]
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "bccaa7f0a0c34a5fadb20242bcf14b8d", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5b3d3dbd7743464da0a992a3b65cffc3", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <hr class="docutils" />
 <p>Los modelos no paramétricos son muy flexibles porque permiten construir fronteras de decisión o funciones de regresión muy variadas, pero son computacionalmente muy ineficientes para conjuntos de datos muy grandes debido a que como hemos visto, para la mayoría, es necesario almacenar todas las muestras de entrenamiento y realizar cáculos de distancia con respecto a todas las muetras de entrenamiento cada vez que necesitemos realizar una nueva predicción. Por esta razón se han propuesto muchas variantes para trabajar con conjuntos de datos masivos.</p>
