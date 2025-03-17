@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Laboratorio 3 - Parte 1. Comparación de metodos de clusterización &#8212; 2025 Introducción al Machine Learning</title>
+    <title>Laboratorio 3 - Parte 1. GMM para clasificación y clustering &#8212; 2025 Introducción al Machine Learning</title>
   
   
   
@@ -70,8 +70,6 @@
                 gtag('config', 'UA-51547737-2');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lab3_parte1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -195,7 +193,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
@@ -226,7 +230,7 @@
 
 
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -244,7 +248,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -435,7 +439,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</h1>
+    <h1>Laboratorio 3 - Parte 1. GMM para clasificación y clustering</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -460,30 +464,38 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><strong>Recuerda que una vez abierto, Da clic en “Copiar en Drive”, de lo contrario no podras almacenar tu progreso</strong></p>
-<p>Nota: no olvide ir ejecutando las celdas de código de arriba hacia abajo para que no tenga errores de importación de librerías o por falta de definición de variables.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-3-parte-1-gmm-para-clasificacion-y-clustering">
+<h1>Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em><a class="headerlink" href="#laboratorio-3-parte-1-gmm-para-clasificacion-y-clustering" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
-# Ejecuta esta celda!
-%load_ext autoreload
-%autoreload 2
-# for local 
-# import sys ; sys.path.append(&#39;../commons/utils/&#39;)
-!wget https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/commons/utils/general.py -O general.py --no-cache
-from general import configure_lab3
-configure_lab3()
-from lab3 import *
-GRADER = part_1()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
 </pre></div>
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="laboratorio-3-parte-1-comparacion-de-metodos-de-clusterizacion">
-<h1>Laboratorio 3 - Parte 1. Comparación de metodos de clusterización<a class="headerlink" href="#laboratorio-3-parte-1-comparacion-de-metodos-de-clusterizacion" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L03.01&quot;, varname=&quot;student&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
+# Ejecuta esta celda!
+from Labs.commons.utils.lab3 import *
+_ = part_1()
+</pre></div>
+</div>
+</div>
+</div>
 <section id="ejercicio-1-contextualizacion-del-problema">
 <h2>Ejercicio 1: Contextualización del problema<a class="headerlink" href="#ejercicio-1-contextualizacion-del-problema" title="Link to this heading">#</a></h2>
-<p>A continuación se leen los datos de un problema de clasificación. El problema corresponde a la clasificación de dígitos escritos a mano. Los datos fueron preprocesados para reducir el número de características y solo se van usar los digitos 0 al 4. La técnica usada será analizada más adelante en el curso. Al ejecutar la celda de código, tambien se podra visualizar una muestra de los datos usados.</p>
+<p>A continuación se leen los datos de un problema de clasificación. El problema corresponde a la clasificación de dígitos escritos a mano. Los datos fueron preprocesados para reducir el número de características y solo se van usar los digitos 0 al 4. La técnica usada para realizar la reducción de dimensión es PCA, la cual ya fue usada en el curso de Modelos y Simulación I, y será nuevamente analizada en detalle más adelante en este curso. Al ejecutar la celda de código, también se podrá visualizar una muestra de los datos usados.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>digits = load_digits(n_class=5)
@@ -491,114 +503,47 @@ GRADER = part_1()
 pca = PCA(0.99, whiten=True)
 data = pca.fit_transform(digits.data)
 #---------- Datos a usar ----------------------
-x = data
-y = digits.target
+x = data[:-1]
+y = digits.target[:-1]
 
 plot_digits(digits.data)
 </pre></div>
 </div>
 </div>
 </div>
-<p>Vamos realizar algunas pruebas para determinar que metodologia de validación es más adecuada. En el ejercicio de código, vamos usar las librerias de scikit-learn:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Echemos un vistazo a la distribución de las clases
+from local.lib.util import plot_samples_per_class
+plot_samples_per_class(y)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para poder realizar la validación de nuestro algoritmo, realizaremos una partición de los datos. Como sabemos, existen dos principales alternativas:</p>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html?highlight=stratifiedkfold#sklearn.model_selection.StratifiedKFold">StratifiedKFold</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html">KFold</a></p></li>
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.ShuffleSplit.html">ShuffleSplit</a></p></li>
 </ol>
-<p>En la función debes seleccionar la función de sklearn adecuada para lograr el efecto deseado y completar el código donde es señalado</p>
+<p>En el siguiente ejercicio, instancie dos objetos de cada una de las clases de objetos listadas antes. En los dos casos se desea repetir el experimento 4 veces. Cuando instancie los objetos, defina los parámetros para que, aunque las técnicas de validación sean diferentes, los resultados sean estadísticamente equivalentes. Ajuste la semilla de los generadores en 0 para que los resultados sean reproducibles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
-def get_muestras_by_cv (method, X, Y):
-    &quot;&quot;&quot;función que devuelve el numero de muestras promedios
-    dependiendo de la metodologia de validación (method).
-    los conjuntos de datos deben dividirse **3 veces**
+from sklearn.model_selection import KFold
+from sklearn.model_selection import ShuffleSplit
 
-    method (int): solo puede tomar dos valores:
-        1: se debe usar el metodo de validación Bootstrapping
-        2: se debe usar el metodo valicacion cruzada estratificada
-    X: matriz numpy con los valores de las caracteristicas
-    Y: vector numpy con las etiquetas de con conjunto de caracteriticas X
-    retorna: dataframe con las siguientes columnas:
-        - etiqueta de clase
-        - fold
-        - # muestras en entrenamiento
-    &quot;&quot;&quot;
-    idx = 0
-    results = pd.DataFrame()
-    
-    if method == 1:
-        #completa el codigo con el metodo adecuado
-        cv = 
-        for n, (train_index, test_index) in enumerate (cv.split()):
-            y_train, y_test = Y[train_index], Y[test_index]
-            
-            # iterar sobre las etiquetas
-            for label in np.unique(y_train):
-                results.loc[idx, &#39;etiqueta de clase&#39;] = label
-                results.loc[idx, &#39;folds&#39;] = n
-                results.loc[idx, &#39;numero de muestras entrenamiento&#39;] = (y_train == label).sum()
-                idx = idx+1
-        
-    elif method == 2:
-        #completa el codigo con el metodo adecuado
-        cv = 
-        for n, (train_index, test_index ) in enumerate (cv.split()):
-            y_train, y_test = Y[train_index], Y[test_index]
-            len(np.unique(y_train))
-            # iterar sobre las etiquetas
-            for label in np.unique(y_train):
-            
-                results.loc[idx, &#39;etiqueta de clase&#39;] = label
-                results.loc[idx, &#39;folds&#39;] = n             
-                results.loc[idx, &#39;numero de muestras entrenamiento&#39;] = (y_train == label).sum()
-                idx = idx+1
-    else:
-        print(&quot;el metodo no es valido!&quot;)
-        
-    return (results)
-    
+def get_cv_objects():
+    cv1 = KFold...
+    cv2 = ShuffleSplit...
+    return cv1, cv2
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-#ignora las graficas!!
-GRADER.run_test(&quot;ejercicio1&quot;, get_muestras_by_cv)
-</pre></div>
-</div>
-</div>
-</div>
-<p>Aca vamos a crear un dataframe para observar el numero de muestras de entrenamiento logradas por cada uno de los metodos.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cv1 = get_muestras_by_cv(1,x,y)
-cv1[&#39;validación&#39;] = &#39;Bootstrapping&#39;
-cv2 = get_muestras_by_cv(2,x,y)
-cv2[&#39;validación&#39;] = &#39;Estratificada&#39;
-cvs = pd.concat([cv1, cv2], ignore_index=True)
-cvs
-</pre></div>
-</div>
-</div>
-</div>
-<p>En la tabla es dificil analizar que esta pasando. Para interpretar mejor los resultados vamos a usar una grafica llamada <a class="reference external" href="https://interactivechaos.com/es/manual/tutorial-de-seaborn/point-plot">PointPlot</a>. Esta grafica de la libreria <a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.pointplot.html">Seaborn</a> nos permite ver la diferencia entre los metodos.</p>
-<p>Debemos entender que representan los puntos y las barras.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>display(&quot;distribución de clases&quot;)
-sns.catplot(data= cvs , x = &#39;etiqueta de clase&#39;, y=&#39;numero de muestras entrenamiento&#39;, kind=&#39;point&#39;, hue=&#39;validación&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<p>En la grafica, las barras representan la variación del numero de muestras en cada fold/partición. Y el punto es el valor medio.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown En sus palabras, usando el grafico anterior y su conocimiento, ¿por qué Boostrapping no es la metodologia más adecuada?
-respuesta_1 = &quot;&quot; #@param {type:&quot;string&quot;}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
 </pre></div>
 </div>
 </div>
@@ -606,7 +551,13 @@ respuesta_1 = &quot;&quot; #@param {type:&quot;string&quot;}
 </section>
 <section id="ejercicio-2-mezclas-de-gaussinas">
 <h2>Ejercicio 2: Mezclas de gaussinas<a class="headerlink" href="#ejercicio-2-mezclas-de-gaussinas" title="Link to this heading">#</a></h2>
-<p>En la siguiente celda vamos a definir una función que tome como entradas una matriz <span class="math notranslate nohighlight">\(X\)</span> y una matriz <span class="math notranslate nohighlight">\(Y\)</span>, entrene un modelo GMM  (Modelo de mezclas gaussianas) por cada clase y retorne el listado de modelos para cada clase. Debe consultar todo lo relacionado con la creación, entrenamiento y uso en predicción de este modelo usando la librería scikit-learn. Consultar aquí: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html">http://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html</a></p>
+<p>En la siguiente celda vamos a crear una clase para definir un modelo de clasificación basado en el modelo GMM. Para ello vamos a usar la función GaussianMixture de sklearn. Consultar aquí: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html">http://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html</a></p>
+<p>Los parámetros que deben ser tenidos en cuenta para en el entrenamiento del modelo, ya están definidos en el constructor de la clase. Con el propósito de seguir la estructura de los modelos definidos en sklearn, deben completar tres métodos:</p>
+<ul class="simple">
+<li><p>train</p></li>
+<li><p>predict</p></li>
+<li><p>predict_proba</p></li>
+</ul>
 <p>En el notebook, ya se encuentra cargada la libreria que vamos a usar:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.mixture</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianMixture</span>
 </pre></div>
@@ -614,33 +565,67 @@ respuesta_1 = &quot;&quot; #@param {type:&quot;string&quot;}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
-def GMMClassifierTrain(M,tipo,X,Y):
-    &quot;&quot;&quot;metodo para entrenar un modelo de mezclas de gausianas
-    M: Número de componentes
-    tipo (str): Tipo de matriz de covarianza (los parametros que se
-          aceptan son los nombres de la  misma libreria:
-          &#39;full&#39;, &#39;tied&#39;, &#39;diag&#39;, &#39;spherical&#39;)
-    X: Matriz de caracteristicas
-    Y : Matriz con las clases
-   
-    retorna: diccionario de con la estructura:
-        {etiqueta_clase: modelo_gmm_entrenado}
-    &quot;&quot;&quot; 
-    GMMs = {}
-    for cl in np.unique(Y):
-        xclass = X[Y==cl, :]
-        gmm  = 
-        
-    #Debe retornar un objeto que contenga todos los modelos entrenados  
-    return GMMs 
+def get_GMM_classifier(n_components,covariance_type,max_iter=100,n_init=5,init_params=&#39;kmeans&#39;,random_state=0):
+  &quot;&quot;&quot;Función para instanciar un modelo de clasificación basado en Mezclas de Gaussianas
+  retorna: objeto de la clase GMMClassifierTrain
+  &quot;&quot;&quot;
+  class GMMClassifier():
+    def __init__(self, n_components=1, covariance_type=&#39;full&#39;, max_iter=100, n_init=1, init_params=&#39;kmeans&#39;, random_state=None):
+        self.n_components = n_components
+        self.covariance_type = covariance_type
+        self.max_iter = max_iter
+        self.n_init = n_init
+        self.init_params = init_params
+        self.random_state = random_state
+        self.models = {}
+        self.class_labels =[]
+    def train(self,X,Y):
+      &quot;&quot;&quot;
+      retorna: almacena el diccionario de modelos entrenados y las etiquetas de
+      las clases. Las etiquetas de las clases se usan como keys en el diccionario
+      &quot;&quot;&quot;
+      ...
+      return self
+
+    def predict(self,X):
+      &quot;&quot;&quot;
+      retorna: matriz de predicciones de tamaño (n_muestras,)
+      &quot;&quot;&quot;
+
+      self.models = ...
+      self.class_labels = ...
+      return self
+
+    def predict(self,X):
+      &quot;&quot;&quot;
+      retorna: matriz de predicciones de tamaño (n_muestras,)
+      &quot;&quot;&quot;
+      ...
+      return Yest
+
+    def predict_proba(self,X):
+      &quot;&quot;&quot;
+      retorna: matriz de probabilidades de tamaño (n_muestras, n_clases)
+      &quot;&quot;&quot;
+      ...
+      return Yproba
+
+  return GMMClassifier(
+      n_components = n_components,
+      covariance_type = covariance_type,
+      max_iter = max_iter,
+      n_init = n_init,
+      init_params=init_params,
+      random_state=random_state
+      )
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio2&quot;, GMMClassifierTrain)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T2&#39;);
 </pre></div>
 </div>
 </div>
@@ -649,47 +634,7 @@ GRADER.run_test(&quot;ejercicio2&quot;, GMMClassifierTrain)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
 #@markdown En sus palabras, ¿por qué debemos entrenar un modelo por cada clase?
-respuesta_2 = &quot;&quot; #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<p>Adicionalmente construya una función que use los modelos entrenados en la función anterior para hacer la clasificación de un conjunto nuevo de muestras.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
-def GMMClassfierVal(GMMs,Xtest):
-    &quot;&quot;&quot;funcion que recibe los modelos GMM entrenados
-        y realiza predicciones con base a cada salida
-    GMMs: diccionario de con la estructura:
-        {etiqueta_clase: modelo_gmm_entrenado}
-    Xtest: matriz numpy con el cojunto de datos
-        de las caracteristicas de prueba/test
-    retorna: 
-    - un numpy array con las estimaciones de de clase de cada 
-        una de las muestras de Xtest
-    - matriz las probabilidades(en log) de cada clase por cada
-      muestra debe tener un shape [numero de muestras, numero de clases]
-    &quot;&quot;&quot;
-    prob = np.zeros((Xtest.shape[0], len(GMMs)))
-    
-    #pista explora los metodos de la libreria, que metodo retorna probabilidades?
-    for k,v in GMMs.items():
-       
-    
-    # la etiqueta la asignas seleccionando le maximo de probabilidad
-    Yest= 
-    
-    return Yest, prob
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-#ignora las graficas!!
-GRADER.run_test(&quot;ejercicio3&quot;, GMMClassfierVal)
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
@@ -697,23 +642,23 @@ GRADER.run_test(&quot;ejercicio3&quot;, GMMClassfierVal)
 </section>
 <section id="ejercicio-3-experimentos">
 <h2>Ejercicio 3: Experimentos<a class="headerlink" href="#ejercicio-3-experimentos" title="Link to this heading">#</a></h2>
-<p>Con el código completado, vamos a realizar experimentos. Complete la siguiente función para poder obtener los resultados de los experimentos. Es necesario:</p>
+<p>Con el código completado, vamos a realizar experimentos. Complete la siguiente función para poder obtener los resultados de los experimentos. Tenga en cuenta lo siguiente:</p>
 <ol class="arabic simple">
-<li><p>retornar errores de entrenamiento y pruebas</p></li>
-<li><p>retornar intervalos de confianza (desviacion estandar) para cada una de la configuración de experimentos</p></li>
-<li><p>en el código, ya se sugiere la metodologia de validación (usando 3 folds) y se usa, como es usual el standard scaler para normalizar los datos.</p></li>
+<li><p>Retornar errores de entrenamiento y pruebas</p></li>
+<li><p>Retornar intervalos de confianza (desviacion estandar) para cada una de las configuraciones de hiperparámetros</p></li>
+<li><p>En el código ya se sugiere la metodologia de validación (usando 4 folds) y se incluye, como es usual, el standard scaler para normalizar los datos.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
 def experimentar(X, Y, covariance_types,num_components):
-    &quot;&quot;&quot;función que realiza experimentos del GMM
-    
-    X: matriz con las caractersiticas
-    Y: matriz de numpy con etiquetas
+    &quot;&quot;&quot;función que realiza experimentos con el GMM
+
+    X: matriz con las muestras de entrada
+    Y: matriz de numpy con las etiquetas de salida
     covariance_types: list[str] con las matrices de covarianza a probar
     num_components: list[int] con el numero de componente a probar
-  
+
     retorna: dataframe con:
         - matriz de covarianza
         - numero de componentes
@@ -722,9 +667,8 @@ def experimentar(X, Y, covariance_types,num_components):
         - eficiencia de prueba
         - desviacion estandar eficiencia de prueba
     &quot;&quot;&quot;
-    # asignar los folds
-    folds = 
-    skf = StratifiedKFold(n_splits=folds)
+    # Definir metodología de validación
+    skf, _ = get_cv_objects()
     resultados = pd.DataFrame()
     idx = 0
 
@@ -744,33 +688,32 @@ def experimentar(X, Y, covariance_types,num_components):
                 Xtrain= scaler.transform(Xtrain)
                 Xtest = scaler.transform(Xtest)
                 #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
-                gmms = 
-                #Validación se ignora la matriz de probabilidad
-                Ytrain_pred, _ =
-                Yest, _ = 
+                gmms = ...
+                #Validación
+                Ytrain_pred = ...
+                Yest = ...
                 #Evaluamos las predicciones del modelo con los datos de test
                 EficienciaTrain.append(np.mean(Ytrain_pred.ravel() == Ytrain.ravel()))
                 EficienciaVal.append(np.mean(Yest.ravel() == Ytest.ravel()))
 
             resultados.loc[idx,&#39;matriz de covarianza&#39;] = cov_tipo
             resultados.loc[idx,&#39;numero de componentes&#39;] = M
-            resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = 
+            resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] =
             resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] =
             resultados.loc[idx,&#39;eficiencia de prueba&#39;] =
             resultados.loc[idx,&#39;desviacion estandar prueba&#39;] =
             idx= idx +1
             print(&quot;termina para&quot;, cov_tipo, M)
-        
+
     return (resultados)
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-# los prints del test los puedes ignorar (se hacen unos checks!)
-GRADER.run_test(&quot;ejercicio4&quot;, experimentar)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T3&#39;);
 </pre></div>
 </div>
 </div>
@@ -796,8 +739,8 @@ resultados
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿a qué corresponde el parámetro init_params de la función GaussianMixture y cuál fue el valor usado en nuestros experimentos?
-respuesta_3 = &quot;&quot; #@param {type:&quot;string&quot;}
+#@markdown ¿A qué corresponde el parámetro init_params de la función GaussianMixture y cuál fue el valor usado en nuestros experimentos?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
@@ -805,19 +748,44 @@ respuesta_3 = &quot;&quot; #@param {type:&quot;string&quot;}
 </section>
 <section id="ejercicio-4-kmeans-y-experimentos">
 <h2>Ejercicio 4 Kmeans y experimentos<a class="headerlink" href="#ejercicio-4-kmeans-y-experimentos" title="Link to this heading">#</a></h2>
+<p>Como sabemos, el modelo GMM puede usarse también para resolver problemas no supervisados. Aunque el dataset que estamos usando contiene etiquetas, vamos a usarlo como si el problema fuera de tipo no supervisado. Usaremos el modelo GMM para resolver el problema y lo compararemos con el algoritmo K-means.</p>
 <p>Consultar todo lo relacionado al llamado del método KMeans de la librería scikit-learn en el siguiente enlace: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html</a>.</p>
 <p>En el notebook, ya se encuentra cargada la libreria:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span>
 </pre></div>
 </div>
-<p>Vamos a resolver el mismo problema anterior pero con el K-means. La libreria nos ofrece suficiente utilidad para ya poder comenzar a realizar experimentos con ella.</p>
-<p>Por ellos vamos a implementar la función para realizar los experimentos. <a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html#k-means">Debemos configurar la inicialización del algoritmo</a> usando ‘k-means++’</p>
+<p>Por ello vamos a implementar una función que defina y entre los modelos de clustering KMeans y GMM. Los hiparámetros que se deben usar para instanciar los modelos ya están definidos en la función.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
-#Validamos el modelo
-def experimentar_kmeans(numero_clusters,X, Y):
-    &quot;&quot;&quot;función que realiza experimentos de Kmeans
+def entrenar_clustering(numero_clusters,Xtrain,max_iter=100,n_init=5,random_state=0):
+
+  &quot;&quot;&quot;función que realiza experimentos no supervisados: GMM y Kmeans
+  numero_clusters: int número de clusters a usar en los modelos
+  Xtrain: matriz con las muestras de entrenamiento
+
+  &quot;&quot;&quot;
+  #Define el modelo de clustering basado en kmeans con el conjunto de hiperparámetros apropiado
+  kmeans =
+  #¿qué metodo debes llamar para entrenar kmeans?
+  kmeans
+
+  # Ahora usa el modelo GMM para hacer clustering (Use matriz de covarianza &#39;tied&#39;)
+  gmm = GaussianMixture(...)
+  #Entrena el gmm
+  gmm
+  return  kmeans, gmm
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como sabemos, la evaluación de los algoritmos de agrupamiento no supervisados se hace a partir de medidas que evalúan la cohesión de los grupos encontrados, como el <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.silhouette_score.html">coeficiente Silhouette</a>. Creemos una función que realice la experimentación para diferente número de grupos de acuerdo con dicha medida.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+from sklearn.metrics import silhouette_score
+def experimentar_clustering(numero_clusters,X):
+    &quot;&quot;&quot;función que realiza experimentos no supervisados: GMM y Kmeans
     numero_clusters: list[int] numero cluster para realizar experimentos
     X: matriz con las caractersiticas
     Y: matriz de numpy con etiquetas
@@ -828,56 +796,59 @@ def experimentar_kmeans(numero_clusters,X, Y):
         - error de prueba
         - desviacion estandar eror de prueba
     &quot;&quot;&quot;
-    folds = 4
-    skf = StratifiedKFold(n_splits=folds)
+    _, skf = get_cv_objects()
     resultados = pd.DataFrame()
     idx = 0
 
     for n_cluster in numero_clusters:
         ## para almacenar los errores intermedios
-        EficienciaTrain = []
+        DesempenoTrain_kmeans = []
+        DesempenoVal_kmeans = []
+        DesempenoTrain_gmm = []
+        DesempenoVal_gmm = []
         EficienciaVal = []
-        for train, test in skf.split(X, Y):
+        for train, test in skf.split(X, X):
             Xtrain = X[train,:]
-            Ytrain = Y[train]
             Xtest = X[test,:]
-            Ytest = Y[test]
             #Normalizamos los datos
             scaler = StandardScaler()
             scaler.fit(Xtrain)
             Xtrain= scaler.transform(Xtrain)
             Xtest = scaler.transform(Xtest)
-            #verifica como pasar n_cluster a KMeans
-            kmeans = 
-            #¿que metodo debes llamar para entrenar kmeans?
-            kmeans
-            #predicciones en cada conjunto
-            # ¿que metodo debes llamar para realizar preddiciones con kmeans?
-            Ytrain_pred = kmeans
-            Yest  = kmeans
+
+            kmeans, gmm = ...
+
+            #¿Cómo determinar los grupos a los que fueron asignadas las muestras de entrenamiento?
+            Gtrain_pred_k = kmeans...
+            Gtrain_pred_g = gmm...
+            #¿Cómo determinar los grupos a los que fueron asignadas las muestras de prueba?
+            Gest_k = kmeans...
+            Gest_g = gmm...
+
             #Evaluamos las predicciones del modelo con los datos de test
-            EficienciaTrain.append(np.mean(Ytrain_pred.ravel() == Ytrain.ravel()))
-            EficienciaVal.append(np.mean(Yest.ravel() == Ytest.ravel()))
+            DesempenoTrain_kmeans.append(silhouette_score(Xtrain, Gtrain_pred_k))
+            DesempenoVal_kmeans.append(silhouette_score(Xtest, Gest_k))
+            DesempenoTrain_gmm.append(silhouette_score(Xtrain, Gtrain_pred_g))
+            DesempenoVal_gmm.append(silhouette_score(Xtest, Gest_g))
+
 
         resultados.loc[idx,&#39;numero de clusters&#39;] = n_cluster
-        resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = 
-        resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] =
-        resultados.loc[idx,&#39;eficiencia de prueba&#39;] = 
-        resultados.loc[idx,&#39;desviacion estandar prueba&#39;] =
+        resultados.loc[idx,&#39;Silhouette de entrenamiento kmeans&#39;] = np.mean(np.stack(DesempenoTrain_kmeans))
+        resultados.loc[idx,&#39;Silhouette de test kmeans&#39;] = np.mean(np.stack(DesempenoVal_kmeans))
+        resultados.loc[idx,&#39;Silhouette de entrenamiento gmm&#39;] = np.mean(np.stack(DesempenoTrain_gmm))
+        resultados.loc[idx,&#39;Silhouette de test gmm&#39;] = np.mean(np.stack(DesempenoVal_gmm))
         idx= idx +1
         print(&quot;termina para&quot;, n_cluster)
-        
+
     return (resultados)
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Default title text
-## la funcion que prueba tu implementacion
-#ignora las graficas!!
-GRADER.run_test(&quot;ejercicio5&quot;, experimentar_kmeans)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T4&#39;);
 </pre></div>
 </div>
 </div>
@@ -885,8 +856,8 @@ GRADER.run_test(&quot;ejercicio5&quot;, experimentar_kmeans)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ejecuta los experimentos y ve los resultados
-resultados_kmeans = experimentar_kmeans([3,5,6,8],x, y)
-resultados_kmeans
+resultados_clustering = experimentar_clustering([3,5,6,8],x)
+resultados_clustering
 </pre></div>
 </div>
 </div>
@@ -894,56 +865,8 @@ resultados_kmeans
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿Qué es el método elbow y por qué en nuestro caso no es útil? Pista: tiene sentido buscar un número de grupos != 5 ?
-respuesta_4 = &quot;&quot; #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<p>tener presente que tipo de entrenamiento realiza el kmeans: ¿supervisado o no supervisado?</p>
-<p>Vamos a realizar una grafica usando un metodo que vamos a ver en futuros laboratorios.</p>
-<p>La grafica se pueden entender como una representación en 2 dimensiones de nuestra base de datos (que tiene 40 variables).</p>
-<p>Cada punto representa uno de nuestros ejemplos.</p>
-<p><strong>Recordar</strong>:</p>
-<ol class="arabic simple">
-<li><p>Completa el codigo, con el numero de clusters con la cual se obtuvo la mejor eficiencia en los experimentos.</p></li>
-<li><p>Completa el codigo con los mejores parametros para GMM.</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># estandarizacion
-
-x_std = StandardScaler().fit_transform(x)
-
-## Kmeans
-numero_clusters = # aca el numero de cluster con la mejor eficiencia
-
-predict_kmeans = KMeans(n_clusters=numero_clusters, init = &#39;k-means++&#39;).fit_predict(x_std)
-
-## GMM. Reemplaza los valores de acuerdo a tus experimentos
-gmms = GMMClassifierTrain(X=x_std,Y=y,M=,tipo= )
-# ignoramos probabilidad
-predict_gmm, _ = GMMClassfierVal(gmms, x_std)
-
-#adicionamos etiquetas reales
-real = pd.DataFrame(x[:, 0:2], columns=[&#39;PC1&#39;, &#39;PC2&#39;])
-real[&#39;clase&#39;] = y
-real[&#39;tipo de etiqueta&#39;] = &#39;Real&#39;
-
-#adicionamos etiquetas de kmeans
-kmeans = pd.DataFrame(x[:, 0:2], columns=[&#39;PC1&#39;, &#39;PC2&#39;])
-kmeans[&#39;clase&#39;] = predict_kmeans
-kmeans[&#39;tipo de etiqueta&#39;] = &#39;Asignada por Kmeans&#39;
-
-#adicionamos etiquetas de gmms
-gmm_df = pd.DataFrame(x[:, 0:2], columns=[&#39;PC1&#39;, &#39;PC2&#39;])
-gmm_df[&#39;clase&#39;] = predict_gmm
-gmm_df[&#39;tipo de etiqueta&#39;] = &#39;Asignada por gmm&#39;
-
-# unimos y graficamos
-data_to_plot = pd.concat([real, kmeans, gmm_df], ignore_index=True)
-data_to_plot[&#39;clase&#39;] = data_to_plot[&#39;clase&#39;].astype(&#39;category&#39;)
-g = sns.relplot(data = data_to_plot, x = &#39;PC1&#39;, y=&#39;PC2&#39;, hue= &#39;clase&#39;, col=&#39;tipo de etiqueta&#39;, style= &#39;clase&#39;,   markers = [&#39;$0$&#39;, &#39;$1$&#39;, &#39;$2$&#39;, &#39;$3$&#39;, &#39;$4$&#39;], s = 400, height = 10)
+#@markdown ¿Qué método podría usar para determinar el grado de pertenencia de una muestra a cada grupo según el modelo GMM ?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
@@ -951,33 +874,46 @@ g = sns.relplot(data = data_to_plot, x = &#39;PC1&#39;, y=&#39;PC2&#39;, hue= &#
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿con base a los resultados que modelo es el más adecuado entre el k-means y el GMM? justifique.
-respuesta_5 = &quot;&quot; #@param {type:&quot;string&quot;}
+#@markdown ¿Es el número de grupos óptimo coherente con el número de clases en el problema?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Teniendo en cuenta que los métodos que hemos usados son no supervisados, el orden asignado a los grupos no tiene porqué coincidir con las etiquetas de clase. Vamos a graficar los centroides de las clases para ver con cuál de las clases coinciden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ejercicio de código
+
+n_cluster = ... #Escoja un número de clusters de acuerdo con el resultado anterior
+_, skf = get_cv_objects()
+train, test = next(skf.split(x, x))
+Xtrain = x[train,:]
+Xtest = x[test,:]
+
+#Normalizamos los datos
+scaler = StandardScaler()
+scaler.fit(Xtrain)
+Xtrain= scaler.transform(Xtrain)
+Xtest = scaler.transform(Xtest)
+
+modelo = ....fit(Xtrain) #Seleccione uno de los dos modelos de clustering
+centroids = pca.inverse_transform(....) #Extraiga los centroides del modelo y haga la transformación inversa de PCA
+
+fig, ax = plt.subplots(1, n_cluster, figsize=(4, 8),subplot_kw=dict(xticks=[], yticks=[]))
+fig.subplots_adjust(hspace=0.05, wspace=0.05)
+for i, axi in enumerate(ax.flat):
+    im = axi.imshow(centroids[i].reshape(8, 8), cmap=&#39;binary&#39;)
+    im.set_clim(0, 16)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>GRADER.check_tests()
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Integrantes
-codigo_integrante_1 =&#39;&#39; #@param {type:&quot;string&quot;}
-codigo_integrante_2 = &#39;&#39;  #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<p>esta linea de codigo va fallar, es de uso exclusivo de los profesores</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>GRADER.grade()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
+#@markdown ¿Corresponden los centroides a las clases del problema?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>

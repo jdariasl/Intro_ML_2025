@@ -232,7 +232,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -535,7 +535,7 @@ show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/24581f190d6ebb82b344c415186bf37cc8ea7f0bbd0cb7bf953148608e0da8e6.png" src="_images/24581f190d6ebb82b344c415186bf37cc8ea7f0bbd0cb7bf953148608e0da8e6.png" />
+<img alt="_images/e6fca6099279c78c4e35b4ea5f47e82058eae22c292c2c9d0b7318bf44c67e50.png" src="_images/e6fca6099279c78c4e35b4ea5f47e82058eae22c292c2c9d0b7318bf44c67e50.png" />
 </div>
 </div>
 <p>En el cual definimos un ancho para los intervalos y un número de intervalos y simplemente contamos el número de puntos que cayeron en cada intervalo. En una dimensión, si la línea real es dividida en un número de celdas iguales, la estimación de densidad para un punto <span class="math notranslate nohighlight">\(x\)</span> cualquiera será:</p>
@@ -569,7 +569,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e2edc605d8e20c519941fa0c618a4b6493e16383bec042484d6fa831ee9e525f.png" src="_images/e2edc605d8e20c519941fa0c618a4b6493e16383bec042484d6fa831ee9e525f.png" />
+<img alt="_images/518ab44011ace3db7ee2c8906b5fda624e69aaedd3f3e04a47a999d43484b8dd.png" src="_images/518ab44011ace3db7ee2c8906b5fda624e69aaedd3f3e04a47a999d43484b8dd.png" />
 </div>
 </div>
 <p>En este caso, tenemos 2 variables y cada una se divide en un número finito de celdas. Si todas las celdas son de igual tamaño, la estimación de probabilidad para una muestra <span class="math notranslate nohighlight">\(\bf{x}\)</span>, será:</p>
@@ -698,7 +698,7 @@ interact(DiscriminatorKNN, k=[1,2,3,4,5,10,20,100,150]);
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6ea1d4a9708149b4b2439413a5f339cc", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e0180a6cf26546d184897eca5b208039", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Si aplicamos el método de <span class="math notranslate nohighlight">\(k\)</span>-vecinos al problema de predicción de HPI, obtendremos lo siguiente:</p>
 <div class="cell docutils container">
@@ -794,7 +794,7 @@ interact(DistributionPW, h=[0.01,0.05,0.1,0.5,1,2,3,4,5,6]);
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5d44e31afd884e1e8240d2a95c16d494", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3ce6b0f035ed4c3d8a425a0d2d743917", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Como el valor entregado por la función de ventana de Parzen corresponde a una estimación de la función de densidad de probabilidad, para problemas de clasificación debemos dividir las muestras de entrenamiento en cada una de las clases y estimar la probabilidad de una muestra nueva en cada una de ellas usando la ecuación (1). Es decir, es el mismo procedimiento descrito en la clase anterior pero cambiando la función que estima la fdp.</p>
 <div class="cell docutils container">
@@ -825,7 +825,7 @@ interact(DiscriminatorParzen, h=[0.001,0.01,0.1,1,2,3,4,5,6]);
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ce9e43028b874068ac02bcbae1bd6b9e", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "811275398b4d4caa9548869aa483a7cb", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>Para el caso de <strong>regresión</strong>, es necesario estimar el valor esperado de la distribución condicional. La formulación del modelo puede hacerse de maneras difirentes, el modelo más usado es:</p>
 <li>Estimador de Nadaraya-Watson: $$y^* = \frac{\sum_{i=1}^N K(u_i)y_i}{\sum_{i=1}^N K(u_i)}, \;\; u_i = \frac{dist({\bf{x}}^*,{\bf{x}}_i)}{h}$$
@@ -898,7 +898,7 @@ interact(nadayara, h=[0.0001,0.001,0.01,0.1,0.48859075319621886,0.5,0.6,0.7,0.8]
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5b3d3dbd7743464da0a992a3b65cffc3", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cc961b50af474e80af8dcf96e4cd49ec", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <hr class="docutils" />
 <p>Los modelos no paramétricos son muy flexibles porque permiten construir fronteras de decisión o funciones de regresión muy variadas, pero son computacionalmente muy ineficientes para conjuntos de datos muy grandes debido a que como hemos visto, para la mayoría, es necesario almacenar todas las muestras de entrenamiento y realizar cáculos de distancia con respecto a todas las muetras de entrenamiento cada vez que necesitemos realizar una nueva predicción. Por esta razón se han propuesto muchas variantes para trabajar con conjuntos de datos masivos.</p>

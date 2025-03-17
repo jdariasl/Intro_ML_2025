@@ -195,7 +195,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul class="current">
@@ -226,7 +232,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -515,7 +521,7 @@ def num_muestras_carac(X):
             número de caracteristicas (int/float)
             número de muestras (int/float)
     &quot;&quot;&quot;
-    
+
     return
 </pre></div>
 </div>
@@ -550,14 +556,14 @@ def num_muestras_carac(X):
     &quot;&quot;&quot;
     N = np.size(Y)
     ecm = np.sum((Y_est.reshape(N,1) - Y.reshape(N,1))**2)/(N)
-    return ecm 
+    return ecm
 
 def regression(X, W):
     &quot;&quot;&quot;calcula la regresión multiple
     X: los valores que corresponden a las características
     W: son los pesos usadados para realizar la regresión
     retorna: valor estimado
-    &quot;&quot;&quot;    
+    &quot;&quot;&quot;
     Yest = np.dot(X,W)    #con np.dot se realiza el producto matricial. Aquí X es dim [Nxd] y W es dim [dx1]
     return Yest           #Esta variable contiene la salida de f(X,W)
 
@@ -569,8 +575,8 @@ def cost_f(W,X,Y):
     Y: el valor de salida esperado
 
     retorna: valor de costo
-    &quot;&quot;&quot;    
-    
+    &quot;&quot;&quot;
+
     m = len(Y)
     y_est = regression(X,W)
     cost = (1/2*m) * np.sum(np.square(y_est-Y))
@@ -580,7 +586,7 @@ def extension_matriz(X):
     &quot;&quot;&quot;función que realiza la extensión de la matriz X
     X: los valores que corresponden a las características sin extender
     Y: el valor de salida esperado
-    
+
     retorna: X_ext: matriz con unos extendidos, Y: matriz con dimensiones ajustadas
     &quot;&quot;&quot;
     #Obtenemos las dimensiones antes de exteneder la matriz
@@ -631,9 +637,9 @@ def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
     #Inicializamos el vector de parámetros con ceros
     if w_ini is not None:
         W = w_ini
-    else:    
+    else:
         W = np.zeros((1,caracterisitcas))
-    W = W.reshape(np.size(W), 1)    
+    W = W.reshape(np.size(W), 1)
     # incializamos vector para almacenar costos
     costos = np.zeros(iteraciones)
 
@@ -641,15 +647,15 @@ def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
         ## Aca debes completar la función! recuerda que solo debes usar numpy (np.funcion_a_usar)
         # o las funciones definidas anteriormente
         # Puedes usar las funciones definidas antes
-        y_est = 
-        f_xw_min_yi = 
-        
+        y_est =
+        f_xw_min_yi =
+
         # acutaliza
         W =
-        
+
         #Estima el valor de la función de costo para el W actual
         costos[i] = cost(W,X_ext,Y)
-        
+
     return W, costos
 </pre></div>
 </div>
@@ -686,7 +692,7 @@ Ytest = y[ind[int(math.ceil(0.7*N)):N]]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
-# ¿Porqué debemos hacer partición de datos? ¿Qué representa Xtrain, qué diferencia tiene con Xtest? 
+# ¿Porqué debemos hacer partición de datos? ¿Qué representa Xtrain, qué diferencia tiene con Xtest?
 respuesta = &#39;&#39;
 </pre></div>
 </div>
@@ -767,12 +773,12 @@ def potenciaPolinomio(X,grado):
     retorna: el valor de X despues de elevarlo al grado del polinimoo indicado
     &quot;&quot;&quot;
     X2 = X.copy()
-    
+
     if grado != 1:
         for i in range(2,grado+1):
             Xadd = X**i
             X2 = np.concatenate((X2, Xadd), axis=1)
-    
+
     return X2
 </pre></div>
 </div>
@@ -796,13 +802,13 @@ def gradiente_descendente_poly (X, Y, eta, iteraciones, grado):
     eta: Taza de aprendizaje
     iteraciones: numero de iteraciones maximo para el gradiente
     grado: el valor del polinomio a usar
-    
+
     retorna: W el valor de de los parametros de regresión polinomica
              costo: array con el valor del costo por cada iteracion
-            
+
     &quot;&quot;&quot;
     ## completa el codigo
-    X2 = 
+    X2 =
     W, costo =
     return (W, costo)
 
@@ -817,9 +823,9 @@ def evaluar_modelo_poly (W, X_to_test, Y_True, grado):
     retorna: el error cuadratico medio
     &quot;&quot;&quot;
     ## Comienza a completar tu codigo. recuerda usar la funciones ya definidas
-    X2 = 
-    error = 
-    
+    X2 =
+    error =
+
     return(error)
 </pre></div>
 </div>
@@ -865,9 +871,9 @@ def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
     Xtest: conjunto de datos para evaluación
     Ytrain: salidas reales del conjunto de entrenamiento
     Ytest: salidas reales del conjunto de evaluación
-    tasas: Es una lista con los valores númericos de tasas de aprendizaje 
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje
         para realizar los experimentos
-    grados: Es una lista con los valores númericos de grados 
+    grados: Es una lista con los valores númericos de grados
         para realizar los experimentos
     retorna: un dataframe con el resultados de los experimentos
     &quot;&quot;&quot;
@@ -877,11 +883,11 @@ def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
     idx = 0 # indice
     for eta in tasas:
         for grado in grados:
-            
+
             # ignorar el costo
             W, _ = ...
             error = ...
-        
+
             resultados.loc[idx,&#39;grado&#39;] = grado
             resultados.loc[idx,&#39;tasa de aprendizaje&#39;] = eta
             resultados.loc[idx,&#39;ecm&#39;] = error
@@ -921,7 +927,7 @@ def normalizar(Xtrain, Xtest):
     Xtest: matriz de datos de evaluación a normalizar
     retorna: matrices normalizadas
     &quot;&quot;&quot;
-    
+
     Xtrain_n = ...
     Xtest_n = ...
     # si hay una desviacion por cero, reemplazamos los nan
@@ -1012,9 +1018,9 @@ def experimentar_2 (Xtrain, Xtest, Ytrain, Ytest, iteraciones, grados):
     Xtest: conjunto de datos para evaluación
     Ytrain: salida real para el conjunto de entrenamiento
     Ytest: salida real para el conjunto de evaluación
-    tasas: Es una lista con los valores númericos de tasas de aprendizaje 
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje
         para realizar los experimentos
-    rangos: Es una lista con los valores númericos de grados 
+    rangos: Es una lista con los valores númericos de grados
         para realizar los experimentos
     retorna: un dataframe con el resultados de los experimentos
     &quot;&quot;&quot;
@@ -1026,7 +1032,7 @@ def experimentar_2 (Xtrain, Xtest, Ytrain, Ytest, iteraciones, grados):
             # ignora el costo
             W , _= ...
             error = ...
-        
+
             resultados.loc[idx,&#39;iteraciones&#39;] = itera
             resultados.loc[idx,&#39;grado&#39;] = grado
             resultados.loc[idx,&#39;ecm&#39;] = error

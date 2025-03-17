@@ -232,7 +232,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -471,7 +471,7 @@ document.write(`
 <h1>Laboratorio 1 - Parte 1 Regresión polinomial múltiple<a class="headerlink" href="#laboratorio-1-parte-1-regresion-polinomial-multiple" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
 import init; init.init(force_download=False); init.get_weblink()
 </pre></div>
 </div>
@@ -572,7 +572,7 @@ def num_muestras_carac(X):
             número de caracteristicas (int/float)
             número de muestras (int/float)
     &quot;&quot;&quot;
-    
+
     return
 </pre></div>
 </div>
@@ -581,7 +581,7 @@ def num_muestras_carac(X):
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
-def num_muestras_carac(X):    
+def num_muestras_carac(X):
     return (X.shape[1],X.shape[0])
 </pre></div>
 </div>
@@ -596,9 +596,12 @@ session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------
-you are judaarlo@gmail.com .... wait for the cell below to complete signup
------------
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logging in as julian.ariasl@udea.edu.co... please wait
+
+-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
 </pre></div>
 </div>
 </div>
@@ -626,7 +629,7 @@ def grader_01(functions, variables, caller_userid):
 
     def t_num_muestras_carac(X):
         return (X.shape[1],X.shape[0])
-    
+
     # retrieve definitions
     namespace = locals()
     for f in functions.values():
@@ -639,7 +642,7 @@ def grader_01(functions, variables, caller_userid):
         input_dim = np.random.randint(5)+5
         input_n = np.random.randint(500) + 20
         input_data = np.random.randn(input_n,input_dim)
-        
+
         t_model = t_num_muestras_carac(input_data)
         s_model = s_num_muestras_carac(input_data)
 
@@ -650,15 +653,15 @@ def grader_01(functions, variables, caller_userid):
         sw = [i for i in s_model]
         if tw!=sw:
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect estimation of data dimensions&lt;/b&gt; 
+            &lt;b&gt;Incorrect estimation of data dimensions&lt;/b&gt;
             for &lt;tt&gt;input_dim&lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
             Expecting result &lt;pre&gt;{(input_dim,input_n)}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{s_model}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
-            return 0, msg            
-        
+            return 0, msg
+
     return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
-    
+
 source_functions_names_01 = [&#39;num_muestras_carac&#39;]
 source_variables_names_01 = []
 </pre></div>
@@ -668,7 +671,7 @@ source_variables_names_01 = []
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
-def num_muestras_carac(X):    
+def num_muestras_carac(X):
     return (X.shape[1],X.shape[0])
 </pre></div>
 </div>
@@ -732,14 +735,14 @@ teacher.set_grader(teacher.course_id, &quot;L01.01&quot;, &#39;T1&#39;,
     &quot;&quot;&quot;
     N = np.size(Y)
     ecm = np.sum((Y_est.reshape(N,1) - Y.reshape(N,1))**2)/(N)
-    return ecm 
+    return ecm
 
 def regression(X, W):
     &quot;&quot;&quot;calcula la regresión multiple
     X: los valores que corresponden a las características
     W: son los pesos usadados para realizar la regresión
     retorna: valor estimado
-    &quot;&quot;&quot;    
+    &quot;&quot;&quot;
     Yest = np.dot(X,W)    #con np.dot se realiza el producto matricial. Aquí X es dim [Nxd] y W es dim [dx1]
     return Yest           #Esta variable contiene la salida de f(X,W)
 
@@ -751,8 +754,8 @@ def cost_f(W,X,Y):
     Y: el valor de salida esperado
 
     retorna: valor de costo
-    &quot;&quot;&quot;    
-    
+    &quot;&quot;&quot;
+
     m = len(Y)
     y_est = regression(X,W)
     cost = (1/2*m) * np.sum(np.square(y_est-Y))
@@ -762,7 +765,7 @@ def extension_matriz(X):
     &quot;&quot;&quot;función que realiza la extensión de la matriz X
     X: los valores que corresponden a las características sin extender
     Y: el valor de salida esperado
-    
+
     retorna: X_ext: matriz con unos extendidos, Y: matriz con dimensiones ajustadas
     &quot;&quot;&quot;
     #Obtenemos las dimensiones antes de exteneder la matriz
@@ -813,9 +816,9 @@ def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
     #Inicializamos el vector de parámetros con ceros
     if w_ini is not None:
         W = w_ini
-    else:    
+    else:
         W = np.zeros((1,caracterisitcas))
-    W = W.reshape(np.size(W), 1)    
+    W = W.reshape(np.size(W), 1)
     # incializamos vector para almacenar costos
     costos = np.zeros(iteraciones)
 
@@ -823,15 +826,15 @@ def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
         ## Aca debes completar la función! recuerda que solo debes usar numpy (np.funcion_a_usar)
         # o las funciones definidas anteriormente
         # Puedes usar las funciones definidas antes
-        y_est = 
-        f_xw_min_yi = 
-        
+        y_est =
+        f_xw_min_yi =
+
         # acutaliza
         W =
-        
+
         #Estima el valor de la función de costo para el W actual
         costos[i] = cost(W,X_ext,Y)
-        
+
     return W, costos
 </pre></div>
 </div>
@@ -841,8 +844,8 @@ def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
 def gradiente_descendente(X, Y, eta, iteraciones):
-    
-    return 
+
+    return
 </pre></div>
 </div>
 </div>
@@ -866,19 +869,19 @@ def grader_02(functions, variables, caller_userid):
         # nuevamente usamos la función
         # para saber el numero de muestras y caractersiticas
         caracterisitcas, N = num_muestras_carac(X)
-        
+
         unos = np.array([np.ones(N)]).reshape(-1,1)
         X_ext = np.concatenate((unos, X), axis=1)
-        
+
         caracterisitcas = caracterisitcas + 1
-        
+
         #Inicializamos el vector de parámetros con ceros y
 
         if w_ini is not None:
             W = w_ini
-        else:    
+        else:
             W = np.zeros((1,caracterisitcas))
-        W = W.reshape(np.size(W), 1)    
+        W = W.reshape(np.size(W), 1)
         # incializamos vector para almacenar costos
         costos = np.zeros(iteraciones)
 
@@ -893,7 +896,7 @@ def grader_02(functions, variables, caller_userid):
             costos[i] = (1/2*N) * np.sum(np.square(y_est-Y))
 
         return W, costos
-    
+
     # retrieve definitions
     namespace = locals()
     for f in functions.values():
@@ -904,7 +907,7 @@ def grader_02(functions, variables, caller_userid):
     extension_matriz = namespace[&#39;extension_matriz&#39;]
     cost_f = namespace[&#39;cost_f&#39;]
     regression = namespace[&#39;regression&#39;]
-    
+
     eta = 0.0001
     msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
     for _ in range(10):
@@ -912,62 +915,62 @@ def grader_02(functions, variables, caller_userid):
         input_n = np.random.randint(500)+20
         input_data = np.random.randn(input_n,input_dim)
         output_target = np.random.randn(input_n)
-        
+
         #Test for W = zeros
-        
+
         t_W, t_costos = t_gradiente_descendente(input_data, output_target, eta, input_dim)
         s_W, s_costos = s_gradiente_descendente(input_data, output_target, eta, input_dim)
-        
+
         msg = &quot;&quot;
-        
+
         # check first vector dimension
         if len(t_W)!=len(s_W):
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect model dimensions&lt;/b&gt; 
+            &lt;b&gt;Incorrect model dimensions&lt;/b&gt;
             For &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim}&lt;hr/&gt;
             Expecting weights vector dim &lt;pre&gt;{len(t_W)}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{len(s_W)}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
-            return 0, msg 
-            
+            return 0, msg
+
         # check model weights
-        
+
         if not np.allclose(t_W,s_W):
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt; 
+            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt;
             for &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
             Expecting result &lt;pre&gt;{t_W}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{s_W}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
             return 0, msg
-        
+
         # check loss function
         if not np.allclose(t_costos,s_costos):
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt; 
+            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt;
             For &lt;tt&gt;Max iterations &lt;/tt&gt;={input_dim} &lt;hr/&gt;
             Expecting loss function values &lt;pre&gt;{t_costos}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{s_costos}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
-            return 0, msg    
-        
+            return 0, msg
+
         w_ini = np.random.randn(input_dim + 1)*0.01
         t_W, t_costos = t_gradiente_descendente(input_data, output_target, eta, input_dim, w_ini = w_ini)
         s_W, s_costos = s_gradiente_descendente(input_data, output_target, eta, input_dim, w_ini = w_ini)
-        
+
         # check model weights
         if not np.allclose(t_W,s_W):
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect estimation of model parameters for non-zero initialization&lt;/b&gt; 
+            &lt;b&gt;Incorrect estimation of model parameters for non-zero initialization&lt;/b&gt;
             for &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
             Expecting result &lt;pre&gt;{t_W}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{s_W}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
             return 0, msg
-        
-        
+
+
     return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
-    
+
 source_functions_names_02 = [&#39;num_muestras_carac&#39;,&#39;gradiente_descendente&#39;,&#39;extension_matriz&#39;,&#39;cost_f&#39;,&#39;regression&#39;]
 source_variables_names_02 = []
 </pre></div>
@@ -992,12 +995,12 @@ def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
     X_ext = extension_matriz(X)
     caracterisitcas, N = num_muestras_carac(X_ext)
     #Inicializamos el vector de parámetros con ceros y
-    
+
     if w_ini is not None:
         W = w_ini
-    else:    
+    else:
         W = np.zeros((1,caracterisitcas))
-    W = W.reshape(np.size(W), 1)    
+    W = W.reshape(np.size(W), 1)
     # incializamos vector para almacenar costos
     costos = np.zeros(iteraciones)
 
@@ -1010,7 +1013,7 @@ def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
         # acutaliza
         W = W -(eta/N)*f_xw_min_yi.T
         costos[i] = cost_f(W,X_ext,Y)
-        
+
     return W, costos
 </pre></div>
 </div>
@@ -1089,7 +1092,7 @@ Ytest = y[ind[int(math.ceil(0.7*N)):N]]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
-# ¿Porqué debemos hacer partición de datos? ¿Qué representa Xtrain, qué diferencia tiene con Xtest? 
+# ¿Porqué debemos hacer partición de datos? ¿Qué representa Xtrain, qué diferencia tiene con Xtest?
 respuesta = &#39;&#39;
 </pre></div>
 </div>
@@ -1158,14 +1161,15 @@ def grader_03(functions, variables, caller_userid):
     namespace = locals()
     for f in functions.values():
         exec(f, namespace)
-    
+
     num_muestras_carac = namespace[&#39;num_muestras_carac&#39;]
     s_gradiente_descendente = namespace[&#39;gradiente_descendente&#39;]
     s_evaluar_modelo = namespace[&#39;evaluar_modelo&#39;]
     extension_matriz = namespace[&#39;extension_matriz&#39;]
     regression = namespace[&#39;regression&#39;]
     cost_f = namespace[&#39;cost_f&#39;]
-    
+    ECM = namespace[&#39;ECM&#39;]
+
     eta = 0.0001
     msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
     for _ in range(10):
@@ -1173,29 +1177,29 @@ def grader_03(functions, variables, caller_userid):
         input_n = np.random.randint(500)+20
         input_data = np.random.randn(input_n,input_dim)
         output_target = np.random.randn(input_n)
-        
+
         #Test for W = zeros
-    
+
         s_W, _ = s_gradiente_descendente(input_data, output_target, eta, input_dim)
-        
+
         t_ecm = t_evaluar_modelo(s_W, input_data, output_target)
         s_ecm = s_evaluar_modelo(s_W, input_data, output_target)
-        
+
         msg = &quot;&quot;
-        
+
         # check error estimation
         if t_ecm!=s_ecm:
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect error estimation&lt;/b&gt; 
+            &lt;b&gt;Incorrect error estimation&lt;/b&gt;
             For &lt;tt&gt;weight vector &lt;/tt&gt;={s_W}&lt;hr/&gt;
             Expecting ECM &lt;pre&gt;{t_ecm}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{s_ecm}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
-            return 0, msg 
-        
+            return 0, msg
+
     return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
-    
-source_functions_names_03 = [&#39;gradiente_descendente&#39;,&#39;num_muestras_carac&#39;,&#39;evaluar_modelo&#39;,&#39;extension_matriz&#39;,&#39;regression&#39;,&#39;cost_f&#39;]
+
+source_functions_names_03 = [&#39;gradiente_descendente&#39;,&#39;num_muestras_carac&#39;,&#39;evaluar_modelo&#39;,&#39;extension_matriz&#39;,&#39;regression&#39;,&#39;cost_f&#39;,&#39;ECM&#39;]
 source_variables_names_03 = []
 </pre></div>
 </div>
@@ -1299,12 +1303,12 @@ def potenciaPolinomio(X,grado):
     retorna: el valor de X despues de elevarlo al grado del polinimoo indicado
     &quot;&quot;&quot;
     X2 = X.copy()
-    
+
     if grado != 1:
         for i in range(2,grado+1):
             Xadd = X**i
             X2 = np.concatenate((X2, Xadd), axis=1)
-    
+
     return X2
 </pre></div>
 </div>
@@ -1328,13 +1332,13 @@ def gradiente_descendente_poly (X, Y, eta, iteraciones, grado):
     eta: Taza de aprendizaje
     iteraciones: numero de iteraciones maximo para el gradiente
     grado: el valor del polinomio a usar
-    
+
     retorna: W el valor de de los parametros de regresión polinomica
              costo: array con el valor del costo por cada iteracion
-            
+
     &quot;&quot;&quot;
     ## completa el codigo
-    X2 = 
+    X2 =
     W, costo =
     return (W, costo)
 
@@ -1349,9 +1353,9 @@ def evaluar_modelo_poly (W, X_to_test, Y_True, grado):
     retorna: el error cuadratico medio
     &quot;&quot;&quot;
     ## Comienza a completar tu codigo. recuerda usar la funciones ya definidas
-    X2 = 
-    error = 
-    
+    X2 =
+    error =
+
     return(error)
 </pre></div>
 </div>
@@ -1401,7 +1405,7 @@ def grader_04(functions, variables, caller_userid):
     namespace = locals()
     for f in functions.values():
         exec(f, namespace)
-    
+
     s_gradiente_descendente_poly = namespace[&#39;gradiente_descendente_poly&#39;]
     s_evaluar_modelo_poly = namespace[&#39;evaluar_modelo_poly&#39;]
     num_muestras_carac = namespace[&#39;num_muestras_carac&#39;]
@@ -1411,7 +1415,8 @@ def grader_04(functions, variables, caller_userid):
     regression = namespace[&#39;regression&#39;]
     cost_f = namespace[&#39;cost_f&#39;]
     potenciaPolinomio = namespace[&#39;potenciaPolinomio&#39;]
-    
+    ECM = namespace[&#39;ECM&#39;]
+
     eta = 0.0001
     msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
     for _ in range(10):
@@ -1420,63 +1425,63 @@ def grader_04(functions, variables, caller_userid):
         input_n = np.random.randint(500) + 20
         input_data = np.random.randn(input_n,input_dim)
         output_target = np.random.randn(input_n)
-        
+
         #Test for W = zeros
-        
+
         t_W, t_costos = t_gradiente_descendente_poly(input_data, output_target, eta, input_dim, grado)
         s_W, s_costos = s_gradiente_descendente_poly(input_data, output_target, eta, input_dim, grado)
-        
+
         t_ecm = t_evaluar_modelo_poly(t_W, input_data, output_target, grado)
         s_ecm = s_evaluar_modelo_poly(t_W, input_data, output_target, grado)
-        
+
         msg = &quot;&quot;
-        
+
         # check first vector dimension
         if len(t_W)!=len(s_W):
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect model dimensions&lt;/b&gt; 
+            &lt;b&gt;Incorrect model dimensions&lt;/b&gt;
             For &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim}&lt;hr/&gt;
             Expecting weights vector dim &lt;pre&gt;{len(t_W)}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{len(s_W)}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
-            return 0, msg 
-            
+            return 0, msg
+
         # check model weights
-        
+
         if (t_W!=s_W).any():
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt; 
+            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt;
             for &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
             Expecting result &lt;pre&gt;{t_W}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{s_W}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
             return 0, msg
-        
+
         if not np.allclose(t_costos,s_costos):
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt; 
+            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt;
             For &lt;tt&gt;Max iterations &lt;/tt&gt;={input_dim} &lt;hr/&gt;
             Expecting loss function values &lt;pre&gt;{t_costos}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{s_costos}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
-            return 0, msg 
-        
+            return 0, msg
+
         # check error estimation
         if t_ecm!=s_ecm:
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect error estimation&lt;/b&gt; 
+            &lt;b&gt;Incorrect error estimation&lt;/b&gt;
             For &lt;tt&gt;weight vector &lt;/tt&gt;={s_W}&lt;hr/&gt;
             Expecting ECM &lt;pre&gt;{t_ecm}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{s_ecm}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
-            return 0, msg 
-            
+            return 0, msg
+
         # check model weights
-        
-        
+
+
     return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
-    
-source_functions_names_04 = [&#39;evaluar_modelo_poly&#39;,&#39;gradiente_descendente_poly&#39;,&#39;potenciaPolinomio&#39;,&#39;gradiente_descendente&#39;,&#39;num_muestras_carac&#39;,&#39;evaluar_modelo&#39;,&#39;extension_matriz&#39;,&#39;regression&#39;,&#39;cost_f&#39;]
+
+source_functions_names_04 = [&#39;evaluar_modelo_poly&#39;,&#39;gradiente_descendente_poly&#39;,&#39;potenciaPolinomio&#39;,&#39;gradiente_descendente&#39;,&#39;num_muestras_carac&#39;,&#39;evaluar_modelo&#39;,&#39;extension_matriz&#39;,&#39;regression&#39;,&#39;cost_f&#39;,&#39;ECM&#39;]
 source_variables_names_04 = []
 </pre></div>
 </div>
@@ -1493,10 +1498,10 @@ def gradiente_descendente_poly (X, Y, eta, iteraciones, grado):
     eta: Taza de aprendizaje
     iteraciones: numero de iteraciones maximo para el gradiente
     grado: el valor del polinomio a usar
-    
+
     retorna: W el valor de de los parametros de regresión polinomica
              costo: array con el valor del costo por cada iteracion
-            
+
     &quot;&quot;&quot;
     ## completa el codigo
     X2 = potenciaPolinomio(X,grado)
@@ -1516,7 +1521,7 @@ def evaluar_modelo_poly (W, X_to_test, Y_True, grado):
     ## Comienza a completar tu codigo. recuerda usar la funciones ya definidas
     X2 = potenciaPolinomio(X_to_test,grado)
     error = evaluar_modelo (W, X2, Y_True)
-    
+
     return(error)
 </pre></div>
 </div>
@@ -1602,9 +1607,9 @@ def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
     Xtest: conjunto de datos para evaluación
     Ytrain: salidas reales del conjunto de entrenamiento
     Ytest: salidas reales del conjunto de evaluación
-    tasas: Es una lista con los valores númericos de tasas de aprendizaje 
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje
         para realizar los experimentos
-    grados: Es una lista con los valores númericos de grados 
+    grados: Es una lista con los valores númericos de grados
         para realizar los experimentos
     retorna: un dataframe con el resultados de los experimentos
     &quot;&quot;&quot;
@@ -1614,11 +1619,11 @@ def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
     idx = 0 # indice
     for eta in tasas:
         for grado in grados:
-            
+
             # ignorar el costo
             W, _ = ...
             error = ...
-        
+
             resultados.loc[idx,&#39;grado&#39;] = grado
             resultados.loc[idx,&#39;tasa de aprendizaje&#39;] = eta
             resultados.loc[idx,&#39;ecm&#39;] = error
@@ -1638,9 +1643,9 @@ def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
     Xtest:
     Ytrain:
     Ytest:
-    tasas: Es una lista con los valores númericos de tasas de aprendizaje 
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje
         para realizar los experimentos
-    grados: Es una lista con los valores númericos de grados 
+    grados: Es una lista con los valores númericos de grados
         para realizar los experimentos
     retorna: un dataframe con el resultados de los experimentos
     &quot;&quot;&quot;
@@ -1650,11 +1655,11 @@ def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
     idx = 0 # indice
     for eta in tasas:
         for grado in grados:
-            
+
             # ignorar el costo
             W, _ = gradiente_descendente_poly (Xtrain, Ytrain, eta, numero_iter, grado)
             error = evaluar_modelo_poly (W, Xtest, Ytest, grado)
-        
+
             resultados.loc[idx,&#39;grado&#39;] = grado
             resultados.loc[idx,&#39;tasa de aprendizaje&#39;] = eta
             resultados.loc[idx,&#39;ecm&#39;] = error
@@ -1770,7 +1775,7 @@ def normalizar(Xtrain, Xtest):
     Xtest: matriz de datos de evaluación a normalizar
     retorna: matrices normalizadas
     &quot;&quot;&quot;
-    
+
     Xtrain_n = ...
     Xtest_n = ...
     # si hay una desviacion por cero, reemplazamos los nan
@@ -1808,11 +1813,11 @@ def grader_05(functions, variables, caller_userid):
     namespace = locals()
     for f in functions.values():
         exec(f, namespace)
-    
+
     s_normalizar = namespace[&#39;normalizar&#39;]
     potenciaPolinomio = namespace[&#39;potenciaPolinomio&#39;]
-   
-    
+
+
     msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
     for _ in range(10):
         input_dim = np.random.randint(5)+5
@@ -1820,39 +1825,39 @@ def grader_05(functions, variables, caller_userid):
         input_n = np.random.randint(500) + 20
         x_train = potenciaPolinomio(np.random.randn(input_n,input_dim)+np.random.randn(input_n,input_dim),grado)
         x_test = potenciaPolinomio(np.random.randn(int(input_n*0.5),input_dim),grado)
-        
+
         #Test for W = zeros
-        
+
         t_x_train_n, t_x_test_n = t_normalizar(x_train,x_test)
         s_x_train_n, s_x_test_n = s_normalizar(x_train,x_test)
-        
+
         msg = &quot;&quot;
-        
-            
+
+
         # check model weights
-        
+
         if (t_x_train_n!=s_x_train_n).any():
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect normalization of training set&lt;/b&gt; 
+            &lt;b&gt;Incorrect normalization of training set&lt;/b&gt;
             Expecting result &lt;pre&gt;{t_x_train_n}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{s_x_train_n}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
             return 0, msg
-        
+
         # check error estimation
         if (t_x_test_n!=s_x_test_n).any():
             msg += f&quot;&quot;&quot;
-            &lt;b&gt;Incorrect normalization of testing set&lt;/b&gt; 
+            &lt;b&gt;Incorrect normalization of testing set&lt;/b&gt;
             Expecting result &lt;pre&gt;{t_x_test_n}&lt;/pre&gt; &lt;br/&gt;
             but got &lt;pre&gt;{s_x_test_n}&lt;/pre&gt;&lt;br/&gt;\n
             &quot;&quot;&quot;
             return 0, msg
-            
+
         # check model weights
-        
-        
+
+
     return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
-    
+
 source_functions_names_05 = [&#39;potenciaPolinomio&#39;,&#39;normalizar&#39;]
 source_variables_names_05 = []
 </pre></div>
@@ -1869,7 +1874,7 @@ def normalizar(Xtrain, Xtest):
     Xtest: matriz de datos de evaluación a normalizar
     retorna: matrices normalizadas
     &quot;&quot;&quot;
-    
+
     media = np.mean(Xtrain, axis = 0)
     desvia = np.std(Xtrain, axis = 0)
     Xtrain_n = (Xtrain - media )/desvia
@@ -2070,9 +2075,9 @@ def experimentar_2 (Xtrain, Xtest, Ytrain, Ytest, iteraciones, grados):
     Xtest: conjunto de datos para evaluación
     Ytrain: salida real para el conjunto de entrenamiento
     Ytest: salida real para el conjunto de evaluación
-    tasas: Es una lista con los valores númericos de tasas de aprendizaje 
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje
         para realizar los experimentos
-    rangos: Es una lista con los valores númericos de grados 
+    rangos: Es una lista con los valores númericos de grados
         para realizar los experimentos
     retorna: un dataframe con el resultados de los experimentos
     &quot;&quot;&quot;
@@ -2084,7 +2089,7 @@ def experimentar_2 (Xtrain, Xtest, Ytrain, Ytest, iteraciones, grados):
             # ignora el costo
             W , _= ...
             error = ...
-        
+
             resultados.loc[idx,&#39;iteraciones&#39;] = itera
             resultados.loc[idx,&#39;grado&#39;] = grado
             resultados.loc[idx,&#39;ecm&#39;] = error
@@ -2103,9 +2108,9 @@ def experimentar_2 (Xtrain, Xtest, Ytrain, Ytest, iteraciones, grados):
     Xtest:
     Ytrain:
     Ytest:
-    tasas: Es una lista con los valores númericos de tasas de aprendizaje 
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje
         para realizar los experimentos
-    rangos: Es una lista con los valores númericos de grados 
+    rangos: Es una lista con los valores númericos de grados
         para realizar los experimentos
     retorna: un dataframe con el resultados de los experimentos
     &quot;&quot;&quot;
@@ -2117,7 +2122,7 @@ def experimentar_2 (Xtrain, Xtest, Ytrain, Ytest, iteraciones, grados):
             # ignora el costo
             W , _= gradiente_descendente_poly (Xtrain, Ytrain, eta, itera, grado)
             error = evaluar_modelo_poly (W, Xtest, Ytest, grado)
-        
+
             resultados.loc[idx,&#39;iteraciones&#39;] = itera
             resultados.loc[idx,&#39;grado&#39;] = grado
             resultados.loc[idx,&#39;ecm&#39;] = error
@@ -2167,7 +2172,7 @@ plt.show()
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
-# --- CREATE or OVERWRITE STUDENTS NOTEBOOK --- 
+# --- CREATE or OVERWRITE STUDENTS NOTEBOOK ---
 import init
 from local.lib.rlxmoocapi import utils
 student_notebook_fname = utils.convert_this_notebook_to_student()
@@ -2177,36 +2182,36 @@ student_notebook_fname = utils.convert_this_notebook_to_student()
 <div class="cell_output docutils container">
 <script type="application/javascript">IPython.notebook.save_checkpoint();</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipynbname in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (2024.1.0.0)
 Requirement already satisfied: ipykernel in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipynbname) (6.19.3)
-Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
-Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
+Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
 Requirement already satisfied: traitlets&gt;=5.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.8.0)
 Requirement already satisfied: pyzmq&gt;=17 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.0.1)
-Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
-Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
-Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
+Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
 Requirement already satisfied: packaging in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.2)
-Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
+Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
 Requirement already satisfied: debugpy&gt;=1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.6.4)
 Requirement already satisfied: psutil in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.9.4)
-Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
-Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
 Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.11 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (3.0.36)
 Requirement already satisfied: decorator in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (5.1.1)
-Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
 Requirement already satisfied: stack-data in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.6.2)
 Requirement already satisfied: pygments&gt;=2.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.19.1)
+Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
 Requirement already satisfied: backcall in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.0)
-Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
-Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
 Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.8.2)
+Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
 Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (5.1.0)
 Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.8.3)
 Requirement already satisfied: platformdirs&gt;=2.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-core&gt;=4.9.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.6.0)
 Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.0)
 Requirement already satisfied: wcwidth in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.11-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.5)
 Requirement already satisfied: six&gt;=1.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (1.16.0)
-Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
 Requirement already satisfied: pure-eval in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
 Requirement already satisfied: executing&gt;=1.2.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (1.2.0)
 NOTEBOOK name is lab1_parte1--XX--TEACHER--XX.ipynb
 student notebook writen to &#39;lab1_parte1.ipynb&#39;

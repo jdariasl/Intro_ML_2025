@@ -232,7 +232,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -455,7 +455,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-2-clasificacion-con-k-vecinos">Tarea 2: Clasificación con K-vecinos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-3-evaluar-el-modelo-de-k-vecinos">Tarea 3: Evaluar el modelo de K-vecinos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-4-ventana-de-parzen">Tarea 4: Ventana de Parzen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-5-validar-modelo-ventana-de-parzen">Tarea 5 - Validar modelo ventana de Parzen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-5-validar-modelo-ventana-con-parzen">Tarea 5 - Validar modelo ventana con Parzen</a></li>
 </ul>
             </nav>
         </div>
@@ -640,7 +640,7 @@ def knn_clasificacion (k, X_train, Y_train, X_test):
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de codigo
-def train_test_split_fix(X, y, test_size, random_state):
+def train_test_split_fix(X, y, test_size=..., random_state=...):
     &quot;&quot;&quot;función que divide el conjunto de datos en
         entrenamiento y pruebas usando una proporción
         fija de 20 % (test_size) para el conjunto de pruebas.
@@ -809,8 +809,8 @@ def parzenClass(h, Xtrain, Ytrain, Xtest):
 </div>
 </div>
 </section>
-<section id="tarea-5-validar-modelo-ventana-de-parzen">
-<h2>Tarea 5 - Validar modelo ventana de Parzen<a class="headerlink" href="#tarea-5-validar-modelo-ventana-de-parzen" title="Link to this heading">#</a></h2>
+<section id="tarea-5-validar-modelo-ventana-con-parzen">
+<h2>Tarea 5 - Validar modelo ventana con Parzen<a class="headerlink" href="#tarea-5-validar-modelo-ventana-con-parzen" title="Link to this heading">#</a></h2>
 <p>Ahora vamos a realizar los experimentos, recordar usar la misma metodologia de validación, usando la función previamente creada.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -956,7 +956,7 @@ respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-2-clasificacion-con-k-vecinos">Tarea 2: Clasificación con K-vecinos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-3-evaluar-el-modelo-de-k-vecinos">Tarea 3: Evaluar el modelo de K-vecinos</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-4-ventana-de-parzen">Tarea 4: Ventana de Parzen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-5-validar-modelo-ventana-de-parzen">Tarea 5 - Validar modelo ventana de Parzen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-5-validar-modelo-ventana-con-parzen">Tarea 5 - Validar modelo ventana con Parzen</a></li>
 </ul>
   </nav></div>
 
