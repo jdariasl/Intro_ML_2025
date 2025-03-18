@@ -579,7 +579,8 @@ def get_GMM_classifier(n_components,covariance_type,max_iter=100,n_init=5,init_p
         self.random_state = random_state
         self.models = {}
         self.class_labels =[]
-    def train(self,X,Y):
+
+    def fit(self,X,Y):
       &quot;&quot;&quot;
       retorna: almacena el diccionario de modelos entrenados y las etiquetas de
       las clases. Las etiquetas de las clases se usan como keys en el diccionario

@@ -478,7 +478,11 @@ import init; init.init(force_download=False); init.get_weblink()
 <meta name="google-signin-client_id"
       content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
 <script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
-    </div><div class="output text_html"><h3>See <a href='https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+    </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>replicating local resources
+replicating Labs resources
+</pre></div>
+</div>
+<div class="output text_html"><h3>See <a href='https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -488,6 +492,136 @@ session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+
+<script>
+console.log("loading...")
+function http_post(url, data, callback){
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if (this.status!=200) {
+                var t = JSON.parse(this.responseText)
+                if ("error" in t) {
+                    window.alert(t["error"])
+                } else {
+                    console.log(this.responseText)
+                    window.alert("Unknown error, check the javascript console")
+                }
+            } else {
+                callback(JSON.parse(this.responseText))
+            }
+        }
+    }    
+    console.log("POSTING TO", url)
+    xhttp.open("POST", url, true);
+    if (typeof data == 'undefined') {
+        xhttp.send()
+    } else {
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send( JSON.stringify(data) );    
+    }
+}
+
+function google_button_start() {
+      window.google_code = '';
+      gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+          client_id: window.google_client_id,
+        });
+      });
+    }
+    
+    
+function user_info_callback(user_info) {
+    window.user_info = user_info
+    window.google_token = user_info['google_token']
+    var s = "you are "+user_info['email'] +" .... wait for the cell below to complete signup"
+    s = '-----------\n'+s+'\n-----------'
+    var cell = Jupyter.notebook.get_cell(window.current_cell_idx)    
+    cell.clear_output()
+    cell.output_area.append_output({output_type: "stream", text: s, name: "stdout"})
+    IPython.notebook.kernel.execute("global google_token; google_token = '"+window.google_token+"'");
+    insert_login_cell()
+    var next_cell = Jupyter.notebook.get_cell(window.current_cell_idx+1)    
+    next_cell.execute()
+}
+
+
+window.user_info_callback = user_info_callback
+ 
+function insert_login_cell() {
+
+    var cell_idx = window.current_cell_idx
+    var cell = Jupyter.notebook.get_cell(window.current_cell_idx+1)
+    var next_cell_content = JSON.parse(JSON.stringify(cell))['source']
+    
+    s = "student = session.Session(init.endpoint).login(course_id='\S*introml\S*', lab_id='L03.01', google_token=google_token)"
+    if (next_cell_content!==s) {
+        if (!next_cell_content.includes("session.Session")) {
+            Jupyter.notebook.insert_cell_below('code', cell_idx)
+        }
+        var cell = Jupyter.notebook.get_cell(cell_idx+1)
+        s = "student = session.Session(init.endpoint).login(course_id=init.course_id, lab_id='L03.01', google_token=google_token)"
+        cell.set_text(s)
+    }
+
+} 
+ 
+function google_button_callback(code) {
+    var cell = Jupyter.notebook.get_cell(window.current_cell_idx)    
+    cell.clear_output()
+    cell.output_area.append_output({output_type: "stream", text: "-----------\nauthenticating ... please wait\n-----------", name: "stdout"})
+
+    window.google_code = code['code']  
+    
+    IPython.notebook.kernel.execute("global google_code; google_code = '"+window.google_code+"'");
+    
+    data = {'google_code': code['code'],
+            'redirect_uri': window.location.origin}            
+                        
+            
+    r = http_post("https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/api"+"/gu", data=data, callback=window.user_info_callback)
+}
+    
+</script>
+
+<style>
+.hidden {
+  visibility: hidden;
+}
+
+.google_button { 
+    color:black ; 
+    font-size:100%;
+    background: url('https://developers-dot-devsite-v2-prod.appspot.com/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    vertical-align: middle;
+    border: thin solid #888;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.login_button { 
+    color:black ; 
+    font-size:100%;
+    background: transparent;
+    display: inline-block;
+    vertical-align: middle;
+    border: thin solid #888;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+</style>
+        </div><script type="application/vnd.jupyter.widget-view+json">{"model_id": "34aeec4aa80f41c2b94054c7a61dec34", "version_major": 2, "version_minor": 0}</script><script type="application/javascript">
+        var cell_element = this.element.parents('.cell');
+        window.current_cell_idx = Jupyter.notebook.get_cell_elements().index(cell_element);    
+        </script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -752,7 +886,8 @@ def get_GMM_classifier(n_components,covariance_type,max_iter=100,n_init=5,init_p
         self.random_state = random_state
         self.models = {}
         self.class_labels =[]
-    def train(self,X,Y):
+
+    def fit(self,X,Y):
       &quot;&quot;&quot;
       retorna: almacena el diccionario de modelos entrenados y las etiquetas de
       las clases. Las etiquetas de las clases se usan como keys en el diccionario
@@ -816,7 +951,8 @@ def grader_02(functions, variables, caller_userid):
             self.random_state = random_state
             self.models = {}
             self.class_labels =[]
-        def train(self,X,Y):
+
+        def fit(self,X,Y):
           self.class_labels = np.unique(Y)
           for label in self.class_labels:
             mask = Y == label
@@ -883,8 +1019,8 @@ def grader_02(functions, variables, caller_userid):
       input_data = np.random.randn(input_n,input_dim)
       n_class = np.random.randint(3)+2
       output_target = np.random.randint(n_class, size=input_n)
-      s_GMM.train(input_data,output_target)
-      t_GMM.train(input_data,output_target)
+      s_GMM.fit(input_data,output_target)
+      t_GMM.fit(input_data,output_target)
 
 
       msg = &quot;&quot;
@@ -953,7 +1089,8 @@ def get_GMM_classifier(n_components,covariance_type,max_iter=100,n_init=5,init_p
             self.random_state = random_state
             self.models = {}
             self.class_labels =[]
-        def train(self,X,Y):
+
+        def fit(self,X,Y):
           self.class_labels = np.unique(Y)
           for label in self.class_labels:
             mask = Y == label
@@ -1026,7 +1163,7 @@ teacher.set_grader(teacher.course_id, &quot;L03.01&quot;, &#39;T2&#39;,
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-45-ee06e9f6a0ee&gt;</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="nn">&lt;ipython-input-2-ee06e9f6a0ee&gt;</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">student</span><span class="o">.</span><span class="n">submit_task</span><span class="p">(</span><span class="n">namespace</span><span class="o">=</span><span class="nb">globals</span><span class="p">(),</span> <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;T2&#39;</span><span class="p">);</span>
 
 <span class="ne">NameError</span>: name &#39;student&#39; is not defined
@@ -1138,7 +1275,8 @@ def grader_03(functions, variables, caller_userid):
             self.random_state = random_state
             self.models = {}
             self.class_labels =[]
-        def train(self,X,Y):
+
+        def fit(self,X,Y):
           self.class_labels = np.unique(Y)
           for label in self.class_labels:
             mask = Y == label
@@ -1215,7 +1353,7 @@ def grader_03(functions, variables, caller_userid):
                   Xtest = scaler.transform(Xtest)
                   #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
                   gmms = t_get_GMM_classifier(M,cov_tipo)
-                  gmms.train(Xtrain,Ytrain)
+                  gmms.fit(Xtrain,Ytrain)
                   #Validación
                   Ytrain_pred = gmms.predict(Xtrain)
                   Yest = gmms.predict(Xtest)
@@ -1327,7 +1465,7 @@ def experimentar(X, Y, covariance_types,num_components):
                 Xtest = scaler.transform(Xtest)
                 #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
                 gmms = get_GMM_classifier(M,cov_tipo)
-                gmms.train(Xtrain,Ytrain)
+                gmms.fit(Xtrain,Ytrain)
                 #Validación
                 Ytrain_pred = gmms.predict(Xtrain)
                 Yest = gmms.predict(Xtest)
@@ -2787,45 +2925,6 @@ respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 import init
 from local.lib.rlxmoocapi import utils
 student_notebook_fname = utils.convert_this_notebook_to_student()
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/javascript">IPython.notebook.save_checkpoint();</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipynbname in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (2024.1.0.0)
-Requirement already satisfied: ipykernel in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipynbname) (6.19.3)
-Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
-Requirement already satisfied: psutil in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.9.4)
-Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
-Requirement already satisfied: packaging in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.2)
-Requirement already satisfied: debugpy&gt;=1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.6.4)
-Requirement already satisfied: pyzmq&gt;=17 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.0.1)
-Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
-Requirement already satisfied: traitlets&gt;=5.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.8.0)
-Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
-Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
-Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
-Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
-Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.11 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (3.0.36)
-Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
-Requirement already satisfied: decorator in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (5.1.1)
-Requirement already satisfied: backcall in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.0)
-Requirement already satisfied: pygments&gt;=2.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.19.1)
-Requirement already satisfied: stack-data in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.6.2)
-Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
-Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.8.2)
-Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (5.1.0)
-Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
-Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.8.3)
-Requirement already satisfied: platformdirs&gt;=2.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-core&gt;=4.9.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.6.0)
-Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.0)
-Requirement already satisfied: wcwidth in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.11-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.5)
-Requirement already satisfied: six&gt;=1.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (1.16.0)
-Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
-Requirement already satisfied: executing&gt;=1.2.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (1.2.0)
-Requirement already satisfied: pure-eval in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.2)
-NOTEBOOK name is lab3_parte1--XX--TEACHER--XX.ipynb
-student notebook writen to &#39;lab3_parte1.ipynb&#39;
 </pre></div>
 </div>
 </div>

@@ -230,7 +230,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -464,28 +464,49 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><strong>Recuerda que una vez abierto, Da clic en “Copiar en Drive”, de lo contrario no podras almacenar tu progreso</strong></p>
-<p>Nota: no olvide ir ejecutando las celdas de código de arriba hacia abajo para que no tenga errores de importación de librerías o por falta de definición de variables.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-3-parte-2-comparacion-de-metodos-basados-en-arboles">
+<h1>Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles<a class="headerlink" href="#laboratorio-3-parte-2-comparacion-de-metodos-basados-en-arboles" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
-# Ejecuta esta celda!
-%load_ext autoreload
-%autoreload 2
-#for local 
-#import sys ; sys.path.append(&#39;../commons/utils/&#39;)
-!wget https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/commons/utils/general.py -O general.py --no-cache
-from general import configure_lab3
-configure_lab3()
-from lab3 import *
-GRADER = part_2()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output text_html"><h3>See <a href='https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L03.02&quot;, varname=&quot;student&quot;);
 </pre></div>
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="laboratorio-3-parte-2-comparacion-de-metodos-basados-en-arboles">
-<h1>Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles<a class="headerlink" href="#laboratorio-3-parte-2-comparacion-de-metodos-basados-en-arboles" title="Link to this heading">#</a></h1>
-<p>A continuación se leen los datos de un problema de clasificación. El problema corresponde a la clasifiación de dígitos escritos a mano, el cual fue abordado en el laboratorio anterior. Usaremos únicamente 4 de las 10 clases disponibles, usando solo los números pares. Los datos fueron preprocesados para reducir el número de características. La técnica usada será analizada más adelante en el curso.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student = session.Session(init.endpoint).login(course_id=init.course_id, lab_id=&#39;L03.02&#39;, google_token=google_token)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
+# Ejecuta esta celda!
+from Labs.commons.utils.lab3 import *
+_ = part_2()
+</pre></div>
+</div>
+</div>
+</div>
+<p>A continuación se leen los datos de un problema de clasificación. El problema corresponde a la clasifiación de dígitos escritos a mano, el cual fue abordado en el laboratorio anterior. Usaremos únicamente 4 de las 10 clases disponibles, usando solo los números pares. Nuevamente, los datos fueron preprocesados con PCA para reducir el número de características.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>digits = load_digits(n_class=10)
@@ -501,7 +522,7 @@ y =  digits.target[np.isin(digits.target, [2,4,6,8,10])]
 </div>
 <section id="ejercicio-1-experimentos-con-arboles-de-decision">
 <h2>Ejercicio 1 Experimentos con Arboles de decisión<a class="headerlink" href="#ejercicio-1-experimentos-con-arboles-de-decision" title="Link to this heading">#</a></h2>
-<p>Debe consultar todo lo relacionado con la creación, entrenamiento y uso en predicción de este modelo usando la librería scikit-learn. En este enlace, se puede leer la documentación <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html">http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html</a>.</p>
+<p>Debe consultar todo lo relacionado con la creación, entrenamiento y uso en predicción del modelo conocido como árbol de decisión usando la librería scikit-learn. En este enlace, se puede leer la documentación <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html">http://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html</a>.</p>
 <p>En el notebook, ya se encuentra cargada la libreria:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 </pre></div>
@@ -510,8 +531,8 @@ y =  digits.target[np.isin(digits.target, [2,4,6,8,10])]
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown  Entre el parametro max_features y max_depth definidos en la librería, ¿cual es un criterio de parada de crecimiento de los arboles? Explique en sus palabras
-respuesta_1 = &quot;&quot; #@param {type:&quot;string&quot;}
+#@markdown  ¿Qué efecto tienen los parámetros min_samples_split y max_depth definidos en la librería?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
@@ -520,7 +541,7 @@ respuesta_1 = &quot;&quot; #@param {type:&quot;string&quot;}
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
 #@markdown ¿Cuál es la diferencia entre min_samples_leaf y min_samples_split? Y explique la diferencia fundamental de estos dos con respecto a min_impurity_decrease.
-respuesta_2 = &quot;&quot; #@param {type:&quot;string&quot;}
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
@@ -539,17 +560,17 @@ respuesta_2 = &quot;&quot; #@param {type:&quot;string&quot;}
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
 def experimentar_dt( X, Y, depths,normalize):
-    &quot;&quot;&quot;funcion que realiza experimentos de arboles de decision
-    X: matriz con las caractersiticas
+    &quot;&quot;&quot;función que realiza experimentos con árboles de decisión
+    X: matriz con las características
     Y: matriz de numpy con etiquetas
     depths: list[int] lista con la profundidad de arboles a experimentar
     normalize bool: indica si se aplica normalización a los datos
     retorna: dataframe con:
-        - profunidad de los arboles
+        - profunidad de los árboles
         - eficiencia de entrenamiento
-        - desviacion de estandar eficiencia de entrenamiento
+        - desviación estandar de la eficiencia de entrenamiento
         - eficiencia de prueba
-        - desviacion estandar eficiencia de prueba
+        - desviación estandar de la eficiencia de prueba
     &quot;&quot;&quot;
     folds = 4
     skf = StratifiedKFold(n_splits=folds)
@@ -572,7 +593,8 @@ def experimentar_dt( X, Y, depths,normalize):
                 Xtrain= scaler.transform(Xtrain)
                 Xtest = scaler.transform(Xtest)
             #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
-            modelo = 
+            #Ajuste la semilla en 0 para garantizar la reproducibilidad de los resultados
+            modelo =
             modelo
             #predecir muestras de entrenamiento
             Ytrain_pred = modelo
@@ -583,12 +605,12 @@ def experimentar_dt( X, Y, depths,normalize):
             EficienciaVal.append(np.mean(Yest.ravel() == Ytest.ravel()))
 
         resultados.loc[idx,&#39;profunidad del arbol&#39;] = depth
-        resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = 
-        resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] = 
+        resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] =
+        resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] =
         resultados.loc[idx,&#39;eficiencia de prueba&#39;] =
-        resultados.loc[idx,&#39;desviacion estandar prueba&#39;] = 
+        resultados.loc[idx,&#39;desviacion estandar prueba&#39;] =
         idx= idx +1
-        
+
     return (resultados)
 </pre></div>
 </div>
@@ -596,8 +618,237 @@ def experimentar_dt( X, Y, depths,normalize):
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio1&quot;, experimentar_dt)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+from local.lib.rlxmoocapi import submit, session
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L03.02&quot;, varname=&quot;teacher&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logging in as julian.ariasl@udea.edu.co... please wait
+
+-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>teacher = session.Session(init.endpoint).login(course_id=init.course_id, lab_id=&#39;L03.02&#39;, google_token=google_token)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_01(functions, variables, caller_userid):
+    import numpy as np
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import StratifiedKFold
+    import pandas as pd
+    from sklearn.tree import DecisionTreeClassifier
+
+    def t_experimentar_dt( X, Y, depths,normalize):
+      &quot;&quot;&quot;función que realiza experimentos con árboles de decisión
+      X: matriz con las características
+      Y: matriz de numpy con etiquetas
+      depths: list[int] lista con la profundidad de arboles a experimentar
+      normalize bool: indica si se aplica normalización a los datos
+      retorna: dataframe con:
+          - profunidad de los árboles
+          - eficiencia de entrenamiento
+          - desviación estandar de la eficiencia de entrenamiento
+          - eficiencia de prueba
+          - desviación estandar de la eficiencia de prueba
+      &quot;&quot;&quot;
+      folds = 4
+      skf = StratifiedKFold(n_splits=folds)
+      resultados = pd.DataFrame()
+      idx = 0
+      for depth in depths:
+          ## para almacenar los errores intermedios
+          EficienciaTrain = []
+          EficienciaVal = []
+          for train, test in skf.split(X, Y):
+              Xtrain = X[train,:]
+              Ytrain = Y[train]
+              Xtest = X[test,:]
+              Ytest = Y[test]
+              #Normalizamos los datos
+              # si la bandera esta en True
+              if normalize:
+                  scaler = StandardScaler()
+                  scaler.fit(Xtrain)
+                  Xtrain= scaler.transform(Xtrain)
+                  Xtest = scaler.transform(Xtest)
+              #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+              modelo = DecisionTreeClassifier(max_depth=depth, random_state=0)
+              modelo.fit(Xtrain,Ytrain)
+              #predecir muestras de entrenamiento
+              Ytrain_pred = modelo.predict(Xtrain)
+              #predecir muestras de pruebas
+              Yest = modelo.predict(Xtest)
+              #Evaluamos las predicciones del modelo con los datos de test
+              EficienciaTrain.append(np.mean(Ytrain_pred.ravel() == Ytrain.ravel()))
+              EficienciaVal.append(np.mean(Yest.ravel() == Ytest.ravel()))
+
+          resultados.loc[idx,&#39;profunidad del arbol&#39;] = depth
+          resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = np.mean(EficienciaTrain)
+          resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] = np.std(EficienciaTrain)
+          resultados.loc[idx,&#39;eficiencia de prueba&#39;] = np.mean(EficienciaVal)
+          resultados.loc[idx,&#39;desviacion estandar prueba&#39;] = np.std(EficienciaVal)
+          idx= idx +1
+
+      return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_experimentar_dt = namespace[&#39;experimentar_dt&#39;]
+
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+
+    for _ in range(10):
+
+      input_dim = np.random.randint(5)+5
+      input_n = np.random.randint(500) + 20
+      input_data = np.random.randn(input_n,input_dim)
+      n_class = np.random.randint(3)+2
+      depths = np.random.randint(10, size=10)+2
+      output_target = np.random.randint(n_class, size=input_n)
+      normalize = np.random.randint(2)
+
+
+      t_results = t_experimentar_dt(input_data,output_target,depths,normalize)
+      s_results = s_experimentar_dt(input_data,output_target,depths,normalize)
+
+      msg = &quot;&quot;
+      if not t_results.shape == s_results.shape:
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect number of experiments&lt;/b&gt;
+        Expecting result shape &lt;pre&gt;{t_results.shape}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{s_results.shape}&lt;/pre&gt;&lt;br/&gt;\n
+        &quot;&quot;&quot;
+        return 0, msg
+
+      if not np.array_equal(t_results.values, s_results.values):
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect results&lt;/b&gt;
+        Expecting results &lt;pre&gt;{t_results.values}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{s_results.values}&lt;/pre&gt;&lt;br/&gt;\n
+        Check hyperparameter settings
+        &quot;&quot;&quot;
+        return 0, msg
+
+
+      return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+source_functions_names_01 = [&#39;experimentar_dt&#39;]
+source_variables_names_01 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def experimentar_dt( X, Y, depths,normalize):
+    &quot;&quot;&quot;función que realiza experimentos con árboles de decisión
+    X: matriz con las características
+    Y: matriz de numpy con etiquetas
+    depths: list[int] lista con la profundidad de arboles a experimentar
+    normalize bool: indica si se aplica normalización a los datos
+    retorna: dataframe con:
+        - profunidad de los árboles
+        - eficiencia de entrenamiento
+        - desviación estandar de la eficiencia de entrenamiento
+        - eficiencia de prueba
+        - desviación estandar de la eficiencia de prueba
+    &quot;&quot;&quot;
+    folds = 4
+    skf = StratifiedKFold(n_splits=folds)
+    resultados = pd.DataFrame()
+    idx = 0
+    for depth in depths:
+        ## para almacenar los errores intermedios
+        EficienciaTrain = []
+        EficienciaVal = []
+        for train, test in skf.split(X, Y):
+            Xtrain = X[train,:]
+            Ytrain = Y[train]
+            Xtest = X[test,:]
+            Ytest = Y[test]
+            #Normalizamos los datos
+            # si la bandera esta en True
+            if normalize:
+                scaler = StandardScaler()
+                scaler.fit(Xtrain)
+                Xtrain= scaler.transform(Xtrain)
+                Xtest = scaler.transform(Xtest)
+            #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+            modelo = DecisionTreeClassifier(max_depth=depth, random_state=0)
+            modelo.fit(Xtrain,Ytrain)
+            #predecir muestras de entrenamiento
+            Ytrain_pred = modelo.predict(Xtrain)
+            #predecir muestras de pruebas
+            Yest = modelo.predict(Xtest)
+            #Evaluamos las predicciones del modelo con los datos de test
+            EficienciaTrain.append(np.mean(Ytrain_pred.ravel() == Ytrain.ravel()))
+            EficienciaVal.append(np.mean(Yest.ravel() == Ytest.ravel()))
+
+        resultados.loc[idx,&#39;profunidad del arbol&#39;] = depth
+        resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = np.mean(EficienciaTrain)
+        resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] = np.std(EficienciaTrain)
+        resultados.loc[idx,&#39;eficiencia de prueba&#39;] = np.mean(EficienciaVal)
+        resultados.loc[idx,&#39;desviacion estandar prueba&#39;] = np.std(EficienciaVal)
+        idx= idx +1
+
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_01&quot;, source_functions_names_01, source_variables_names_01, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L03.02&quot;, &#39;T1&#39;,
+                  inspect.getsource(grader_01), &#39;grader_01&#39;,
+                  source_functions_names_01, source_variables_names_01)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-34-d48278dc7540&gt;</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">student</span><span class="o">.</span><span class="n">submit_task</span><span class="p">(</span><span class="n">namespace</span><span class="o">=</span><span class="nb">globals</span><span class="p">(),</span> <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;T1&#39;</span><span class="p">);</span>
+
+<span class="ne">NameError</span>: name &#39;student&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -611,22 +862,696 @@ resultados_dt_no_norm
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-d52af16d-dedc-45a2-8b19-40a87933970e" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>profunidad del arbol</th>
+      <th>eficiencia de entrenamiento</th>
+      <th>desviacion estandar entrenamiento</th>
+      <th>eficiencia de prueba</th>
+      <th>desviacion estandar prueba</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.0</td>
+      <td>0.994859</td>
+      <td>0.002763</td>
+      <td>0.911658</td>
+      <td>0.018697</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.927060</td>
+      <td>0.034874</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>20.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.927060</td>
+      <td>0.034874</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>30.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.927060</td>
+      <td>0.034874</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>50.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.927060</td>
+      <td>0.034874</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d52af16d-dedc-45a2-8b19-40a87933970e')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-d52af16d-dedc-45a2-8b19-40a87933970e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d52af16d-dedc-45a2-8b19-40a87933970e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-73323deb-e8e9-4941-892c-fa5dac98bbd1">
+  <button class="colab-df-quickchart" onclick="quickchart('df-73323deb-e8e9-4941-892c-fa5dac98bbd1')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-73323deb-e8e9-4941-892c-fa5dac98bbd1 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_55d1b829-b030-4b43-bfd5-7ff16472743a">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('resultados_dt_no_norm')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_55d1b829-b030-4b43-bfd5-7ff16472743a button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('resultados_dt_no_norm');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Realiza los experimentos con normalizacion
 depths = [5,10,20,30,50]
-resultados_dt_no_norm = experimentar_dt(X = x , Y = y, depths = , normalize=)
-resultados_dt_no_norm
+resultados_dt_norm = experimentar_dt(X = x , Y = y, depths = , normalize=)
+resultados_dt_norm
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-5ae519f2-b644-424a-a909-b37b0cffc802" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>profunidad del arbol</th>
+      <th>eficiencia de entrenamiento</th>
+      <th>desviacion estandar entrenamiento</th>
+      <th>eficiencia de prueba</th>
+      <th>desviacion estandar prueba</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.0</td>
+      <td>0.994859</td>
+      <td>0.002763</td>
+      <td>0.911658</td>
+      <td>0.018697</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.927060</td>
+      <td>0.034874</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>20.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.927060</td>
+      <td>0.034874</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>30.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.927060</td>
+      <td>0.034874</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>50.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.927060</td>
+      <td>0.034874</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-5ae519f2-b644-424a-a909-b37b0cffc802')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-5ae519f2-b644-424a-a909-b37b0cffc802 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-5ae519f2-b644-424a-a909-b37b0cffc802');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-bffaa20a-1e86-4ef8-8dfd-4b9cf0e21460">
+  <button class="colab-df-quickchart" onclick="quickchart('df-bffaa20a-1e86-4ef8-8dfd-4b9cf0e21460')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-bffaa20a-1e86-4ef8-8dfd-4b9cf0e21460 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_620117c2-82e9-4155-abbe-6e693ac19e19">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('resultados_dt_norm')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_620117c2-82e9-4155-abbe-6e693ac19e19 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('resultados_dt_norm');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown  ¿Tiene algún efecto la normalización o estándarización de las variables en el desempeño del modelo de árboles de decisión? Justifique.   
-respuesta_3 = &quot;&quot; #@param {type:&quot;string&quot;}
+#@markdown  ¿Tiene algún efecto la normalización o estándarización de las variables en el desempeño del modelo de árboles de decisión? Justifique.
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
@@ -635,30 +1560,30 @@ respuesta_3 = &quot;&quot; #@param {type:&quot;string&quot;}
 <section id="ejercicio-2-experimentos-con-random-forest">
 <h2>Ejercicio 2 Experimentos con Random Forest<a class="headerlink" href="#ejercicio-2-experimentos-con-random-forest" title="Link to this heading">#</a></h2>
 <p>En la siguiente celda se define una simulación para entrenar y validar un modelo usando los datos previamente cargados. Complete el código para usar como modelo de predicción un Random Forest. Debe consultar todo lo relacionado con la creación, entrenamiento y uso en predicción de este modelo usando la librería scikit-learn. Consultar aquí: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html</a>.</p>
-<p>En el notebook, ya se encuentra cargada la libreria:</p>
+<p>En el notebook, ya se encuentra cargada la clase:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 
 </pre></div>
 </div>
 <p><b>Note</b> que al igual que en el caso anterior, existe una clase para modelos de clasificación y otra para modelos de regresión: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html">http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html</a></p>
-<p><strong>Recordar hacer uso explicito del nombre del parametro que se va usar</strong>, por ejemplo, si se requiere asignar el parametro <code class="docutils literal notranslate"><span class="pre">criterion</span></code>  debemos llamar la libreria  de esta manera: <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier(criterion</span> <span class="pre">=</span> <span class="pre">'gini')</span></code>.</p>
-<p>Para nuestros experimentos vamos a configurar el RF para que el mínimo de muestras para considerar un nodo como hoja sea de 3.</p>
+<p>**Recorde que para instancias un objeto de la clase no se usan parámetros posicionales; todo los parámetros deben ser llamados por su nombre.</p>
+<p>Para nuestros experimentos vamos a configurar el RF para que el mínimo de muestras a considerar en un nodo hoja sea 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
 def experimentar_rf(X, Y, num_trees,numero_de_variables):
-    &quot;&quot;&quot;funcion que realiza experimentos de random forest
+    &quot;&quot;&quot;función que realiza experimentos con el modelo random forest
     X: matriz con las caractersiticas
     Y: matriz de numpy con etiquetas
     num_trees: list[int]: lista con el número de arboles usado para el RF
-    numero_de_variables list[int]: lista con variables para la selección del mejor umbral en cada nodo 
+    numero_de_variables list[int]: lista con variables para la selección del mejor umbral en cada nodo
     retorna: dataframe con:
         -  numero de arboles usados
         -  variables para la selección del mejor umbral
         - eficiencia de entrenamiento
-        - desviacion de estandar eficiencia de entrenamiento
+        - desviación de estandar de la eficiencia de entrenamiento
         - eficiencia de prueba
-        - desviacion estandar eficiencia de prueba
+        - desviación estandar de la eficiencia de prueba
     &quot;&quot;&quot;
     folds = 4
     skf = StratifiedKFold(n_splits=folds)
@@ -675,6 +1600,7 @@ def experimentar_rf(X, Y, num_trees,numero_de_variables):
                 Xtest = X[test,:]
                 Ytest = Y[test]
                 #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+                #Ajuste la semilla en 0 para garantizar la reproducibilidad de los resultados
                 modelo =
                 modelo
                 #predecir muestras de entrenamiento
@@ -687,13 +1613,13 @@ def experimentar_rf(X, Y, num_trees,numero_de_variables):
 
             resultados.loc[idx,&#39;número de arboles&#39;] = trees
             resultados.loc[idx,&#39;variables para la selección del mejor umbral&#39;] = num_variables
-            resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = 
+            resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] =
             resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] =
             resultados.loc[idx,&#39;eficiencia de prueba&#39;] =
-            resultados.loc[idx,&#39;desviacion estandar prueba&#39;] = 
+            resultados.loc[idx,&#39;desviacion estandar prueba&#39;] =
             idx= idx +1
         print(f&quot;termina para {trees} arboles&quot;)
-        
+
     return (resultados)
 </pre></div>
 </div>
@@ -701,8 +1627,207 @@ def experimentar_rf(X, Y, num_trees,numero_de_variables):
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio2&quot;, experimentar_rf)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_02(functions, variables, caller_userid):
+    import numpy as np
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import StratifiedKFold
+    import pandas as pd
+    from sklearn.ensemble import RandomForestClassifier
+
+    def t_experimentar_rf(X, Y, num_trees,numero_de_variables):
+      &quot;&quot;&quot;función que realiza experimentos con el modelo random forest
+      X: matriz con las caractersiticas
+      Y: matriz de numpy con etiquetas
+      num_trees: list[int]: lista con el número de arboles usado para el RF
+      numero_de_variables list[int]: lista con variables para la selección del mejor umbral en cada nodo
+      retorna: dataframe con:
+          -  numero de arboles usados
+          -  variables para la selección del mejor umbral
+          - eficiencia de entrenamiento
+          - desviación de estandar de la eficiencia de entrenamiento
+          - eficiencia de prueba
+          - desviación estandar de la eficiencia de prueba
+      &quot;&quot;&quot;
+      folds = 4
+      skf = StratifiedKFold(n_splits=folds)
+      resultados = pd.DataFrame()
+      idx = 0
+      for trees in num_trees:
+          for num_variables in numero_de_variables:
+              ## para almacenar los errores intermedios
+              EficienciaTrain = []
+              EficienciaVal = []
+              for train, test in skf.split(X, Y):
+                  Xtrain = X[train,:]
+                  Ytrain = Y[train]
+                  Xtest = X[test,:]
+                  Ytest = Y[test]
+                  #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+                  modelo = RandomForestClassifier(n_estimators=trees, max_features=num_variables, min_samples_leaf=3, random_state=0)
+                  modelo.fit(Xtrain,Ytrain)
+                  #predecir muestras de entrenamiento
+                  Ytrain_pred = modelo.predict(Xtrain)
+                  #predecir muestras de pruebas
+                  Yest = modelo.predict(Xtest)
+                  #Evaluamos las predicciones del modelo con los datos de test
+                  EficienciaTrain.append(np.mean(Ytrain_pred.ravel() == Ytrain.ravel()))
+                  EficienciaVal.append(np.mean(Yest.ravel() == Ytest.ravel()))
+
+              resultados.loc[idx,&#39;número de arboles&#39;] = trees
+              resultados.loc[idx,&#39;variables para la selección del mejor umbral&#39;] = num_variables
+              resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = np.mean(EficienciaTrain)
+              resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] = np.std(EficienciaTrain)
+              resultados.loc[idx,&#39;eficiencia de prueba&#39;] = np.mean(EficienciaVal)
+              resultados.loc[idx,&#39;desviacion estandar prueba&#39;] = np.std(EficienciaVal)
+              idx= idx +1
+          print(f&quot;termina para {trees} arboles&quot;)
+
+      return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_experimentar_rf = namespace[&#39;experimentar_rf&#39;]
+
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+
+    for _ in range(10):
+
+      input_dim = np.random.randint(20)+5
+      input_n = np.random.randint(500) + 20
+      input_data = np.random.randn(input_n,input_dim)
+      n_class = np.random.randint(3)+2
+      n_estimators = np.random.permutation(np.arange(10,np.random.randint(100)+10,10))
+      output_target = np.random.randint(n_class, size=input_n)
+      num_features = np.arange(2,int(input_dim/2),2)
+
+
+      t_results = t_experimentar_rf(input_data,output_target,n_estimators,num_features)
+      s_results = s_experimentar_rf(input_data,output_target,n_estimators,num_features)
+
+      msg = &quot;&quot;
+      if not t_results.shape == s_results.shape:
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect number of experiments&lt;/b&gt;
+        Expecting result shape &lt;pre&gt;{t_results.shape}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{s_results.shape}&lt;/pre&gt;&lt;br/&gt;\n
+        &quot;&quot;&quot;
+        return 0, msg
+
+      if not np.array_equal(t_results.values, s_results.values):
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect results&lt;/b&gt;
+        Expecting results &lt;pre&gt;{t_results.values}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{s_results.values}&lt;/pre&gt;&lt;br/&gt;\n
+        Check hyperparameter settings
+        &quot;&quot;&quot;
+        return 0, msg
+
+
+      return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+source_functions_names_02 = [&#39;experimentar_rf&#39;]
+source_variables_names_02 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#TEACHER
+def experimentar_rf(X, Y, num_trees,numero_de_variables):
+    &quot;&quot;&quot;función que realiza experimentos con el modelo random forest
+    X: matriz con las caractersiticas
+    Y: matriz de numpy con etiquetas
+    num_trees: list[int]: lista con el número de arboles usado para el RF
+    numero_de_variables list[int]: lista con variables para la selección del mejor umbral en cada nodo
+    retorna: dataframe con:
+        -  numero de arboles usados
+        -  variables para la selección del mejor umbral
+        - eficiencia de entrenamiento
+        - desviación de estandar de la eficiencia de entrenamiento
+        - eficiencia de prueba
+        - desviación estandar de la eficiencia de prueba
+    &quot;&quot;&quot;
+    folds = 4
+    skf = StratifiedKFold(n_splits=folds)
+    resultados = pd.DataFrame()
+    idx = 0
+    for trees in num_trees:
+        for num_variables in numero_de_variables:
+            ## para almacenar los errores intermedios
+            EficienciaTrain = []
+            EficienciaVal = []
+            for train, test in skf.split(X, Y):
+                Xtrain = X[train,:]
+                Ytrain = Y[train]
+                Xtest = X[test,:]
+                Ytest = Y[test]
+                #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+                modelo = RandomForestClassifier(n_estimators=trees, max_features=num_variables, min_samples_leaf=3, random_state=0)
+                modelo.fit(Xtrain,Ytrain)
+                #predecir muestras de entrenamiento
+                Ytrain_pred = modelo.predict(Xtrain)
+                #predecir muestras de pruebas
+                Yest = modelo.predict(Xtest)
+                #Evaluamos las predicciones del modelo con los datos de test
+                EficienciaTrain.append(np.mean(Ytrain_pred.ravel() == Ytrain.ravel()))
+                EficienciaVal.append(np.mean(Yest.ravel() == Ytest.ravel()))
+
+            resultados.loc[idx,&#39;número de arboles&#39;] = trees
+            resultados.loc[idx,&#39;variables para la selección del mejor umbral&#39;] = num_variables
+            resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = np.mean(EficienciaTrain)
+            resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] = np.std(EficienciaTrain)
+            resultados.loc[idx,&#39;eficiencia de prueba&#39;] = np.mean(EficienciaVal)
+            resultados.loc[idx,&#39;desviacion estandar prueba&#39;] = np.std(EficienciaVal)
+            idx= idx +1
+        print(f&quot;termina para {trees} arboles&quot;)
+
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_02&quot;, source_functions_names_02, source_variables_names_02, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>termina para 30 arboles
+termina para 10 arboles
+termina para 50 arboles
+termina para 20 arboles
+termina para 40 arboles
+termina para 30 arboles
+termina para 10 arboles
+termina para 50 arboles
+termina para 20 arboles
+termina para 40 arboles
+</pre></div>
+</div>
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L03.02&quot;, &#39;T2&#39;,
+                  inspect.getsource(grader_02), &#39;grader_02&#39;,
+                  source_functions_names_02, source_variables_names_02)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T2&#39;);
 </pre></div>
 </div>
 </div>
@@ -717,34 +1842,489 @@ resultados_rf
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿qué caractersitica tiene en especial los Random forest entrenados cuando la cantidad de variables para la selección del mejor umbral es igual a 40?  *desde el punto de vista teorico no de los resultados**
-respuesta_4 = &quot;&quot; #@param {type:&quot;string&quot;}
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>termina para 5 arboles
+termina para 10 arboles
+termina para 20 arboles
+termina para 50 arboles
+termina para 100 arboles
+termina para 150 arboles
 </pre></div>
 </div>
+<div class="output text_html">
+  <div id="df-fd741c70-bb84-4706-96a3-a38b131a9c39" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>número de arboles</th>
+      <th>variables para la selección del mejor umbral</th>
+      <th>eficiencia de entrenamiento</th>
+      <th>desviacion estandar entrenamiento</th>
+      <th>eficiencia de prueba</th>
+      <th>desviacion estandar prueba</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>0.996260</td>
+      <td>0.000003</td>
+      <td>0.876593</td>
+      <td>0.010312</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5.0</td>
+      <td>20.0</td>
+      <td>0.997663</td>
+      <td>0.001550</td>
+      <td>0.938296</td>
+      <td>0.005525</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5.0</td>
+      <td>40.0</td>
+      <td>0.995324</td>
+      <td>0.002094</td>
+      <td>0.939709</td>
+      <td>0.021101</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>10.0</td>
+      <td>5.0</td>
+      <td>0.999533</td>
+      <td>0.000809</td>
+      <td>0.929877</td>
+      <td>0.002711</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10.0</td>
+      <td>20.0</td>
+      <td>0.999533</td>
+      <td>0.000809</td>
+      <td>0.956539</td>
+      <td>0.008190</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>10.0</td>
+      <td>40.0</td>
+      <td>0.996728</td>
+      <td>0.001549</td>
+      <td>0.938304</td>
+      <td>0.022771</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>20.0</td>
+      <td>5.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.950945</td>
+      <td>0.016886</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>20.0</td>
+      <td>20.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.959356</td>
+      <td>0.021811</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>20.0</td>
+      <td>40.0</td>
+      <td>0.999065</td>
+      <td>0.000935</td>
+      <td>0.941113</td>
+      <td>0.027037</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>50.0</td>
+      <td>5.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.967759</td>
+      <td>0.009951</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>50.0</td>
+      <td>20.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.956539</td>
+      <td>0.016014</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>50.0</td>
+      <td>40.0</td>
+      <td>0.999533</td>
+      <td>0.000809</td>
+      <td>0.943922</td>
+      <td>0.027746</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>100.0</td>
+      <td>5.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.971965</td>
+      <td>0.010452</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>100.0</td>
+      <td>20.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.960753</td>
+      <td>0.015300</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>100.0</td>
+      <td>40.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.943922</td>
+      <td>0.027746</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>150.0</td>
+      <td>5.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.970576</td>
+      <td>0.013868</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>150.0</td>
+      <td>20.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.959348</td>
+      <td>0.012064</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>150.0</td>
+      <td>40.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.942518</td>
+      <td>0.029240</td>
+    </tr>
+  </tbody>
+</table>
 </div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-fd741c70-bb84-4706-96a3-a38b131a9c39')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-fd741c70-bb84-4706-96a3-a38b131a9c39 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-fd741c70-bb84-4706-96a3-a38b131a9c39');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-b9003b27-ef62-4fd9-872f-65ff82015e70">
+  <button class="colab-df-quickchart" onclick="quickchart('df-b9003b27-ef62-4fd9-872f-65ff82015e70')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-b9003b27-ef62-4fd9-872f-65ff82015e70 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
 </div>
-<p>Vamos a comparar los resultados del RF y con el DT.</p>
+
+  <div id="id_ab638bb4-36f2-4fc0-9111-634c08ebbc49">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('resultados_rf')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_ab638bb4-36f2-4fc0-9111-634c08ebbc49 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('resultados_rf');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<p>Vamos a comparar los resultados del RF con los del DT.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;diferencia promedio entre entrenamiento y prueba del DT&quot;, 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;diferencia promedio entre entrenamiento y prueba del DT&quot;,
       resultados_dt_norm[&#39;eficiencia de entrenamiento&#39;].mean()-resultados_dt_norm[&#39;eficiencia de prueba&#39;].mean())
 
-print(&quot;diferencia promedio entre entrenamiento y prueba del RF&quot;, 
+print(&quot;diferencia promedio entre entrenamiento y prueba del RF&quot;,
       resultados_rf[&#39;eficiencia de entrenamiento&#39;].mean()-resultados_rf[&#39;eficiencia de prueba&#39;].mean())
 </pre></div>
 </div>
 </div>
-</div>
-<p>de acuerdo a estos resultados, que modelo tuvo un mayor sobre entrenamiento?, ten presente esa diferencia para responder la siguiente pregunta abierta.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿esperaba la diferencia que se observa entre las eficiencias entre entrenamiento y pruebas para el Random forest y el arbol de decisón? justifique 
-respuesta_5 = &quot;&quot; #@param {type:&quot;string&quot;}
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>diferencia promedio entre entrenamiento y prueba del DT 0.07499181145481171
+diferencia promedio entre entrenamiento y prueba del RF 0.05197792122696676
 </pre></div>
 </div>
 </div>
@@ -752,24 +2332,14 @@ respuesta_5 = &quot;&quot; #@param {type:&quot;string&quot;}
 </section>
 <section id="ejercicio-3-experimentos-con-gradient-boosted-trees">
 <h2>Ejercicio 3 Experimentos con Gradient Boosted Trees<a class="headerlink" href="#ejercicio-3-experimentos-con-gradient-boosted-trees" title="Link to this heading">#</a></h2>
-<p>En la siguiente celda se define una simulación para entrenar y validar un modelo usando los datos previamente cargados. Complete el código para usar como modelo de predicción un Gradient boosted Tree. Debe consultar todo lo relacionado con la creación, entrenamiento y uso en predicción de este modelo usando la librería scikit-learn. Consultar aquí: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html</a></p>
+<p>En la siguiente celda se define una simulación para entrenar y validar un modelo usando los datos previamente cargados. Complete el código para usar como modelo de predicción un Gradient boosted Tree. Debe consultar todo lo relacionado con la creación, el entrenamiento y el uso en predicción de este modelo usando la librería scikit-learn. Consultar aquí: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html</a></p>
 <p>En el notebook, ya se encuentra cargada la libreria:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
 
 </pre></div>
 </div>
-<p>Debemos configurar el árbol con un mínimo de tres (3) muestras para considerar una división de un nodo.</p>
+<p>Debemos configurar los árboles con un mínimo de tres (3) muestras para considerar la división de un nodo.</p>
 <p><b>Note</b> que al igual que en el caso anterior, existe una clase para modelos de clasificación y otra para modelos de regresión: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html#sklearn.ensemble.GradientBoostingRegressor</a></p>
-<p><strong>Recordar hacer uso explicito del nombre del parametro que se va usar</strong>, por ejemplo, si se requeire asignar el parametro <code class="docutils literal notranslate"> <span class="pre">loss</span></code>  debemos llamar la libreria  de esta manera: <code class="docutils literal notranslate"><span class="pre">GradientBoostingClassifier(loss</span> <span class="pre">=</span> <span class="pre">'deviance')</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿qué diferencia existe entre el entrenamiento de un Random Forest y el gradient boosting de árboles?
-respuesta_6 = &quot;&quot; #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
@@ -799,23 +2369,187 @@ def experimentar_gbt(num_trees, X, Y):
             Xtest = X[test,:]
             Ytest = Y[test]
             #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+            #Ajuste la semilla en 0 para garantizar la reproducibilidad de los resultados
             modelo=
             modelo
             #predecir muestras de entrenamiento
-            Ytrain_pred =  
+            Ytrain_pred =
             #predecir muestras de pruebas
-            Yest = 
+            Yest =
             #Evaluamos las predicciones del modelo con los datos de test
             EficienciaTrain.append(np.mean(Ytrain_pred.ravel() == Ytrain.ravel()))
             EficienciaVal.append(np.mean(Yest.ravel() == Ytest.ravel()))
 
         resultados.loc[idx,&#39;número de arboles&#39;] = trees
-        resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = 
-        resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] = 
+        resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] =
+        resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] =
         resultados.loc[idx,&#39;eficiencia de prueba&#39;] =
-        resultados.loc[idx,&#39;desviacion estandar prueba&#39;] = 
+        resultados.loc[idx,&#39;desviacion estandar prueba&#39;] =
         idx= idx +1
-        
+
+    return (resultados)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-55-311c34a15210&gt;&quot;</span><span class="gt">, line </span><span class="mi">28</span>
+    <span class="n">modelo</span><span class="o">=</span>
+           <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_03(functions, variables, caller_userid):
+    import numpy as np
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import StratifiedKFold
+    import pandas as pd
+    from sklearn.ensemble import GradientBoostingClassifier
+
+    def t_experimentar_gbt(num_trees, X, Y):
+      &quot;&quot;&quot;funcion que realiza experimentos de arboles de decision
+      num_trees: list[int] lista con el número de arboles usado para el RF
+      X: matriz con las caractersiticas
+      Y: matriz de numpy con etiquetas
+      retorna: dataframe con:
+          - numero de arboles usados
+          - eficiencia de entrenamiento
+          - desviacion de estandar eficiencia de entrenamiento
+          - eficiencia de prueba
+          - desviacion estandar eficiencia de prueba
+      &quot;&quot;&quot;
+      folds = 4
+      skf = StratifiedKFold(n_splits=folds)
+      resultados = pd.DataFrame()
+      idx = 0
+      for trees in num_trees:
+          ## para almacenar los errores intermedios
+          EficienciaTrain = []
+          EficienciaVal = []
+          for train, test in skf.split(X, Y):
+              Xtrain = X[train,:]
+              Ytrain = Y[train]
+              Xtest = X[test,:]
+              Ytest = Y[test]
+              #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+              modelo = GradientBoostingClassifier(n_estimators=trees, min_samples_split=3, random_state=0)
+              modelo.fit(Xtrain,Ytrain)
+              #predecir muestras de entrenamiento
+              Ytrain_pred = modelo.predict(Xtrain)
+              #predecir muestras de pruebas
+              Yest = modelo.predict(Xtest)
+              #Evaluamos las predicciones del modelo con los datos de test
+              EficienciaTrain.append(np.mean(Ytrain_pred.ravel() == Ytrain.ravel()))
+              EficienciaVal.append(np.mean(Yest.ravel() == Ytest.ravel()))
+
+          resultados.loc[idx,&#39;número de arboles&#39;] = trees
+          resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = np.mean(EficienciaTrain)
+          resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] = np.std(EficienciaTrain)
+          resultados.loc[idx,&#39;eficiencia de prueba&#39;] = np.mean(EficienciaVal)
+          resultados.loc[idx,&#39;desviacion estandar prueba&#39;] = np.std(EficienciaVal)
+          idx= idx +1
+
+      return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_experimentar_gbt = namespace[&#39;experimentar_gbt&#39;]
+
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+
+    for _ in range(10):
+
+      input_dim = np.random.randint(20)+5
+      input_n = np.random.randint(500) + 20
+      input_data = np.random.randn(input_n,input_dim)
+      n_class = np.random.randint(3)+2
+      n_estimators = np.random.permutation(np.arange(10,np.random.randint(100)+10,10))
+      output_target = np.random.randint(n_class, size=input_n)
+      num_features = np.arange(2,int(input_dim/2),2)
+
+
+      t_results = t_experimentar_gbt(n_estimators,input_data,output_target)
+      s_results = s_experimentar_gbt(n_estimators,input_data,output_target)
+
+      msg = &quot;&quot;
+      if not t_results.shape == s_results.shape:
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect number of experiments&lt;/b&gt;
+        Expecting result shape &lt;pre&gt;{t_results.shape}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{s_results.shape}&lt;/pre&gt;&lt;br/&gt;\n
+        &quot;&quot;&quot;
+        return 0, msg
+
+      if not np.array_equal(t_results.values, s_results.values):
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect results&lt;/b&gt;
+        Expecting results &lt;pre&gt;{t_results.values}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{s_results.values}&lt;/pre&gt;&lt;br/&gt;\n
+        Check hyperparameter settings
+        &quot;&quot;&quot;
+        return 0, msg
+
+
+      return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+source_functions_names_03 = [&#39;experimentar_gbt&#39;]
+source_variables_names_03 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def experimentar_gbt(num_trees, X, Y):
+    &quot;&quot;&quot;funcion que realiza experimentos de arboles de decision
+    num_trees: list[int] lista con el número de arboles usado para el RF
+    X: matriz con las caractersiticas
+    Y: matriz de numpy con etiquetas
+    retorna: dataframe con:
+        - numero de arboles usados
+        - eficiencia de entrenamiento
+        - desviacion de estandar eficiencia de entrenamiento
+        - eficiencia de prueba
+        - desviacion estandar eficiencia de prueba
+    &quot;&quot;&quot;
+    folds = 4
+    skf = StratifiedKFold(n_splits=folds)
+    resultados = pd.DataFrame()
+    idx = 0
+    for trees in num_trees:
+        ## para almacenar los errores intermedios
+        EficienciaTrain = []
+        EficienciaVal = []
+        for train, test in skf.split(X, Y):
+            Xtrain = X[train,:]
+            Ytrain = Y[train]
+            Xtest = X[test,:]
+            Ytest = Y[test]
+            #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+            modelo = GradientBoostingClassifier(n_estimators=trees, min_samples_split=3, random_state=0)
+            modelo.fit(Xtrain,Ytrain)
+            #predecir muestras de entrenamiento
+            Ytrain_pred = modelo.predict(Xtrain)
+            #predecir muestras de pruebas
+            Yest = modelo.predict(Xtest)
+            #Evaluamos las predicciones del modelo con los datos de test
+            EficienciaTrain.append(np.mean(Ytrain_pred.ravel() == Ytrain.ravel()))
+            EficienciaVal.append(np.mean(Yest.ravel() == Ytest.ravel()))
+
+        resultados.loc[idx,&#39;número de arboles&#39;] = trees
+        resultados.loc[idx,&#39;eficiencia de entrenamiento&#39;] = np.mean(EficienciaTrain)
+        resultados.loc[idx,&#39;desviacion estandar entrenamiento&#39;] = np.std(EficienciaTrain)
+        resultados.loc[idx,&#39;eficiencia de prueba&#39;] = np.mean(EficienciaVal)
+        resultados.loc[idx,&#39;desviacion estandar prueba&#39;] = np.std(EficienciaVal)
+        idx= idx +1
+
     return (resultados)
 </pre></div>
 </div>
@@ -823,8 +2557,40 @@ def experimentar_gbt(num_trees, X, Y):
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio3&quot;, experimentar_gbt)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_03&quot;, source_functions_names_03, source_variables_names_03, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L03.02&quot;, &#39;T3&#39;,
+                  inspect.getsource(grader_03), &#39;grader_03&#39;,
+                  source_functions_names_03, source_variables_names_03)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T3&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-69-7f28b9f4d500&gt;</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">student</span><span class="o">.</span><span class="n">submit_task</span><span class="p">(</span><span class="n">namespace</span><span class="o">=</span><span class="nb">globals</span><span class="p">(),</span> <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;T3&#39;</span><span class="p">);</span>
+
+<span class="ne">NameError</span>: name &#39;student&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -838,44 +2604,394 @@ resultados_gbt
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-aa988d66-2e83-4854-984b-a86c413c6f8b" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>número de arboles</th>
+      <th>eficiencia de entrenamiento</th>
+      <th>desviacion estandar entrenamiento</th>
+      <th>eficiencia de prueba</th>
+      <th>desviacion estandar prueba</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.0</td>
+      <td>0.991121</td>
+      <td>0.004256</td>
+      <td>0.913023</td>
+      <td>0.044535</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.0</td>
+      <td>0.995794</td>
+      <td>0.002427</td>
+      <td>0.925664</td>
+      <td>0.047070</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>20.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.948128</td>
+      <td>0.025804</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>50.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.953746</td>
+      <td>0.014392</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>100.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.952349</td>
+      <td>0.017843</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>150.0</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.952349</td>
+      <td>0.016463</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-aa988d66-2e83-4854-984b-a86c413c6f8b')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-aa988d66-2e83-4854-984b-a86c413c6f8b button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-aa988d66-2e83-4854-984b-a86c413c6f8b');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-9b9790f3-dd3c-4800-b033-d177ea67cd44">
+  <button class="colab-df-quickchart" onclick="quickchart('df-9b9790f3-dd3c-4800-b033-d177ea67cd44')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-9b9790f3-dd3c-4800-b033-d177ea67cd44 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_b11f6f90-3408-4a3e-be70-0a566e251146">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('resultados_gbt')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_b11f6f90-3408-4a3e-be70-0a566e251146 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('resultados_gbt');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
 </div>
 <p>Vamos a graficar la eficiencia para el RF y el GBT en función del número de arboles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># se crea un df para agrupar los resultados
 # y graficar las diferencias entre el GBT y el RF
+import seaborn as sns
 rf_res = resultados_rf.groupby(&quot;número de arboles&quot;)[&#39;eficiencia de prueba&#39;].mean().reset_index()
 rf_res[&#39;Tipo&#39;] = &#39;RF&#39;
 gbt_res = resultados_gbt.groupby(&quot;número de arboles&quot;)[&#39;eficiencia de prueba&#39;].mean().reset_index()
 gbt_res[&#39;Tipo&#39;] = &#39;GBT&#39;
 data_to_plot= pd.concat([rf_res, gbt_res], ignore_index=True)
 sns.relplot(data=data_to_plot, x= &#39;número de arboles&#39;, y = &#39;eficiencia de prueba&#39;, hue = &#39;Tipo&#39;, kind=&#39;line&#39;, aspect=1.5,height=3)
+plt.show()
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/56ff196fbcce1226dd647e7ee43e84c661833b281b31adfb0a79523cc4aa53f7.png" src="_images/56ff196fbcce1226dd647e7ee43e84c661833b281b31adfb0a79523cc4aa53f7.png" />
 </div>
 </div>
 </section>
 <section id="ejercicio-4-tiempo-de-entrenamiento-del-rf-y-gbt">
 <h2>Ejercicio 4 Tiempo de entrenamiento del RF y GBT<a class="headerlink" href="#ejercicio-4-tiempo-de-entrenamiento-del-rf-y-gbt" title="Link to this heading">#</a></h2>
-<p>En nuestro último experimento, vamos a evaluar la influencia de las parametros del RF y del GBT en el tiempo de entrenamiento.</p>
+<p>En nuestro último experimento, vamos a evaluar la influencia de los parámetros del RF y del GBT en el tiempo de entrenamiento.</p>
 <p>Para ello vamos a crear una función para medir el tiempo de entrenamiento usando la instrucción <code class="docutils literal notranslate"><span class="pre">time.process_time()</span></code>.</p>
 <p>Vamos crear la función, para poder evaluar la influencia de:</p>
 <ol class="arabic simple">
-<li><p>número de arboles</p></li>
+<li><p>número de árboles</p></li>
 <li><p>cantidad de variables a analizar por nodo</p></li>
 </ol>
 <p>En el entrenamiento del RF y del GBT.</p>
 <p><strong>Notar</strong></p>
 <ol class="arabic simple">
-<li><p>No vamos a dividir el conjunto, ya que el objetivo es evaluar el tiempo de entrenamiento y no la eficiencias del modelo</p></li>
-<li><p>No calculamos las prediciones</p></li>
-<li><p><strong>Recordar hacer uso explicito del nombre del parametro que se va usar</strong>, por ejemplo, si se requeire asignar el parametro <code class="docutils literal notranslate"><span class="pre">criterion</span></code>  debemos llamar la libreria  de esta manera: <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier(criterion</span> <span class="pre">=</span> <span class="pre">'gini')</span></code></p></li>
+<li><p>No vamos a dividir el conjunto de muestras ya que el objetivo es evaluar el tiempo de entrenamiento y no la eficiencias del modelo</p></li>
+<li><p>No calcularemos las prediciones</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def time_rf_gbt_training(X, Y, num_trees, numero_de_variables, metodo):
-    &quot;&quot;&quot;funcion que realiza experimentos, para determinar la influencia
-    del numero de arboles y de caracteristicas en el tiempo de entrenamiento
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+def time_rf_gbt_training(X, Y, num_trees, numero_de_variables, metodo):
+    &quot;&quot;&quot;función que realiza experimentos para determinar la influencia
+    del número de árboles y de características por nodo en el tiempo de entrenamiento
     del RF
     X: conjunto de datos para realizar los experimentos
     Y: conjunto de etiquetas de clase
@@ -889,7 +3005,7 @@ sns.relplot(data=data_to_plot, x= &#39;número de arboles&#39;, y = &#39;eficien
     &quot;&quot;&quot;
     resultados = pd.DataFrame()
     idx = 0
-    
+
     for trees in num_trees:
         for variables in numero_de_variables:
             ## ejecutar 5 veces lo mismo
@@ -897,22 +3013,186 @@ sns.relplot(data=data_to_plot, x= &#39;número de arboles&#39;, y = &#39;eficien
             tiempos = []
             for i in range(5):
             ## llamar la funcion para inicar el conteo
-                start 
+                start
+                 #Ajuste la semilla en 0 para garantizar la reproducibilidad de los resultados
                 if metodo == &#39;rf&#39;:
-                
-                    modelo = 
+
+                    modelo =
                 else:
-                    modelo = 
-                
+                    modelo =
+
                 modelo
-                ## obtener tiempo 
+                ## obtener tiempo
                 end
                 # append de la resta de fin y end
                 tiempos.append()
-            resultados.loc[idx,&#39;número de arboles&#39;] = trees
-            resultados.loc[idx,&#39;variables para la selección del mejor umbral&#39;] = variables
+            resultados.loc[idx,&#39;numero de arboles&#39;] = trees
+            resultados.loc[idx,&#39;variables para la seleccion del mejor umbral&#39;] = variables
             # obtenga el promedio
-            resultados.loc[idx,&#39;tiempo de entrenamiento&#39;] = 
+            resultados.loc[idx,&#39;tiempo de entrenamiento&#39;] =
+            resultados.loc[idx,&#39;metodo&#39;] = metodo
+            idx = idx +1
+    return(resultados)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-70-32ec4552d67a&gt;&quot;</span><span class="gt">, line </span><span class="mi">29</span>
+    <span class="n">modelo</span> <span class="o">=</span>
+            <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_04(functions, variables, caller_userid):
+    import numpy as np
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import StratifiedKFold
+    import pandas as pd
+    from sklearn.ensemble import GradientBoostingClassifier, RandomForestClassifier
+    import time
+
+    def t_time_rf_gbt_training(X, Y, num_trees, numero_de_variables, metodo):
+      &quot;&quot;&quot;función que realiza experimentos para determinar la influencia
+      del número de árboles y de características por nodo en el tiempo de entrenamiento
+      del RF
+      X: conjunto de datos para realizar los experimentos
+      Y: conjunto de etiquetas de clase
+      num_trees: List[int] lista con el número de arboles a evaluar
+      num_variables: List[int] lista con el número variables a evaluar
+      metodo: &#39;rf&#39; o &#39;gbt&#39;, de acuerdo a esto se verifica cual modelo a evaluar.
+      retorna: dataframe con:
+      - número de arboles
+      - variables para la selección del mejor umbral
+      - tiempo de entrenamiento (promedio)
+      &quot;&quot;&quot;
+      resultados = pd.DataFrame()
+      idx = 0
+
+      for trees in num_trees:
+          for variables in numero_de_variables:
+              ## ejecutar 5 veces lo mismo
+              ## para llegar a un tiempo más adecuado
+              tiempos = []
+              for i in range(5):
+              ## llamar la funcion para inicar el conteo
+                  start = time.process_time()
+                  if metodo == &#39;rf&#39;:
+
+                      modelo = RandomForestClassifier(n_estimators=num_trees, max_features=numero_de_variables, random_state=0)
+                  else:
+                      modelo = GradientBoostingClassifier(n_estimators=num_trees, max_features=numero_de_variables, random_state=0)
+
+                  modelo.fit(X,Y)
+                  ## obtener tiempo
+                  end = time.process_time()
+                  # append de la resta de fin y end
+                  tiempos.append()
+              resultados.loc[idx,&#39;numero de arboles&#39;] = trees
+              resultados.loc[idx,&#39;variables para la selección del mejor umbral&#39;] = variables
+              # obtenga el promedio
+              resultados.loc[idx,&#39;tiempo de entrenamiento&#39;] = end - start
+              resultados.loc[idx,&#39;metodo&#39;] = metodo
+              idx = idx +1
+      return(resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_time_rf_gbt_training = namespace[&#39;time_rf_gbt_training&#39;]
+
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+    methods = [&#39;rf&#39;,&#39;gbt&#39;]
+    for _ in range(10):
+
+      input_dim = np.random.randint(20)+5
+      input_n = np.random.randint(500) + 20
+      input_data = np.random.randn(input_n,input_dim)
+      n_class = np.random.randint(3)+2
+      n_estimators = np.random.permutation(np.arange(10,np.random.randint(100)+10,10))
+      output_target = np.random.randint(n_class, size=input_n)
+      num_features = np.arange(2,int(input_dim/2),2)
+      method = np.random.choice(methods)
+
+
+      t_results = t_time_rf_gbt_training(input_data,output_target,n_estimators,num_features,method)
+      s_results = s_time_rf_gbt_training(input_data,output_target,n_estimators,num_features,method)
+
+      msg = &quot;&quot;
+      if not t_results.shape == s_results.shape:
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect number of experiments&lt;/b&gt;
+        Expecting result shape &lt;pre&gt;{t_results.shape}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{s_results.shape}&lt;/pre&gt;&lt;br/&gt;\n
+        &quot;&quot;&quot;
+        return 0, msg
+
+      if not np.array_equal(t_results.values, s_results.values):
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect results&lt;/b&gt;
+        Expecting results &lt;pre&gt;{t_results.values}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{s_results.values}&lt;/pre&gt;&lt;br/&gt;\n
+        Check hyperparameter settings
+        &quot;&quot;&quot;
+        return 0, msg
+
+
+      return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+source_functions_names_04 = [&#39;time_rf_gbt_training&#39;]
+source_variables_names_04 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def time_rf_gbt_training(X, Y, num_trees, numero_de_variables, metodo):
+    &quot;&quot;&quot;función que realiza experimentos para determinar la influencia
+    del número de árboles y de características por nodo en el tiempo de entrenamiento
+    del RF
+    X: conjunto de datos para realizar los experimentos
+    Y: conjunto de etiquetas de clase
+    num_trees: List[int] lista con el número de arboles a evaluar
+    num_variables: List[int] lista con el número variables a evaluar
+    metodo: &#39;rf&#39; o &#39;gbt&#39;, de acuerdo a esto se verifica cual modelo a evaluar.
+    retorna: dataframe con:
+    - número de arboles
+    - variables para la selección del mejor umbral
+    - tiempo de entrenamiento (promedio)
+    &quot;&quot;&quot;
+    resultados = pd.DataFrame()
+    idx = 0
+
+    for trees in num_trees:
+        for variables in numero_de_variables:
+            ## ejecutar 5 veces lo mismo
+            ## para llegar a un tiempo más adecuado
+            tiempos = []
+            for i in range(5):
+            ## llamar la funcion para inicar el conteo
+                start = time.process_time()
+                if metodo == &#39;rf&#39;:
+
+                    modelo = RandomForestClassifier(n_estimators=num_trees, max_features=numero_de_variables, random_state=0)
+                else:
+                    modelo = GradientBoostingClassifier(n_estimators=num_trees, max_features=numero_de_variables, random_state=0)
+
+                modelo.fit(X,Y)
+                ## obtener tiempo
+                end = time.process_time()
+                # append de la resta de fin y end
+                tiempos.append()
+            resultados.loc[idx,&#39;numero de arboles&#39;] = trees
+            resultados.loc[idx,&#39;variables para la seleccion del mejor umbral&#39;] = variables
+            # obtenga el promedio
+            resultados.loc[idx,&#39;tiempo de entrenamiento&#39;] = end - start
             resultados.loc[idx,&#39;metodo&#39;] = metodo
             idx = idx +1
     return(resultados)
@@ -922,13 +3202,35 @@ sns.relplot(data=data_to_plot, x= &#39;número de arboles&#39;, y = &#39;eficien
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio4&quot;, time_rf_gbt_training)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_04&quot;, source_functions_names_04, source_variables_names_04, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L03.02&quot;, &#39;T4&#39;,
+                  inspect.getsource(grader_04), &#39;grader_04&#39;,
+                  source_functions_names_04, source_variables_names_04)
 </pre></div>
 </div>
 </div>
 </div>
-<p>Vamos a dejar fijo el número de variables en 20 y variar los árboles en: [5,10,15,25, 50], completa el código para ver la grafica</p>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T4&#39;);
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vamos a dejar fijo el número de variables en 20 y variar los árboles en: [5,10,15,25, 50], completa el código para ver la gráfica</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>resultados_rf_time1 = time_rf_gbt_training(x, y, [], [], metodo = &#39;rf&#39;)
@@ -936,12 +3238,66 @@ resultados_gbt_time1 = time_rf_gbt_training(x, y, [], [], metodo = &#39;gbt&#39;
 
 resultados_time = pd.concat([resultados_rf_time1, resultados_gbt_time1], ignore_index=True)
 
-sns.relplot(data = resultados_time, x = &#39;número de arboles&#39;, y = &#39;tiempo de entrenamiento&#39;, hue = &#39;metodo&#39;, kind = &#39;line&#39;)
+sns.relplot(data = resultados_time, x = &#39;numero de arboles&#39;, y = &#39;tiempo de entrenamiento&#39;, hue = &#39;metodo&#39;, kind = &#39;line&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-84-5f1a77f9c7f2&gt;</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">resultados_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">resultados_rf_time1</span><span class="p">,</span> <span class="n">resultados_gbt_time1</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">resultados_time</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;numero de arboles&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;tiempo de entrenamiento&#39;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;metodo&#39;</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;line&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.11/dist-packages/seaborn/relational.py</span> in <span class="ni">relplot</span><span class="nt">(data, x, y, hue, size, style, units, weights, row, col, col_wrap, row_order, col_order, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, dashes, style_order, legend, kind, height, aspect, facet_kws, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">746</span>             <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;The `weights` parameter has no effect with kind=&#39;scatter&#39;.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">747</span>             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">748</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">Plotter</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">749</span>         <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">750</span>         <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.11/dist-packages/seaborn/relational.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, variables, estimator, n_boot, seed, errorbar, sort, orient, err_style, err_kws, legend)</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span> 
+<span class="ne">--&gt; </span><span class="mi">216</span>         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span> 
+<span class="g g-Whitespace">    </span><span class="mi">218</span>         <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span>
+
+<span class="nn">/usr/local/lib/python3.11/dist-packages/seaborn/_base.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, variables)</span>
+<span class="g g-Whitespace">    </span><span class="mi">632</span>         <span class="c1"># information for numeric axes would be information about log scales.</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_var_ordered</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>  <span class="c1"># alt., used DefaultDict</span>
+<span class="ne">--&gt; </span><span class="mi">634</span>         <span class="bp">self</span><span class="o">.</span><span class="n">assign_variables</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span> 
+<span class="g g-Whitespace">    </span><span class="mi">636</span>         <span class="c1"># TODO Lots of tests assume that these are called to initialize the</span>
+
+<span class="nn">/usr/local/lib/python3.11/dist-packages/seaborn/_base.py</span> in <span class="ni">assign_variables</span><span class="nt">(self, data, variables)</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span>             <span class="c1"># to centralize / standardize data consumption logic.</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span>             <span class="bp">self</span><span class="o">.</span><span class="n">input_format</span> <span class="o">=</span> <span class="s2">&quot;long&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">679</span>             <span class="n">plot_data</span> <span class="o">=</span> <span class="n">PlotData</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">680</span>             <span class="n">frame</span> <span class="o">=</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">frame</span>
+<span class="g g-Whitespace">    </span><span class="mi">681</span>             <span class="n">names</span> <span class="o">=</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">names</span>
+
+<span class="nn">/usr/local/lib/python3.11/dist-packages/seaborn/_core/data.py</span> in <span class="ni">__init__</span><span class="nt">(self, data, variables)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> 
+<span class="g g-Whitespace">     </span><span class="mi">57</span>         <span class="n">data</span> <span class="o">=</span> <span class="n">handle_data_source</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">58</span>         <span class="n">frame</span><span class="p">,</span> <span class="n">names</span><span class="p">,</span> <span class="n">ids</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assign_variables</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> 
+<span class="g g-Whitespace">     </span><span class="mi">60</span>         <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span>
+
+<span class="nn">/usr/local/lib/python3.11/dist-packages/seaborn/_core/data.py</span> in <span class="ni">_assign_variables</span><span class="nt">(self, data, variables)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>                     <span class="n">err</span> <span class="o">+=</span> <span class="s2">&quot;An entry with this name does not appear in `data`.&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">232</span>                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span> 
+<span class="g g-Whitespace">    </span><span class="mi">234</span>             <span class="k">else</span><span class="p">:</span>
+
+<span class="ne">ValueError</span>: Could not interpret value `numero de arboles` for `x`. An entry with this name does not appear in `data`.
 </pre></div>
 </div>
 </div>
 </div>
-<p>Y por ultimo Vamos a dejar fijo el número de árboles en 20 y el número de varaibles [5,10,15,20,40], completa el código para ver la grafica</p>
+<p>Y por ultimo vamos a dejar fijo el número de árboles en 20 y el número de varaibles [5,10,15,20,40], completa el código para ver la gráfica</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>resultados_rf_time1 = time_rf_gbt_training(x, y, [], [], metodo = &#39;rf&#39;)
@@ -949,7 +3305,7 @@ resultados_gbt_time1 = time_rf_gbt_training(x, y, [], [], metodo = &#39;gbt&#39;
 
 resultados_time = pd.concat([resultados_rf_time1, resultados_gbt_time1], ignore_index=True)
 
-sns.relplot(data = resultados_time, x = &#39;variables para la selección del mejor umbral&#39;, y = &#39;tiempo de entrenamiento&#39;, hue = &#39;metodo&#39;, kind = &#39;line&#39;)
+sns.relplot(data = resultados_time, x = &#39;variables para la seleccion del mejor umbral&#39;, y = &#39;tiempo de entrenamiento&#39;, hue = &#39;metodo&#39;, kind = &#39;line&#39;)
 </pre></div>
 </div>
 </div>
@@ -957,33 +3313,58 @@ sns.relplot(data = resultados_time, x = &#39;variables para la selección del me
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿qué parametro de los evaluados tiene una mayor influencia en los tiempos de entrenamiento? ¿hay diferencia entre el RF y GBT? justifique
-respuesta_7 = &quot;&quot; #@param {type:&quot;string&quot;}
+#@markdown Cuál parámetro de los evaluados tiene una mayor influencia en los tiempos de entrenamiento? ¿Porqué?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>GRADER.check_tests()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+# --- CREATE or OVERWRITE STUDENTS NOTEBOOK ---
+import init
+from local.lib.rlxmoocapi import utils
+student_notebook_fname = utils.convert_this_notebook_to_student()
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Integrantes
-codigo_integrante_1 =&#39;&#39; #@param {type:&quot;string&quot;}
-codigo_integrante_2 = &#39;&#39;  #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<p>esta linea de codigo va fallar, es de uso exclusivo de los profesores</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>GRADER.grade()
+<div class="cell_output docutils container">
+<script type="application/javascript">IPython.notebook.save_checkpoint();</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipynbname in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (2024.1.0.0)
+Requirement already satisfied: ipykernel in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipynbname) (6.19.3)
+Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
+Requirement already satisfied: psutil in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.9.4)
+Requirement already satisfied: packaging in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.2)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
+Requirement already satisfied: pyzmq&gt;=17 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.0.1)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
+Requirement already satisfied: debugpy&gt;=1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.6.4)
+Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
+Requirement already satisfied: traitlets&gt;=5.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.8.0)
+Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
+Requirement already satisfied: backcall in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.0)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.11 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (3.0.36)
+Requirement already satisfied: stack-data in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.6.2)
+Requirement already satisfied: decorator in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (5.1.1)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.19.1)
+Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
+Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (5.1.0)
+Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.8.2)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.8.3)
+Requirement already satisfied: platformdirs&gt;=2.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-core&gt;=4.9.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.6.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.11-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.5)
+Requirement already satisfied: six&gt;=1.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (1.16.0)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
+Requirement already satisfied: executing&gt;=1.2.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (1.2.0)
+Requirement already satisfied: pure-eval in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.2)
+NOTEBOOK name is lab3_parte2--XX--TEACHER--XX.ipynb
+student notebook writen to &#39;lab3_parte2.ipynb&#39;
 </pre></div>
 </div>
 </div>
