@@ -195,7 +195,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
@@ -226,7 +232,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -508,7 +514,7 @@ import matplotlib.pyplot as plt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
-Image(&quot;./Local/imgs/confusion_matix_example.png&quot;, width = 600)
+Image(&quot;local/imgs/confusion_matix_example.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -553,7 +559,7 @@ plt.grid()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1844ec0518d099b2c5f640a38d033562bd33b3473fb3242f9fa2f9ecea8c0f62.png" src="_images/1844ec0518d099b2c5f640a38d033562bd33b3473fb3242f9fa2f9ecea8c0f62.png" />
+<img alt="_images/a2c5dcb40b374d7107543c311eab87e6069213d668a4f91079f7c48132b2d75c.png" src="_images/a2c5dcb40b374d7107543c311eab87e6069213d668a4f91079f7c48132b2d75c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -590,7 +596,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e59d6035fd9d58aaf41c7abcba01c8b6e90452e9e39cb87c0b283bbe71bb4751.png" src="_images/e59d6035fd9d58aaf41c7abcba01c8b6e90452e9e39cb87c0b283bbe71bb4751.png" />
+<img alt="_images/50a179f579376361fcd8c93009871e14ed57d22f0652275351d8529540252364.png" src="_images/50a179f579376361fcd8c93009871e14ed57d22f0652275351d8529540252364.png" />
 </div>
 </div>
 </section>
@@ -598,40 +604,33 @@ plt.show()
 <h3>Representación gráfica de la matrix de confusión<a class="headerlink" href="#representacion-grafica-de-la-matrix-de-confusion" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import plot_confusion_matrix
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 titles_options = [(&quot;Confusion matrix, without normalization&quot;, None),
                   (&quot;Normalized confusion matrix&quot;, &#39;true&#39;)]
 for title, normalize in titles_options:
-    disp = plot_confusion_matrix(clf, X, Y,
-                                 display_labels=[&#39;class_1&#39;,&#39;class_2&#39;],
-                                 cmap=plt.cm.Blues,
-                                 normalize=normalize)
+    predictions = clf.predict(X)
+    cm = confusion_matrix(Y, predictions, labels=[1,0],normalize=normalize)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm,
+                              display_labels=clf.classes_)
+    
+    disp.plot(cmap=plt.cm.Blues)
     disp.ax_.set_title(title)
 
-    print(title)
-    print(disp.confusion_matrix)
+    
 
 plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Confusion matrix, without normalization
-[[471  29]
- [ 27 473]]
-Normalized confusion matrix
-[[0.942 0.058]
- [0.054 0.946]]
-</pre></div>
-</div>
-<img alt="_images/bde8d77c2a820deefe1b4dd3a77376879744fbd3c2dcf7f0a75f5516ee9e30e3.png" src="_images/bde8d77c2a820deefe1b4dd3a77376879744fbd3c2dcf7f0a75f5516ee9e30e3.png" />
-<img alt="_images/77046c87e9382cbcb6ac4692b228a1cfb2504ff245be681876664f53e8df7856.png" src="_images/77046c87e9382cbcb6ac4692b228a1cfb2504ff245be681876664f53e8df7856.png" />
+<img alt="_images/c75b817f162a2ed2684f5250d7b520a2641786878597e78a38c2866d5900092b.png" src="_images/c75b817f162a2ed2684f5250d7b520a2641786878597e78a38c2866d5900092b.png" />
+<img alt="_images/264d55684f9cae64e2d33269315bd844023a2f227f965358c7c77ad6bc0cea5a.png" src="_images/264d55684f9cae64e2d33269315bd844023a2f227f965358c7c77ad6bc0cea5a.png" />
 </div>
 </div>
 <p>En un problema de múltiples clases:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Local/imgs/CM.png&quot;, width = 600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/CM.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -668,10 +667,10 @@ print(&#39;F_1 = &#39;+str(f1_score(Y,y_pred)))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy = 0.944
-Precision = 0.93359375
-Recall = 0.956
-F_1 = 0.9446640316205533
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy = 0.942
+Precision = 0.9384920634920635
+Recall = 0.946
+F_1 = 0.9422310756972112
 </pre></div>
 </div>
 </div>
@@ -715,7 +714,7 @@ plt.grid()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6fbde1449b22cb884bf446b2b33058cc79d2c5c234bd0d4a46517318cbe8256e.png" src="_images/6fbde1449b22cb884bf446b2b33058cc79d2c5c234bd0d4a46517318cbe8256e.png" />
+<img alt="_images/96693bbb59bd24ec798ddc7cebc6ddb9d3b0f8af302ed368186eee058e27802c.png" src="_images/96693bbb59bd24ec798ddc7cebc6ddb9d3b0f8af302ed368186eee058e27802c.png" />
 </div>
 </div>
 <p>Validemos sobre un nuevo conjunto de datos:</p>
@@ -739,7 +738,7 @@ print(&#39;Precision = &#39;+str(precision_score(Y,y_pred)))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy = 0.996039603960396
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy = 0.9920792079207921
 Precision = 1.0
 </pre></div>
 </div>
@@ -755,8 +754,8 @@ print(&#39;F_1 = &#39;+str(f1_score(Y,y_pred)))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Recall = 0.6
-F_1 = 0.7499999999999999
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Recall = 0.2
+F_1 = 0.3333333333333333
 </pre></div>
 </div>
 </div>
@@ -779,8 +778,8 @@ print(&#39;BACC = &#39;+str(balanced_accuracy_score(Y,y_pred)))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MCC = 0.7730521080451098
-BACC = 0.8
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MCC = 0.44543540318737396
+BACC = 0.6
 </pre></div>
 </div>
 </div>
@@ -839,7 +838,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/55090e3116a4409791d126696f6f862a7e9ee929917cb205e82a73cb1b6f294f.png" src="_images/55090e3116a4409791d126696f6f862a7e9ee929917cb205e82a73cb1b6f294f.png" />
+<img alt="_images/aa58993f75c86b6e80d83143f6fb89330a231060b779bbf0dcf535c8887fd66a.png" src="_images/aa58993f75c86b6e80d83143f6fb89330a231060b779bbf0dcf535c8887fd66a.png" />
 </div>
 </div>
 </section>
@@ -877,7 +876,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8849622e359cae310389f9a44e06f202b5c360ed49d77f7196f4df7f4915a9ab.png" src="_images/8849622e359cae310389f9a44e06f202b5c360ed49d77f7196f4df7f4915a9ab.png" />
+<img alt="_images/aa1cb4bcb5ba7688c07861d7784acef11cf6d0060563f84e09ebdb2c8371593e.png" src="_images/aa1cb4bcb5ba7688c07861d7784acef11cf6d0060563f84e09ebdb2c8371593e.png" />
 </div>
 </div>
 </section>
@@ -907,7 +906,7 @@ def mean_absolute_percentage_error(y_true, y_pred):
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from library.regularization import PolynomialLinearRegression
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.library.regularization import PolynomialLinearRegression
 def f(size):
     &#39;&#39;&#39;
     Returns a sample with &#39;size&#39; instances without noise.
@@ -941,7 +940,7 @@ plt.grid();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e0c3821a27035b58b9fe8acddce2e11a0720ecbd21a2d39d01d397331dac30aa.png" src="_images/e0c3821a27035b58b9fe8acddce2e11a0720ecbd21a2d39d01d397331dac30aa.png" />
+<img alt="_images/c8a030adbb54e4d25ebd1897086b6cf2017c6094f92cd872183f4de9e361c164.png" src="_images/c8a030adbb54e4d25ebd1897086b6cf2017c6094f92cd872183f4de9e361c164.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -955,11 +954,11 @@ print(&#39;R^2 = &#39;+str(r2_score(y,p_y)))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE = 0.6744931048233564
-MAE = 0.6546544519965607
-MedAE = 0.5769178793910491
-MAPE = 92.8003075177867
-R^2 = 0.745604070176843
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE = 0.5513326016550747
+MAE = 0.5499497780582183
+MedAE = 0.39352057543671104
+MAPE = 476.07312970984134
+R^2 = 0.7686345919494887
 </pre></div>
 </div>
 </div>

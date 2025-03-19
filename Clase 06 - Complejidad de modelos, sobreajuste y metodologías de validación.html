@@ -195,7 +195,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
@@ -226,7 +232,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -510,7 +516,7 @@ import matplotlib.pyplot as plt
 <h2>Supongamos que tenemos un dataset de un problema de clasificación<a class="headerlink" href="#supongamos-que-tenemos-un-dataset-de-un-problema-de-clasificacion" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from library.regularization import plot_ellipse
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.library.regularization import plot_ellipse
 Cov = np.identity(2) * 1.1
 Cov2 = np.array([[1.1,0.5],[0.5,1.1]])
 Mean = [1.1,2.1]
@@ -529,7 +535,7 @@ plt.grid()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9cb9bb9f571cae38c599ed79a2782ea93836f991ad60f5998589c0ee93137eea.png" src="_images/9cb9bb9f571cae38c599ed79a2782ea93836f991ad60f5998589c0ee93137eea.png" />
+<img alt="_images/d53dcec1922f85cb75ccfc1c7c2b3412c18d3b4d1d5d96f4716113c154e738f4.png" src="_images/d53dcec1922f85cb75ccfc1c7c2b3412c18d3b4d1d5d96f4716113c154e738f4.png" />
 </div>
 </div>
 </section>
@@ -567,32 +573,32 @@ plt.grid()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/354a02589f7166328602381420e4be6c2c3ed3f645959d06633f0a45d6460b58.png" src="_images/354a02589f7166328602381420e4be6c2c3ed3f645959d06633f0a45d6460b58.png" />
+<img alt="_images/c04a4173543bd85a9e85d142e62695d24d8bb6353a2c7df317c7817c7317c74e.png" src="_images/c04a4173543bd85a9e85d142e62695d24d8bb6353a2c7df317c7817c7317c74e.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from library.regularization import Fronteras
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.library.regularization import Fronteras
 clf = QuadraticDiscriminantAnalysis()
 Fronteras(clf,100,10)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a2fe7e75c2a219aac9f5b3c676f0e4afe82e8f221b5cfce8b931963ddf6bce5a.png" src="_images/a2fe7e75c2a219aac9f5b3c676f0e4afe82e8f221b5cfce8b931963ddf6bce5a.png" />
+<img alt="_images/d01e504e19c4a48230b46c80c6322cf867823e78120f3cff48e41d8cea17d946.png" src="_images/d01e504e19c4a48230b46c80c6322cf867823e78120f3cff48e41d8cea17d946.png" />
 </div>
 </div>
 <p>y si cambiamos el tipo de modelo…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from library.regularization import Kernel_classifier
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.library.regularization import Kernel_classifier
 clf = Kernel_classifier(bandwidth=0.5)
 Fronteras(clf,100,5)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e6d1c23d84b64f10036145b41892f0e386bb8374d9d5debea6a23ad4756c4438.png" src="_images/e6d1c23d84b64f10036145b41892f0e386bb8374d9d5debea6a23ad4756c4438.png" />
+<img alt="_images/95040ed843f52fe01397bc8181693698caecaddd045bff6cce4b054337954888.png" src="_images/95040ed843f52fe01397bc8181693698caecaddd045bff6cce4b054337954888.png" />
 </div>
 </div>
 <p><strong>Consultar</strong>: Criterios para seleccionar modelos según su complejidad:</p>
@@ -614,7 +620,7 @@ Fronteras(clf,100,5)
 <p>donde <span class="math notranslate nohighlight">\(e\)</span> es el término de error el cual se asume distribuido normalmente con media 0.</p>
 <div class="math notranslate nohighlight">
 \[Err({\bf{x}}) = E\left[ \left(y - \hat{f}({\bf{x}})\right)^2 \right]\]</div>
-<p>Usando propiedades del valor esperado:</p>
+<p>Usando propiedades del valor esperado (ver <a class="reference external" href="https://medium.com/snu-ai/the-bias-variance-trade-off-a-mathematical-view-14ff9dfe5a3c">link</a> para los detalles de la deducción):</p>
 <div class="math notranslate nohighlight">
 \[Err({\bf{x}}) = \left( E[\hat{f}({\bf{x}})] - f({\bf{x}})\right)^2 + E\left[\left(\hat{f}({\bf{x}}) - E\left[\hat{f}({\bf{x}})\right]\right)^2\right] + \sigma_e^2\]</div>
 <div class="math notranslate nohighlight">
@@ -622,7 +628,7 @@ Fronteras(clf,100,5)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
-Image(&quot;./Local/imgs/biasVVariance.png&quot;, width = 600)
+Image(&quot;local/imgs/biasVVariance.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -633,7 +639,7 @@ Image(&quot;./Local/imgs/biasVVariance.png&quot;, width = 600)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Local/imgs/tradeoff.png&quot;, width = 600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/tradeoff.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -646,7 +652,7 @@ Image(&quot;./Local/imgs/biasVVariance.png&quot;, width = 600)
 <h3>Veamos un ejemplo:<a class="headerlink" href="#veamos-un-ejemplo" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from library.regularization import PolynomialLinearRegression
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.library.regularization import PolynomialLinearRegression
 def f(size):
     &#39;&#39;&#39;
     Returns a sample with &#39;size&#39; instances without noise.
@@ -680,7 +686,7 @@ plt.grid();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8d725adbc5587c73e9ce80421b4e69b513e5a38fdd744bb97bc83ca1c04a6cc5.png" src="_images/8d725adbc5587c73e9ce80421b4e69b513e5a38fdd744bb97bc83ca1c04a6cc5.png" />
+<img alt="_images/47c2884ae751c2407f079a4f6c889524e26cca69707e548b6ac0d29ccf14cb91.png" src="_images/47c2884ae751c2407f079a4f6c889524e26cca69707e548b6ac0d29ccf14cb91.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -699,8 +705,8 @@ for k, degree in enumerate([3, 5, 10, 18]):
         avg_y = avg_y + p_y
         plt.plot(x, p_y, &#39;k-&#39;, alpha=.1)
     avg_y = avg_y / n_models
-    plt.plot(x, avg_y, &#39;b--&#39;, label=&quot;average model&quot;)
-    plt.plot(x, f(len(x))[1], &#39;b--&#39;, color=&quot;red&quot;, lw=&quot;3&quot;, alpha=.5, label=&quot;actual function&quot;)
+    plt.plot(x, avg_y, &#39;--&#39;, label=&quot;average model&quot;)
+    plt.plot(x, f(len(x))[1], &#39;--&#39;, color=&quot;red&quot;, lw=&quot;3&quot;, alpha=.5, label=&quot;actual function&quot;)
     plt.legend();
     plt.grid();
     plt.title(&quot;degree %d&quot;%degree)
@@ -708,7 +714,7 @@ for k, degree in enumerate([3, 5, 10, 18]):
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/afb800536148d407a9de800f7fd2e27cbc6a8a8d9b2b1708094eb06954346790.png" src="_images/afb800536148d407a9de800f7fd2e27cbc6a8a8d9b2b1708094eb06954346790.png" />
+<img alt="_images/19a1058f1db79fa9d394ab53c593ebae37f1931ff7978a413851d264c36cc220.png" src="_images/19a1058f1db79fa9d394ab53c593ebae37f1931ff7978a413851d264c36cc220.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -750,7 +756,7 @@ plt.grid();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ce24125429daadb333a184c99e1d331a10a7b298558454eeccc868c295b461c4.png" src="_images/ce24125429daadb333a184c99e1d331a10a7b298558454eeccc868c295b461c4.png" />
+<img alt="_images/fca91b9fa2a693351cbc4b8cd862aeaefc8dfb170777f9917ad43874738cb284.png" src="_images/fca91b9fa2a693351cbc4b8cd862aeaefc8dfb170777f9917ad43874738cb284.png" />
 </div>
 </div>
 </section>
@@ -766,7 +772,7 @@ plt.grid();
 <p>En primer lugar se divide el conjunto de datos de manera aleatoria en dos subconjuntos: Training y Test, típicamente 80% - 20% respectivamente. El conjunto de entrenamiento a su vez se divide nuevamente de manera aleatoria en <span class="math notranslate nohighlight">\(k\)</span> subconjuntos disyuntos, se usan <span class="math notranslate nohighlight">\(k-1\)</span> suubconjuntos para entrenar y el conjunto restante para validar; dicho proceso se repite <span class="math notranslate nohighlight">\(k\)</span> veces. El proceso de entrenamiento y validación se utliza para seleccionar los hiperparámetros del modelo y el conjuto de test para evaluar el desempeño una vez escogido el mejor subconjunto de parámetros.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Local/imgs/grid_search_cross_validation.png&quot;, width = 600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/grid_search_cross_validation.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -845,12 +851,12 @@ print(&#39;Accuracy promedio = &#39;+str(np.mean(Acc,axis=1)) + &#39;+/-&#39; +s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5b809cd603e2c00f50b35bced89e3c3beb672c651ff0ce8696b404a311144108.png" src="_images/5b809cd603e2c00f50b35bced89e3c3beb672c651ff0ce8696b404a311144108.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en cada fold = [[0.9375   0.9375   0.921875 0.9375   0.925   ]
- [0.9375   0.93125  0.9375   0.9375   0.953125]
- [0.946875 0.925    0.934375 0.934375 0.9375  ]
- [0.946875 0.928125 0.94375  0.93125  0.940625]]
-Accuracy promedio = [0.931875 0.939375 0.935625 0.938125]+/-[0.01391941 0.01457738 0.01403122 0.0144698 ]
+<img alt="_images/d919b0c35cfdf590399cc3d239b4323c15297a226a241efd3c993b779aa65e00.png" src="_images/d919b0c35cfdf590399cc3d239b4323c15297a226a241efd3c993b779aa65e00.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en cada fold = [[0.9125   0.90625  0.9      0.928125 0.9375  ]
+ [0.915625 0.915625 0.9375   0.94375  0.921875]
+ [0.915625 0.934375 0.9375   0.953125 0.9375  ]
+ [0.921875 0.93125  0.940625 0.95625  0.934375]]
+Accuracy promedio = [0.916875 0.926875 0.935625 0.936875]+/-[0.02783882 0.02325134 0.02391391 0.02284458]
 </pre></div>
 </div>
 </div>
@@ -866,7 +872,7 @@ print(&#39;Accuracy en test = &#39; + str(accuracy_score(y_test,y_pred)))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en test = 0.95
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en test = 0.915
 </pre></div>
 </div>
 </div>
@@ -893,7 +899,7 @@ kf = KFold(n_splits=n)
 <p>En este la partición de las muestras entre entrenamiento y validación se realiza utilizando aleatoriamente definiendo un porcentaje para entrenamiento/validación y un número de repeticiones. La diferencia fundamental con la metodología anterior es que en el caso de Bootstrapping es posible que una misma muestra se repita en dos subconjuntos de validación. Adicionalmente en el caso de validación cruzada los porcentajes de entrenamiento y validación están definidos implícitamente por el número de folds, mientras que en Bootstrapping no.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Local/imgs/bootstrap_concept.png&quot;, width = 600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/bootstrap_concept.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
@@ -913,12 +919,12 @@ print(&#39;Accuracy promedio = &#39;+str(np.mean(Acc,axis=1)) + &#39;+/-&#39; +s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/60f51cc9ae42dc3c5320abbf32f2affac6a3eb3aae020f3d62f8ec0920a5284a.png" src="_images/60f51cc9ae42dc3c5320abbf32f2affac6a3eb3aae020f3d62f8ec0920a5284a.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en cada fold = [[0.9275 0.9475 0.9425 0.93   0.935 ]
- [0.9425 0.9475 0.94   0.9325 0.925 ]
- [0.95   0.9475 0.9425 0.935  0.925 ]
- [0.945  0.95   0.945  0.935  0.9325]]
-Accuracy promedio = [0.9365 0.9375 0.94   0.9415]+/-[0.0150333  0.01581139 0.0181659  0.0132665 ]
+<img alt="_images/4452cb2d4f8b61cb369ae1f6de61c8d07801ca57b12e0db37e0432dc155a645a.png" src="_images/4452cb2d4f8b61cb369ae1f6de61c8d07801ca57b12e0db37e0432dc155a645a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy en cada fold = [[0.9225 0.905  0.9125 0.9275 0.9225]
+ [0.925  0.92   0.925  0.9225 0.935 ]
+ [0.9325 0.9275 0.9375 0.925  0.9425]
+ [0.935  0.9375 0.94   0.935  0.94  ]]
+Accuracy promedio = [0.918  0.9255 0.933  0.9375]+/-[0.01624808 0.01019804 0.01280625 0.00447214]
 </pre></div>
 </div>
 </div>
@@ -1000,7 +1006,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1eb77eb39cfbee587cee9ec0df1a55908c10d504bb6cfa984a4f938b526dbd06.png" src="_images/1eb77eb39cfbee587cee9ec0df1a55908c10d504bb6cfa984a4f938b526dbd06.png" />
+<img alt="_images/f869af0a1b3edfdd3c3c0e602032b901cdbcee528b65b81db70b0f2a54230464.png" src="_images/f869af0a1b3edfdd3c3c0e602032b901cdbcee528b65b81db70b0f2a54230464.png" />
 </div>
 </div>
 <p>Para garantizar que se mantenga la proporción del conjunto de datos original, se debe usar un versión <strong>estratificada</strong> de la metodología de validación:</p>
@@ -1026,7 +1032,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/17863dafc170dcb37eb970aa0914f210554575611f9c1f545fe14586e6ee851e.png" src="_images/17863dafc170dcb37eb970aa0914f210554575611f9c1f545fe14586e6ee851e.png" />
+<img alt="_images/66a83bc9125fa49bf8a6973c4f6ef3da0219f8605fa6b0bc45f724c00937e21d.png" src="_images/66a83bc9125fa49bf8a6973c4f6ef3da0219f8605fa6b0bc45f724c00937e21d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1058,7 +1064,7 @@ from sklearn.model_selection import StratifiedShuffleSplit
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
-df = pd.read_csv(&quot;DataFiles/parkinsons.data&quot;,delimiter=&#39;,&#39;)
+df = pd.read_csv(&quot;local/data/parkinsons.data&quot;,delimiter=&#39;,&#39;)
 df[:10]
 </pre></div>
 </div>
@@ -1720,16 +1726,434 @@ clf.fit(Xtrain, Y[train_inds])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=ShuffleSplit(n_splits=5, random_state=0, test_size=0.25, train_size=None),
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-1 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=ShuffleSplit(n_splits=5, random_state=0, test_size=0.25, train_size=None),
              estimator=KNeighborsClassifier(),
-             param_grid=[{&#39;metric&#39;: [&#39;minkowski&#39;],
-                          &#39;n_neighbors&#39;: [1, 3, 5, 7, 9], &#39;p&#39;: [1, 2]},
-                         {&#39;metric&#39;: [&#39;chebyshev&#39;],
-                          &#39;n_neighbors&#39;: [1, 3, 5, 7, 9]}],
-             scoring=&#39;accuracy&#39;)
-</pre></div>
-</div>
-</div>
+             param_grid=[{&#x27;metric&#x27;: [&#x27;minkowski&#x27;],
+                          &#x27;n_neighbors&#x27;: [1, 3, 5, 7, 9], &#x27;p&#x27;: [1, 2]},
+                         {&#x27;metric&#x27;: [&#x27;chebyshev&#x27;],
+                          &#x27;n_neighbors&#x27;: [1, 3, 5, 7, 9]}],
+             scoring=&#x27;accuracy&#x27;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GridSearchCV</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.model_selection.GridSearchCV.html">?<span>Documentation for GridSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>GridSearchCV(cv=ShuffleSplit(n_splits=5, random_state=0, test_size=0.25, train_size=None),
+             estimator=KNeighborsClassifier(),
+             param_grid=[{&#x27;metric&#x27;: [&#x27;minkowski&#x27;],
+                          &#x27;n_neighbors&#x27;: [1, 3, 5, 7, 9], &#x27;p&#x27;: [1, 2]},
+                         {&#x27;metric&#x27;: [&#x27;chebyshev&#x27;],
+                          &#x27;n_neighbors&#x27;: [1, 3, 5, 7, 9]}],
+             scoring=&#x27;accuracy&#x27;)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>best_estimator_: KNeighborsClassifier</div></div></label><div class="sk-toggleable__content fitted"><pre>KNeighborsClassifier(n_neighbors=3, p=1)</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>KNeighborsClassifier</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">?<span>Documentation for KNeighborsClassifier</span></a></div></label><div class="sk-toggleable__content fitted"><pre>KNeighborsClassifier(n_neighbors=3, p=1)</pre></div> </div></div></div></div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1774,16 +2198,434 @@ clf.fit(Xtrain, Y[train_inds])
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GridSearchCV(cv=&lt;generator object BaseShuffleSplit.split at 0x7f3742981cd0&gt;,
+<div class="output text_html"><style>#sk-container-id-2 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-2 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-2 pre {
+  padding: 0;
+}
+
+#sk-container-id-2 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-2 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-2 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-2 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-2 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-2 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-2 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-2 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-2 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-2 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-2 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-2 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-2 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-2 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-2 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-2 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GridSearchCV(cv=&lt;generator object BaseShuffleSplit.split at 0x7efefe983840&gt;,
              estimator=KNeighborsClassifier(),
-             param_grid=[{&#39;metric&#39;: [&#39;minkowski&#39;],
-                          &#39;n_neighbors&#39;: [1, 3, 5, 7, 9], &#39;p&#39;: [1, 2]},
-                         {&#39;metric&#39;: [&#39;chebyshev&#39;],
-                          &#39;n_neighbors&#39;: [1, 3, 5, 7, 9]}],
-             scoring=&#39;accuracy&#39;)
-</pre></div>
-</div>
-</div>
+             param_grid=[{&#x27;metric&#x27;: [&#x27;minkowski&#x27;],
+                          &#x27;n_neighbors&#x27;: [1, 3, 5, 7, 9], &#x27;p&#x27;: [1, 2]},
+                         {&#x27;metric&#x27;: [&#x27;chebyshev&#x27;],
+                          &#x27;n_neighbors&#x27;: [1, 3, 5, 7, 9]}],
+             scoring=&#x27;accuracy&#x27;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>GridSearchCV</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.model_selection.GridSearchCV.html">?<span>Documentation for GridSearchCV</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>GridSearchCV(cv=&lt;generator object BaseShuffleSplit.split at 0x7efefe983840&gt;,
+             estimator=KNeighborsClassifier(),
+             param_grid=[{&#x27;metric&#x27;: [&#x27;minkowski&#x27;],
+                          &#x27;n_neighbors&#x27;: [1, 3, 5, 7, 9], &#x27;p&#x27;: [1, 2]},
+                         {&#x27;metric&#x27;: [&#x27;chebyshev&#x27;],
+                          &#x27;n_neighbors&#x27;: [1, 3, 5, 7, 9]}],
+             scoring=&#x27;accuracy&#x27;)</pre></div> </div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>best_estimator_: KNeighborsClassifier</div></div></label><div class="sk-toggleable__content fitted"><pre>KNeighborsClassifier(n_neighbors=9, p=1)</pre></div> </div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>KNeighborsClassifier</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.neighbors.KNeighborsClassifier.html">?<span>Documentation for KNeighborsClassifier</span></a></div></label><div class="sk-toggleable__content fitted"><pre>KNeighborsClassifier(n_neighbors=9, p=1)</pre></div> </div></div></div></div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1826,7 +2668,8 @@ print(&#39;Accuracy test = &#39;+str(accuracy_score(Y[test_inds],y_pred)))
 </div>
 </div>
 </div>
-<p>Para lo que no existe una implementación curada en sklearn es para la variante <strong>Stratified Group Shuffle Split</strong> o Stratified GroupKFold, pero en el <a class="reference external" href="https://www.kaggle.com/jakubwasikowski/stratified-group-k-fold-cross-validation">este</a> enlace pueden encontrar una implementación.</p>
+<p><strong>La combinación entre la validación estratificada y la validación por grupos también puede ser necesaria</strong>. ver <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedGroupKFold.html">StratifiedGroupKFold</a></p>
+<p>Para lo que no existe una implementación curada en sklearn es para la variante <strong>Stratified Group Shuffle Split</strong>, pero en <a class="reference external" href="https://www.kaggle.com/jakubwasikowski/stratified-group-k-fold-cross-validation">este</a> enlace pueden encontrar una implementación.</p>
 </section>
 </section>
 </section>
@@ -1838,7 +2681,7 @@ print(&#39;Accuracy test = &#39;+str(accuracy_score(Y[test_inds],y_pred)))
 <h2>Veamos un ejemplo con los mismos datos del ejemplo anterior.<a class="headerlink" href="#veamos-un-ejemplo-con-los-mismos-datos-del-ejemplo-anterior" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from library.learning_curve import plot_learning_curve
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.library.learning_curve import plot_learning_curve
 </pre></div>
 </div>
 </div>
@@ -1874,7 +2717,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ae7225902023e9a44d2b1124070a4feb78f99d7a671d913bf3fd6dbd63589f60.png" src="_images/ae7225902023e9a44d2b1124070a4feb78f99d7a671d913bf3fd6dbd63589f60.png" />
+<img alt="_images/467b4150c8fe4e3bbfbb5d9ff8a1af3f338cd7cfefd49851221c9e07d3ba3ef2.png" src="_images/467b4150c8fe4e3bbfbb5d9ff8a1af3f338cd7cfefd49851221c9e07d3ba3ef2.png" />
 </div>
 </div>
 <p>Podemos observar que los resultados muestran comportamientos de alta varianza, es decir con cierto nivel de sobre ajuste y una clara necesidad de contar con una base de datos más grande.</p>
@@ -1919,7 +2762,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0cd406039b7041dd1371e431fd2924d22ea333a2ffee91f98ba18c0781680448.png" src="_images/0cd406039b7041dd1371e431fd2924d22ea333a2ffee91f98ba18c0781680448.png" />
+<img alt="_images/2084bc6b44fb8f83b5fca28801a8e85ea71cbf5d5628199ad58ca9e163abb67c.png" src="_images/2084bc6b44fb8f83b5fca28801a8e85ea71cbf5d5628199ad58ca9e163abb67c.png" />
 </div>
 </div>
 <p>En este caso vemos que el modelo SVM alcanza baja varianza y bajo bias, además se requieren más de 1200 muestras para el entrenamiento del modelo.</p>
