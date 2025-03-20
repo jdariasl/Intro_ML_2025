@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Laboratorio 2 - Parte 2. KNN para un problema de regresión &#8212; 2025 Introducción al Machine Learning</title>
+    <title>Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión &#8212; 2025 Introducción al Machine Learning</title>
   
   
   
@@ -195,7 +195,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
@@ -209,7 +215,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
@@ -226,7 +232,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -244,7 +250,7 @@
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -435,7 +441,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Laboratorio 2 - Parte 2. KNN para un problema de regresión</h1>
+    <h1>Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -445,11 +451,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-contextualizacion-del-problema">Ejercicio 1: Contextualización del problema</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-completar-codigo-de-k-vecinos-para-regresion">Ejercicio 2: Completar código de K-Vecinos para regresión.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-experimentos-con-knn">Ejercicio 3: Experimentos con KNN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-4-ventana-de-parzen-y-experimentos">Ejercicio 4: Ventana de Parzen y experimentos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-5-experimentos-con-parzen">Ejercicio 5: Experimentos con Parzen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-1-exploracion-de-datos">Tarea 1: Exploración de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-2-k-vecinos-mas-cercanos-para-regresion">Tarea 2: K-Vecinos más cercanos para regresión.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-3-evaluar-modelo-k-vecinos">Tarea 3: Evaluar modelo K-Vecinos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-4-ventana-de-parzen">Tarea 4: Ventana de Parzen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-5-experimentos-con-parzen">Tarea 5: Experimentos con Parzen</a></li>
 </ul>
             </nav>
         </div>
@@ -461,42 +467,51 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><strong>Recuerda que una vez abierto, Da clic en “Copiar en Drive”, de lo contrario no podras alamancenar tu progreso</strong></p>
-<p>Nota: no olvide ir ejecutando las celdas de código de arriba hacia abajo para que no tenga errores de importación de librerías o por falta de definición de variables.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-2-parte-2-modelos-no-parametricos-regresion">
+<h1>Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión<a class="headerlink" href="#laboratorio-2-parte-2-modelos-no-parametricos-regresion" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L02.02&quot;, varname=&quot;student&quot;);
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
 # Ejecuta esta celda!
-%load_ext autoreload
-%autoreload 2
-# for local 
-#import sys ; sys.path.append(&#39;../commons/utils/&#39;)
-!wget https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/commons/utils/general.py -O general.py
-from general import configure_lab2
-configure_lab2()
-from lab2 import *
-GRADER, x, y = part_2()
+from Labs.commons.utils.lab2 import *
+_, x, y = part_2()
+y = y.reshape(np.size(y), 1)
 </pre></div>
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="laboratorio-2-parte-2-knn-para-un-problema-de-regresion">
-<h1>Laboratorio 2 - Parte 2. KNN para un problema de regresión<a class="headerlink" href="#laboratorio-2-parte-2-knn-para-un-problema-de-regresion" title="Link to this heading">#</a></h1>
-<section id="ejercicio-1-contextualizacion-del-problema">
-<h2>Ejercicio 1: Contextualización del problema<a class="headerlink" href="#ejercicio-1-contextualizacion-del-problema" title="Link to this heading">#</a></h2>
-<p>Para el problema de regresion usaremos la base de datos ‘The Boston Housing Dataset’, cuya descripción <a class="reference external" href="https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html">pueden encontrarla aqui</a>. La información ya esta cargada dentro del notebook</p>
+<section id="tarea-1-exploracion-de-datos">
+<h2>Tarea 1: Exploración de datos<a class="headerlink" href="#tarea-1-exploracion-de-datos" title="Link to this heading">#</a></h2>
+<p>Para el problema de regresion usaremos la base de datos ‘The California Housing Dataset’, cuya descripción <a class="reference external" href="https://inria.github.io/scikit-learn-mooc/python_scripts/datasets_california_housing.html">pueden encontrarla aqui</a>. La información ya esta cargada dentro del notebook</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;muestra de los 3 primeros renglones de x:\n&quot;, x[0:3, :])
 print(&quot;muestra de los 3 primeros renglones de y:\n&quot;, y[0:3])
-print (&quot;¿el resultado de esta instrucción que información nos brinda?&quot;, x.shape[0])
-print (&quot;¿el resultado de esta instrucción que información nos brinda?&quot;, x.shape[1])
-print (&quot;¿el resultado de esta instrucción que información nos brinda?&quot;, len(np.unique(y)))
+print (&quot;Qué información nos brinda el resultado de esta instrucción?&quot;, x.shape[0])
+print (&quot;Qué información nos brinda el resultado de esta instrucción?&quot;, x.shape[1])
+print (&quot;Qué información nos brinda el resultado de esta instrucción?&quot;, len(np.unique(y)))
 </pre></div>
 </div>
 </div>
 </div>
-<p>En los problemas de regresión, es muy util explorar la distribución de la variable objetivo. Nuestro primer ejercicio consiste en:</p>
+<p>En los problemas de regresión, es muy útil explorar la distribución de la variable objetivo. Nuestro primer ejercicio consiste en:</p>
 <ol class="arabic simple">
 <li><p>visualizar un histograma de la variable. Vamos a realizar el histograma con 20 “cajones”.</p></li>
 <li><p>Usar el histograma para confirmar como estan distribuidos los datos</p></li>
@@ -506,30 +521,29 @@ print (&quot;¿el resultado de esta instrucción que información nos brinda?&qu
 <li><p>explorar la documentación de <a class="reference external" href="https://matplotlib.org/3.3.1/api/_as_gen/matplotlib.pyplot.hist.html">plt.hist</a>. Maneje los valores por defecto.</p></li>
 </ol>
 <p><strong>NOTA</strong>
-Se quiere incentivar la lecutra de la documentación de las librerias, se debe hacer llamado explicito al parametro a usar. Ejemplo si se necesita usar el parametro <code class="docutils literal notranslate"><span class="pre">density</span></code>, se debe llamar como <code class="docutils literal notranslate"><span class="pre">plt.hist(density=True</span> <span class="pre">....)</span></code></p>
+Se quiere incentivar la lecutra de la documentación de las librerías, se debe hacer llamado explícito al parámetro a usar. Ejemplo si se necesita usar el parámetro <code class="docutils literal notranslate"><span class="pre">density</span></code>, se debe llamar como <code class="docutils literal notranslate"><span class="pre">plt.hist(density=True</span> <span class="pre">....)</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
 def plot_hist_20(Y):
     &quot;&quot;&quot;función que grafica el histograma de la variable &#39;Y&#39;
-        teniendo como valor fijo 20 en el parametro que controla
-        el numero de &quot;cajones&quot;
+        teniendo como valor fijo 20 en el parámetro que controla
+        el número de &quot;cajones&quot;
 
         No retorna nada
     &quot;&quot;&quot;
-   
-    plt.hist()
+   plt...
 
-    return None
+
+    return
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-#ignora las graficas!!
-GRADER.run_test(&quot;ejercicio1&quot;, plot_hist_20)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
 </pre></div>
 </div>
 </div>
@@ -541,6 +555,7 @@ plot_hist_20(y)
 # vamos realizar la representacion de la media y mediana
 plt.axvline(y.mean(), c = &#39;r&#39;)
 plt.axvline(np.median(y), c = &#39;k&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -548,16 +563,16 @@ plt.axvline(np.median(y), c = &#39;k&#39;)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown Evaluando **solo** el histograma, ¿qué tan bien representa el valor promedio de `y` a todo el posible rango de valores de este mismo?
-respuesta_1 = &quot;&quot; #@param {type:&quot;string&quot;}
+#@markdown Evaluando **solo** el histograma, ¿qué tan bien representa la media de y a todo el posible rango de valores de la variable objetivo?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="ejercicio-2-completar-codigo-de-k-vecinos-para-regresion">
-<h2>Ejercicio 2: Completar código de K-Vecinos para regresión.<a class="headerlink" href="#ejercicio-2-completar-codigo-de-k-vecinos-para-regresion" title="Link to this heading">#</a></h2>
-<p>Vamos a implementar ahora KNN para un problema de regresión.</p>
+<section id="tarea-2-k-vecinos-mas-cercanos-para-regresion">
+<h2>Tarea 2: K-Vecinos más cercanos para regresión.<a class="headerlink" href="#tarea-2-k-vecinos-mas-cercanos-para-regresion" title="Link to this heading">#</a></h2>
+<p>Vamos a implementar ahora el modelo KNN para un problema de regresión.</p>
 <p>Las mismas pistas de nuestro laboratorio anterior son de utilidad para implementar el algoritmo.</p>
 <ol class="arabic simple">
 <li><p>Para el cáculo de la distancia entre vectores existen varias opciones:</p>
@@ -567,51 +582,49 @@ respuesta_1 = &quot;&quot; #@param {type:&quot;string&quot;}
 </ol>
 </li>
 <li><p>También serán de utilidad las funciones <code class="docutils literal notranslate"><span class="pre">np.sort</span></code> y <code class="docutils literal notranslate"><span class="pre">np.argsort</span></code>.</p></li>
-<li><p>¿cual es la unica diferencia entre el knn para clasificación y regresión? en lugar de la moda, que metodo debemos usar?</p></li>
+<li><p>¿Cuál es la única diferencia entre el knn para clasificación y regresión? en lugar de la moda, que metodo debemos usar?</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
-def KNN_regresion(k, X_train, Y_train, X_test):
-    &quot;&quot;&quot; Funcion que implementa el modelo de K-Vecino mas cercanos
+def knn_regresion(k, X_train, Y_train, X_test):
+    &quot;&quot;&quot; Función que implementa el modelo de K-Vecino mas cercanos
         para regresión
-        
+
     k (int): valor de vecinos a usar
     X_train: es la matriz con las muestras de entrenamiento
     Y_train: es un vector con los valores de salida pra cada una de las muestras de entrenamiento
     X_test: es la matriz con las muestras de validación
-    
-    retorna: las estimaciones del modelo KNN para el conjunto X_test 
-             esta matriz debe tener un shape de [row/muestras de X_test] 
+
+    retorna: las estimaciones del modelo KNN para el conjunto X_test
+             esta matriz debe tener un shape de [row/muestras de X_test]
              y las distancias de X_test respecto a X_train, estan matrix
              debe tener un shape de [rows de X_test, rows X_train]
              lo que es lo mismo [muestras de X_test, muestras de X_train]
     &quot;&quot;&quot;
-    
-    if k &gt; X_train.shape[0]:
-        print(&quot;k no puede ser menor que las muestras de entrenamiento&quot;)
-        return(None)
 
-    distancias =  
-    Yest = np.zeros(X_test.shape[0])
-  
-        
-    return Yest, distancias
+    from scipy.spatial import distance
+
+    distancias = ...
+    Y_est = ...
+
+    #Tener en cuenta que una implementación óptima no requiere ciclos for
+    return (Y_est, distancias)
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio2&quot;, KNN_regresion)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T2&#39;);
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="ejercicio-3-experimentos-con-knn">
-<h2>Ejercicio 3: Experimentos con KNN<a class="headerlink" href="#ejercicio-3-experimentos-con-knn" title="Link to this heading">#</a></h2>
+<section id="tarea-3-evaluar-modelo-k-vecinos">
+<h2>Tarea 3: Evaluar modelo K-Vecinos<a class="headerlink" href="#tarea-3-evaluar-modelo-k-vecinos" title="Link to this heading">#</a></h2>
 <p>Ahora vamos a probar nuestro algoritmo. Antes de ello, definos la función para calcular el error</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -622,17 +635,9 @@ GRADER.run_test(&quot;ejercicio2&quot;, KNN_regresion)
     retorna: mape
     &quot;&quot;&quot;
     N = np.size(Y)
-    mape = np.sum(abs((Y_est.reshape(N,1) - Y.reshape(N,1))/Y.reshape(N,1)))/N
-    return mape 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown En sus palabras, ¿como se puede explicar el MAPE? ¿Cuales son los valores para el caso de un modelo perfecto? ¿cuales son los valores para un modelo con falta de entrenamiento?
-respuesta_2 = &quot;&quot; #@param {type:&quot;string&quot;}
+    epsilon = 1e-10  # Pequeño valor para evitar división por cero
+    mape = np.sum(abs((Y_est.reshape(N, 1) - Y.reshape(N, 1)) / (Y.reshape(N, 1) + epsilon))) / N
+    return mape
 </pre></div>
 </div>
 </div>
@@ -656,16 +661,16 @@ def experimentar (ks, X, Y):
     retorna: dataframe con los resultados, debe contener las siguientes columnas:
         - los k-vecinos, el error-mape medio de prueba, la desviacion estandar del error-mape
     &quot;&quot;&quot;
-    
+
     resultados = pd.DataFrame()
     idx = 0
     # iteramos sobre la lista de k&#39;s
     for k in ks:
-        
+
         # iteramos para validar
         # sobre las particiones
         # ¿que numero debemos asignar para lograr las particiones?
-        for j in range(...): 
+        for j in range(...):
             # dividimos usando la función
             Xtrain, Xtest, Ytrain, Ytest = train_test_split(X,Y)
             scaler = StandardScaler()
@@ -675,8 +680,8 @@ def experimentar (ks, X, Y):
 
             Yest, _ = ...(...)
             errorTest = MAPE(...,...)
-    
-            resultados.loc[idx,&#39;k-vecinos&#39;] = k 
+
+            resultados.loc[idx,&#39;k-vecinos&#39;] = k
             resultados.loc[idx,&#39;error de prueba&#39;] = ...
             #asignamos la particion
             resultados.loc[idx, &#39;particion&#39;] = j
@@ -687,35 +692,26 @@ def experimentar (ks, X, Y):
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio3&quot;, experimentar)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T3&#39;);
 </pre></div>
 </div>
 </div>
 </div>
+<p>Ahora ejecuta los experimentos con k = 2,3,4</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown si bien, dentro del código es usada la función train_test_split, que metodologia de validación es implementada usando esta función? justifique
-respuesta_3 = &quot;&quot; #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<p>Ahora ejecuta los experimentos con k = 2,3,4,5,6,7,10</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>resultados = experimentar ([2,3,4,5,6,7,10], x, y)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>resultados = experimentar ([2,3,4], x, y)
 resultados
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="ejercicio-4-ventana-de-parzen-y-experimentos">
-<h2>Ejercicio 4: Ventana de Parzen y experimentos<a class="headerlink" href="#ejercicio-4-ventana-de-parzen-y-experimentos" title="Link to this heading">#</a></h2>
+<section id="tarea-4-ventana-de-parzen">
+<h2>Tarea 4: Ventana de Parzen<a class="headerlink" href="#tarea-4-ventana-de-parzen" title="Link to this heading">#</a></h2>
 <p>Ahora, igualmente, vamos aplicar ventana de parzen para resolver el problema de regresión.</p>
 <div class="math notranslate nohighlight">
 \[f({\bf{x}}^*) = \frac{1}{N h^d} \sum_{i=1}^{N} K(u_i), \;\; u_i = \frac{d({\bf{x}}^*,{\bf{x}}_i)}{h}\]</div>
@@ -729,11 +725,12 @@ resultados
     return (np.exp((-0.5)*x**2))
 
 def ParzenWindow(x,Data,h,Datay=None):
+    from scipy.spatial.distance import euclidean
     &quot;&quot;&quot;&quot;ventana de parzen
     x: vector con representando una sola muestra
     Data: vector de muestras de entrenamiento
     h: ancho de la ventana de kernel
-    Datay: vector con los valores de salida (y), Si no se pasa como argumento, 
+    Datay: vector con los valores de salida (y), Si no se pasa como argumento,
         se calcula un ventana de parzen sin multiplicar los valores de este vector.
     retorna: el valor de ventana de parzen para una muestra
     &quot;&quot;&quot;
@@ -756,38 +753,39 @@ def ParzenWindow(x,Data,h,Datay=None):
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Ejercicio de código
 def Nadaraya_Watson(h, X_train, Y_train, X_test):
-    &quot;&quot;&quot; Funcion que implementa metodo de ventana de parzen para
+    &quot;&quot;&quot; Función que implementa metodo de ventana de parzen para
         para clasificación
-    
+
     h (float): ancho de h de la ventana
     X_train: es la matriz con las muestras de entrenamiento
     Y_train: es un vector con los valores de salida pra cada una de las muestras de entrenamiento
     X_test: es la matriz con las muestras de validación
-  
-    retorna: - las estimaciones del modelo parzen para el conjunto X_test 
+
+    retorna: - las estimaciones del modelo parzen para el conjunto X_test
               esta matriz debe tener un shape de [row/muestras de X_test]
     &quot;&quot;&quot;
-        
-    Yest = np.zeros(X_test.shape[0])
-    
-    
-    #Debe retornar un vector que contenga las predicciones para cada una de las muestras en X_val, en el mismo orden.  
+
+    Yest = ...
+
+
+    #Debe retornar un vector que contenga las predicciones para cada una de las muestras en X_val, en el mismo orden.
+    #Tener en cuenta que una implementación óptima no requiere ciclos for
     return Yest
 </pre></div>
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio4&quot;, Nadaraya_Watson)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T4&#39;);
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="ejercicio-5-experimentos-con-parzen">
-<h2>Ejercicio 5: Experimentos con Parzen<a class="headerlink" href="#ejercicio-5-experimentos-con-parzen" title="Link to this heading">#</a></h2>
+<section id="tarea-5-experimentos-con-parzen">
+<h2>Tarea 5: Experimentos con Parzen<a class="headerlink" href="#tarea-5-experimentos-con-parzen" title="Link to this heading">#</a></h2>
 <p>En el ejercicio de código, se puede observar que usamos nuevamente la funciónes de la libreria <strong>sklearn</strong>:</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html">StandardScaler</a> para normalizar.</p></li>
@@ -795,25 +793,16 @@ GRADER.run_test(&quot;ejercicio4&quot;, Nadaraya_Watson)
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿cual es la metodología de validación es usada en el experimento? ¿qué diferencia tiene respecto a la metodología usada en el primer experimento?
-respuesta_4 = &quot;&quot; #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def experimentarParzen (hs, X, Y):
     &quot;&quot;&quot;Función que realiza los experimentos con knn usando
        una estrategia de validacion entrenamiento y pruebas
-    
+
     hs: List[int/float] lista con los valores de h a usar
     X: matriz de numpy conjunto con muestras y caracteristicas
     Y: vector de numpy con los valores de las etiquetas
-    
+
     retorna: dataframe con los resultados, debe contener las siguientes columnas:
-        - el ancho de ventana, 
+        - el ancho de ventana,
         - el error medio de prueba
         - la desviacion estandar del error
         - número de promedio en el conjunto de prueba/validacion
@@ -824,12 +813,12 @@ respuesta_4 = &quot;&quot; #@param {type:&quot;string&quot;}
     resultados = pd.DataFrame()
     idx = 0
     # iteramos sobre los valores de hs
-    
+
     for h in hs:
 
         #contador para cada particion
         particion = 0
-        # asigne el valor al parametro X 
+        # asigne el valor al parametro X
         for train, test in kfolds.split(X = ...):
 
             # como usar train y test ?
@@ -842,12 +831,12 @@ respuesta_4 = &quot;&quot; #@param {type:&quot;string&quot;}
             scaler.fit(Xtrain)
             Xtrain = scaler.transform(Xtrain)
             Xtest = scaler.transform(Xtest)
-            
+
             Yest = Nadaraya_Watson(...)
             errorTest = ...(Yest, Ytest)
 
-    
-            resultados.loc[idx,&#39;ancho de ventana&#39;] = h 
+
+            resultados.loc[idx,&#39;ancho de ventana&#39;] = h
             resultados.loc[idx,&#39;error de prueba&#39;] = ...
             resultados.loc[idx,&#39;particion&#39;] = particion
             idx+=1
@@ -857,10 +846,10 @@ respuesta_4 = &quot;&quot; #@param {type:&quot;string&quot;}
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio5&quot;, experimentarParzen)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T5&#39;);
 </pre></div>
 </div>
 </div>
@@ -882,8 +871,8 @@ experimentos_parzen
 # Y order acorde y observamos
 # el primer valor
 (experimentos_parzen
- .groupby([&#39;ancho de ventana&#39;], as_index=False)[&#39;error de prueba&#39;].mean()
- .sort_values(by=&#39;error de prueba&#39;, ascending = True)
+ .groupby([&#39;ancho de ventana&#39;], as_index=False)[&#39;error en conjunto de prueba&#39;].mean()
+ .sort_values(by=&#39;error en conjunto de prueba&#39;, ascending = True)
  .head(1))
 </pre></div>
 </div>
@@ -892,42 +881,8 @@ experimentos_parzen
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿por qué tuvimos que realizar el promedio del error de prueba y organizar el dataframe de manera ascendente ? Justifique usando los conceptos teoricos, no el código.
-respuesta_5 = &quot;&quot; #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown ¿En que consiste el metodo Silverman bandwidth? Explique brevemente y en sus palabras
-respuesta_6 = &quot;&quot; #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>GRADER.check_tests()
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Integrantes
-codigo_integrante_1 =&#39;&#39; #@param {type:&quot;string&quot;}
-codigo_integrante_2 = &#39;&#39;  #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<p>esta linea de codigo va fallar, es de uso exclusivo del los profesores</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>GRADER.grade()
+#@markdown ¿En qué consiste el metodo Silverman bandwidth? Explique brevemente y en sus palabras
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
@@ -999,11 +954,11 @@ codigo_integrante_2 = &#39;&#39;  #@param {type:&quot;string&quot;}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-contextualizacion-del-problema">Ejercicio 1: Contextualización del problema</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-completar-codigo-de-k-vecinos-para-regresion">Ejercicio 2: Completar código de K-Vecinos para regresión.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-experimentos-con-knn">Ejercicio 3: Experimentos con KNN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-4-ventana-de-parzen-y-experimentos">Ejercicio 4: Ventana de Parzen y experimentos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-5-experimentos-con-parzen">Ejercicio 5: Experimentos con Parzen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-1-exploracion-de-datos">Tarea 1: Exploración de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-2-k-vecinos-mas-cercanos-para-regresion">Tarea 2: K-Vecinos más cercanos para regresión.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-3-evaluar-modelo-k-vecinos">Tarea 3: Evaluar modelo K-Vecinos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-4-ventana-de-parzen">Tarea 4: Ventana de Parzen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-5-experimentos-con-parzen">Tarea 5: Experimentos con Parzen</a></li>
 </ul>
   </nav></div>
 

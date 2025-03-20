@@ -215,7 +215,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul class="current">
@@ -800,7 +800,7 @@ BACC = 0.6
 <p>La curva ROC (Receiver Operator Characteristic) se utiliza como una medida de desempeño esperado de un sistema de clasificación. La grafica muestra el desempeño en términos de Sensibilidad vs 1 - Especificidad, para diferentes umbrales de decisión. El área bajo la curva ROC (AUC) se usa como medida de desempeño en varias aplicaciones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;./Local/imgs/roc.jpg&quot;, width = 300)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/roc.jpg&quot;, width = 300)
 </pre></div>
 </div>
 </div>
@@ -920,7 +920,7 @@ def sample(size):
     Returns a sample with &#39;size&#39; instances.
     &#39;&#39;&#39;
     x = np.linspace(0, 4.5, size)
-    y = 2 * np.sin(x * 1.5) + np.random.randn(x.size)
+    y = 2 * np.sin(x * 1.5) + 0.3*np.random.randn(x.size)
     return (x,y)
     
 size = 50
@@ -940,7 +940,7 @@ plt.grid();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c8a030adbb54e4d25ebd1897086b6cf2017c6094f92cd872183f4de9e361c164.png" src="_images/c8a030adbb54e4d25ebd1897086b6cf2017c6094f92cd872183f4de9e361c164.png" />
+<img alt="_images/a7e858602e3c308edbfcb6d30c8e98eb3de43b3d9ae6c1874548e9de74601347.png" src="_images/a7e858602e3c308edbfcb6d30c8e98eb3de43b3d9ae6c1874548e9de74601347.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -954,11 +954,11 @@ print(&#39;R^2 = &#39;+str(r2_score(y,p_y)))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE = 0.5513326016550747
-MAE = 0.5499497780582183
-MedAE = 0.39352057543671104
-MAPE = 476.07312970984134
-R^2 = 0.7686345919494887
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE = 0.07539322671414488
+MAE = 0.21358016499422333
+MedAE = 0.15774521327812185
+MAPE = 45.32075138713336
+R^2 = 0.9623166003906759
 </pre></div>
 </div>
 </div>
