@@ -245,7 +245,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
@@ -514,12 +514,12 @@ import matplotlib.pyplot as plt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
-Image(&quot;local/imgs/confusion_matix_example.png&quot;, width = 600)
+Image(&quot;local/imgs/CM2.png&quot;, width = 600)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/8585357477af5397b62c79fa9e8157a69d1e0dc068be0b0300be2e3f71eccfe8.png"><img alt="_images/8585357477af5397b62c79fa9e8157a69d1e0dc068be0b0300be2e3f71eccfe8.png" src="_images/8585357477af5397b62c79fa9e8157a69d1e0dc068be0b0300be2e3f71eccfe8.png" style="width: 600px;" />
+<a class="reference internal image-reference" href="_images/f0d3fcd33e2a4ad6e6e15a68a0e84b412fa1114c23b9357aef0613a6da8baf25.png"><img alt="_images/f0d3fcd33e2a4ad6e6e15a68a0e84b412fa1114c23b9357aef0613a6da8baf25.png" src="_images/f0d3fcd33e2a4ad6e6e15a68a0e84b412fa1114c23b9357aef0613a6da8baf25.png" style="width: 600px;" />
 </a>
 </div>
 </div>
@@ -896,10 +896,7 @@ donde \)</span>\bar{y}<span class="math notranslate nohighlight">\( es el promed
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import mean_squared_error, median_absolute_error, mean_absolute_error, r2_score
-def mean_absolute_percentage_error(y_true, y_pred): 
-    y_true, y_pred = np.array(y_true), np.array(y_pred)
-    return np.mean(np.abs((y_true - y_pred) / y_true)) * 100
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.metrics import mean_squared_error, median_absolute_error, mean_absolute_error, r2_score, mean_absolute_percentage_error
 </pre></div>
 </div>
 </div>
@@ -940,7 +937,7 @@ plt.grid();
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a7e858602e3c308edbfcb6d30c8e98eb3de43b3d9ae6c1874548e9de74601347.png" src="_images/a7e858602e3c308edbfcb6d30c8e98eb3de43b3d9ae6c1874548e9de74601347.png" />
+<img alt="_images/1682c6be79b2e980fa42b5085ce46f6fcb800373bad0f2e3a0438535724777df.png" src="_images/1682c6be79b2e980fa42b5085ce46f6fcb800373bad0f2e3a0438535724777df.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -954,11 +951,11 @@ print(&#39;R^2 = &#39;+str(r2_score(y,p_y)))
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE = 0.07539322671414488
-MAE = 0.21358016499422333
-MedAE = 0.15774521327812185
-MAPE = 45.32075138713336
-R^2 = 0.9623166003906759
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE = 0.0652358415966463
+MAE = 0.20111822127585832
+MedAE = 0.15934432221793238
+MAPE = 0.34409995395241927
+R^2 = 0.9659345273862245
 </pre></div>
 </div>
 </div>

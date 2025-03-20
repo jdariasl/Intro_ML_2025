@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa &#8212; 2025 Introducción al Machine Learning</title>
+    <title>Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa &#8212; 2025 Introducción al Machine Learning</title>
   
   
   
@@ -193,7 +193,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
@@ -207,7 +213,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
@@ -224,7 +230,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -237,12 +243,12 @@
 <li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
 </ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20V%C3%A9ctores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
 
@@ -433,7 +439,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</h1>
+    <h1>Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -444,7 +450,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-experimentar-con-mlp-para-regresion">Ejercicio 1 - Experimentar con MLP para regresión</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-experimentar-con-mlp-para-clasificacion">Ejercicio 2 Experimentar con MLP para clasificación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-experimentar-con-mlp-para-regresion">Ejercicio 2 Experimentar con MLP para regresión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-experimentar-con-mlp-para-clasificacion">Ejercicio 3 Experimentar con MLP para <em>clasificación</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-4-usar-pytorch-para-definir-una-arquitectura-de-red-para-clasificacion">Ejercicio 4. Usar PyTorch para definir una arquitectura de red para clasificación.</a></li>
 </ul>
             </nav>
         </div>
@@ -456,35 +464,43 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><strong>Recuerda que una vez abierto, Da clic en “Copiar en Drive”, de lo contrario no podras almacenar tu progreso</strong></p>
-<p>Nota: no olvide ir ejecutando las celdas de código de arriba hacia abajo para que no tenga errores de importación de librerías o por falta de definición de variables.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-4-parte-1-redes-neuronales-artificiales-perceptron-multicapa">
+<h1>Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa<a class="headerlink" href="#laboratorio-4-parte-1-redes-neuronales-artificiales-perceptron-multicapa" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
-# Ejecuta esta celda!
-%load_ext autoreload
-%autoreload 2
-#for local 
-#import sys ; sys.path.append(&#39;../commons/utils/&#39;)
-!wget https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/commons/utils/general.py -O general.py --no-cache
-from general import configure_lab4
-configure_lab4()
-from lab4 import *
-GRADER = part_1()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
 </pre></div>
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="laboratorio-4-parte-1-redes-neuronales-perceptron-multicapa">
-<h1>Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa<a class="headerlink" href="#laboratorio-4-parte-1-redes-neuronales-perceptron-multicapa" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L04.01&quot;, varname=&quot;student&quot;);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
+# Ejecuta esta celda!
+from Labs.commons.utils.lab4 import *
+_ = part_1()
+</pre></div>
+</div>
+</div>
+</div>
 <p>Este ejercicio tiene como objetivo implementar una red neuronal artificial de tipo perceptrón multicapa (MLP) para resolver un problema de regresión. Usaremos la librería sklearn. Consulte todo lo relacionado con la definición de hiperparámetros, los métodos para el entrenamiento y la predicción de nuevas muestras en el siguiente enlace: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor">http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html#sklearn.neural_network.MLPRegressor</a></p>
 <p>Para este ejercicio usaremos la base de datos sobre calidad del aire, que ha sido usada en laboratorios previos, pero en este caso trataremos de predecir dos variables en lugar de una, es decir, abordaremos <strong>un problema de múltiples salidas</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#cargamos la bd que está en un archivo .data y ahora la podemos manejar de forma matricial
-db = np.loadtxt(&#39;AirQuality.data&#39;,delimiter=&#39;\t&#39;)  # Assuming tab-delimiter
+db = np.loadtxt(&#39;Labs/commons/utils/data/AirQuality.data&#39;,delimiter=&#39;\t&#39;)  # Assuming tab-delimiter
 
-#Esta es la base de datos AirQuality del UCI Machine Learning Repository. En la siguiente URL se encuentra toda
+#Esta es la base de datos AirQuality del UCI Machine Learning Repository. En el siguiente URL se encuentra toda
 #la descripción de la base de datos y la contextualización del problema.
 #https://archive.ics.uci.edu/ml/datasets/Air+Quality#
 
@@ -494,29 +510,29 @@ y = db[:,11:13]
 </div>
 </div>
 </div>
-<p>Para calcular los errores, vamos a explorar y usar el <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">modulo de metricas den sklearn</a>.</p>
+<p>Para calcular los errores, vamos a explorar y usar el <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">modulo de metricas de sklearn</a>.</p>
 <p>Podemos observar que el modulo tiene metricas para regresión y clasificación.</p>
 <section id="ejercicio-1-experimentar-con-mlp-para-regresion">
 <h2>Ejercicio 1 - Experimentar con MLP para regresión<a class="headerlink" href="#ejercicio-1-experimentar-con-mlp-para-regresion" title="Link to this heading">#</a></h2>
-<p>Para porder implementar nuestra función, lo primero que debemos entender la estrucutra de la red.</p>
-<p>Como mencionamos, vamos a solucionar un problema de multiples salidas. Estas salidas con valores continuos. Por lo tanto debemos garantizar que la capa de salida de nuestra red tenga la capacidad de modelar este tipo de datos.</p>
+<p>Para porder implementar nuestra función, lo primero que debemos entender es la estructura de la red.</p>
+<p>Como mencionamos, vamos a solucionar un problema de multiples salidas. Estas salidas contienen valores continuos. Por lo tanto debemos garantizar que la capa de salida de nuestra red tenga la capacidad de modelar este tipo de datos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
 #@markdown ¿De acuerdo al problema planteado, que función de activación debe usar el MLP para un problema de regresión?
-respuesta_1 = &quot;&quot; #@param {type:&quot;string&quot;}
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
 </div>
-<p>Una caracteristica de los modelos de sklearn, es que ciertos tipos de atributos, solo pueden ser accedidos cuanto se entrena el modelo. Vamos a realizar un pequeña función para comprobar cual es la capa de activación de los modelos MLP para regresión de sklearn.</p>
+<p>Una característica de los modelos de sklearn, es que ciertos tipos de atributos solo pueden ser accedidos cuando se entrena el modelo. Vamos a desarrollar una pequeña función para comprobar cuál es la función de activación de los modelos MLP para regresión de sklearn.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ejercicio de código
 def output_activation():
     &quot;&quot;&quot;funcion que entrena un modelo
-    con data aleatoria para confirmar la funcion
-    de activacion de la ultima capa
+    con datos aleatorios para confirmar la función
+    de activación de la ultima capa
     &quot;&quot;&quot;
     mlp = MLPRegressor()
     # fit with some random data
@@ -531,10 +547,10 @@ def output_activation():
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio1&quot;, output_activation)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
 </pre></div>
 </div>
 </div>
@@ -546,34 +562,35 @@ GRADER.run_test(&quot;ejercicio1&quot;, output_activation)
 </div>
 </div>
 </div>
-<p>Una vez comprobado que sklearn usa la función de activación correcta, vamos crear la función para realizar los experimentos.</p>
-<p>Vamos completar la función con el código necesario para usar una red neuronal tipo MLP para solucionar el problema de regresión propuesto.</p>
+</section>
+<section id="ejercicio-2-experimentar-con-mlp-para-regresion">
+<h2>Ejercicio 2 Experimentar con MLP para regresión<a class="headerlink" href="#ejercicio-2-experimentar-con-mlp-para-regresion" title="Link to this heading">#</a></h2>
+<p>Una vez comprobado que sklearn usa la función de activación correcta, vamos a crear la función para realizar los experimentos.</p>
+<p>Completa la función con el código necesario para usar una red neuronal tipo MLP para solucionar el problema de regresión propuesto.</p>
 <ol class="arabic simple">
 <li><p>Como función de activación en las capas ocultas use la función ‘tanh’.</p></li>
 <li><p>Ajuste el número máximo de épocas a 300.</p></li>
 <li><p>Dejamos como variables el número de capas ocultas y el número de neuronas por capa</p></li>
-<li><p>debemos seleccionar la función adecuada del <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html?highlight=metrics#module-sklearn.metrics">modulo de sklearn para calcular el Error Porcentual Absoluto Medio (MAPE en sigla en ingles)</a>. Tener en cuenta que parametros usar.</p></li>
-<li><p>Debemos usar los nombres explicitos, por ejemplo si para el MLP es necesario usar el parametro <code class="docutils literal notranslate"><span class="pre">activation</span></code>, debe ser llamado: <code class="docutils literal notranslate"><span class="pre">MLPRegressor(activation=...)</span></code></p></li>
-<li><p>Explorar que hace la siguiente linea de codigo <code class="docutils literal notranslate"><span class="pre">tuple(2*[100])</span></code></p></li>
+<li><p>debemos seleccionar la función adecuada del <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html?highlight=metrics#module-sklearn.metrics">modulo de sklearn para calcular el Error Porcentual Absoluto Medio (MAPE en sigla en ingles)</a>. Tener en cuenta qué parametros usar.</p></li>
+<li><p>Tenga en cuenta que para instanciar los modelos no se usan parámetros posicionales.</p></li>
 </ol>
-<p><strong>NOTA</strong>: cuando observe el el parametro <code class="docutils literal notranslate"><span class="pre">random_state=1</span></code> por favor conservarlo, ya que esto hace que los resultados sean similares a lo largo de las ejecucciones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ejercicio de código
 
-def experimetar_mlp(num_hidden_layers, num_neurons, X,Y):
+def experimentar_mlpr(num_hidden_layers, num_neurons, X,Y):
     &quot;&quot;&quot; función para realizar experimentos con el MLP
-    num_hidden_layers: list de enteros con el numero de capdas
+    num_hidden_layers: list de enteros con el número de capdas
         ocultas a usar
-    num_neurons: list de enteros con el numero de neuronas a usar
-    X: matriz de numpy con caracteristicas
-    Y: vector numpy con las variables a predecir
-    
+    num_neurons: list de enteros con el número de neuronas a usar
+    X: matriz de numpy con los datos de entrada [muestras,variables]
+    Y: matriz numpy con las variables a predecir
+
     Retorna: dataframe con 6 columnas:
-        - numero de capas, numero de neuronas
+        - número de capas, número de neuronas
         - promedio de error prueba variable 1 y desviación estandar
         - promedio de error prueba variable 2 y desviación estandar
-        
+
     &quot;&quot;&quot;
     #Validamos el modelo
     Folds = 3
@@ -591,29 +608,27 @@ def experimetar_mlp(num_hidden_layers, num_neurons, X,Y):
                 Xtest = X[test,:]
                 Ytest = Y[test,:]
                 #Normalizamos los datos
-                scaler = StandardScaler().fit(X= Xtrain)       
+                scaler = StandardScaler().fit(X= Xtrain)
                 Xtrain = scaler.transform(Xtrain)
                 Xtest = scaler.transform(Xtest)
                 #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
-                # prestar atención a los parametros, correctos.
+                #Ajuste la semilla del modelo a 1 para garantizar la reproducibilidad de los resultados.
                 hidden_layer_sizes = tuple()
-                mlp = MLPRegressor(hidden_layer_sizes= hidden_layer_sizes, random_state=1...)
+                mlp = MLPRegressor()
                 # entrena el MLP
                 mlp
                 # Use para el modelo para hacer predicciones sobre el conjunto Xtest
-                Yest = mlp
+                Yest = ...
                 # Mida el MAPE para cada una de las dos salidas
-                # Observe bien la documentación. recordar que esta resolviendo
-                # un problema de multiples salidas
-                errors = (Ytest, Yest, ...)
+                errors =
                 ErrorY1[j] = ...
                 ErrorY2[j] =...
-        
+
             print(&#39;error para salida 1 = &#39; + str(np.mean(ErrorY1)) + &#39;+-&#39; + str(np.std(ErrorY1)))
             print(&#39;error para salida 2 = &#39; + str(np.mean(ErrorY2)) + &#39;+-&#39; + str(np.std(ErrorY2)))
-        
+
             resultados.loc[idx,&#39;capas ocultas&#39;] = hidden_layers
-            resultados.loc[idx,&#39;neuronas en capas ocultas&#39;] = neurons 
+            resultados.loc[idx,&#39;neuronas en capas ocultas&#39;] = neurons
             resultados.loc[idx,&#39;error de prueba y1(media)&#39;] = np.mean(ErrorY1)
             resultados.loc[idx,&#39;intervalo de confianza y1&#39;] = np.std(ErrorY1)
             resultados.loc[idx,&#39;error de prueba y2(media)&#39;] = np.mean(ErrorY2)
@@ -624,11 +639,10 @@ def experimetar_mlp(num_hidden_layers, num_neurons, X,Y):
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-# ignorar los prints
-GRADER.run_test(&quot;ejercicio2&quot;, experimetar_mlp)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T2&#39;);
 </pre></div>
 </div>
 </div>
@@ -637,7 +651,7 @@ GRADER.run_test(&quot;ejercicio2&quot;, experimetar_mlp)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># tarda unos minutos!!
-resultados_mlpr = experimetar_mlp(num_hidden_layers = [1,2,3], num_neurons  = [8,12,16], X=x, Y=y)
+resultados_mlpr = experimetar_mlpr(num_hidden_layers = [1,2,3], num_neurons  = [8,12,16], X=x, Y=y)
 </pre></div>
 </div>
 </div>
@@ -648,6 +662,7 @@ resultados_mlpr = experimetar_mlp(num_hidden_layers = [1,2,3], num_neurons  = [8
 import seaborn as sns
 sns.relplot(data = resultados_mlpr,  x=&#39;neuronas en capas ocultas&#39;, y = &#39;error de prueba y1(media)&#39;, style= &#39;capas ocultas&#39;, kind = &#39;line&#39;)
 sns.relplot(data = resultados_mlpr,  x=&#39;neuronas en capas ocultas&#39;, y = &#39;error de prueba y2(media)&#39;, style= &#39;capas ocultas&#39;, kind = &#39;line&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -655,25 +670,16 @@ sns.relplot(data = resultados_mlpr,  x=&#39;neuronas en capas ocultas&#39;, y = 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown con base a los reusltados, ¿podriamos saber a priori los mejores parametros (capas ocultas, # de neuronas), que tan correcto es asumir patrones en los valores de los parametros?
-respuesta_2 = &quot;&quot; #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown qué ocurre si cambiamos el valor de random state? los resultados deberían ser iguales? justifique su respuesta usando los conceptos teóricos.
-respuesta_3 = &quot;&quot; #@param {type:&quot;string&quot;}
+#@markdown Qué ocurre si cambiamos el valor de random state? ¿deberían los resultados ser iguales?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="ejercicio-2-experimentar-con-mlp-para-clasificacion">
-<h2>Ejercicio 2 Experimentar con MLP para clasificación<a class="headerlink" href="#ejercicio-2-experimentar-con-mlp-para-clasificacion" title="Link to this heading">#</a></h2>
-<p>A continuación se leen los datos de un problema de clasificación. El problema corresponde a la clasifiación de dígitos escritos a mano. Usaremos únicamente 4 de las 10 clases disponibles. Los datos fueron preprocesados para reducir el número de características. La técnica usada será analizada más adelante en el curso.</p>
+<section id="ejercicio-3-experimentar-con-mlp-para-clasificacion">
+<h2>Ejercicio 3 Experimentar con MLP para <em>clasificación</em><a class="headerlink" href="#ejercicio-3-experimentar-con-mlp-para-clasificacion" title="Link to this heading">#</a></h2>
+<p>A continuación se leen los datos de un problema de clasificación. El problema corresponde a la clasifiación de dígitos escritos a mano. Usaremos únicamente 4 de las 10 clases disponibles. Los datos fueron preprocesados para reducir el número de características.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>digits = load_digits(n_class=4)
@@ -690,8 +696,8 @@ Yd = digits.target
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown  ¿Qué tipo de función de activación usa el modelo en la capa de salida para un problema de clasificación?
-respuesta_4 = &quot;&quot; #@param {type:&quot;string&quot;}
+#@markdown  ¿Qué tipo de función de activación debe usar el modelo en la capa de salida para un problema de clasificación?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
 </pre></div>
 </div>
 </div>
@@ -720,14 +726,6 @@ def output_activation_MPC():
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio3&quot;, output_activation_MPC)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;la función de activación para un problema de clasificación es:&quot;, output_activation_MPC())
 </pre></div>
 </div>
@@ -736,31 +734,29 @@ GRADER.run_test(&quot;ejercicio3&quot;, output_activation_MPC)
 <p>Ahora en nuestro siguiente ejercicio vamos a implementar una red neuronal artificial de tipo perceptrón multicapa (MLP) para resolver un problema de clasificación. Usaremos la librería sklearn. Consulte todo lo relacionado con la definición de hiperparámetros, los métodos para el entrenamiento y la predicción de nuevas muestras en el siguiente enlace: <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier">http://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier</a></p>
 <p>Vamos completar la función con el código necesario para usar una red neuronal tipo MLP para solucionar el problema de clasificación propuesto.</p>
 <ol class="arabic simple">
-<li><p>Como función de activación en las capas ocultas use la función tangencial hiperbólica.</p></li>
+<li><p>Como función de activación en las capas ocultas use la función relu.</p></li>
 <li><p>Ajuste el número máximo de épocas a 350.</p></li>
 <li><p>Dejamos como variables el número de capas ocultas y el número de neuronas por capa</p></li>
-<li><p>Seleccione la función adecuada del <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html?highlight=metrics#module-sklearn.metrics">modulo de sklearn para calcular la exactitud del clasificador</a>. Tener en cuenta que parametros usar.</p></li>
-<li><p>Debemos usar los nombres explicitos, por ejemplo si para el MLP es necesario usar el parametro <code class="docutils literal notranslate"><span class="pre">activation</span></code>, debe ser llamado: <code class="docutils literal notranslate"><span class="pre">MLPClassifier(activation=...)</span></code></p></li>
+<li><p>Seleccione la función adecuada del <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html?highlight=metrics#module-sklearn.metrics">modulo de sklearn para calcular la exactitud del clasificador</a>.</p></li>
 </ol>
-<p><strong>NOTA</strong>: cuando observe el el parametro <code class="docutils literal notranslate"><span class="pre">random_state=1</span></code> por favor conservarlo, ya que esto hace que los resultados sean similares a lo largo de las ejecucciones. *tener en cuenta esta observación para una de las preguntas abiertas que encuentras mas adelante del laboratorio.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ejercicio de código
-def experimetar_mlpc(X,Y, num_hidden_layers, num_neurons):
+def experimentar_mlpc(X,Y, num_hidden_layers, num_neurons):
     &quot;&quot;&quot; función para realizar experimentos con el MLP
-    x: matriz de numpy con caracteristicas
+    x: matriz de numpy con las muestras de entrada [muestras,variables]
     y: vector numpy con las variables a predecir
-    num_hidden_layers: list de enteros con el numero de capdas
+    num_hidden_layers: list de enteros con el número de capas
         ocultas a usar
-    num_neurons: list de enteros con el numero de neuronas a usar
-    
+    num_neurons: list de enteros con el número de neuronas a usar
+
     Retorna: dataframe con 4 columnas:
-        - numero de capas, numero de neuronas
-        - promedio de error prueba (exactitud/eficiencia) de claisficacion y desviación estandar        
+        - número de capas, número de neuronas
+        - promedio de error prueba (exactitud/eficiencia) de claisficación y desviación estandar
     &quot;&quot;&quot;
     #Validamos el modelo
     Folds = 4
-    skf = StratifiedKFold(n_splits=Folds) 
+    skf = StratifiedKFold(n_splits=Folds)
     resultados = pd.DataFrame()
     idx = 0
     for hidden_layers in num_hidden_layers:
@@ -773,25 +769,24 @@ def experimetar_mlpc(X,Y, num_hidden_layers, num_neurons):
                 Xtest = X[test, :]
                 Ytest = Y[test]
                 #Normalizamos los datos
-                scaler = StandardScaler().fit(X= Xtrain)       
+                scaler = StandardScaler().fit(X= Xtrain)
                 Xtrain = scaler.transform(Xtrain)
                 Xtest = scaler.transform(Xtest)
                 #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
-                # prestar atención a los parametros, correctos.
-                hidden_layer_sizes = tuple(...)
-                #print(hidden_layer_sizes)
-                mlp = MLPClassifier(hidden_layer_sizes = hidden_layer_sizes, ... random_state = 1)
+                #Ajuste la semilla del modelo a 1 para garantizar la reproducibilidad de los resultados.
+                hidden_layer_sizes = ...
+                mlp =
                 # entrenar el MLP
                 mlp...
                 #Use para el modelo para hacer predicciones sobre el conjunto Xtest
                 Yest = mlp.
                 # recordar usar la medida adecuada de acuerdo a las instrucciones
-                Error[j] = ...(Ytest, Yest)
-        
+                Error[j] =
+
             print(&#39;error para configuracion de params = &#39; + str(np.mean(Error)) + &#39;+-&#39; + str(np.std(Error)))
-        
+
             resultados.loc[idx,&#39;capas ocultas&#39;] = hidden_layers
-            resultados.loc[idx,&#39;neuronas en capas ocultas&#39;] = neurons 
+            resultados.loc[idx,&#39;neuronas en capas ocultas&#39;] = neurons
             resultados.loc[idx,&#39;error de prueba(media)&#39;] = np.mean(Error)
             resultados.loc[idx,&#39;intervalo de confianza&#39;] = np.std(Error)
             idx+=1
@@ -800,10 +795,10 @@ def experimetar_mlpc(X,Y, num_hidden_layers, num_neurons):
 </div>
 </div>
 </div>
+<p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## la funcion que prueba tu implementacion
-GRADER.run_test(&quot;ejercicio4&quot;, experimetar_mlpc)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T3&#39;);
 </pre></div>
 </div>
 </div>
@@ -821,7 +816,8 @@ resultados_mlpc = experimetar_mlpc(X = Xd, Y=Yd, num_hidden_layers=[1,2,3], num_
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ver los resultados
 # notar como las capas ocultas y el # de neuronas influyen
 import seaborn as sns
-sns.relplot(data = resultados_mlpc,  x=&#39;neuronas en capas ocultas&#39;, y = &#39;exactitud en prueba(media)&#39;, style= &#39;capas ocultas&#39;, kind = &#39;line&#39;)
+sns.relplot(data = resultados_mlpc,  x=&#39;neuronas en capas ocultas&#39;, y = &#39;error de prueba(media)&#39;, style= &#39;capas ocultas&#39;, kind = &#39;line&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -830,42 +826,106 @@ sns.relplot(data = resultados_mlpc,  x=&#39;neuronas en capas ocultas&#39;, y = 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
 #@markdown ¿Cuántas neuronas en la capa de salida tiene el modelo? ¿Porqué debe tener ese número?
-respuesta_5 = &quot;&quot; #@param {type:&quot;string&quot;}
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-4-usar-pytorch-para-definir-una-arquitectura-de-red-para-clasificacion">
+<h2>Ejercicio 4. Usar PyTorch para definir una arquitectura de red para clasificación.<a class="headerlink" href="#ejercicio-4-usar-pytorch-para-definir-una-arquitectura-de-red-para-clasificacion" title="Link to this heading">#</a></h2>
+<p>Como se discutió en clase, los frameworks actuales para el diseño de redes neuronales artificales permiten mucha mayor flexibilidad a la hora de crear redes con diversas arquitecturas, diseñar funciones de coste o incluso nuevos tipos de capas. Uno de esos frameworks es <a class="reference external" href="https://pytorch.org/">PyTorch</a>.</p>
+<p>Una red neuronal de tipo MLP es una red compuesta únicamente por capas Densas, llamadas en PyTorch capas lineales (<code class="docutils literal notranslate"><span class="pre">Linear</span></code>](<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html">https://pytorch.org/docs/stable/generated/torch.nn.Linear.html</a>)).</p>
+<ul class="simple">
+<li><p>Lea la documentación del modulo <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Sequential.html">Sequential</a> de PyTorch</p></li>
+<li><p>Complete la siguiente función para crear un modelo de red neuronal para el problema de clasificación de digitos usando el modulo Sequential. Las funciones de activiación de las capas ocultas deben ser tipo ‘relu’.</p></li>
+<li><p>Tenga en cuenta que Ud puede primero crear una lista de módulos (capas, activaciones, etc.) y luego crear el modelo <code class="docutils literal notranslate"><span class="pre">nn.Sequential(*modules)</span></code>. Las activaciones serán tratadas como capas adicionales.</p></li>
+<li><p><strong>No incluya</strong> la función de activación de la capa de salida</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+def MLP_classifier_pytorch(X,Y, neurons_per_layer):
+  &quot;&quot;&quot;
+  Entrada:
+  X: matriz de numpy con las muestras de entrada [muestras,variables]
+  Y: vector numpy con las variables a predecir
+  neurons_per_layer: list de enteros con el número de neuronas a usar por
+  capa una de las capas ocultas
+
+  Retorna:
+  Modelo de PyTorch con la arquitectura deseada
+  &quot;&quot;&quot;
+
+  import torch.nn as nn
+  modules = []
+  for ...
+
+
+  model = nn.Sequential(*modules)
+  return model
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T4&#39;);
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
-#@markdown Llegas a una nueva compañía. Solo tienen perceptrones multicapa entrenados usado sklearn ¿que recomiendas?
-respuesta_6 = &quot;&quot; #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>recordatorio</strong> En la practica sklearn no es una la libreria indicada para desarollar redes neuronales, para practicas mas avanzadas y realizar modelos en el “mundo real” <a class="reference external" href="https://colab.research.google.com/github/lexfridman/mit-deep-learning/blob/master/tutorial_deep_learning_basics/deep_learning_basics.ipynb">se deben usar conceptos de deep learning y una libreria llamada Keras</a>. Adicional tener en cuenta <a class="reference external" href="https://jdariasl.github.io/ML_2020/Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html#desventajas-de-las-aproximaciones-clasicas">lo visto en teoria</a>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>GRADER.check_tests()
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Integrantes
-codigo_integrante_1 =&#39;&#39; #@param {type:&quot;string&quot;}
-codigo_integrante_2 = &#39;&#39;  #@param {type:&quot;string&quot;}
-</pre></div>
-</div>
-</div>
-</div>
-<hr class="docutils" />
-<p>esta linea de codigo va fallar, es de uso exclusivo de los profesores</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>GRADER.grade()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Experimentar con el modelo creado en PyTorch
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import accuracy_score
+import torch
+
+
+#Data partition
+train_indx, test_indx = train_test_split(np.arange(Xd.shape[0]), train_size=0.7, random_state=1)
+Xtrain = Xd[train_indx,:]
+Ytrain = Yd[train_indx]
+Xtest = Xd[test_indx,:]
+Ytest = Yd[test_indx]
+
+#Normalization
+scaler = StandardScaler().fit(X= Xtrain)
+Xtrain = scaler.transform(Xtrain)
+Xtest = scaler.transform(Xtest)
+
+#Tensor transformation
+Xtrain = torch.tensor(Xtrain, dtype=torch.float32)
+Ytrain = torch.tensor(Ytrain, dtype=torch.long)
+Xtest = torch.tensor(Xtest, dtype=torch.float32)
+
+#Set the loss function
+#En PyTorch la función de crossentropia aplica la activación Softmax, por eso no
+# se debe incluir en la construcción del modelo.
+loss_fn = torch.nn.CrossEntropyLoss()
+
+model = MLP_classifier_pytorch(X = Xtrain, Y=Ytrain, neurons_per_layer=[20,10])
+
+#Definimos el optimizador
+optimizer = torch.optim.SGD(model.parameters(), lr=0.1, momentum=0.9)
+
+max_epochs = 100
+model.train()
+for i in range(max_epochs):
+  out_put = model(Xtrain)
+  loss = loss_fn(out_put, Ytrain)
+  print(f&#39;epoch = {i}, loss = {loss}&#39;)
+  optimizer.zero_grad()
+  loss.backward()
+  optimizer.step()
+
+model.eval()
+Yest = model(Xtest)
+Yest = torch.argmax(Yest, axis=1)
+print(f&#39;Test accuracy = {accuracy_score(Ytest, Yest)}&#39;)
 </pre></div>
 </div>
 </div>
@@ -938,7 +998,9 @@ codigo_integrante_2 = &#39;&#39;  #@param {type:&quot;string&quot;}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-experimentar-con-mlp-para-regresion">Ejercicio 1 - Experimentar con MLP para regresión</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-experimentar-con-mlp-para-clasificacion">Ejercicio 2 Experimentar con MLP para clasificación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-experimentar-con-mlp-para-regresion">Ejercicio 2 Experimentar con MLP para regresión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-experimentar-con-mlp-para-clasificacion">Ejercicio 3 Experimentar con MLP para <em>clasificación</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-4-usar-pytorch-para-definir-una-arquitectura-de-red-para-clasificacion">Ejercicio 4. Usar PyTorch para definir una arquitectura de red para clasificación.</a></li>
 </ul>
   </nav></div>
 
