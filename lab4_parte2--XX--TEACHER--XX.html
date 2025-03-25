@@ -70,11 +70,9 @@
                 gtag('config', 'UA-51547737-2');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'lab4_parte2';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab4_parte2--XX--TEACHER--XX';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="U7. MÁQUINAS DE VECTORES DE SOPORTE" href="titles/U7_description.html" />
-    <link rel="prev" title="Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa" href="lab4_parte1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -137,6 +135,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -192,7 +192,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
 
@@ -239,13 +239,13 @@
 <li class="toctree-l2"><a class="reference internal" href="lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
-</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
@@ -326,7 +326,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/lab4_parte2.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/lab4_parte2--XX--TEACHER--XX.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -357,7 +357,7 @@
       
       
       
-      <li><a href="_sources/lab4_parte2.ipynb" target="_blank"
+      <li><a href="_sources/lab4_parte2--XX--TEACHER--XX.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -476,6 +476,12 @@ import init; init.init(force_download=False); init.get_weblink()
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output text_html"><h3>See <a href='https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -512,6 +518,14 @@ print(&quot;distribución original (claves de las etiquetas, valores de número 
 y = np.where(y==0, 0, 1)
 unique, counts  = np.unique(y, return_counts=True)
 print(&quot;distribución luego de conversión (claves de las etiquetas, valores de número de muestras): \n&quot;, dict(zip(unique, counts )))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>distribución original (claves de las etiquetas, valores de número de muestras): 
+ {np.int64(0): np.int64(59), np.int64(1): np.int64(71), np.int64(2): np.int64(48)}
+distribución luego de conversión (claves de las etiquetas, valores de número de muestras): 
+ {np.int64(0): np.int64(59), np.int64(1): np.int64(119)}
 </pre></div>
 </div>
 </div>
@@ -564,11 +578,171 @@ def diff_train_test(Xtrain, Ytrain, Xtest, Ytest, sklearnModel):
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-8-db44c7983366&gt;&quot;</span><span class="gt">, line </span><span class="mi">14</span>
+    <span class="n">error_train</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span> <span class="o">=</span> <span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">sklearnModel</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span> <span class="p">)</span> <span class="p">)</span>
+                                          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+from local.lib.rlxmoocapi import submit, session
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L04.02&quot;, varname=&quot;teacher&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logging in as julian.ariasl@udea.edu.co... please wait
+
+-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>teacher = session.Session(init.endpoint).login(course_id=init.course_id, lab_id=&#39;L04.02&#39;, google_token=google_token)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_01(functions, variables, caller_userid):
+    import numpy as np
+    from sklearn.neural_network import MLPClassifier
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.svm import SVC
+    from sklearn.metrics import accuracy_score
+
+    def t_diff_train_test(Xtrain, Ytrain, Xtest, Ytest, sklearnModel):
+      &quot;&quot;&quot;función que retorna error de entrenamiento
+      Xtrain: matriz numpy con las muestras de entrenaniento
+      Ytrain: matrix numpy con las etiquetas de entrenamiento
+      Xtest: matriz numpy con las muestras de prueba
+      Ytest: matrix numpy con las etiquetas de prueba
+      sklearnModel: objeto estimador de sklearn ya entrenado
+
+      retorna: tupla con tres elementos:
+          error entrenamiento, error test y
+          diff absoluta entre error y test
+      &quot;&quot;&quot;
+      error_train = accuracy_score(y_true = Ytrain, y_pred = sklearnModel.predict( Xtrain) )
+      error_test = accuracy_score(y_true =  Ytest, y_pred = sklearnModel.predict(Xtest ))
+      diff =  np.abs(error_train - error_test)
+      return (error_train, error_test, diff)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_diff_train_test = namespace[&#39;diff_train_test&#39;]
+
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+    models = {&#39;LR&#39;:LogisticRegression(random_state=0),&#39;SVM&#39;:SVC(random_state=0),&#39;MLP&#39;:MLPClassifier(random_state=0)}
+    for _ in range(5):
+
+      input_dim = np.random.randint(5)+5
+      input_n = np.random.randint(500) + 20
+      input_data = np.random.randn(input_n,input_dim)
+      n_clases = 2
+      input_labels = np.random.randint(n_clases, size=input_n)
+      input_data[input_labels==2,:] = input_data[input_labels==2,:] + np.random.randn(input_dim) + 2*np.random.randn(input_dim)
+
+      Xtrain, Xtest, Ytrain, Ytest = train_test_split(input_data, input_labels, test_size=0.3)
+
+      model = models[np.random.choice(list(models.keys()))]
+      model.fit(Xtrain, Ytrain)
+
+      t_results = t_diff_train_test(Xtrain, Ytrain, Xtest, Ytest, model)
+      s_results = s_diff_train_test(Xtrain, Ytrain, Xtest, Ytest, model)
+
+
+      msg = &quot;&quot;
+      if not t_results == s_results:
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect error estimation&lt;/b&gt;
+        Expecting &lt;pre&gt;{t_results}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{s_results}&lt;/pre&gt;&lt;br/&gt;\n
+        &quot;&quot;&quot;
+        return 0, msg
+
+
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+source_functions_names_01 = [&#39;diff_train_test&#39;]
+source_variables_names_01 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def diff_train_test(Xtrain, Ytrain, Xtest, Ytest, sklearnModel):
+    &quot;&quot;&quot;función que retorna error de entrenamiento
+    Xtrain: matriz numpy con las muestras de entrenaniento
+    Ytrain: matrix numpy con las etiquetas de entrenamiento
+    Xtest: matriz numpy con las muestras de prueba
+    Ytest: matrix numpy con las etiquetas de prueba
+    sklearnModel: objeto estimador de sklearn ya entrenado
+
+    retorna: tupla con tres elementos:
+        error entrenamiento, error test y
+        diff absoluta entre error y test
+    &quot;&quot;&quot;
+    error_train = accuracy_score(y_true = Ytrain, y_pred = sklearnModel.predict( Xtrain) )
+    error_test = accuracy_score(y_true =  Ytest, y_pred = sklearnModel.predict(Xtest ))
+    diff =  np.abs(error_train - error_test)
+    return (error_train, error_test, diff)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_01&quot;, source_functions_names_01, source_variables_names_01, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L04.02&quot;, &#39;T1&#39;,
+                  inspect.getsource(grader_01), &#39;grader_01&#39;,
+                  source_functions_names_01, source_variables_names_01)
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-41-d48278dc7540&gt;</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">student</span><span class="o">.</span><span class="n">submit_task</span><span class="p">(</span><span class="n">namespace</span><span class="o">=</span><span class="nb">globals</span><span class="p">(),</span> <span class="n">task_id</span><span class="o">=</span><span class="s1">&#39;T1&#39;</span><span class="p">);</span>
+
+<span class="ne">NameError</span>: name &#39;student&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -587,12 +761,22 @@ print(&quot;MLP entrenamiento:{0:.3f}, test:{1:.3f} y diff {2:.3f}&quot;.format(
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MLP entrenamiento:1.000, test:1.000 y diff 0.000
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reg = LogisticRegression(penalty=None, max_iter=500,  random_state=1)
 reg.fit(x, y)
 print(&quot;Logistic Regresion entrenamiento:{0:.3f}, test:{1:.3f} y diff {2:.3f}&quot;.format(*diff_train_test(x,y, x_test, y_test, reg)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Logistic Regresion entrenamiento:1.000, test:0.981 y diff 0.019
 </pre></div>
 </div>
 </div>
@@ -664,6 +848,159 @@ def exp_mlp_early_stop(num_neurons, is_early_stop, Xtrain,Xtest,Ytrain, Ytest):
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_02(functions, variables, caller_userid):
+    import pandas as pd
+    import numpy as np
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import train_test_split
+    from sklearn.neural_network import MLPClassifier
+    from sklearn.metrics import accuracy_score
+
+    def t_exp_mlp_early_stop(num_neurons, is_early_stop, Xtrain,Xtest,Ytrain, Ytest):
+        &quot;&quot;&quot; función para realizar experimentos con el MLP y early stopping
+        num_neurons: list de enteros con el número de neuronas a usar
+        is_early_stop: list de boolean para confirmar si se aplica early stop
+        Xtrain: matriz de numpy con las muestras de entrenamiento
+        Xtest: matriz de numpy con las muestras de prueba
+        ytrain: vector numpy con las etiquetas de entrenamiento
+        ytest: vector numpy con las etiquetas de prueba
+
+        Retorna: dataframe con 5 columnas:
+            - número de neuronas
+            - error de entrenamiento
+            - error de prueba
+            - diferencia entrenamiento y prueba
+        &quot;&quot;&quot;
+        resultados = pd.DataFrame()
+        idx = 0
+        for early_stop in is_early_stop:
+            for neurons in num_neurons:
+                #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+                # prestar atención a los parametros, correctos.
+                hidden_layer_sizes = tuple(2*[neurons])
+                # llame el parametro para que el MLP pare anticipadamente
+                mlp = MLPClassifier(hidden_layer_sizes= hidden_layer_sizes, max_iter = 1000,random_state=1, early_stopping=early_stop)
+                # entrenar
+                mlp.fit(X=Xtrain, y=Ytrain)
+                # llamar a la funcion creada anteriomente
+                error_train, error_test, diff = diff_train_test(Xtrain, Ytrain, Xtest, Ytest, mlp)
+
+                resultados.loc[idx,&#39;neuronas en capas ocultas&#39;] = neurons
+                resultados.loc[idx,&#39;error de entrenamiento&#39;] = error_train
+                resultados.loc[idx,&#39;error de prueba&#39;] = error_test
+                resultados.loc[idx,&#39;diferencia entrenamiento y prueba&#39;] = diff
+                resultados.loc[idx,&#39;is_early_stop&#39;] = early_stop
+                idx+=1
+        return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_exp_mlp_early_stop = namespace[&#39;exp_mlp_early_stop&#39;]
+    diff_train_test = namespace[&#39;diff_train_test&#39;]
+
+    msg =  &quot;testing your code with random data points&lt;br/&gt;\n&quot;
+
+    for _ in range(1):  # Puedes ajustar el número de iteraciones según sea necesario
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        X = np.random.randn(input_n, input_dim).astype(&#39;f&#39;)
+        n_clases = 2
+        y = np.random.randint(n_clases,size=input_n)
+        Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, y, test_size=0.3)
+        neurons = np.random.randint(10,size=3) + 10
+
+        t_resultados = t_exp_mlp_early_stop(neurons, [False,True], Xtrain,Xtest,Ytrain, Ytest)[[&#39;error de entrenamiento&#39;,&#39;error de prueba&#39;,&#39;diferencia entrenamiento y prueba&#39;]].values
+        s_resultados = s_exp_mlp_early_stop(neurons, [False,True], Xtrain,Xtest,Ytrain, Ytest)[[&#39;error de entrenamiento&#39;,&#39;error de prueba&#39;,&#39;diferencia entrenamiento y prueba&#39;]].values
+
+        if not np.allclose(t_resultados, s_resultados):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect experiment results&lt;/b&gt;
+            Expecting result &lt;pre&gt;{t_resultados}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_resultados}&lt;/pre&gt;&lt;br/&gt;
+            Check hyperparameter settings\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg + &#39;&lt;b&gt;correct&lt;/b&gt; ✅&#39;
+
+source_functions_names_02 = [&#39;exp_mlp_early_stop&#39;,&#39;diff_train_test&#39;]
+source_variables_names_02 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def exp_mlp_early_stop(num_neurons, is_early_stop, Xtrain,Xtest,Ytrain, Ytest):
+    &quot;&quot;&quot; función para realizar experimentos con el MLP y early stopping
+    num_neurons: list de enteros con el número de neuronas a usar
+    is_early_stop: list de boolean para confirmar si se aplica early stop
+    Xtrain: matriz de numpy con las muestras de entrenamiento
+    Xtest: matriz de numpy con las muestras de prueba
+    ytrain: vector numpy con las etiquetas de entrenamiento
+    ytest: vector numpy con las etiquetas de prueba
+
+    Retorna: dataframe con 5 columnas:
+        - número de neuronas
+        - error de entrenamiento
+        - error de prueba
+        - diferencia entrenamiento y prueba
+    &quot;&quot;&quot;
+    resultados = pd.DataFrame()
+    idx = 0
+    for early_stop in is_early_stop:
+        for neurons in num_neurons:
+            #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+            # prestar atención a los parametros, correctos.
+            hidden_layer_sizes = tuple(2*[neurons])
+            # llame el parametro para que el MLP pare anticipadamente
+            mlp = MLPClassifier(hidden_layer_sizes= hidden_layer_sizes, max_iter = 1000,random_state=1, early_stopping=early_stop)
+            # entrenar
+            mlp.fit(X=Xtrain, y=Ytrain)
+            # llamar a la funcion creada anteriomente
+            error_train, error_test, diff = diff_train_test(Xtrain, Ytrain, Xtest, Ytest, mlp)
+
+            resultados.loc[idx,&#39;neuronas en capas ocultas&#39;] = neurons
+            resultados.loc[idx,&#39;error de entrenamiento&#39;] = error_train
+            resultados.loc[idx,&#39;error de prueba&#39;] = error_test
+            resultados.loc[idx,&#39;diferencia entrenamiento y prueba&#39;] = diff
+            resultados.loc[idx,&#39;is_early_stop&#39;] = early_stop
+            idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_02&quot;, source_functions_names_02, source_variables_names_02, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/>testing your code with random data points<br/>
+<b>correct</b> ✅</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L04.02&quot;, &#39;T2&#39;,
+                  inspect.getsource(grader_02), &#39;grader_02&#39;,
+                  source_functions_names_02, source_variables_names_02)
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -685,6 +1022,9 @@ def exp_mlp_early_stop(num_neurons, is_early_stop, Xtrain,Xtest,Ytrain, Ytest):
 plt.show()
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/91e9bbf31a77a2288bca6d3adb1f3e038fd1f0f0b8001d3a5fce64d7e9625318.png" src="_images/91e9bbf31a77a2288bca6d3adb1f3e038fd1f0f0b8001d3a5fce64d7e9625318.png" />
 </div>
 </div>
 </section>
@@ -744,6 +1084,163 @@ def exp_mlp_l2(num_neurons, l2_values, Xtrain,Xtest,Ytrain, Ytest):
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_03(functions, variables, caller_userid):
+    import pandas as pd
+    import numpy as np
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import train_test_split
+    from sklearn.neural_network import MLPClassifier
+    from sklearn.metrics import accuracy_score
+
+    def t_exp_mlp_l2(num_neurons, l2_values, Xtrain,Xtest,Ytrain, Ytest):
+        &quot;&quot;&quot; función para realizar experimentos con el MLP con regularización L2
+
+        num_neurons: list de enteros con el numero de neuronas a usar
+        l2: list de floats con valores para regularizacion l2
+        Xtrain: matriz de numpy con las muestras de entrenamiento
+        Xtest: matriz de numpy con las muestras de prueba
+        ytrain: vector numpy con las etiquetas de entrenamiento
+        ytest: vector numpy con las etiquetas de prueba
+
+        Retorna: dataframe con 5 columnas:
+            - número de neuronas
+            - error de entrenamiento
+            - error de prueba
+            - diferencia entrenamiento y prueba
+        &quot;&quot;&quot;
+
+        resultados = pd.DataFrame()
+        idx = 0
+        for l2 in l2_values:
+            for neurons in num_neurons:
+                #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+                # prestar atención a los parametros, correctos.
+                hidden_layer_sizes = tuple(2*[neurons])
+                # llame el parametro adecuado del MLPClassifier
+                # Ajuste la semilla en 1 para garantizar la reproducibilidad de los resultados
+                mlp = MLPClassifier(hidden_layer_sizes= hidden_layer_sizes, max_iter = 1000, random_state=1, alpha=l2)
+                mlp.fit(X=Xtrain, y=Ytrain)
+                # llamar la funcion creada anteriomente
+                error_train, error_test, diff = diff_train_test(Xtrain, Ytrain, Xtest, Ytest, mlp)
+                resultados.loc[idx,&#39;neuronas en capas ocultas&#39;] = neurons
+                resultados.loc[idx,&#39;error de entrenamiento&#39;] = error_train
+                resultados.loc[idx,&#39;error de prueba&#39;] = error_test
+                resultados.loc[idx,&#39;diferencia entrenamiento y prueba&#39;] = diff
+                resultados.loc[idx,&#39;l2&#39;] = l2
+                idx+=1
+        return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_exp_mlp_l2 = namespace[&#39;exp_mlp_l2&#39;]
+    diff_train_test = namespace[&#39;diff_train_test&#39;]
+
+    msg =  &quot;testing your code with random data points&lt;br/&gt;\n&quot;
+
+    for _ in range(1):  # Puedes ajustar el número de iteraciones según sea necesario
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        X = np.random.randn(input_n, input_dim).astype(&#39;f&#39;)
+        n_clases = 2
+        y = np.random.randint(n_clases,size=input_n)
+        Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, y, test_size=0.3)
+        neurons = np.random.randint(10,size=3) + 10
+        l2 = np.random.rand(3)
+
+        t_resultados = t_exp_mlp_l2(neurons, 0.1*l2, Xtrain,Xtest,Ytrain, Ytest).values
+        s_resultados = s_exp_mlp_l2(neurons, 0.1*l2, Xtrain,Xtest,Ytrain, Ytest).values
+
+        if not np.allclose(t_resultados, s_resultados):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect experiment results&lt;/b&gt;
+            Expecting result &lt;pre&gt;{t_resultados}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_resultados}&lt;/pre&gt;&lt;br/&gt;
+            Check hyperparameter settings\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg + &#39;&lt;b&gt;correct&lt;/b&gt; ✅&#39;
+
+source_functions_names_03 = [&#39;exp_mlp_l2&#39;,&#39;diff_train_test&#39;]
+source_variables_names_03 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def exp_mlp_l2(num_neurons, l2_values, Xtrain,Xtest,Ytrain, Ytest):
+    &quot;&quot;&quot; función para realizar experimentos con el MLP con regularización L2
+
+    num_neurons: list de enteros con el numero de neuronas a usar
+    l2: list de floats con valores para regularizacion l2
+    Xtrain: matriz de numpy con las muestras de entrenamiento
+    Xtest: matriz de numpy con las muestras de prueba
+    ytrain: vector numpy con las etiquetas de entrenamiento
+    ytest: vector numpy con las etiquetas de prueba
+
+    Retorna: dataframe con 5 columnas:
+        - número de neuronas
+        - error de entrenamiento
+        - error de prueba
+        - diferencia entrenamiento y prueba
+        - valor de l2
+    &quot;&quot;&quot;
+
+    resultados = pd.DataFrame()
+    idx = 0
+    for l2 in l2_values:
+        for neurons in num_neurons:
+            #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+            # prestar atención a los parametros, correctos.
+            hidden_layer_sizes = tuple(2*[neurons])
+            # llame el parametro adecuado del MLPClassifier
+            # Ajuste la semilla en 1 para garantizar la reproducibilidad de los resultados
+            mlp = MLPClassifier(hidden_layer_sizes= hidden_layer_sizes, max_iter = 1000, random_state=1, alpha=l2)
+            mlp.fit(X=Xtrain, y=Ytrain)
+            # llamar la funcion creada anteriomente
+            error_train, error_test, diff = diff_train_test(Xtrain, Ytrain, Xtest, Ytest, mlp)
+            resultados.loc[idx,&#39;neuronas en capas ocultas&#39;] = neurons
+            resultados.loc[idx,&#39;error de entrenamiento&#39;] = error_train
+            resultados.loc[idx,&#39;error de prueba&#39;] = error_test
+            resultados.loc[idx,&#39;diferencia entrenamiento y prueba&#39;] = diff
+            resultados.loc[idx,&#39;l2&#39;] = l2
+            idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_03&quot;, source_functions_names_03, source_variables_names_03, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/>testing your code with random data points<br/>
+<b>correct</b> ✅</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L04.02&quot;, &#39;T3&#39;,
+                  inspect.getsource(grader_03), &#39;grader_03&#39;,
+                  source_functions_names_03, source_variables_names_03)
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -768,6 +1265,9 @@ def exp_mlp_l2(num_neurons, l2_values, Xtrain,Xtest,Ytrain, Ytest):
 plt.show()
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/47c0fa8f13a23fc7f87722b168fd862f10939799aa07b4f794da27d43adabd47.png" src="_images/47c0fa8f13a23fc7f87722b168fd862f10939799aa07b4f794da27d43adabd47.png" />
 </div>
 </div>
 </section>
@@ -814,6 +1314,149 @@ def exp_reg_l2(l2_values, Xtrain,Xtest,Ytrain, Ytest):
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_04(functions, variables, caller_userid):
+    import pandas as pd
+    import numpy as np
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import train_test_split
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.metrics import accuracy_score
+
+    def t_exp_reg_l2(l2_values, Xtrain,Xtest,Ytrain, Ytest):
+        &quot;&quot;&quot; función para realizar experimentos con el LR con regularización L2
+
+        l2_values: list de floats con valores para regularizacion l2
+        Xtrain: matriz de numpy con las muestras de entrada
+        Xtest: matriz de numpy con las muestras de prueba
+        ytrain: vector numpy con las etiquetas de las muestras de entrenamiento
+        ytest: vector numpy con las etiquetas de las muestras de prueba
+
+        Retorna: dataframe con 5 columnas:
+            - Valor del parámetro de regularización
+            - error de entrenamiento
+            - error de prueba
+            - diferencia entre error de entrenamiento y prueba
+        &quot;&quot;&quot;
+        resultados = pd.DataFrame()
+        idx = 0
+        for l2 in l2_values:
+            #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+            # prestar atención a los parametros, correctos., para lograr
+            # la regularizacion deseada (pasar el valor de &quot;l2&quot; directamente al parametro de la libreria asociado)
+            reg = LogisticRegression(max_iter = 500, random_state=1, penalty=&#39;l2&#39;, C=1/l2).fit(Xtrain,Ytrain)
+            # llamar la funcion creada anteriomente
+            error_train, error_test, diff = diff_train_test(Xtrain, Ytrain, Xtest, Ytest, reg)
+            resultados.loc[idx,&#39;l2&#39;] = l2
+            resultados.loc[idx,&#39;error de entrenamiento&#39;] = error_train
+            resultados.loc[idx,&#39;error de prueba&#39;] = error_test
+            resultados.loc[idx,&#39;diferencia entrenamiento y prueba&#39;] = diff
+
+            idx+=1
+        return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_exp_reg_l2 = namespace[&#39;exp_reg_l2&#39;]
+    diff_train_test = namespace[&#39;diff_train_test&#39;]
+
+    msg =  &quot;testing your code with random data points&lt;br/&gt;\n&quot;
+
+    for _ in range(3):  # Puedes ajustar el número de iteraciones según sea necesario
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        X = np.random.randn(input_n, input_dim).astype(&#39;f&#39;)
+        n_clases = 2
+        y = np.random.randint(n_clases,size=input_n)
+        Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, y, test_size=0.3)
+        l2 = np.random.rand(3)
+
+        t_resultados = t_exp_reg_l2(0.1*l2, Xtrain,Xtest,Ytrain, Ytest).values
+        s_resultados = s_exp_reg_l2(0.1*l2, Xtrain,Xtest,Ytrain, Ytest).values
+
+        if not np.allclose(t_resultados, s_resultados):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect experiment results&lt;/b&gt;
+            Expecting result &lt;pre&gt;{t_resultados}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_resultados}&lt;/pre&gt;&lt;br/&gt;
+            Check hyperparameter settings\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg + &#39;&lt;b&gt;correct&lt;/b&gt; ✅&#39;
+
+source_functions_names_04 = [&#39;exp_reg_l2&#39;,&#39;diff_train_test&#39;]
+source_variables_names_04 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def exp_reg_l2(l2_values, Xtrain,Xtest,Ytrain, Ytest):
+    &quot;&quot;&quot; función para realizar experimentos con el LR con regularización L2
+
+    l2_values: list de floats con valores para regularizacion l2
+    Xtrain: matriz de numpy con las muestras de entrada
+    Xtest: matriz de numpy con las muestras de prueba
+    ytrain: vector numpy con las etiquetas de las muestras de entrenamiento
+    ytest: vector numpy con las etiquetas de las muestras de prueba
+
+    Retorna: dataframe con 5 columnas:
+        - Valor del parámetro de regularización
+        - error de entrenamiento
+        - error de prueba
+        - diferencia entre error de entrenamiento y prueba
+    &quot;&quot;&quot;
+    resultados = pd.DataFrame()
+    idx = 0
+    for l2 in l2_values:
+        #Haga el llamado a la función para crear y entrenar el modelo usando los datos de entrenamiento
+        # prestar atención a los parametros, correctos., para lograr
+        # la regularizacion deseada (pasar el valor de &quot;l2&quot; directamente al parametro de la libreria asociado)
+        reg = LogisticRegression(max_iter = 500, random_state=1, penalty=&#39;l2&#39;, C=1/l2).fit(Xtrain,Ytrain)
+        # llamar la funcion creada anteriomente
+        error_train, error_test, diff = diff_train_test(Xtrain, Ytrain, Xtest, Ytest, reg)
+        resultados.loc[idx,&#39;l2&#39;] = l2
+        resultados.loc[idx,&#39;error de entrenamiento&#39;] = error_train
+        resultados.loc[idx,&#39;error de prueba&#39;] = error_test
+        resultados.loc[idx,&#39;diferencia entrenamiento y prueba&#39;] = diff
+
+        idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_04&quot;, source_functions_names_04, source_variables_names_04, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/>testing your code with random data points<br/>
+<b>correct</b> ✅</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L04.02&quot;, &#39;T4&#39;,
+                  inspect.getsource(grader_04), &#39;grader_04&#39;,
+                  source_functions_names_04, source_variables_names_04)
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -839,6 +1482,9 @@ g.set(xscale=&quot;log&quot;)
 plt.show()
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c3c5f11568afc0090c22e3b253cd25a24f7e5bc6cc5126c78b47fd15b275efb6.png" src="_images/c3c5f11568afc0090c22e3b253cd25a24f7e5bc6cc5126c78b47fd15b275efb6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -897,6 +1543,171 @@ def train_size_experiments(train_pcts,X,Y,sk_estimator):
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-44-3d62d3660713&gt;&quot;</span><span class="gt">, line </span><span class="mi">25</span>
+    <span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">,</span> <span class="n">Ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span>  <span class="n">stratify</span> <span class="o">=</span> <span class="n">Y</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+                                                                      <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax. Perhaps you forgot a comma?
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_05(functions, variables, caller_userid):
+    import pandas as pd
+    import numpy as np
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import train_test_split
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.neural_network import MLPClassifier
+    from sklearn.neighbors import KNeighborsClassifier
+    from sklearn.metrics import accuracy_score
+
+    def t_train_size_experiments(train_pcts,X,Y,sk_estimator):
+        &quot;&quot;&quot;función que realiza experimentos para
+            comprobar la influencia del tamaño del conjunto
+            de entrenamiento.
+
+        train_pcts: lista de floats con los % de entrenamiento a evaluar
+        X: matriz de numpy con el conjunto de muestras
+        Y: vector numpy con las etiquetas de salida correspondientes
+        sk_estimator: estimador/modelo de sklearn definido (sin entrenar)
+
+        Retorna: dataframe con 4 columnas:
+            - tamaño del conjunto de entrenamiento
+            - error de entrenamiento
+            - error de prueba
+            - diferencia entrenamiento y prueba
+        &quot;&quot;&quot;
+        resultados = pd.DataFrame()
+        idx = 0
+        for train_pct in train_pcts:
+            #complete con el parámetro train_pct (recuerde que son proporciones)
+            Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, Y,  stratify = Y, random_state=10, train_size=train_pct)
+            # normalizamos
+            scaler = StandardScaler().fit(Xtrain)
+            Xtrain = scaler.transform(Xtrain)
+            Xtest = scaler.transform(Xtest)
+            # entrenar!
+            sk_estimator.fit(X=Xtrain, y=Ytrain)
+            # llamar la funcion creada anteriomente
+            error_train, error_test, diff = diff_train_test(Xtrain, Ytrain, Xtest, Ytest, sk_estimator)
+            resultados.loc[idx,&#39;error de entrenamiento&#39;] = error_train
+            resultados.loc[idx,&#39;error de prueba&#39;] = error_test
+            resultados.loc[idx,&#39;diferencia entrenamiento y prueba&#39;] = diff
+            # complete con el tamaño del entrenamiento
+            resultados.loc[idx,&#39;tamaño de entrenamiento&#39;] = train_pct
+            idx+=1
+
+        return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_train_size_experiments = namespace[&#39;train_size_experiments&#39;]
+    diff_train_test = namespace[&#39;diff_train_test&#39;]
+
+    msg =  &quot;testing your code with random data points&lt;br/&gt;\n&quot;
+    models = [LogisticRegression(random_state=1),MLPClassifier(random_state=1),KNeighborsClassifier()]
+    for _ in range(3):  # Puedes ajustar el número de iteraciones según sea necesario
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        X = np.random.randn(input_n, input_dim).astype(&#39;f&#39;)
+        n_clases = 2
+        y = np.random.randint(n_clases,size=input_n)
+        pct = np.arange(0.3,0.7,0.1)
+        sk_estimator = models[np.random.randint(len(models))]
+
+        t_resultados = t_train_size_experiments(pct, X,y,sk_estimator).values
+        s_resultados = s_train_size_experiments(pct, X,y,sk_estimator).values
+
+        if not np.allclose(t_resultados, s_resultados):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect experiment results&lt;/b&gt;
+            Expecting result &lt;pre&gt;{t_resultados}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_resultados}&lt;/pre&gt;&lt;br/&gt;
+            Check hyperparameter settings\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg + &#39;&lt;b&gt;correct&lt;/b&gt; ✅&#39;
+
+source_functions_names_05 = [&#39;train_size_experiments&#39;,&#39;diff_train_test&#39;]
+source_variables_names_05 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def train_size_experiments(train_pcts,X,Y,sk_estimator):
+    &quot;&quot;&quot;función que realiza experimentos para
+        comprobar la influencia del tamaño del conjunto
+        de entrenamiento.
+
+    train_pcts: lista de floats con los % de entrenamiento a evaluar
+    X: matriz de numpy con el conjunto de muestras
+    Y: vector numpy con las etiquetas de salida correspondientes
+    sk_estimator: estimador/modelo de sklearn definido (sin entrenar)
+
+    Retorna: dataframe con 4 columnas:
+        - tamaño del conjunto de entrenamiento
+        - error de entrenamiento
+        - error de prueba
+        - diferencia entrenamiento y prueba
+    &quot;&quot;&quot;
+    resultados = pd.DataFrame()
+    idx = 0
+    for train_pct in train_pcts:
+        #complete con el parámetro train_pct (recuerde que son proporciones)
+        Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, Y,  stratify = Y, random_state=10, train_size=train_pct)
+        # normalizamos
+        scaler = StandardScaler().fit(Xtrain)
+        Xtrain = scaler.transform(Xtrain)
+        Xtest = scaler.transform(Xtest)
+        # entrenar!
+        sk_estimator.fit(X=Xtrain, y=Ytrain)
+        # llamar la funcion creada anteriomente
+        error_train, error_test, diff = diff_train_test(Xtrain, Ytrain, Xtest, Ytest, sk_estimator)
+        resultados.loc[idx,&#39;error de entrenamiento&#39;] = error_train
+        resultados.loc[idx,&#39;error de prueba&#39;] = error_test
+        resultados.loc[idx,&#39;diferencia entrenamiento y prueba&#39;] = diff
+        # complete con el tamaño del entrenamiento
+        resultados.loc[idx,&#39;tamaño de entrenamiento&#39;] = train_pct
+        idx+=1
+
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_05&quot;, source_functions_names_05, source_variables_names_05, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/>testing your code with random data points<br/>
+<b>correct</b> ✅</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L04.02&quot;, &#39;T5&#39;,
+                  inspect.getsource(grader_05), &#39;grader_05&#39;,
+                  source_functions_names_05, source_variables_names_05)
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>Registra tu solución en línea</strong></p>
 <div class="cell docutils container">
@@ -914,6 +1725,14 @@ print(&quot;distribución original (claves las etiquetas, valores el número de 
 y = np.where(y==2, 0, 1)
 unique, counts  = np.unique(y, return_counts=True)
 print(&quot;distribución luego de conversión (claves las etiquetas, valores el número de muestras): \n&quot;, dict(zip(unique, counts )))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>distribución original (claves las etiquetas, valores el número de muestras): 
+ {np.int64(0): np.int64(50), np.int64(1): np.int64(50), np.int64(2): np.int64(50)}
+distribución luego de conversión (claves las etiquetas, valores el número de muestras): 
+ {np.int64(0): np.int64(50), np.int64(1): np.int64(100)}
 </pre></div>
 </div>
 </div>
@@ -941,6 +1760,9 @@ plt.show()
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/3f40be10df7099d15042ffca8b37d64e0d2ef65a5f30950a927ce356e771192e.png" src="_images/3f40be10df7099d15042ffca8b37d64e0d2ef65a5f30950a927ce356e771192e.png" />
+</div>
 </div>
 <p><strong>Notas Finales</strong></p>
 <p>Para tener en cuenta: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.learning_curve.html">Sklearn tiene una función que realiza algo similar a lo que creamos en el anterior ejercicio y que usamos en la clase sobre complejidad de modelos.</a></p>
@@ -953,6 +1775,56 @@ plt.show()
 <li><p>En esta última etapa es donde validamos si existe sobre ajuste. Si existe, se deben incluir parametros para mitigar el sobre ajuste en la validación cruzada y volver al paso 2.</p></li>
 <li><p>La curva de aprendizaje puede ser necesaria si no logramos mitigar el sobre ajuste, como una forma de evaluar y tener evidencias sobre la deficiencia del tamaño del conjunto de muestras con el que estamos trabajando.</p></li>
 </ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+# --- CREATE or OVERWRITE STUDENTS NOTEBOOK ---
+import init
+from local.lib.rlxmoocapi import utils
+student_notebook_fname = utils.convert_this_notebook_to_student()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">IPython.notebook.save_checkpoint();</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipynbname in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (2024.1.0.0)
+Requirement already satisfied: ipykernel in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipynbname) (6.19.3)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
+Requirement already satisfied: psutil in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.9.4)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
+Requirement already satisfied: pyzmq&gt;=17 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.0.1)
+Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
+Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
+Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: debugpy&gt;=1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.6.4)
+Requirement already satisfied: packaging in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.2)
+Requirement already satisfied: traitlets&gt;=5.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.8.0)
+Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.19.1)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.11 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (3.0.36)
+Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
+Requirement already satisfied: stack-data in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.6.2)
+Requirement already satisfied: backcall in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.0)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
+Requirement already satisfied: decorator in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (5.1.1)
+Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (5.1.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.8.2)
+Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.8.3)
+Requirement already satisfied: platformdirs&gt;=2.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-core&gt;=4.9.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.6.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.11-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.5)
+Requirement already satisfied: six&gt;=1.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (1.16.0)
+Requirement already satisfied: executing&gt;=1.2.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (1.2.0)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
+Requirement already satisfied: pure-eval in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.2)
+NOTEBOOK name is lab4_parte2--XX--TEACHER--XX.ipynb
+student notebook writen to &#39;lab4_parte2.ipynb&#39;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -986,24 +1858,6 @@ plt.show()
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="lab4_parte1.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="titles/U7_description.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">U7. MÁQUINAS DE VECTORES DE SOPORTE</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               

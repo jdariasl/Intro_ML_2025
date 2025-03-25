@@ -195,7 +195,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
@@ -209,7 +215,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul class="current">
@@ -226,7 +232,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -239,7 +245,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
@@ -263,7 +269,9 @@
 <li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
@@ -446,10 +454,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobreajuste">Sobreajuste</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parada-anticipada">Parada anticipada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causas-del-sobreajuste">Causas del sobreajuste:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularizacion">Regularización</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-contra-el-sobreajuste">Medidas contra el sobreajuste</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parada-anticipada">Parada anticipada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularizacion">Regularización</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-maldicion-de-la-dimensionalidad">La maldición de la dimensionalidad</a></li>
 </ul>
             </nav>
@@ -487,7 +499,7 @@ import matplotlib.pyplot as plt
 <p>Para identificar que un modelo se ha sobreajustado es importante que durante la validación se estimen las medidas de desempeño tanto en el conjunto de entrenamiento como en el de test. Si se obtienen errores de entrenamiento muy bajos (0 a proximadamente 0), pero en el conjunto de test se obtienen errores muy altos, el modelo se ha sobreajustado. Si tanto en el conjunto de entrenamiento como en el de test, los errores son altos y en proporciones similares, entonces el modelo está subajustado. En este caso es posible que algún parámetro en el modelo no haya permitido un mejor ajuste del mismo (por ejemplo un nivel de profundidad muy pequeño en un árbol de decisión), que en el caso de algoritmos de entrenamiento iterativos, el número máximo de iteraciones no haya sido suficiente, o que definitvamente el modelo escogido no tiene la flexibildiad suficiente para adpatarse a la estructura subyacente de los datos con losq ue está siendo entrenado.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import library.regularization as reg
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import local.library.regularization as reg
 reg.PrintOverfittingReg()
 </pre></div>
 </div>
@@ -496,7 +508,7 @@ reg.PrintOverfittingReg()
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
 </pre></div>
 </div>
-<img alt="_images/608b1d979f6f3146f00f6467eef6e470b172ebac790b2f5f97a1962457069716.png" src="_images/608b1d979f6f3146f00f6467eef6e470b172ebac790b2f5f97a1962457069716.png" />
+<img alt="_images/e95532fe886f619474c00f42cf680920a4c16a1f3c12bf12754552907c601eb5.png" src="_images/e95532fe886f619474c00f42cf680920a4c16a1f3c12bf12754552907c601eb5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -506,10 +518,11 @@ reg.PrintOverfittingReg()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/68ddbd0ca13515c40c991af157a4086941c51e6138c9cb76c324be6a4273bb92.png" src="_images/68ddbd0ca13515c40c991af157a4086941c51e6138c9cb76c324be6a4273bb92.png" />
+<img alt="_images/1892b0a1a7700b55da24ec5f2a6b6f00b671bb0e15df57c24cf463cefd837b3e.png" src="_images/1892b0a1a7700b55da24ec5f2a6b6f00b671bb0e15df57c24cf463cefd837b3e.png" />
 </div>
 </div>
-<p><b>Causas del sobreajuste</b>:</p>
+<section id="causas-del-sobreajuste">
+<h3>Causas del sobreajuste:<a class="headerlink" href="#causas-del-sobreajuste" title="Link to this heading">#</a></h3>
 <p>De manera general el sobreajuste puede presentarse por las siguientes razones:</p>
 <ul class="simple">
 <li><p>Muestras de entrenamiento muy ruidosas</p></li>
@@ -522,6 +535,10 @@ reg.PrintOverfittingReg()
 </ul>
 <p>El ruido en los datos puede provenir de diferentes fuentes dependiendo del origen de los mismos, por ejemplo en datos provenientes de sensores (como en aplicaciones que usan el acelerómetro o el giroscopio de los smartphones), el rudio puede provenir por alteraciones en las mediciones debida a movimientos indeceados, o en el reconocimiento de voz, por ruidos captados por el micrófono y que no son en realidad la voz de la persona que está hablando al sistema. Cuando los datos provienen de bases de datos estructuradas, podemos tener ruido cuando, por ejemplo, algún campo contiene información desactualizada sobre un usuario. En problemas supervisados, el ruido también puede estar en presente en la variable de salida; algunas aplicaciones que usan etiquetas obtenidas desde internet, por ejemplo captchas, podrían eventualmente tener problemas con etiquetas ruidosas.</p>
 <p>Sin embargo, el sobreajuste se presenta no sólo cuando existe ruido en los datos, sino cuando usamos un modelo suficientemente flexible para adapatarse a dicho ruido. Por ejemplo, una regresión logística que use un polinomio de grado 1, no podrá sobreajustarse nunca, porque su flexibilidad está limitada a un número de parámetros bajo (<span class="math notranslate nohighlight">\(d+1\)</span>). Sin embargo, modelos con mayor flexibilidad, es decir, con un número de parámetros mayor son más susceptibles al sobreajuste. Por lo tanto, una de las alternativas para evitar el sobreajuste es precisamente reducir la flexibilidad del modelo, limitando el rango de posibles valores que pueden tomar sus parámetros.</p>
+</section>
+</section>
+<section id="medidas-contra-el-sobreajuste">
+<h2>Medidas contra el sobreajuste<a class="headerlink" href="#medidas-contra-el-sobreajuste" title="Link to this heading">#</a></h2>
 <section id="parada-anticipada">
 <h3>Parada anticipada<a class="headerlink" href="#parada-anticipada" title="Link to this heading">#</a></h3>
 <p>El problema del sobreajuste debe ser abordado desde diferente frentes. El primero de ellos es utilizar una metodología de validación apropiada. Hasta el momento nosotros hemos discutido la necesidad de dividir el conjunto de muestras en dos conjuntos (Entrenamiento y Validación) y repetir el proceso de entrenamiento y validación varias veces. Sin embargo, en problemas en los que debemos seleccionar hiperparámetros de los modelos, es decir, parámetros que no se ajustan durante el entrenamiento sino que típicamente escogemos a partir de evaluar el error durante la validación, es necesario hacer una partición en tres subconjuntos: <b> Entrenamiento, Validación y Test </b>.</p>
@@ -532,15 +549,14 @@ reg.PrintOverfittingReg()
 </ul>
 <p>De esa manera podemos garantizar que el conjunto de test no ha sido usado ni para el ajuste de los parámetros del modelo, ni para la selección de los hiperparámetros del mismo. En todos los casos, se deben hacer varias repeticiones usando metodologı́as como validación cruzada o bootstrapping, para obtener medidas de desempeño ± IC.</p>
 <p>Adicionalmente, en modelos muy flexibles que cuentan con un número de parámetros muy elevado (por ejemplo en las redes neuronales artificiales), se suele usar una estrategia para evitar el sobreajuste llamada parada anticipada. Esta estrategia consiste en evaluar el error en el conjunto de entrenamiento y el error en el conjunto de validación durante cada época o iteración del algoritmo de entrenamiento, cuando el error de validación deja de reducirse, aunque el error de entrenamiento continúe disminuyendo, el algoritmo de entrenamiento se detiene. Esto evita que el algoritmo continúe ajustándose a los datos de entrenamiento, pero deje de representar la estructura subyacente en los datos del problema que se está modelando.</p>
-<img src="./Local/imgs/ParadaAnticipada.png" alt="ParadaAnticipada" width="600"/><p>En Sklearn:</p>
+<img src="local/imgs/ParadaAnticipada.png" alt="ParadaAnticipada" width="600"/><p>En Sklearn:</p>
 <p><strong>early_stopping: bool</strong>, default=False</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Whether to use early stopping to terminate training when validation score is not improving. If set to true, it will automatically set aside 10% of training data as validation and terminate training when validation score is not improving by at least tol for n_iter_no_change consecutive epochs. The split is stratified, except in a multilabel setting. Only effective when solver=&#39;sgd&#39; or &#39;adam&#39;.
 </pre></div>
 </div>
 </section>
-</section>
 <section id="regularizacion">
-<h2>Regularización<a class="headerlink" href="#regularizacion" title="Link to this heading">#</a></h2>
+<h3>Regularización<a class="headerlink" href="#regularizacion" title="Link to this heading">#</a></h3>
 <p>La regularización es un método matemático que permite reducir los efectos del ruido en problemas inversos imponiendo algún tipo de restricción en la función objetivo. Particularmente en el caso de la regresión lineal se determinó que cuando se presenta sobreajuste los coeficientes del polinomio tienden a aumentar en maginitud. La función objetivo
 regularizada está dada por:</p>
 <div class="math notranslate nohighlight">
@@ -567,7 +583,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9135b3f155259a5be48e7e6ee9290842df1fdf01f9ea6d6826739cbf7fe99eaf.png" src="_images/9135b3f155259a5be48e7e6ee9290842df1fdf01f9ea6d6826739cbf7fe99eaf.png" />
+<img alt="_images/490e37b82bdf9d8a0cfa1f806d71066fe1803cfbf0a6bc870276c6bcdd48c15a.png" src="_images/490e37b82bdf9d8a0cfa1f806d71066fe1803cfbf0a6bc870276c6bcdd48c15a.png" />
 </div>
 </div>
 <p>Veamos la frontera que produce una regresión logística estándar, en este caso para un polinomio de grado 6.</p>
@@ -578,11 +594,11 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error= 0.17924839740742132
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error= 0.1792483974074213
 </pre></div>
 </div>
-<img alt="_images/f8e22400c35edea52f279d408c39818963e4277c5492ad13294adb7cda5e0121.png" src="_images/f8e22400c35edea52f279d408c39818963e4277c5492ad13294adb7cda5e0121.png" />
-<img alt="_images/d3a8bc101c27b7e5378b23b939b1f8acd3bd5482af127d5640797eb923136f1f.png" src="_images/d3a8bc101c27b7e5378b23b939b1f8acd3bd5482af127d5640797eb923136f1f.png" />
+<img alt="_images/6b79e24e260195e2ada67736a1e86a7ec485b590c18826c1cf1087f9269ee0fa.png" src="_images/6b79e24e260195e2ada67736a1e86a7ec485b590c18826c1cf1087f9269ee0fa.png" />
+<img alt="_images/c0e2e52436f627c0d8ac20097c6b1a130ffd6c1d877267d57a5c08ca7a440031.png" src="_images/c0e2e52436f627c0d8ac20097c6b1a130ffd6c1d877267d57a5c08ca7a440031.png" />
 </div>
 </div>
 <p>Veamos ahora que sucede si usamos la version regularizada dándole un valor a <span class="math notranslate nohighlight">\(\lambda\)</span> diferente de cero:</p>
@@ -596,8 +612,8 @@ plt.show()
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error= 0.2507583326384995
 </pre></div>
 </div>
-<img alt="_images/0a1ea07cb6535e665b01bd8dfe32bc759313ca2da6a3470bf12cab7f4ccfd479.png" src="_images/0a1ea07cb6535e665b01bd8dfe32bc759313ca2da6a3470bf12cab7f4ccfd479.png" />
-<img alt="_images/01686f7ef47c5640ef5f1567d8071bfbc588600fe4c989ace8071118dd55028c.png" src="_images/01686f7ef47c5640ef5f1567d8071bfbc588600fe4c989ace8071118dd55028c.png" />
+<img alt="_images/653bfc8e836139811fed89d3ab26d0438a4292ee0cbbfa88a1979ad6108ce1a8.png" src="_images/653bfc8e836139811fed89d3ab26d0438a4292ee0cbbfa88a1979ad6108ce1a8.png" />
+<img alt="_images/394d513fe92d56ccc5d644f1e23bfa1a590fda3f4c0b003462f0bac9ed9ac875.png" src="_images/394d513fe92d56ccc5d644f1e23bfa1a590fda3f4c0b003462f0bac9ed9ac875.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -607,11 +623,11 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error= 0.33604518076771783
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error= 0.33604518076771794
 </pre></div>
 </div>
-<img alt="_images/956e0a9353f00c277191dfb81d41a573b2ed11b0a38e3b0e1d61aaee37d5c789.png" src="_images/956e0a9353f00c277191dfb81d41a573b2ed11b0a38e3b0e1d61aaee37d5c789.png" />
-<img alt="_images/6853934ce519dab2f3356f36b23f44a38bf380b15153818e1796a5b8548a6536.png" src="_images/6853934ce519dab2f3356f36b23f44a38bf380b15153818e1796a5b8548a6536.png" />
+<img alt="_images/d692746da6304550e82dac8249dabf03219820dd5052e2c97278a1fe99ebaf6d.png" src="_images/d692746da6304550e82dac8249dabf03219820dd5052e2c97278a1fe99ebaf6d.png" />
+<img alt="_images/982ad03f85c44a6080a70e2fcdf00e8cda24ba06d51a35335548e18c6f7217f5.png" src="_images/982ad03f85c44a6080a70e2fcdf00e8cda24ba06d51a35335548e18c6f7217f5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -621,15 +637,15 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error= 0.39341073848662333
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error= 0.39341073848662345
 </pre></div>
 </div>
-<img alt="_images/5a2d7a751faeccf63b7d4393dba919f40b1b19a828029edc692320ea2445c874.png" src="_images/5a2d7a751faeccf63b7d4393dba919f40b1b19a828029edc692320ea2445c874.png" />
-<img alt="_images/862bfc21a328e53a064aec5f3c43a9d3f3626730953c9d33ee1674863a07c471.png" src="_images/862bfc21a328e53a064aec5f3c43a9d3f3626730953c9d33ee1674863a07c471.png" />
+<img alt="_images/083ef267a277c36f7846eeb7993566651eff1cc25a639377fd62279f79eb0c79.png" src="_images/083ef267a277c36f7846eeb7993566651eff1cc25a639377fd62279f79eb0c79.png" />
+<img alt="_images/14f5a53f75ada83e92491d1ec10ea99f9454d59cf352da5308c3af207be0adb9.png" src="_images/14f5a53f75ada83e92491d1ec10ea99f9454d59cf352da5308c3af207be0adb9.png" />
 </div>
 </div>
 <p>La restricción que estamos usando en el término de regularización corresponde a la norma <span class="math notranslate nohighlight">\(L_2\)</span> del vector <span class="math notranslate nohighlight">\(\bf{w}\)</span>. También es posible usar otro tipo de normas, entre ellas la norma <span class="math notranslate nohighlight">\(L_1\)</span> es también muy usada, ya que garantiza no sólo que la magnitud de los pesos en el vector <span class="math notranslate nohighlight">\(\bf{w}\)</span> no se desboder, sino que además causa que algunos de los pesos tomen un valor de cero. La regresión con este tipo de regularización se conoce como LASSO y será analizada en detalle más adelante en el curso.</p>
-<img src="./Local/imgs/L1L2.png" alt="ParadaAnticipada" width="600"/><div class="cell docutils container">
+<img src="local/imgs/L1L2.png" alt="ParadaAnticipada" width="600"/><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn import linear_model, datasets
 diabetes=datasets.load_diabetes()
@@ -638,18 +654,18 @@ print(diabetes.data)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.03807591  0.05068012  0.06169621 ... -0.00259226  0.01990842
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.03807591  0.05068012  0.06169621 ... -0.00259226  0.01990749
   -0.01764613]
- [-0.00188202 -0.04464164 -0.05147406 ... -0.03949338 -0.06832974
+ [-0.00188202 -0.04464164 -0.05147406 ... -0.03949338 -0.06833155
   -0.09220405]
- [ 0.08529891  0.05068012  0.04445121 ... -0.00259226  0.00286377
+ [ 0.08529891  0.05068012  0.04445121 ... -0.00259226  0.00286131
   -0.02593034]
  ...
- [ 0.04170844  0.05068012 -0.01590626 ... -0.01107952 -0.04687948
+ [ 0.04170844  0.05068012 -0.01590626 ... -0.01107952 -0.04688253
    0.01549073]
- [-0.04547248 -0.04464164  0.03906215 ...  0.02655962  0.04452837
+ [-0.04547248 -0.04464164  0.03906215 ...  0.02655962  0.04452873
   -0.02593034]
- [-0.04547248 -0.04464164 -0.0730303  ... -0.03949338 -0.00421986
+ [-0.04547248 -0.04464164 -0.0730303  ... -0.03949338 -0.00422151
    0.00306441]]
 </pre></div>
 </div>
@@ -664,12 +680,13 @@ print(clf.coef_)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0.          -0.         471.03873321 136.50710814  -0.
-  -0.         -58.3195488    0.         408.02332435   0.        ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  0.          -0.         471.04187427 136.50408382  -0.
+  -0.         -58.31901693   0.         408.0226847    0.        ]
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="la-maldicion-de-la-dimensionalidad">
 <h2>La maldición de la dimensionalidad<a class="headerlink" href="#la-maldicion-de-la-dimensionalidad" title="Link to this heading">#</a></h2>
@@ -743,10 +760,14 @@ print(clf.coef_)
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sobreajuste">Sobreajuste</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parada-anticipada">Parada anticipada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#causas-del-sobreajuste">Causas del sobreajuste:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularizacion">Regularización</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#medidas-contra-el-sobreajuste">Medidas contra el sobreajuste</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parada-anticipada">Parada anticipada</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regularizacion">Regularización</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#la-maldicion-de-la-dimensionalidad">La maldición de la dimensionalidad</a></li>
 </ul>
   </nav></div>
