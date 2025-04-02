@@ -195,7 +195,13 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
@@ -209,7 +215,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
@@ -226,7 +232,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul class="current">
@@ -239,7 +245,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
@@ -263,7 +269,9 @@
 <li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
@@ -527,11 +535,12 @@ axes.plot(x, y, &#39;.b&#39;,markersize=12)
 axes.set_xlabel(&#39;Caracteristica 1&#39;)
 axes.set_ylabel(&#39;Variable a predecir&#39;)
 axes.set_title(&#39;Problema de regresion&#39;);
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b3f1f18da65f83c6df861765fac78f50cbbc0e45b41d54171f723e660a73e5f3.png" src="_images/b3f1f18da65f83c6df861765fac78f50cbbc0e45b41d54171f723e660a73e5f3.png" />
+<img alt="_images/dff49dd60bf240d43b9c46fbe3241b104f774bf3d208763eb18e7d3313dd6e52.png" src="_images/dff49dd60bf240d43b9c46fbe3241b104f774bf3d208763eb18e7d3313dd6e52.png" />
 </div>
 </div>
 <p>¿Qué modelo podríamos ajustar a este conjunto de datos de tal manera que se aproxime a la estructura observada?</p>
@@ -607,7 +616,7 @@ Z = np.zeros((100,100))
 for i in range(100):
     for j in range(100):
         #print([xx[1,i],yy[j,1]])
-        Z[i,j]=clf.predict(np.array([xx[1,i],yy[j,1]]).reshape(1,2))
+        Z[i,j]=clf.predict(np.array([xx[1,i],yy[j,1]]).reshape(1,2))[0]
 plt.figure()
 plt.title(u&#39;Clasificación Arbol de Decisión&#39;, fontsize=14)
 plt.xlabel(u&#39;Característica 1&#39;)
@@ -618,7 +627,7 @@ plt.scatter(X[:,1], X[:,2], c=y);
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d2e2e3c357867ad0fc3fdb4a49581fee0b1519973998aa7b0245b59e35ccd562.png" src="_images/d2e2e3c357867ad0fc3fdb4a49581fee0b1519973998aa7b0245b59e35ccd562.png" />
+<img alt="_images/bc3815001cdf6f829102afc92c514f01e9376728603162041c6ed07603646363.png" src="_images/bc3815001cdf6f829102afc92c514f01e9376728603162041c6ed07603646363.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -657,7 +666,7 @@ Image(graph.create_png())
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f2ed55262a6129fed9a4e313edf255d8f43ba6a42062f70fdf755ddd7736f8ed.png" src="_images/f2ed55262a6129fed9a4e313edf255d8f43ba6a42062f70fdf755ddd7736f8ed.png" />
+<img alt="_images/50e32cabbdf62de118fd09d412b1a876ca08a32f67eb472858f735631c38db52.png" src="_images/50e32cabbdf62de118fd09d412b1a876ca08a32f67eb472858f735631c38db52.png" />
 </div>
 </div>
 </section>
@@ -712,14 +721,14 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2a6e3225b97b8835887814e75a9b6dfbb30d8265c110c490296142907fb8f474.png" src="_images/2a6e3225b97b8835887814e75a9b6dfbb30d8265c110c490296142907fb8f474.png" />
+<img alt="_images/408269ce975458f31111342b12f8f345853416b509c0d25ad82d895b9aabc81f.png" src="_images/408269ce975458f31111342b12f8f345853416b509c0d25ad82d895b9aabc81f.png" />
 </div>
 </div>
 </section>
 <section id="comite-de-maquinas-metodos-de-ensamble">
 <h2>Comité de Máquinas (Métodos de ensamble)<a class="headerlink" href="#comite-de-maquinas-metodos-de-ensamble" title="Link to this heading">#</a></h2>
 <p>Es usual en el aprendizaje de máquina no dejar la responsabilidad de la decisión a un solo modelo, sino por el contrario combinar la decisión de varios modelos para tomar una decisión final. Existen muchas maneras de combinar modelos de ML, lo que se conoce como métodos de ensamble. La más sencilla es entrenar modelos diferentes diferentes (<strong>ensamble de modelos</strong>) con el objetivo de combinar las fortalezas de cada uno y tomar la decisión basada en concenso. A este método se le conoce como <strong>voting</strong>.</p>
-<p><img src="./Local/imgs/Voting.jpg"
+<p><img src="local/imgs/Voting.jpg"
      alt="Árbol de decisión"
      width="600px" /></p>
 <div class="cell docutils container">
@@ -760,7 +769,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/861d710d5d8fab7c5cbb2ec9d1d5d090bf5b655585258f657018b2a80bb50c5a.png" src="_images/861d710d5d8fab7c5cbb2ec9d1d5d090bf5b655585258f657018b2a80bb50c5a.png" />
+<img alt="_images/65ea40e1c821d8df44742ce85c36e475a2ad632bbde6e0eb861fc11ff536f640.png" src="_images/65ea40e1c821d8df44742ce85c36e475a2ad632bbde6e0eb861fc11ff536f640.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -770,22 +779,422 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[DecisionTreeRegressor(ccp_alpha=0.0, criterion=&#39;mse&#39;, max_depth=3,
-                       max_features=None, max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;,
-                       random_state=None, splitter=&#39;best&#39;),
- DecisionTreeRegressor(ccp_alpha=0.0, criterion=&#39;mse&#39;, max_depth=5,
-                       max_features=None, max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, presort=&#39;deprecated&#39;,
-                       random_state=None, splitter=&#39;best&#39;),
- LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None, normalize=False)]
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-1 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeRegressor(max_depth=3)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>DecisionTreeRegressor</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.tree.DecisionTreeRegressor.html">?<span>Documentation for DecisionTreeRegressor</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>DecisionTreeRegressor(max_depth=3)</pre></div> </div></div></div></div></div></div>
 </div>
 </section>
 <section id="bagging">
@@ -806,8 +1215,8 @@ y[::5] += 3 * (0.5 - rng.rand(16))
 # Fit regression model
 from sklearn.tree import DecisionTreeRegressor
 clf_b = DecisionTreeRegressor(max_depth=5)
-clf_1 = BaggingRegressor(base_estimator=clf_b, n_estimators=10, random_state=0).fit(X, y)
-clf_2 = BaggingRegressor(base_estimator=clf_b, n_estimators=20, random_state=0).fit(X, y)
+clf_1 = BaggingRegressor(estimator=clf_b, n_estimators=10, random_state=0).fit(X, y)
+clf_2 = BaggingRegressor(estimator=clf_b, n_estimators=20, random_state=0).fit(X, y)
 # Predict
 X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
 y_1 = clf_1.predict(X_test)
@@ -824,7 +1233,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fadfda0a5abbe78fcd41ddce4a48944ecfaf80d188d7d7adce427dcb1cdfb560.png" src="_images/fadfda0a5abbe78fcd41ddce4a48944ecfaf80d188d7d7adce427dcb1cdfb560.png" />
+<img alt="_images/7ad3df05c84ae8cb79bf4103573fd9dc2384da6333d81037a6f06812bae6c8a9.png" src="_images/7ad3df05c84ae8cb79bf4103573fd9dc2384da6333d81037a6f06812bae6c8a9.png" />
 </div>
 </div>
 <p>Puede ser usado con cualquier estimador base.</p>
@@ -832,25 +1241,25 @@ plt.show()
 <h3>Veamos el efecto de las fronteras en clasificación<a class="headerlink" href="#veamos-el-efecto-de-las-fronteras-en-clasificacion" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from library.regularization import Fronteras
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.library.regularization import Fronteras
 clf = tree.DecisionTreeClassifier(max_depth=4)
 Fronteras(clf,100,10)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aabf0b3b3acc40020c53a4570a3b96e7f0595400880fe64867d955716268ebea.png" src="_images/aabf0b3b3acc40020c53a4570a3b96e7f0595400880fe64867d955716268ebea.png" />
+<img alt="_images/c08c96dd9190696ae22652bd57fd9ae13c7d3965f7df969cfdbf7976c1b79541.png" src="_images/c08c96dd9190696ae22652bd57fd9ae13c7d3965f7df969cfdbf7976c1b79541.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf = BaggingClassifier(base_estimator=tree.DecisionTreeClassifier(max_depth=4), n_estimators=100, random_state=0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf = BaggingClassifier(estimator=tree.DecisionTreeClassifier(max_depth=4), n_estimators=100, random_state=0)
 Fronteras(clf,100,10)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/479bee7d21ffa098bd26971131333a8a9f58591ffabd8fb7a79e5bb0478ec727.png" src="_images/479bee7d21ffa098bd26971131333a8a9f58591ffabd8fb7a79e5bb0478ec727.png" />
+<img alt="_images/e557c79405bcfcc86e3ebbb8fefe93b89e79561a05c51b2f9d0e6d292fbdd240.png" src="_images/e557c79405bcfcc86e3ebbb8fefe93b89e79561a05c51b2f9d0e6d292fbdd240.png" />
 </div>
 </div>
 </section>
@@ -885,7 +1294,7 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1c792961627558740e5546e4640dfad3f38b8058dc1079f1c6c0b1e9c60e7715.png" src="_images/1c792961627558740e5546e4640dfad3f38b8058dc1079f1c6c0b1e9c60e7715.png" />
+<img alt="_images/104bede4bc2af836490985c9ec923a2eda27e6cc3e8eef37b4a8d50c9ec05c6b.png" src="_images/104bede4bc2af836490985c9ec923a2eda27e6cc3e8eef37b4a8d50c9ec05c6b.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -907,42 +1316,38 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d432494e1d44220d693c0fc48a0c22331dcb341f65210e02a234a0ae91a15129.png" src="_images/d432494e1d44220d693c0fc48a0c22331dcb341f65210e02a234a0ae91a15129.png" />
+<img alt="_images/5fa1ecd8f9aba2b1f68944d6e99b30eda92723b85fa551b1ff34399dea9cea59.png" src="_images/5fa1ecd8f9aba2b1f68944d6e99b30eda92723b85fa551b1ff34399dea9cea59.png" />
 </div>
 </div>
 <p>Veamos la importancia de las variables según el último modelo entrenado:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.bar(np.arange(digits.data.shape[1]),clf.feature_importances_)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 64 artists&gt;
-</pre></div>
-</div>
-<img alt="_images/9359dc76f01f48222f8e568433e4bddd3ad3d466e3ebf26df37ad675594f516c.png" src="_images/9359dc76f01f48222f8e568433e4bddd3ad3d466e3ebf26df37ad675594f516c.png" />
+<img alt="_images/78dff2a2d9c049b1f1e422644dcf8155d9ef6172d20801f496cb0b77e04bbb55.png" src="_images/78dff2a2d9c049b1f1e422644dcf8155d9ef6172d20801f496cb0b77e04bbb55.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.sort(clf.feature_importances_)
 plt.bar(np.arange(digits.data.shape[1]),a)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 64 artists&gt;
-</pre></div>
-</div>
-<img alt="_images/e2efe7ed53e83e39f8f95320614ea45d716ba227801dcab21e8824e29d84fb1a.png" src="_images/e2efe7ed53e83e39f8f95320614ea45d716ba227801dcab21e8824e29d84fb1a.png" />
+<img alt="_images/7b2a039f60acd431503b775dc2d3a18bb078b1ebe8cb3bb828c2364761bc8faa.png" src="_images/7b2a039f60acd431503b775dc2d3a18bb078b1ebe8cb3bb828c2364761bc8faa.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Visualize data
 dot_data = tree.export_graphviz(clf.estimators_[0],
-                                feature_names=np.arange(digits.data.shape[1]),
+                                feature_names=np.arange(digits.data.shape[1]).astype(&#39;str&#39;),
                                 out_file=None,
                                 filled=True,
                                 rounded=True)
@@ -956,14 +1361,14 @@ Image(graph.create_png())
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/43ce19e3c971029bd7d9f0e53275e44e3328137c8c835db8d926356d6b3844c9.png" src="_images/43ce19e3c971029bd7d9f0e53275e44e3328137c8c835db8d926356d6b3844c9.png" />
+<img alt="_images/71338d129d1d8394e77a137e5476b418dcc22cc57e4630eadd127796cb52ecb9.png" src="_images/71338d129d1d8394e77a137e5476b418dcc22cc57e4630eadd127796cb52ecb9.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Visualize data
 dot_data = tree.export_graphviz(clf.estimators_[1],
-                                feature_names=np.arange(digits.data.shape[1]),
+                                feature_names=np.arange(digits.data.shape[1]).astype(&#39;str&#39;),
                                 out_file=None,
                                 filled=True,
                                 rounded=True)
@@ -977,7 +1382,7 @@ Image(graph.create_png())
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a3cc3eb47197c2d30b3c788a5e0093a6bc18d57c34346abbc11091f0622b78c9.png" src="_images/a3cc3eb47197c2d30b3c788a5e0093a6bc18d57c34346abbc11091f0622b78c9.png" />
+<img alt="_images/9091c96977b434acc8322a1c765fc7fa25948a73dd7574c6c1a5502527df2f70.png" src="_images/9091c96977b434acc8322a1c765fc7fa25948a73dd7574c6c1a5502527df2f70.png" />
 </div>
 </div>
 <p>Existe una variante adicional conocida como Árboles Extremadamente Aleatorios. <b>Consultar</b> en qué consiste.</p>
@@ -1086,7 +1491,10 @@ plt.show()
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/33ed7516add1c620ba32bdddabd34f1979628bdb3a17f090b12b765b3eb0a414.png" src="_images/33ed7516add1c620ba32bdddabd34f1979628bdb3a17f090b12b765b3eb0a414.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>downloading Olivetti faces from https://ndownloader.figshare.com/files/5976027 to /home/jdariasl/scikit_learn_data
+</pre></div>
+</div>
+<img alt="_images/d0a705e1d3cfa888a81871867b721fe999f61b7ed46b5f158074e9209ad39322.png" src="_images/d0a705e1d3cfa888a81871867b721fe999f61b7ed46b5f158074e9209ad39322.png" />
 </div>
 </div>
 <section id="bibliografia">
