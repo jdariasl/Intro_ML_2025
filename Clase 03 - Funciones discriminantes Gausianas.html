@@ -215,7 +215,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
@@ -232,7 +232,7 @@
 
 
 
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
@@ -245,7 +245,7 @@
 <li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
@@ -269,7 +269,9 @@
 <li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
 </ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
 </details></li>
 </ul>
@@ -643,7 +645,19 @@ def plot_ellipse(ax, mu ,sigma):
 </div>
 </div>
 </div>
-<p>El modelo anterior tiene tres posibles casos:</p>
+<p><strong>Nota</strong>: Para representar gráficamente la suposición de que los datos seguen funciones de densidad normales, se usan elipses que representan las fdp. La siguiente figura muestra gráficamente lo que representa la elipse:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.library.PlotGaussians import Plot_Gaussian_3D_2D, plot_contour
+Plot_Gaussian_3D_2D()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f89468d8b6ee6ca1d04858654b04a71d74135dbb409f374c6f4d156d96a1b524.png" src="_images/f89468d8b6ee6ca1d04858654b04a71d74135dbb409f374c6f4d156d96a1b524.png" />
+</div>
+</div>
+<p>Regresando al análisis de las fronteras, <strong>el modelo anterior tiene tres posibles casos:</strong></p>
 <p>Caso 1. Si las matrices de covarianza se consideran de la forma <span class="math notranslate nohighlight">\(\Sigma = \sigma^2 {\bf{I}}\)</span>, donde <span class="math notranslate nohighlight">\({\bf{I}}\)</span> es la matriz identidad. En este caso lo que se asume es todas las características se consideran estadísticamente independientes y de igual varianza. En este caso, cada clase se considera como un grupo agrupado dentro de un círculo (hiperesfera es como se llama de manera genérica para hablar de muchas dimensiones) perfecto al rededor de su media.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -657,21 +671,22 @@ ax.plot(x,y,&#39;x&#39;)
 ax.plot(x2,y2,&#39;x&#39;)
 ax.axis(&#39;equal&#39;)
 
-plot_ellipse(ax,Mean,Cov)
-plot_ellipse(ax,Mean2,Cov)
+plot_contour(ax,Mean,Cov)
+plot_contour(ax,Mean2,Cov)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/281f0fc33bdeb40ae0ad207e2cef820374b65433da605cdeb67295dbe89afc6d.png" src="_images/281f0fc33bdeb40ae0ad207e2cef820374b65433da605cdeb67295dbe89afc6d.png" />
+<img alt="_images/c0b880cfc0309319442ca10f3f535469ef2d79827c00018c74de6d6db0ebd352.png" src="_images/c0b880cfc0309319442ca10f3f535469ef2d79827c00018c74de6d6db0ebd352.png" />
 </div>
 </div>
 <p>Caso 2. Si las matrices de covarianza se consideran diagonales. En este caso lo que se asume es todas las características se consideran estadísticamente independientes pero no de igual varinza. En este caso las clases se consideran agrupadas en parábolas cuyo eje principal puede estar a lo largo de cualquiera de las características. Este modelo es equivalente al clasificador conocido como <b>Naïve Bayes Classifier</b> o clasificador Bayesiano ingenuo (<mark>Conslutar</mark>).</p>
 <p>Caso 3. Es el caso más general, en el que las matrices de covarianza de los modelos se consideran completas y las clases se consideran agrupadas en parábolas cuyo eje principal puede estar en cualquier dirección, es por consiguiente el más flexible.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Cov = [[1.1,0],[0,2.1]]
-Cov2 = [[4.1,2],[2,3.1]]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Cov = np.array([[1.1,0],[0,2.1]])
+Cov2 = np.array([[4.1,2],[2,3.1]])
 Mean = [1.1,2.1]
 Mean2 = [5.1,4.1]
 ax = plt.subplot(111)
@@ -681,13 +696,14 @@ ax.plot(x,y,&#39;x&#39;)
 ax.plot(x2,y2,&#39;x&#39;)
 ax.axis(&#39;equal&#39;)
 
-plot_ellipse(ax,Mean,Cov)
-plot_ellipse(ax,Mean2,Cov2)
+plot_contour(ax,Mean,Cov)
+plot_contour(ax,Mean2,Cov2)
+plt.show()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00f73f845d4f9d3ae48e687b1fa659b242f7cfd4e50c028a09c9bfb0228cba11.png" src="_images/00f73f845d4f9d3ae48e687b1fa659b242f7cfd4e50c028a09c9bfb0228cba11.png" />
+<img alt="_images/511783c644562d6fa130c393e4ea0a97c83fb39d47ffd0f406a3da450d9c9e2c.png" src="_images/511783c644562d6fa130c393e4ea0a97c83fb39d47ffd0f406a3da450d9c9e2c.png" />
 </div>
 </div>
 <p>Los tres casos anteriores corresponden a:</p>
