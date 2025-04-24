@@ -638,7 +638,7 @@ La función de salida en el paso <span class="math notranslate nohighlight">\(m 
 <p>Estos valores se conocen como los residuales del paso <span class="math notranslate nohighlight">\(m\)</span>. Por lo tanto el algoritmo de Gradient Boosting tiene forma de algoritmo de gradiente.</p>
 <p>La longitud del paso en el gradiente se estima como:</p>
 <p>\begin{equation*}
-\gamma_m = \arg\min_{\gamma} \sum_{i=1}^{N} L\left(y_i, F_{m-1}({\bf{x}}_i)) - \gamma f_m({\bf{x}}_i) \right)
+\gamma_m = \arg\min_{\gamma} \sum_{i=1}^{N} L\left(y_i, F_{m-1}({\bf{x}}_i) + \gamma f_m({\bf{x}}_i) \right)
 \end{equation*}</p>
 <p>Los algoritmos para clasificación y regresión sólo difieren en la función de opérdida <span class="math notranslate nohighlight">\(L\)</span>.</p>
 <p><img alt="alt text" src="_images/Gradient_Boosting3.png" /></p>
@@ -652,7 +652,7 @@ clf_2 = GradientBoostingRegressor(loss = &#39;absolute_error&#39;, n_estimators=
 # Predict
 X_test = np.arange(0.0, 5.0, 0.01)[:, np.newaxis]
 y_1 = clf_1.predict(X_test)
-y_2 = clf_2.predict(X_test)
+y_2 = clf_2.predict(X_test)http://127.0.0.1:8888/notebooks/Intro_ML_2025/Local/imgs/Gradient_Boosting3.png
 
 plt.plot(X,y,&#39;o&#39;,color=&#39;black&#39;)
 plt.plot(X_test,y_1,label=&#39;20 estimators&#39;)
