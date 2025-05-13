@@ -1,0 +1,2329 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Laboratorio 1 - Parte 2. Regresión logística &#8212; 2025 Introducción al Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab1_parte2--XX--TEACHER--XX';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2025 Introducción al Machine Learning - Home"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2025 Introducción al Machine Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Course information
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2001%20-%20Introducci%C3%B3n%20al%20Machine%20Learning.html">Introducción al Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Unsupervised%20Learning.html">Clustering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2019%20-%20An%C3%A1lisis%20de%20Componentes%20Principales.html">Reducción de dimensión: Análisis de Componentes Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html">Reducción de dimensión: Análisis Discriminante de Fisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul class="simple">
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/lab1_parte2--XX--TEACHER--XX.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab1_parte2--XX--TEACHER--XX.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Laboratorio 1 - Parte 2. Regresión logística</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-contextualizacion-del-problema">Ejercicio 1: Contextualización del problema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-entrenamiento">Ejercicio 2: entrenamiento</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-validacion">Ejercicio 3: Validación</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-1-parte-2-regresion-logistica">
+<h1>Laboratorio 1 - Parte 2. Regresión logística<a class="headerlink" href="#laboratorio-1-parte-2-regresion-logistica" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output text_html"><h3>See <a href='https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L01.02&quot;, varname=&quot;student&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------
+you are julian.ariasl@udea.edu.co .... wait for the cell below to complete signup
+-----------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student = session.Session(init.endpoint).login(course_id=init.course_id, lab_id=&#39;L01.02&#39;, google_token=google_token)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
+# Ejecuta esta celda!
+from Labs.commons.utils.lab1 import *
+_, x, y = part_2()
+y = y.reshape(np.size(y), 1)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cargando librerias y variables al ambiente
+</pre></div>
+</div>
+</div>
+</div>
+<section id="ejercicio-1-contextualizacion-del-problema">
+<h2>Ejercicio 1: Contextualización del problema<a class="headerlink" href="#ejercicio-1-contextualizacion-del-problema" title="Link to this heading">#</a></h2>
+<p>En esta sesión de laboratorio, vamos a resolver un problema de clasificación. Los variables que vamos a usar ya se encuentran cargadas:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># tienes ya cargadas las siguientes variables:
+print(&quot;conjunto de datos, muestra \n&quot;,x[range(10), :] )
+print(&quot;&quot;)
+print(&quot; muestra de etiquetas a predecir \n&quot;, y[range(10)])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conjunto de datos, muestra 
+ [[ 3.92606402 -6.83699086]
+ [ 7.43382787 -3.7485991 ]
+ [ 6.20553473  4.77182668]
+ [ 6.77983287 -3.07765299]
+ [-5.92614125 -4.87588843]
+ [ 7.49283136  3.9516693 ]
+ [-1.65572633  6.86081477]
+ [-8.14881988 -1.85421149]
+ [ 8.12616581 -1.66701921]
+ [ 9.73411311 -1.63724335]]
+
+ muestra de etiquetas a predecir 
+ [[1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]
+ [1]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Ejercicio de Codigo
+def clases_muestras_carac(X, Y):
+    &quot;&quot;&quot;Esta función debe retornar el numero clases, muestras 
+        y caracteristicas del conjunto de datos X y Y
+
+        X: matriz numpy con el conjunto de datos para entrenamiento
+        Y: matriz numpy con el conjunto de etiquetas
+        retorna:
+            número de clases (int/float)
+            número de muestras (int/float)
+            número de características (int/float)
+    &quot;&quot;&quot;
+    ##Pista: es de utilidad el metodo np.unique ?
+    N,nf = 
+    clases = 
+    
+    return (clases,N,nf)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def clases_muestras_carac(X, Y):
+    N,nf = 
+    clases = 
+    
+    return (clases,N,nf)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+from local.lib.rlxmoocapi import submit, session
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L01.02&quot;, varname=&quot;teacher&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------
+you are julian.ariasl@udea.edu.co .... wait for the cell below to complete signup
+-----------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>teacher = session.Session(init.endpoint).login(course_id=init.course_id, lab_id=&#39;L01.02&#39;, google_token=google_token)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_01(functions, variables, caller_userid):
+    import numpy as np
+
+    def t_clases_muestras_carac(X, Y):
+        N,nf = X.shape
+        clases = len(np.unique(Y))
+    
+        return (clases,N,nf)
+    
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_clases_muestras_carac = namespace[&#39;clases_muestras_carac&#39;]
+
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        input_data = np.random.randn(input_n,input_dim)
+        n_classes = np.random.randint(2,10)
+        target_output = np.random.randint(0, n_classes, size=input_n)
+        
+        t_model = t_clases_muestras_carac(input_data,target_output)
+        s_model = s_clases_muestras_carac(input_data,target_output)
+
+        msg = &quot;&quot;
+
+        # check first model weights
+        tw = [i for i in t_model]
+        sw = [i for i in s_model]
+        if tw!=sw:
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect estimation of data dimensions&lt;/b&gt; 
+            for &lt;tt&gt;input_dim&lt;/tt&gt;={input_dim}, &lt;tt&gt;n_samples&lt;/tt&gt;={input_n} and &lt;tt&gt;n_classes&lt;/tt&gt;={n_classes}&lt;hr/&gt;
+            Expecting result &lt;pre&gt;{(input_dim,input_n,n_classes)}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_model}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg            
+        
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+    
+source_functions_names_01 = [&#39;clases_muestras_carac&#39;]
+source_variables_names_01 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def clases_muestras_carac(X, Y):
+    N,nf = X.shape
+    clases = len(np.unique(Y))
+    
+    return (clases,N,nf)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_01&quot;, source_functions_names_01, source_variables_names_01, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L01.02&quot;, &#39;T1&#39;,
+                  inspect.getsource(grader_01), &#39;grader_01&#39;,
+                  source_functions_names_01, source_variables_names_01)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T1 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> 5idPTkH7GMDEszEpZFRZSAKahdlQb9WS62eDIMyOTCYOVkAhhIB0qF1skD6eA5YPzt99dUGQxvI9LDEV9qgpw7cCygFM2O+SPYAsFVOca9Hx3b71o9A08b91jjxG5/+p5UDT70N2HRgYnB/w/JuOOw==</div>
+                    </div></div>
+</div>
+<p>En los problemas de clasificación, que lo permiten, es de utilidad visualizar los datos. De esta manera se puede determinar que modelos o algortimos pueden tener mejor rendimiento. En la siguiente función, se debe:</p>
+<ol class="arabic simple">
+<li><p>Graficar los datos usando la función <a class="reference external" href="https://matplotlib.org/gallery/shapes_and_collections/scatter.html">scatter</a> de matplotlib. <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html#matplotlib.pyplot.scatter">Recuerda consultar la documentación de la función</a></p></li>
+<li><p>Asignar un color Map diferente al de defecto. <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Aca pueder los valores posibles</a>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Ejercicio de Codigo
+import matplotlib.pyplot as plt
+def scatter_plot(X, Y):
+    &quot;&quot;&quot;Esta función es encargada de graficar los datos usando un scatter plot
+       (problema de clasificacion).
+
+        X: numpy array con el conjunto de datos para entrenamiento.
+           Ésta deberá ser usada para los ejes del gráfico. Puede asumir
+           que solo va tener dos columnas
+        Y: matriz numpy con el conjunto de etiquetas. Debera se usada
+           para mostrar en diferentes colores, las etiquetas de cada una
+           de las muestras
+        retorna:
+            No retorna nada, sólo se debe generar el grafico
+    &quot;&quot;&quot;
+    ## puedes acceder con plt a la funcion adecuacada
+    ## Pista: recuerda como indexar matrices
+    ## Consulta como pasar el Color Map
+    plt.
+    # para mostrar el grafico
+    plt.show()
+   
+    return (None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># usarla para ver el grafico
+# se debe ver dos nubes de puntos diferenciadas
+scatter_plot(x,y)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#¿Es el problema linealmente separable? justifique su respuesta 
+respuesta = &quot;&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-2-entrenamiento">
+<h2>Ejercicio 2: entrenamiento<a class="headerlink" href="#ejercicio-2-entrenamiento" title="Link to this heading">#</a></h2>
+<p>En este laboratorio se va a realizar un procedimiento análogo al laboratorio anterior, pero con el modelo de <em>regresión logística</em> que sirve para resolver problemas de clasificación (en principio biclase).</p>
+<p>¿Cómo se relacionan los siguientes conceptos a la luz del modelo de regresión logística?</p>
+<ol class="arabic simple">
+<li><p>Función de activación</p></li>
+<li><p>Extensión de matriz</p></li>
+<li><p>Modelo de regresión logística</p></li>
+<li><p>Potencia del polinomio</p></li>
+<li><p>El cálculo del error en clasificación</p></li>
+<li><p>El gradiente descendente</p></li>
+</ol>
+<p>Vamos a completar la función del sigmoide:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Ejercicio de Código
+def sigmoidal(z):
+    &quot;&quot;&quot;Función de activación Sigmoidal
+
+    z: es la varible a la que se le va a aplicar la función sigmoide.
+       es un array numpy de una sola dimension
+    retorna: un vector con el valor de la función sigmoide aplicada a cada elemento del arreglo de entrada
+
+    &quot;&quot;&quot;
+    #Complete la siguiente línea con el código para calcular la salida de la función sigmoidal
+    s = np.
+    
+    return s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def sigmoidal(z):
+    &quot;&quot;&quot;Función de activación Sigmoidal
+
+    z: es la varible a la que se le va aplicar el sigmoide.
+       es un array numpy de uan sola dimension
+    retorna: el valor del sigmiode
+
+    &quot;&quot;&quot;
+    #Complete la siguiente línea con el código para calcular la salida de la función sigmoidal
+    s = 1/(1 + np.exp(-z))
+    
+    return s
+</pre></div>
+</div>
+</div>
+</div>
+<p>En la siguiente celda se sugiere la implementación de 3 métodos que nos ayudaran a implementar los otros conceptos.</p>
+<ol class="arabic simple">
+<li><p>Modelo de regresión logística(Esta función usa nuestra <code class="docutils literal notranslate"><span class="pre">sigmoidal</span></code>)</p></li>
+<li><p>Extensión de matriz</p></li>
+<li><p>Potencia del polinomio</p></li>
+<li><p>Cálculo del error en clasificación</p></li>
+</ol>
+<p>Debemos comprender que hacen estas funciones para determinar donde poder usarlas mas adelante. Luego de ellos, ejecuta la celda para cargarlas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def logistic_regression(X, W):
+    &quot;&quot;&quot;calcula la regresión logística
+    X: los valores que corresponden a las características
+    W: son los pesos usadados para realizar la regresión
+    retorna: valor estimado por la regresion logística
+    &quot;&quot;&quot;
+    #Con np.dot se realiza el producto matricial. Aquí X (extendida) tiene dim [Nxd] y W es dim [dx1]
+    Yest = np.dot(X,W)
+    Y_lest = sigmoidal(Yest)
+   
+    return Y_lest    #Y estimado: Esta variable contiene la salida de sigm(f(X,W))
+
+def extension_matriz(X):
+    &quot;&quot;&quot;función que realiza la extensión de la matriz X
+    X: matriz con en el conjunto de muestras. array: [muestras x características]
+    retorna: X_ext: matriz extendida con un vector de unos
+    &quot;&quot;&quot;
+    #Obtenemos las dimensiones antes de exteneder la matriz
+    muestras,caracterisitcas =X.shape
+    #Extendemos la matriz X
+    unos = np.array([np.ones(muestras)])
+    X_ext = np.concatenate((unos.T, X), axis=1)
+    X_ext = X_ext.reshape(muestras, caracterisitcas+1)
+    return (X_ext)
+
+
+def potenciaPolinomio(X,grado):
+    &quot;&quot;&quot;Añade las variables asociadas a un polinomio de grado &gt; 1
+    X: matriz con en el conjunto de muestras (sin extender). array: [muestras x características]
+    grado: es el grado del polinomio que se va a usar como modelo
+    retorna: la matriz de datos con las nuevas características creadas.
+    &quot;&quot;&quot;
+    X2 = X.copy()
+    
+    if grado != 1:
+        for i in range(2,grado+1):
+            Xadd = X**i
+            X2 = np.concatenate((X2, Xadd), axis=1)
+    
+    return X2
+
+def cost_logistic(Y_lest, Y):
+    &quot;&quot;&quot;cálculo de la función de coste (entropía-cruzada)
+       Si es diferente el Y_estimado con el Y_real cuenta como un error
+       Y_lest: numpy array con los valores reales estimados
+       Y:  numpy array con los valores reales de las etiquetas
+       retorna: costo -- numpy array
+    &quot;&quot;&quot;
+    Y_lest = Y_lest.reshape(-1,1)
+    Y = Y.reshape(-1,1)
+    f1 = Y*np.log(Y_lest + np.finfo(np.float32).eps)
+    f2 = (1-Y)*np.log(1-Y_lest + np.finfo(np.float32).eps)
+    error = -np.sum(f1+f2)/Y.shape[0]
+    return error
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ten en cuenta la salida de esta prueba para responder la pregunta abierta siguiente
+vector = np.array([[1,4]])
+print(vector)
+potenciaPolinomio(vector, 3)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 4]]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  4,  1, 16,  1, 64]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#Analizando lo anterior y asumiendo que el vector es representado como [x1, x2] ¿Cual seria la representación de `potenciaPolinomio(vector, 3)?
+respuesta = &quot;&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>recordando lo aprendido anteriormente, dividimos nuestro cojunto de datos y normalizamos.
+<strong>SOLO EJECUTAR UNA VEZ</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Dejamos algunas muestras para el proceso de entrenamiento y otras para evaluar qué tan bueno fue el aprendizaje del modelo
+random.seed(1)
+N = x.shape[0]
+ind=np.random.permutation(N)
+Xtrain = x[ind[0:int(math.ceil(0.7*N))],:]
+Xtest = x[ind[int(math.ceil(0.7*N)):N],:]
+Ytrain = y[ind[0:int(math.ceil(0.7*N))]]
+Ytest = y[ind[int(math.ceil(0.7*N)):N]]
+
+# normalizamos
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+Xtrain = scaler.fit_transform(Xtrain)
+Xtest = scaler.transform(Xtest)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora vamos a completar el código de la regla de actualización de los parámetros del algoritmo de <strong>gradiente_descedente</strong></p>
+<div class="math notranslate nohighlight">
+\[w_j(iter) = w_j(iter-1) - \eta \frac{\partial E(w)}{\partial w_j}\]</div>
+<p>recordar que aca queremos reducir el costo logistico, pero la actualización de los pesos sigue siendo equivalente a la regresión vista anteriormente, solo que agregando la función <span class="math notranslate nohighlight">\(g\)</span> que corresponde al sigmoide.</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial E(w)}{\partial w_j} = \frac{\partial J({\bf{w}})}{\partial w_j} = \frac{1}{N} \sum_{i=1}^{N}\left( g(f({\bf{x}}_i,{\bf{w}})) - t_i\right)x_{ij}\]</div>
+<p>Debemos tener presente:</p>
+<ul class="simple">
+<li><p>Usar las funciones ya implementadas y no usar <strong>ninguna otra libreria</strong> adicional a las librerias ya pre-cargadas como numpy.</p></li>
+<li><p>Dentro de nuestra función <strong>vamos incluir una transformación polinómica</strong>, por lo tanto el proceso a implementar puede ser descrito en los siguientes pasos:</p>
+<ul>
+<li><p>Aplicar la transformación polinómica</p></li>
+<li><p>Extender la matriz</p></li>
+<li><p>Inicializar <span class="math notranslate nohighlight">\(w\)</span></p></li>
+<li><p>Y por cada iteración realizar el cálculo para actualizar <span class="math notranslate nohighlight">\(w\)</span></p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de codigo
+def gradiente_descendente_logistic_poly(X,Y,grado,eta, iteraciones):
+    &quot;&quot;&quot;Gradiente descendente para regresión logística
+    X: Matriz de datos extendida
+    Y: Vector con los valores a predecir
+    grado: Grado para usar en la transformacion polinómica
+    eta: Taza de aprendizaje
+    iteraciones: número máximo de iteraciones
+
+    retorna: W el valor de de los parametros de regresión polinomica
+    &quot;&quot;&quot;
+    # aplicamos la transformación
+    X2 = potenciaPolinomio(X,grado)
+    
+    # realizamos la extensión
+    X2_ext = 
+    
+    #Tomamos el número de variables del problema leugo de la transformacion
+    d = X2_ext.shape[1]
+    #Tomamos el número de muestras de la base de datos
+    N = X2_ext.shape[0]
+    #Inicializamos w
+    W = np.zeros(d)
+    W = W.reshape(np.size(W),1)
+    costos = np.zeros(iteraciones)
+      
+    for iter in range(iteraciones):
+       
+        #Aquí debe completar el código con la regla de actualización de los parámetros W para regresión
+        #logística. Tenga en cuenta los nombres de las variables ya creadas: W, X2, Y
+ 
+        costo = cost_logistic(,)
+        W =  
+        #adicionamos el costo por cada iteracion
+        costos[iter] = costo
+
+
+    print(&quot;costo despues de finalizar las iteraciones&quot;, costo)
+    return W, costos
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_02(functions, variables, caller_userid):
+    import numpy as np
+    
+    def t_sigmoidal(z):
+        &quot;&quot;&quot;Función de activación Sigmoidal
+
+        z: es la varible a la que se le va aplicar el sigmoide.
+           es un array numpy de uan sola dimension
+        retorna: el valor del sigmiode
+
+        &quot;&quot;&quot;
+        #Complete la siguiente línea con el código para calcular la salida de la función sigmoidal
+        s = 1/(1 + np.exp(-z))
+
+        return s
+    
+    def t_gradiente_descendente_logistic_poly(X,Y,grado,eta, iteraciones):
+        &quot;&quot;&quot;Gradiente descendente para regresión logística
+        X: Matriz de datos extendida
+        Y: vector con los valores a predecir
+        W: Vector de parámetros del modelo
+        eta: Taza de aprendizaje
+        grado: grado para usar en la transformacion polinomica
+        iteraciones: numero de iteraciones maxima
+
+        retorna: W el valor de de los parametros de regresión polinomica
+        &quot;&quot;&quot;
+        # aplicamos la transformación
+        X2 = potenciaPolinomio(X,grado)
+
+        # realizamos la extensión
+        X2_ext = extension_matriz(X2)
+
+        #Tomamos el número de variables del problema leugo de la transformacion
+        d = X2_ext.shape[1]
+        #Tomamos el número de muestras de la base de datos
+        N = X2_ext.shape[0]
+        #Inicializamos w
+        W = np.zeros(d)
+        W = W.reshape(np.size(W),1)
+        costos = np.zeros(iteraciones)
+
+        for iter in range(iteraciones):
+
+            #Aquí debe completar el código con la regla de actualización de los parámetros W para regresión
+            #logística. Tenga en cuenta los nombres de las variables ya creadas: W, X2, Y
+            Y_lest = t_sigmoidal(X2_ext@W)
+            costo = cost_logistic(Y_lest,Y)
+
+            f_xw_min_yi = (Y_lest.reshape(-1,1) - Y.reshape(-1,1)).T@X2_ext
+            # acutaliza
+            W = W -(eta/N)*f_xw_min_yi.T
+
+            #adicionamos el costo por cada iteracion
+            costos[iter] = costo
+
+
+        #print(&quot;costo despues de finalizar las iteraciones&quot;, costo)
+        return W, costos
+    
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_gradiente_descendente_logistic_poly = namespace[&#39;gradiente_descendente_logistic_poly&#39;]
+    sigmoidal = namespace[&#39;sigmoidal&#39;]
+    extension_matriz = namespace[&#39;extension_matriz&#39;]
+    logistic_regression = namespace[&#39;logistic_regression&#39;]
+    cost_logistic = namespace[&#39;cost_logistic&#39;]
+    potenciaPolinomio = namespace[&#39;potenciaPolinomio&#39;]
+
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        input_data = np.random.randn(input_n,input_dim)
+        grado = np.random.randint(3) + 1
+        n_classes = 2
+        reg_output = np.random.randn(input_n)*2
+        output_target = np.random.randint(0, n_classes, size=input_n)
+        
+        eta = 0.0001
+        msg = &quot;&quot;
+
+        #Test for W = zeros
+        
+        t_sig = t_sigmoidal(reg_output)
+        s_sig = sigmoidal(reg_output)
+        
+        t_W, t_costos = t_gradiente_descendente_logistic_poly(input_data, output_target, grado, eta, input_dim, )
+        s_W, s_costos = s_gradiente_descendente_logistic_poly(input_data, output_target, grado, eta, input_dim, )
+        print(t_costos)
+        print(s_costos)
+        
+        msg = &quot;&quot;
+        
+        #check sigmoide
+        if len(s_sig) != input_n:
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect implementation of sigmoidal function&lt;/b&gt; 
+            For &lt;tt&gt;vector of dimension&lt;/tt&gt;={input_n} &lt;hr/&gt;
+            Expecting output dimension &lt;pre&gt;{input_n}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{len(s_sig)}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg 
+        
+        if not np.allclose(t_sig,s_sig):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect implementation of sigmoidal function&lt;/b&gt; 
+            For &lt;tt&gt;vector &lt;/tt&gt;={reg_output} &lt;hr/&gt;
+            Expecting values &lt;pre&gt;{t_sig}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_sig}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg 
+        
+        # check first vector dimension
+        if len(t_W)!=len(s_W):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect model dimensions&lt;/b&gt; 
+            For &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim}&lt;hr/&gt;
+            Expecting weights vector dim &lt;pre&gt;{len(t_W)}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{len(s_W)}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg 
+            
+        # check model weights
+        
+        if not np.allclose(t_W,s_W):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt; 
+            for &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
+            Expecting result &lt;pre&gt;{t_W}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_W}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+        
+        if not np.allclose(t_costos,s_costos):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt; 
+            For &lt;tt&gt;Max iterations &lt;/tt&gt;={input_dim} &lt;hr/&gt;
+            Expecting loss function values &lt;pre&gt;{t_costos}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_costos}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg 
+        
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+    
+source_functions_names_02 = [&#39;sigmoidal&#39;,&#39;gradiente_descendente_logistic_poly&#39;,&#39;logistic_regression&#39;,&#39;extension_matriz&#39;,&#39;potenciaPolinomio&#39;,&#39;cost_logistic&#39;]
+source_variables_names_02 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def gradiente_descendente_logistic_poly(X,Y,grado,eta, iteraciones):
+    &quot;&quot;&quot;Gradiente descendente para regresión logística
+    X: Matriz de datos extendida
+    Y: vector con los valores a predecir
+    W: Vector de parámetros del modelo
+    eta: Taza de aprendizaje
+    grado: grado para usar en la transformacion polinomica
+    iteraciones: numero de iteraciones maxima
+
+    retorna: W el valor de de los parametros de regresión polinomica
+    &quot;&quot;&quot;
+    # aplicamos la transformación
+    X2 = potenciaPolinomio(X,grado)
+    
+    # realizamos la extensión
+    X2_ext = extension_matriz(X2)
+    
+    #Tomamos el número de variables del problema leugo de la transformacion
+    d = X2_ext.shape[1]
+    #Tomamos el número de muestras de la base de datos
+    N = X2_ext.shape[0]
+    #Inicializamos w
+    W = np.zeros(d)
+    W = W.reshape(np.size(W),1)
+    costos = np.zeros(iteraciones)
+      
+    for iter in range(iteraciones):
+       
+        #Aquí debe completar el código con la regla de actualización de los parámetros W para regresión
+        #logística. Tenga en cuenta los nombres de las variables ya creadas: W, X2, Y
+        Y_lest = sigmoidal(X2_ext@W)
+        costo = cost_logistic(Y_lest,Y.reshape(-1,1))
+        
+        f_xw_min_yi = (Y_lest.reshape(-1,1) - Y.reshape(-1,1)).T@X2_ext
+        # acutaliza
+        W = W -(eta/N)*f_xw_min_yi.T
+        
+        #adicionamos el costo por cada iteracion
+        costos[iter] = costo
+
+
+    print(&quot;costo despues de finalizar las iteraciones&quot;, costo)
+    return W, costos
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_02&quot;, source_functions_names_02, source_variables_names_02, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 0.6931019473454277
+[0.69314694 0.6931405  0.69313407 0.69312764 0.69312121 0.69311479
+ 0.69310836 0.69310195]
+[0.69314694 0.6931405  0.69313407 0.69312764 0.69312121 0.69311479
+ 0.69310836 0.69310195]
+costo despues de finalizar las iteraciones 0.693133030743495
+[0.69314694 0.69314416 0.69314138 0.69313859 0.69313581 0.69313303]
+[0.69314694 0.69314416 0.69314138 0.69313859 0.69313581 0.69313303]
+costo despues de finalizar las iteraciones 0.6931452011019165
+[0.69314694 0.69314665 0.69314636 0.69314607 0.69314578 0.69314549
+ 0.6931452 ]
+[0.69314694 0.69314665 0.69314636 0.69314607 0.69314578 0.69314549
+ 0.6931452 ]
+costo despues de finalizar las iteraciones 0.6931433674095964
+[0.69314694 0.69314605 0.69314515 0.69314426 0.69314337]
+[0.69314694 0.69314605 0.69314515 0.69314426 0.69314337]
+costo despues de finalizar las iteraciones 0.6931429424291311
+[0.69314694 0.69314614 0.69314534 0.69314454 0.69314374 0.69314294]
+[0.69314694 0.69314614 0.69314534 0.69314454 0.69314374 0.69314294]
+costo despues de finalizar las iteraciones 0.6931306741851636
+[0.69314694 0.69314423 0.69314152 0.6931388  0.69313609 0.69313338
+ 0.69313067]
+[0.69314694 0.69314423 0.69314152 0.6931388  0.69313609 0.69313338
+ 0.69313067]
+costo despues de finalizar las iteraciones 0.6931456717046921
+[0.69314694 0.69314676 0.69314658 0.6931464  0.69314622 0.69314603
+ 0.69314585 0.69314567]
+[0.69314694 0.69314676 0.69314658 0.6931464  0.69314622 0.69314603
+ 0.69314585 0.69314567]
+costo despues de finalizar las iteraciones 0.693144793860898
+[0.69314694 0.69314658 0.69314623 0.69314587 0.69314551 0.69314515
+ 0.69314479]
+[0.69314694 0.69314658 0.69314623 0.69314587 0.69314551 0.69314515
+ 0.69314479]
+costo despues de finalizar las iteraciones 0.6931427871239422
+[0.69314694 0.69314611 0.69314528 0.69314445 0.69314362 0.69314279]
+[0.69314694 0.69314611 0.69314528 0.69314445 0.69314362 0.69314279]
+costo despues de finalizar las iteraciones 0.6931060956832469
+[0.69314694 0.69314013 0.69313333 0.69312652 0.69311971 0.6931129
+ 0.6931061 ]
+[0.69314694 0.69314013 0.69313333 0.69312652 0.69311971 0.6931129
+ 0.6931061 ]
+</pre></div>
+</div>
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L01.02&quot;, &#39;T2&#39;,
+                  inspect.getsource(grader_02), &#39;grader_02&#39;,
+                  source_functions_names_02, source_variables_names_02)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T2&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T2 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> yCBuLEeDWlJR9Qt99hgnBTD2NZhRF6KMa1FPVN/9oN0Ng2ketaXIb7Ed7yz01eX7hLubwcrzJTbStPlTsdOsf5j+/0zHqZ7+ubuspnT7zGdIwW4Pr4ZkWJRmCjz08UW7p+YqqUpTd9osYhIYjOuZOw==</div>
+                    </div></div>
+</div>
+<p>Veamos de manera preliminar, si nuestro algortimo de gradiente esta optimizando el costo.
+Vamos entrenar con 100 iteraciones y vamos a graficar el costo logistico y verificar como cambia de acuerdo a las iteraciones.
+¿Que pasa si cambias el grado?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>iteraciones = 100
+w, costos_logistico = gradiente_descendente_logistic_poly(Xtrain,Ytrain,grado = 1, eta = 0.1, iteraciones = iteraciones)
+print(&quot;este las dimensiones de w son:&quot;, w.shape)
+plt.plot(range(iteraciones), costos_logistico)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 0.6920310637146782
+este las dimensiones de w son: (3, 1)
+</pre></div>
+</div>
+<img alt="_images/6855a03fd6af1794e53cc4a13e3fc0a90e6fae1af3344779483e7dc85712d09f.png" src="_images/6855a03fd6af1794e53cc4a13e3fc0a90e6fae1af3344779483e7dc85712d09f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#¿Con base a los resultados anteriores, qué efecto tiene el grado en el comportamiento del costo?
+respuesta = &quot;&quot; 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Como habiamos visto antes, el costo es nuestra medida de optimización, pero al final debemos evaluar qué tan bien esta realizando la tarea de clasificación. En este caso, a diferencia de la regresión, la métrica de evaluación y la función de coste son diferentes. Entiende la siguiente función, preste especial atención al bloque <code class="docutils literal notranslate"><span class="pre">if-else</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def evaluar_modelo (W, X_to_test, Y_True, grado):
+    &quot;&quot;&quot; función que evalua un modelo de clasificación
+
+    W: es un matriz con los parametros del modelo entrenados
+    X_to_test: conjunto de datos para usar en la evaluación del modelo
+    Y_True: valores reales para usar en la evaluación del modelo
+    grado: valor del polinomio a usar
+
+    retorna: el error de clasificación.
+    &quot;&quot;&quot;
+    X2 = potenciaPolinomio(X_to_test,grado)
+    # realizamos la extensión
+    X2_ext = extension_matriz(X2)
+    Y_EST = logistic_regression(X2_ext,W)
+    #Se asignan los valores a 1 o 0 según el modelo de regresión logística definido
+    for pos, tag in enumerate (Y_EST):
+        
+        if tag &gt;= 0.5:
+            Y_EST[pos] = 1
+        else:
+            Y_EST[pos] = 0
+            
+    error = 0
+    
+    for ye, y in zip(Y_EST, Y_True):
+        if ye != y:
+            error += 1
+    error_clasificacion =  error/np.size(Y_True)
+    return(error_clasificacion)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Evaluamos el w obtenido antes. Debemos tener presente que para la evaluación usamos el conjunto adecuado para esa tarea. Recuerda usar el grado de acuerdo a la ultima ejecución.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># recuerda que si entrenaste con grado = 2 debes asignar el mismo valor.
+error_test = evaluar_modelo(w, Xtest, Ytest, grado = 1)
+print(&quot;error en el conjunto de pruebas&quot;, error_test)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>error en el conjunto de pruebas 0.41333333333333333
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-3-validacion">
+<h2>Ejercicio 3: Validación<a class="headerlink" href="#ejercicio-3-validacion" title="Link to this heading">#</a></h2>
+<p>En nuestro primer experimento vamos a evaluar el rendimiento del modelo usando varias tasas de aprendizaje y grados de polinimios. Vamos a dejar por ahora un numero de iteraciones fijas = 30. Para ello completa la siguiente función. Recuerda usar las funciones anteriores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## ejercicio de codigo
+def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
+    &quot;&quot;&quot; funcion para realizar experimentos.
+    Xtrain: matriz con el conjunto de muestras de entrenamiento
+    Xtest: matriz con el conjunto de muestras de prueba
+    Ytrain: salida objetivo para el conjunto de muestras de entrenamiento
+    Ytest: salida objetivo para el conjunto de muestras de prueba
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje 
+        para realizar los experimentos
+    grados: Es una lista con los valores númericos de grados 
+        para realizar los experimentos
+    retorna: un dataframe con los resultados de los experimentos
+    &quot;&quot;&quot;
+    numero_iter = 30
+
+    resultados = pd.DataFrame()
+    idx = 0 # indice
+    for eta in tasas:
+        for grado in grados:
+            # ignorar el costo
+            W, _ = 
+            error_entrenamiento = 
+            error_prueba = 
+            resultados.loc[idx,&#39;grado&#39;] = grado
+            resultados.loc[idx,&#39;tasa de aprendizaje&#39;] = eta
+            resultados.loc[idx,&#39;error_entreamiento&#39;] = error_entrenamiento
+            resultados.loc[idx,&#39;error_prueba&#39;] = error_prueba
+            idx = idx+1
+
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_03(functions, variables, caller_userid):
+    import numpy as np
+    import pandas as pd
+    from sklearn.preprocessing import StandardScaler
+    
+    def t_experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
+        &quot;&quot;&quot; funcion para realizar experimentos.
+        Xtrain: matriz con el conjunto de muestras de entrenamiento
+        Xtest: matriz con el conjunto de muestras de prueba
+        Ytrain: salida objetivo para el conjunto de muestras de entrenamiento
+        Ytest: salida objetivo para el conjunto de muestras de prueba
+        tasas: Es una lista con los valores númericos de tasas de aprendizaje 
+            para realizar los experimentos
+        grados: Es una lista con los valores númericos de grados 
+            para realizar los experimentos
+        retorna: un dataframe con los resultados de los experimentos
+        &quot;&quot;&quot;
+        numero_iter = 30
+
+        resultados = pd.DataFrame()
+        idx = 0 # indice
+        for eta in tasas:
+            for grado in grados:
+                # ignorar el costo
+                W, _ = gradiente_descendente_logistic_poly(Xtrain,Ytrain,grado,eta, numero_iter)
+                error_entrenamiento = evaluar_modelo (W, Xtrain, Ytrain, grado)
+                error_prueba = evaluar_modelo (W, Xtest, Ytest, grado)
+                resultados.loc[idx,&#39;grado&#39;] = grado
+                resultados.loc[idx,&#39;tasa de aprendizaje&#39;] = eta
+                resultados.loc[idx,&#39;error_entreamiento&#39;] = error_entrenamiento
+                resultados.loc[idx,&#39;error_prueba&#39;] = error_prueba
+                idx = idx+1
+
+        return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+    
+    
+    s_experimentar = namespace[&#39;experimentar&#39;]
+    gradiente_descendente_logistic_poly = namespace[&#39;gradiente_descendente_logistic_poly&#39;]
+    evaluar_modelo = namespace[&#39;evaluar_modelo&#39;]
+    extension_matriz = namespace[&#39;extension_matriz&#39;]
+    logistic_regression = namespace[&#39;logistic_regression&#39;]
+    cost_logistic = namespace[&#39;cost_logistic&#39;]
+    potenciaPolinomio = namespace[&#39;potenciaPolinomio&#39;]
+    sigmoidal = namespace[&#39;sigmoidal&#39;]
+    
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+        input_dim = np.random.randint(5)+5
+        grados = np.arange(1,4)
+        input_n = np.random.randint(500) + 20
+        grado = grados[np.random.randint(2)+1]
+        x_train = potenciaPolinomio(np.random.randn(input_n,input_dim)+np.random.randn(input_n,input_dim),grado)
+        x_test = potenciaPolinomio(np.random.randn(int(input_n*0.5),input_dim),grado)
+        n_classes = 2
+        output_target = np.random.randint(0, n_classes, size=input_n)
+        output_target_test = np.random.randint(0, n_classes, size=int(input_n*0.5))
+        x_train[output_target==1] = x_train[output_target==1] + 10
+        x_test[output_target_test==1] = x_test[output_target_test==1] + 10
+        
+        tasas = [10.0, 1.0, 0.1, 0.001]
+        
+        # normalizamos
+        scaler = StandardScaler()
+        x_train = scaler.fit_transform(x_train)
+        x_test = scaler.transform(x_test)
+        
+        t_resultados = t_experimentar(x_train, x_test, output_target, output_target_test, tasas, grados)
+        s_resultados = s_experimentar(x_train, x_test, output_target, output_target_test, tasas, grados)
+        
+        msg = &quot;&quot;
+        
+        t_minerror_tr = np.min(np.nan_to_num(t_resultados[&#39;error_entreamiento&#39;].values, nan=100))
+        s_minerror_tr = np.min(np.nan_to_num(s_resultados[&#39;error_entreamiento&#39;].values, nan=100))
+        
+        t_minerror_te = np.min(np.nan_to_num(t_resultados[&#39;error_prueba&#39;].values, nan=100))
+        s_minerror_te = np.min(np.nan_to_num(s_resultados[&#39;error_prueba&#39;].values, nan=100))
+            
+        # check min error
+        
+        if (t_minerror_tr!=s_minerror_tr):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect model training&lt;/b&gt; 
+            Expecting min error in training &lt;pre&gt;{t_minerror_tr}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_minerror_tr}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+        
+        # check error estimation
+        if (t_minerror_te!=s_minerror_te):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect model performance&lt;/b&gt; 
+            Expecting test min error &lt;pre&gt;{t_minerror_te}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_minerror_te}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+            
+        # check model weights
+        
+        
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+    
+source_functions_names_03 = [&#39;experimentar&#39;,&#39;evaluar_modelo&#39;,&#39;sigmoidal&#39;,&#39;gradiente_descendente_logistic_poly&#39;,&#39;logistic_regression&#39;,&#39;extension_matriz&#39;,&#39;potenciaPolinomio&#39;,&#39;cost_logistic&#39;]
+source_variables_names_03 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
+    &quot;&quot;&quot; funcion para realizar experimentos.
+    Xtrain: matriz con el conjunto de muestras de entrenamiento
+    Xtest: matriz con el conjunto de muestras de prueba
+    Ytrain: salida objetivo para el conjunto de muestras de entrenamiento
+    Ytest: salida objetivo para el conjunto de muestras de prueba
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje 
+        para realizar los experimentos
+    grados: Es una lista con los valores númericos de grados 
+        para realizar los experimentos
+    retorna: un dataframe con los resultados de los experimentos
+    &quot;&quot;&quot;
+    numero_iter = 30
+
+    resultados = pd.DataFrame()
+    idx = 0 # indice
+    for eta in tasas:
+        for grado in grados:
+            # ignorar el costo
+            W, _ = gradiente_descendente_logistic_poly(Xtrain,Ytrain,grado,eta, numero_iter)
+            error_entrenamiento = evaluar_modelo (W, Xtrain, Ytrain, grado)
+            error_prueba = evaluar_modelo (W, Xtest, Ytest, grado)
+            resultados.loc[idx,&#39;grado&#39;] = grado
+            resultados.loc[idx,&#39;tasa de aprendizaje&#39;] = eta
+            resultados.loc[idx,&#39;error_entreamiento&#39;] = error_entrenamiento
+            resultados.loc[idx,&#39;error_prueba&#39;] = error_prueba
+            idx = idx+1
+
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_03&quot;, source_functions_names_03, source_variables_names_03, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 3827.6496745247
+costo despues de finalizar las iteraciones 3819.626772164665
+costo despues de finalizar las iteraciones 3828.161052389383
+costo despues de finalizar las iteraciones 1483.6205267980215
+costo despues de finalizar las iteraciones 1493.067774532808
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 3017.0390136873266
+costo despues de finalizar las iteraciones 812.0446318009612
+costo despues de finalizar las iteraciones 813.6907464900812
+costo despues de finalizar las iteraciones 1100.5317246247512
+costo despues de finalizar las iteraciones 334.51751783263546
+costo despues de finalizar las iteraciones 334.6795555366426
+costo despues de finalizar las iteraciones 355.70875025055784
+costo despues de finalizar las iteraciones 3827.6496745247
+costo despues de finalizar las iteraciones 3819.626772164665
+costo despues de finalizar las iteraciones 3828.161052389383
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 1483.6205267980215
+costo despues de finalizar las iteraciones 1493.067774532808
+costo despues de finalizar las iteraciones 3017.0390136873266
+costo despues de finalizar las iteraciones 812.0446318009612
+costo despues de finalizar las iteraciones 813.6907464900812
+costo despues de finalizar las iteraciones 1100.5317246247512
+costo despues de finalizar las iteraciones 334.51751783263546
+costo despues de finalizar las iteraciones 334.6795555366426
+costo despues de finalizar las iteraciones 355.70875025055784
+costo despues de finalizar las iteraciones 3945.595365045518
+costo despues de finalizar las iteraciones 3945.594593753319
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 3943.072909684741
+costo despues de finalizar las iteraciones 2128.5603930538855
+costo despues de finalizar las iteraciones 2161.875162065081
+costo despues de finalizar las iteraciones 3922.9820429152965
+costo despues de finalizar las iteraciones 977.9729325078647
+costo despues de finalizar las iteraciones 980.6163597892415
+costo despues de finalizar las iteraciones 1384.964261043842
+costo despues de finalizar las iteraciones 346.44299215946154
+costo despues de finalizar las iteraciones 346.6816410004038
+costo despues de finalizar las iteraciones 375.3132645970212
+costo despues de finalizar las iteraciones 3945.595365045518
+costo despues de finalizar las iteraciones 3945.594593753319
+costo despues de finalizar las iteraciones 3943.072909684741
+costo despues de finalizar las iteraciones 2128.5603930538855
+costo despues de finalizar las iteraciones 2161.875162065081
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 3922.9820429152965
+costo despues de finalizar las iteraciones 977.9729325078647
+costo despues de finalizar las iteraciones 980.6163597892415
+costo despues de finalizar las iteraciones 1384.964261043842
+costo despues de finalizar las iteraciones 346.44299215946154
+costo despues de finalizar las iteraciones 346.6816410004038
+costo despues de finalizar las iteraciones 375.3132645970212
+costo despues de finalizar las iteraciones 1536.4163814409633
+costo despues de finalizar las iteraciones 1533.7820540235807
+costo despues de finalizar las iteraciones 1536.4163814529052
+costo despues de finalizar las iteraciones 793.4824604332889
+costo despues de finalizar las iteraciones 824.1473391704675
+costo despues de finalizar las iteraciones 1534.3138050334223
+costo despues de finalizar las iteraciones 375.75375971437995
+costo despues de finalizar las iteraciones 377.5761691301473
+costo despues de finalizar las iteraciones 544.2855028112876
+costo despues de finalizar las iteraciones 134.95037263369335
+costo despues de finalizar las iteraciones 135.09197457841083
+costo despues de finalizar las iteraciones 147.09457397325434
+costo despues de finalizar las iteraciones 1536.4163814409633
+costo despues de finalizar las iteraciones 1533.7820540235807
+costo despues de finalizar las iteraciones 1536.4163814529052
+costo despues de finalizar las iteraciones 793.4824604332889
+costo despues de finalizar las iteraciones 824.1473391704675
+costo despues de finalizar las iteraciones 1534.3138050334223
+costo despues de finalizar las iteraciones 375.75375971437995
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 377.5761691301473
+costo despues de finalizar las iteraciones 544.2855028112876
+costo despues de finalizar las iteraciones 134.95037263369335
+costo despues de finalizar las iteraciones 135.09197457841083
+costo despues de finalizar las iteraciones 147.09457397325434
+costo despues de finalizar las iteraciones 2050.511474291843
+costo despues de finalizar las iteraciones 2045.6536530640121
+costo despues de finalizar las iteraciones 2050.512034184262
+costo despues de finalizar las iteraciones 789.4752206807271
+costo despues de finalizar las iteraciones 793.9490582353902
+costo despues de finalizar las iteraciones 1799.844084221062
+costo despues de finalizar las iteraciones 430.96688771683694
+costo despues de finalizar las iteraciones 431.44717814496363
+costo despues de finalizar las iteraciones 596.4880601538932
+costo despues de finalizar las iteraciones 179.38961090213178
+costo despues de finalizar las iteraciones 179.4173839089812
+costo despues de finalizar las iteraciones 186.91423082846555
+costo despues de finalizar las iteraciones 2050.511474291843
+costo despues de finalizar las iteraciones 2045.6536530640121
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 2050.512034184262
+costo despues de finalizar las iteraciones 789.4752206807271
+costo despues de finalizar las iteraciones 793.9490582353902
+costo despues de finalizar las iteraciones 1799.844084221062
+costo despues de finalizar las iteraciones 430.96688771683694
+costo despues de finalizar las iteraciones 431.44717814496363
+costo despues de finalizar las iteraciones 596.4880601538932
+costo despues de finalizar las iteraciones 179.38961090213178
+costo despues de finalizar las iteraciones 179.4173839089812
+costo despues de finalizar las iteraciones 186.91423082846555
+costo despues de finalizar las iteraciones 3389.6653971990877
+costo despues de finalizar las iteraciones 3389.665408937011
+costo despues de finalizar las iteraciones 3384.865203258329
+costo despues de finalizar las iteraciones 1312.1614484756897
+costo despues de finalizar las iteraciones 1309.0029739169634
+costo despues de finalizar las iteraciones 2443.4794425450505
+costo despues de finalizar las iteraciones 723.7167902660939
+costo despues de finalizar las iteraciones 722.9050091365426
+costo despues de finalizar las iteraciones 961.7206570831413
+costo despues de finalizar las iteraciones 296.30375895962646
+costo despues de finalizar las iteraciones 296.33467185336025
+costo despues de finalizar las iteraciones 304.4228816560217
+costo despues de finalizar las iteraciones 3389.6653971990877
+costo despues de finalizar las iteraciones 3389.665408937011
+costo despues de finalizar las iteraciones 3384.865203258329
+costo despues de finalizar las iteraciones 1312.1614484756897
+costo despues de finalizar las iteraciones 1309.0029739169634
+costo despues de finalizar las iteraciones 2443.4794425450505
+costo despues de finalizar las iteraciones 723.7167902660939
+costo despues de finalizar las iteraciones 722.9050091365426
+costo despues de finalizar las iteraciones 961.7206570831413
+costo despues de finalizar las iteraciones 296.30375895962646
+costo despues de finalizar las iteraciones 296.33467185336025
+costo despues de finalizar las iteraciones 304.4228816560217
+costo despues de finalizar las iteraciones 4084.7311672340343
+costo despues de finalizar las iteraciones 4084.7311672340365
+costo despues de finalizar las iteraciones 4080.079428270078
+costo despues de finalizar las iteraciones 1833.0446204387465
+costo despues de finalizar las iteraciones 1835.4272135000672
+costo despues de finalizar las iteraciones 3806.026886517831
+costo despues de finalizar las iteraciones 951.1997672093299
+costo despues de finalizar las iteraciones 951.0728879864745
+costo despues de finalizar las iteraciones 1277.9993713073234
+costo despues de finalizar las iteraciones 357.80364232722945
+costo despues de finalizar las iteraciones 357.81941878040243
+costo despues de finalizar las iteraciones 373.4615926215321
+costo despues de finalizar las iteraciones 4084.7311672340343
+costo despues de finalizar las iteraciones 4084.7311672340365
+costo despues de finalizar las iteraciones 4080.079428270078
+costo despues de finalizar las iteraciones 1833.0446204387465
+costo despues de finalizar las iteraciones 1835.4272135000672
+costo despues de finalizar las iteraciones 3806.026886517831
+costo despues de finalizar las iteraciones 951.1997672093299
+costo despues de finalizar las iteraciones 951.0728879864745
+costo despues de finalizar las iteraciones 1277.9993713073234
+costo despues de finalizar las iteraciones 357.80364232722945
+costo despues de finalizar las iteraciones 357.81941878040243
+costo despues de finalizar las iteraciones 373.4615926215321
+costo despues de finalizar las iteraciones 2483.7522802852595
+costo despues de finalizar las iteraciones 2483.7522802852595
+costo despues de finalizar las iteraciones 2486.961130980962
+costo despues de finalizar las iteraciones 1367.3047301980448
+costo despues de finalizar las iteraciones 1385.9977006388576
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 2477.0210176115397
+costo despues de finalizar las iteraciones 622.1944970908386
+costo despues de finalizar las iteraciones 621.8462062269397
+costo despues de finalizar las iteraciones 1018.9680778423439
+costo despues de finalizar las iteraciones 219.13946713382035
+costo despues de finalizar las iteraciones 219.248000317419
+costo despues de finalizar las iteraciones 241.34889182447458
+costo despues de finalizar las iteraciones 2483.7522802852595
+costo despues de finalizar las iteraciones 2483.7522802852595
+costo despues de finalizar las iteraciones 2486.961130980962
+costo despues de finalizar las iteraciones 1367.3047301980448
+costo despues de finalizar las iteraciones 1385.9977006388576
+costo despues de finalizar las iteraciones 2477.0210176115397
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 622.1944970908386
+costo despues de finalizar las iteraciones 621.8462062269397
+costo despues de finalizar las iteraciones 1018.9680778423439
+costo despues de finalizar las iteraciones 219.13946713382035
+costo despues de finalizar las iteraciones 219.248000317419
+costo despues de finalizar las iteraciones 241.34889182447458
+costo despues de finalizar las iteraciones 1514.3587636167827
+costo despues de finalizar las iteraciones 1514.3586721284726
+costo despues de finalizar las iteraciones 1509.5878677691587
+costo despues de finalizar las iteraciones 673.5515565309133
+costo despues de finalizar las iteraciones 715.6623850987081
+costo despues de finalizar las iteraciones 1419.6926310485162
+costo despues de finalizar las iteraciones 350.8820512534095
+costo despues de finalizar las iteraciones 357.34965998828983
+costo despues de finalizar las iteraciones 500.2268797369095
+costo despues de finalizar las iteraciones 132.49512517117319
+costo despues de finalizar las iteraciones 132.80148351111103
+costo despues de finalizar las iteraciones 145.98187376979632
+costo despues de finalizar las iteraciones 1514.3587636167827
+costo despues de finalizar las iteraciones 1514.3586721284726
+costo despues de finalizar las iteraciones 1509.5878677691587
+costo despues de finalizar las iteraciones 673.5515565309133
+costo despues de finalizar las iteraciones 715.6623850987081
+costo despues de finalizar las iteraciones 1419.6926310485162
+costo despues de finalizar las iteraciones 350.8820512534095
+costo despues de finalizar las iteraciones 357.34965998828983
+costo despues de finalizar las iteraciones 500.2268797369095
+costo despues de finalizar las iteraciones 132.49512517117319
+costo despues de finalizar las iteraciones 132.80148351111103
+costo despues de finalizar las iteraciones 145.98187376979632
+costo despues de finalizar las iteraciones 3650.0017486125885
+costo despues de finalizar las iteraciones 3643.231324197683
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 3650.1782543550694
+costo despues de finalizar las iteraciones 1410.1401352791408
+costo despues de finalizar las iteraciones 1417.755377211639
+costo despues de finalizar las iteraciones 2848.6466019855116
+costo despues de finalizar las iteraciones 771.3527278152185
+costo despues de finalizar las iteraciones 772.9403293268049
+costo despues de finalizar las iteraciones 1023.809000167186
+costo despues de finalizar las iteraciones 318.50886802039565
+costo despues de finalizar las iteraciones 318.5630048401092
+costo despues de finalizar las iteraciones 336.52118318468723
+costo despues de finalizar las iteraciones 3650.0017486125885
+costo despues de finalizar las iteraciones 3643.231324197683
+costo despues de finalizar las iteraciones 3650.1782543550694
+costo despues de finalizar las iteraciones 1410.1401352791408
+costo despues de finalizar las iteraciones 1417.755377211639
+costo despues de finalizar las iteraciones 2848.6466019855116
+costo despues de finalizar las iteraciones 771.3527278152185
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 772.9403293268049
+costo despues de finalizar las iteraciones 1023.809000167186
+costo despues de finalizar las iteraciones 318.50886802039565
+costo despues de finalizar las iteraciones 318.5630048401092
+costo despues de finalizar las iteraciones 336.52118318468723
+costo despues de finalizar las iteraciones 1705.2392162264675
+costo despues de finalizar las iteraciones 1704.2120634697174
+costo despues de finalizar las iteraciones 1705.236612032302
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+&lt;string&gt;:10: RuntimeWarning: overflow encountered in exp
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 694.6253309727869
+costo despues de finalizar las iteraciones 716.2782978735007
+costo despues de finalizar las iteraciones 1594.4493585926002
+costo despues de finalizar las iteraciones 376.6400005479335
+costo despues de finalizar las iteraciones 378.9370909984757
+costo despues de finalizar las iteraciones 557.4677146863828
+costo despues de finalizar las iteraciones 148.98285897085418
+costo despues de finalizar las iteraciones 149.12081015734648
+costo despues de finalizar las iteraciones 162.5540336531636
+costo despues de finalizar las iteraciones 1705.2392162264675
+costo despues de finalizar las iteraciones 1704.2120634697174
+costo despues de finalizar las iteraciones 1705.236612032302
+costo despues de finalizar las iteraciones 694.6253309727869
+costo despues de finalizar las iteraciones 716.2782978735007
+costo despues de finalizar las iteraciones 1594.4493585926002
+costo despues de finalizar las iteraciones 376.6400005479335
+costo despues de finalizar las iteraciones 378.9370909984757
+costo despues de finalizar las iteraciones 557.4677146863828
+costo despues de finalizar las iteraciones 148.98285897085418
+costo despues de finalizar las iteraciones 149.12081015734648
+costo despues de finalizar las iteraciones 162.5540336531636
+</pre></div>
+</div>
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L01.02&quot;, &#39;T3&#39;,
+                  inspect.getsource(grader_03), &#39;grader_03&#39;,
+                  source_functions_names_03, source_variables_names_03)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T3&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T3 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> QDReUdCnwbcCoAtffG+Xdi4FL9X9sy53ckzUVqYr7M1YDQHKSv5DYWvzNJbCHL4dEb5YlcfGtY0hskd8T5xgJuvYeZW8POMqYqYK+mmtReQueWK4t+9fjYu8aszUvAXma/PmQ2pRW4WHeBASGZ9GJg==</div>
+                    </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Usa la función experimentar para ver los resultados que se obtienen en el problema de clasificación planteado en el laboratorio
+tasas = [10.0, 1.0, 0.1, 0.001]
+grados = [1,2,3]
+resultados = experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 0.8601436780476497
+costo despues de finalizar las iteraciones 0.022265709350282777
+costo despues de finalizar las iteraciones 0.012513251806990883
+costo despues de finalizar las iteraciones 0.6898144943719867
+costo despues de finalizar las iteraciones 0.13540762817787222
+costo despues de finalizar las iteraciones 0.1353452091484523
+costo despues de finalizar las iteraciones 0.6905859663826568
+costo despues de finalizar las iteraciones 0.4527897347276038
+costo despues de finalizar las iteraciones 0.45277170702377834
+costo despues de finalizar las iteraciones 0.6930990072150821
+costo despues de finalizar las iteraciones 0.6859732957120156
+costo despues de finalizar las iteraciones 0.6859325427418576
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># para ver los resultados
+resultados
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>grado</th>
+      <th>tasa de aprendizaje</th>
+      <th>error_entreamiento</th>
+      <th>error_prueba</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>10.000</td>
+      <td>0.485714</td>
+      <td>0.453333</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>10.000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>10.000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.0</td>
+      <td>1.000</td>
+      <td>0.394286</td>
+      <td>0.413333</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>1.000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3.0</td>
+      <td>1.000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.0</td>
+      <td>0.100</td>
+      <td>0.397143</td>
+      <td>0.413333</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.0</td>
+      <td>0.100</td>
+      <td>0.160000</td>
+      <td>0.106667</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>3.0</td>
+      <td>0.100</td>
+      <td>0.160000</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1.0</td>
+      <td>0.001</td>
+      <td>0.397143</td>
+      <td>0.420000</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2.0</td>
+      <td>0.001</td>
+      <td>0.502857</td>
+      <td>0.466667</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>3.0</td>
+      <td>0.001</td>
+      <td>0.502857</td>
+      <td>0.466667</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#¿con base en los resultados anteriores, qué efecto tiene la  tasa de aprendizaje en los errores de entrenamiento y de prueba?
+respuesta = &quot;&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vamos entrenar nuevamente pero solo con los mejores parámetros. Si hay parametros empatados, el modelo que tenga menos parámetros deberia ser el mejor (recuerda que cuando aumentamos el grado del polinomio aumentamos el número de parametros del modelo).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># puede usar el siguiente código para ordenar los resultados y ver los 3 primeros
+# resultados, use esta salida, para ver cuáles fueron los mejores parámetros
+resultados.sort_values(by = [&#39;error_prueba&#39;, &#39;grado&#39;], ascending = True).head(3)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>grado</th>
+      <th>tasa de aprendizaje</th>
+      <th>error_entreamiento</th>
+      <th>error_prueba</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>10.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#¿por qué se uso el error de prueba para ordenar la tabla de resultados en lugar del error de entrenamiento?
+respuesta = &quot;&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Entrenemos con los mejores parámetros</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ignoramos el costo!
+W,_= gradiente_descendente_logistic_poly(Xtrain,Ytrain,grado =  ,eta =  , iteraciones = 20)
+print(&quot;estos son los pesos para el modelo entrenando \n&quot;, W)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>costo despues de finalizar las iteraciones 0.027996688327477943
+estos son los pesos para el modelo entrenando 
+ [[-6.04033459]
+ [ 0.08423975]
+ [ 0.51737547]
+ [ 3.36223161]
+ [ 3.64826643]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Debemos recordar que el modelo creado se puede resumir en una ecuación usando los pesos de <span class="math notranslate nohighlight">\(w\)</span>. En el  siguiente ejemplo la ecuación estaria dada como: 2.0 + 3.0<em>x1 + 4.0</em>x2, para el caso del polinomio grado 1.</p>
+<p><img alt="vectorization" src="https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/commons/images/frontera_logistic.jpg" /></p>
+<p>Usando los valores del ultimo <span class="math notranslate nohighlight">\(\bf{w}\)</span> entrenado podriamos construir la función que define nuestra frontera.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#Escriba el modelo completo con sus variables y coeficientes de f(**x**,**w**) con la mejor frontera de decisión que encontró. Recuerde tener presente el grado del polinomio.
+respuesta = &quot;0.0x1...&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+# --- CREATE or OVERWRITE STUDENTS NOTEBOOK --- 
+import init
+from local.lib.rlxmoocapi import utils
+student_notebook_fname = utils.convert_this_notebook_to_student()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">IPython.notebook.save_checkpoint();</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipynbname in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (2024.1.0.0)
+Requirement already satisfied: ipykernel in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipynbname) (6.19.3)
+Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
+Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
+Requirement already satisfied: psutil in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.9.4)
+Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
+Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
+Requirement already satisfied: pyzmq&gt;=17 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.0.1)
+Requirement already satisfied: traitlets&gt;=5.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.8.0)
+Requirement already satisfied: debugpy&gt;=1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.6.4)
+Requirement already satisfied: packaging in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.2)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
+Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
+Requirement already satisfied: backcall in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.0)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.19.1)
+Requirement already satisfied: decorator in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (5.1.1)
+Requirement already satisfied: stack-data in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.6.2)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.11 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (3.0.36)
+Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (5.1.0)
+Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.8.2)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.8.3)
+Requirement already satisfied: platformdirs&gt;=2.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-core&gt;=4.9.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.6.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.11-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.5)
+Requirement already satisfied: six&gt;=1.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (1.16.0)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
+Requirement already satisfied: executing&gt;=1.2.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (1.2.0)
+Requirement already satisfied: pure-eval in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.2)
+NOTEBOOK name is lab1_parte2--XX--TEACHER--XX.ipynb
+student notebook writen to &#39;lab1_parte2.ipynb&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-contextualizacion-del-problema">Ejercicio 1: Contextualización del problema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-entrenamiento">Ejercicio 2: entrenamiento</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-validacion">Ejercicio 3: Validación</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - Deiry Sofía Navas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

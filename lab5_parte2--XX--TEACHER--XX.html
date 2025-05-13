@@ -1,0 +1,3875 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte &#8212; 2025 Introducción al Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab5_parte2--XX--TEACHER--XX';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2025 Introducción al Machine Learning - Home"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2025 Introducción al Machine Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Course information
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2001%20-%20Introducci%C3%B3n%20al%20Machine%20Learning.html">Introducción al Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Unsupervised%20Learning.html">Clustering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2019%20-%20An%C3%A1lisis%20de%20Componentes%20Principales.html">Reducción de dimensión: Análisis de Componentes Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html">Reducción de dimensión: Análisis Discriminante de Fisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/lab5_parte2--XX--TEACHER--XX.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab5_parte2--XX--TEACHER--XX.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-limipiar-base-de-datos-y-completar-codigo">Ejercicio 1: Limipiar base de datos y completar código</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-experimentar-svm-para-regresion">Ejercicio 2: Experimentar SVM para regresión</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-experimentar-svm-para-clasificacion">Ejercicio 3: Experimentar SVM para clasificación</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-5-parte-2-maquinas-de-vectores-de-soporte">
+<h1>Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte<a class="headerlink" href="#laboratorio-5-parte-2-maquinas-de-vectores-de-soporte" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output text_html"><h3>See <a href='https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L05.02&quot;, varname=&quot;student&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logging in as julian.ariasl@udea.edu.co... please wait
+
+-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from Labs.commons.utils.lab5 import *
+_, dataset = part_2()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dim de la base de datos original: (2000, 13)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="ejercicio-1-limipiar-base-de-datos-y-completar-codigo">
+<h2>Ejercicio 1: Limipiar base de datos y completar código<a class="headerlink" href="#ejercicio-1-limipiar-base-de-datos-y-completar-codigo" title="Link to this heading">#</a></h2>
+<p>En este ejercicio usaremos la regresión por vectores de soporte para resolver el problema de regresión de la base de datos AirQuality (<a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Air+Quality">https://archive.ics.uci.edu/ml/datasets/Air+Quality</a>). Tener en cuenta que vamos a usar solo 2000 muestras.</p>
+<p>En primera instancia vamos a transformar la matriz en un dataframe, para poderlo procesar de manera mas sencilla. Se crea una columna por cada variable que obtenemos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dataset_df = pd.DataFrame(dataset, columns = [f&#39;col_{c}&#39; for c in range (1,14)])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para esta base de datos vamos a realizar una limpieza de datos.
+Para ello vamos a completar la siguiente función para realizar:</p>
+<ol class="arabic simple">
+<li><p><strong>Remover</strong> todos los registros cuya variable objetivo es faltante (missing Value). Estos registros están marcados como -200, es decir, donde haya un valor -200 eliminaremos el registro.</p></li>
+<li><p><strong>imputar los valores perdidos/faltantes</strong> en cada una de las características, vamos a usar el valor medio de la propia característica (estimado con las muestras que si cuentan con información en dicha variable) y lo usaremos para llenar los huecos. (será de utilidad conocer <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html">SimpleImputer</a>)</p></li>
+<li><p><strong>Verificar</strong> si quedaron valores faltantes</p></li>
+<li><p><strong>retornar</strong> X (12 primeras columnas) y Y(la 13 columna).</p></li>
+</ol>
+<p>información de utilidad:</p>
+<ol class="arabic simple">
+<li><p>Aca puede ser de utilidad revisar la <a class="reference external" href="https://jdariasl.github.io/Intro_ML_2025/Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">sesión extra</a>.</p></li>
+<li><p>Para transformar columnas de pandas a arreglos de numpy se puede usar <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> / <code class="docutils literal notranslate"><span class="pre">.loc</span></code> y . <code class="docutils literal notranslate"><span class="pre">.values</span></code>, por ejemplo  para devolver una matriz con los valores de las primeras dos columnas es posible hacerlo asi: <code class="docutils literal notranslate"><span class="pre">dataset_df.iloc[:</span> <span class="pre">,</span> <span class="pre">0:2].values</span></code> o <code class="docutils literal notranslate"><span class="pre">dataset_df.loc[:</span> <span class="pre">,</span> <span class="pre">['col_1',</span> <span class="pre">'col_2']].values</span></code></p></li>
+<li><p>Para cambiar valores faltantes, podemos usar la <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.impute.SimpleImputer.html">librería sklearn</a></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+dataset_df.head(5)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-a65ed822-f69f-48e2-8285-129cfefcf2c9" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>col_1</th>
+      <th>col_2</th>
+      <th>col_3</th>
+      <th>col_4</th>
+      <th>col_5</th>
+      <th>col_6</th>
+      <th>col_7</th>
+      <th>col_8</th>
+      <th>col_9</th>
+      <th>col_10</th>
+      <th>col_11</th>
+      <th>col_12</th>
+      <th>col_13</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.6</td>
+      <td>1360.0</td>
+      <td>150.0</td>
+      <td>11.9</td>
+      <td>1046.0</td>
+      <td>166.0</td>
+      <td>1056.0</td>
+      <td>113.0</td>
+      <td>1692.0</td>
+      <td>1268.0</td>
+      <td>13.6</td>
+      <td>48.9</td>
+      <td>0.7578</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>1292.0</td>
+      <td>112.0</td>
+      <td>9.4</td>
+      <td>955.0</td>
+      <td>103.0</td>
+      <td>1174.0</td>
+      <td>92.0</td>
+      <td>1559.0</td>
+      <td>972.0</td>
+      <td>13.3</td>
+      <td>47.7</td>
+      <td>0.7255</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.2</td>
+      <td>1402.0</td>
+      <td>88.0</td>
+      <td>9.0</td>
+      <td>939.0</td>
+      <td>131.0</td>
+      <td>1140.0</td>
+      <td>114.0</td>
+      <td>1555.0</td>
+      <td>1074.0</td>
+      <td>11.9</td>
+      <td>54.0</td>
+      <td>0.7502</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.2</td>
+      <td>1376.0</td>
+      <td>80.0</td>
+      <td>9.2</td>
+      <td>948.0</td>
+      <td>172.0</td>
+      <td>1092.0</td>
+      <td>122.0</td>
+      <td>1584.0</td>
+      <td>1203.0</td>
+      <td>11.0</td>
+      <td>60.0</td>
+      <td>0.7867</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.6</td>
+      <td>1272.0</td>
+      <td>51.0</td>
+      <td>6.5</td>
+      <td>836.0</td>
+      <td>131.0</td>
+      <td>1205.0</td>
+      <td>116.0</td>
+      <td>1490.0</td>
+      <td>1110.0</td>
+      <td>11.2</td>
+      <td>59.6</td>
+      <td>0.7888</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-a65ed822-f69f-48e2-8285-129cfefcf2c9')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-a65ed822-f69f-48e2-8285-129cfefcf2c9 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-a65ed822-f69f-48e2-8285-129cfefcf2c9');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-e4d62855-d956-4747-9c7b-3470a875c9d2">
+  <button class="colab-df-quickchart" onclick="quickchart('df-e4d62855-d956-4747-9c7b-3470a875c9d2')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-e4d62855-d956-4747-9c7b-3470a875c9d2 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+(dataset_df[&#39;col_3&#39;]==-200).sum()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(1086)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ejercicio de codigo
+def clean_data(df):
+    &quot;&quot;&quot;función que limpia el dataset y obtiene X y Y
+
+    df: es un pandas dataframe
+
+    retorna:
+    X: una matriz numpy con los valores a usar como conjunto de datos
+       de entrada
+    Y una matriz numpy con los valores usados como conjunto de datos
+       de salida
+
+    &quot;&quot;&quot;
+
+    # se copia el df para evitar cambios sobre el objeto
+    database = df.copy()
+
+    ##Verificar
+    pct_valores_faltantes = (database==-200).mean()
+    print(&quot;,&quot;.join([f&quot;% VF en {a}: {pct_valores_faltantes[a]*100:.2f}% &quot; for a in pct_valores_faltantes.index]))
+
+    # identificar y remover del data frame las muestras cuya salida es un valor faltante
+    database = ...
+
+    # Imprimir el número de muestras removidas
+    print(...)
+
+    print (&quot;\nDim de la base de datos sin las muestras con variable de salida perdido &quot;+ str(np.shape(database)))
+
+    ##Imputar los valores de las características en el dataframe que tienen datos faltantes
+    database = ...
+
+    print (&quot;Imputación finalizada.\n&quot;)
+
+    ##Verificar
+    pct_valores_faltantes = (database==-200).mean()
+
+    print(&quot;,&quot;.join([f&quot;% VF en {a}: {pct_valores_faltantes[a]*100:.2f}% &quot; for a in pct_valores_faltantes.index]))
+
+    if(pct_valores_faltantes.max() != 0):
+        print (&quot;Hay valores perdidos&quot;)
+    else:
+        print (&quot;No hay valores perdidos en la base de datos. Ahora se puede procesar&quot;)
+
+    X = database.iloc[:,0:12].values
+    Y = database.iloc[:,12:13].values
+    return (X,Y)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:37: SyntaxWarning: &#39;ellipsis&#39; object is not callable; perhaps you missed a comma?
+&lt;&gt;:37: SyntaxWarning: &#39;ellipsis&#39; object is not callable; perhaps you missed a comma?
+&lt;ipython-input-2-a7dc1a22ba9f&gt;:37: SyntaxWarning: &#39;ellipsis&#39; object is not callable; perhaps you missed a comma?
+  imputer = ... (missing_values= ... , strategy= ...)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+from local.lib.rlxmoocapi import submit, session
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L05.02&quot;, varname=&quot;teacher&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logging in as julian.ariasl@udea.edu.co... please wait
+
+-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>teacher = session.Session(init.endpoint).login(course_id=init.course_id, lab_id=&#39;L05.02&#39;, google_token=google_token)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_01(functions, variables, caller_userid):
+    import pandas as pd
+    import numpy as np
+    from sklearn.impute import SimpleImputer
+
+    def t_clean_data(df):
+        &quot;&quot;&quot;función que limpia el dataset y obtiene X y Y
+
+        df: es un pandas dataframe
+
+        retorna:
+        X: una matriz numpy con los valores a usar como conjunto de datos
+          de entrada
+        Y una matriz numpy con los valores usados como conjunto de datos
+          de salida
+
+        &quot;&quot;&quot;
+
+        # se copia el df para evitar cambios sobre el objeto
+        database = df.copy()
+        N = database.shape[0]
+
+        ##Verificar
+        pct_valores_faltantes = (database==-200).mean()
+        print(&quot;,&quot;.join([f&quot;% VF en {a}: {pct_valores_faltantes[a]*100:.2f}% &quot; for a in pct_valores_faltantes.index]))
+
+
+        #remover la muestras de los indices
+        database = database[database[&#39;col_13&#39;] != -200]
+
+        print (&quot;\nHay &quot; + str(N - database.shape[0]) + &quot; valores perdidos en la variable de salida.&quot;)
+        print (&quot;\nDim de la base de datos sin las muestras con variable de salida perdido &quot;+ str(np.shape(database)))
+
+        ##Imputar
+        print (&quot;\nProcesando imputación de valores perdidos en las características . . .&quot;)
+
+        imp=SimpleImputer(missing_values=-200)
+        &quot;imputar solo las columnas de las variables de entrada&quot;
+        #database.iloc[:,0:...] = imputer.fit_transform(database.iloc[:,...] )
+        idf=pd.DataFrame(imp.fit_transform(database))
+        idf.columns=database.columns
+        idf.index=database.index
+        database=idf
+
+        print (&quot;Imputación finalizada teacher.\n&quot;)
+
+        ##Verificar
+        pct_valores_faltantes = (database==-200).mean()
+
+        print(&quot;,&quot;.join([f&quot;% VF en {a}: {pct_valores_faltantes[a]*100:.2f}% &quot; for a in pct_valores_faltantes.index]))
+
+        if(pct_valores_faltantes.max() != 0):
+            print (&quot;Hay valores perdidos&quot;)
+        else:
+            print (&quot;No hay valores perdidos en la base de datos. Ahora se puede procesar&quot;)
+
+        X = database.iloc[:,0:12].values
+        Y = database.iloc[:,12:13].values
+        return (X,Y)
+
+    # retrieve definitions
+    dataset_df = variables[&#39;dataset_df&#39;]
+
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+
+
+    s_clean_data = namespace[&#39;clean_data&#39;]
+
+    msg =  &quot;testing your code with random data points&lt;br/&gt;\n&quot;
+
+
+    X_t, y_t = t_clean_data(dataset_df)
+    X_s, y_s = s_clean_data(dataset_df)
+
+    if not np.allclose(X_t, X_s):
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect implementation of clean_data&lt;/b&gt;
+        Expecting input samples &lt;pre&gt;{X_t}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{X_s}&lt;/pre&gt;&lt;br/&gt;
+        Check hyperparameter settings\n
+        &quot;&quot;&quot;
+    if not np.allclose(y_t, y_s):
+        msg += f&quot;&quot;&quot;
+        &lt;b&gt;Incorrect implementation of clean_data&lt;/b&gt;
+        Expecting output variables &lt;pre&gt;{y_t}&lt;/pre&gt; &lt;br/&gt;
+        but got &lt;pre&gt;{y_s}&lt;/pre&gt;&lt;br/&gt;
+        Check hyperparameter settings\n
+        &quot;&quot;&quot;
+
+    return 5, msg + &#39;&lt;b&gt;correct&lt;/b&gt; ✅&#39;
+
+source_functions_names_01 = [&#39;clean_data&#39;]
+source_variables_names_01 = [&#39;dataset_df&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def clean_data(df):
+    from sklearn.impute import SimpleImputer
+    &quot;&quot;&quot;función que limpia el dataset y obtiene X y Y
+
+    df: es un pandas dataframe
+
+    retorna:
+    X: una matriz numpy con los valores a usar como conjunto de datos
+       de entrada
+    Y una matriz numpy con los valores usados como conjunto de datos
+       de salida
+
+    &quot;&quot;&quot;
+
+    # se copia el df para evitar cambios sobre el objeto
+    database = df.copy()
+    N = database.shape[0]
+
+    ##Verificar
+    pct_valores_faltantes = (database==-200).mean()
+    print(&quot;,&quot;.join([f&quot;% VF en {a}: {pct_valores_faltantes[a]*100:.2f}% &quot; for a in pct_valores_faltantes.index]))
+
+
+    #remover la muestras de los indices
+    database = database[database[&#39;col_13&#39;] != -200]
+
+    print (&quot;\nHay &quot; + str(N - database.shape[0]) + &quot; valores perdidos en la variable de salida.&quot;)
+    print (&quot;\nDim de la base de datos sin las muestras con variable de salida perdido &quot;+ str(np.shape(database)))
+
+    ##Imputar
+    print (&quot;\nProcesando imputación de valores perdidos en las características . . .&quot;)
+
+    imp=SimpleImputer(missing_values=-200)
+    &quot;imputar solo las columnas de las variables de entrada&quot;
+    #database.iloc[:,0:...] = imputer.fit_transform(database.iloc[:,...] )
+    idf=pd.DataFrame(imp.fit_transform(database))
+    idf.columns=database.columns
+    idf.index=database.index
+    database=idf
+
+    print (&quot;Imputación finalizada student.\n&quot;)
+
+    ##Verificar
+    pct_valores_faltantes = (database==-200).mean()
+
+    print(&quot;,&quot;.join([f&quot;% VF en {a}: {pct_valores_faltantes[a]*100:.2f}% &quot; for a in pct_valores_faltantes.index]))
+
+    if(pct_valores_faltantes.max() != 0):
+        print (&quot;Hay valores perdidos&quot;)
+    else:
+        print (&quot;No hay valores perdidos en la base de datos. Ahora se puede procesar&quot;)
+
+    X = database.iloc[:,0:12].values
+    Y = database.iloc[:,12:13].values
+    return (X,Y)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_01&quot;, source_functions_names_01, source_variables_names_01, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>% VF en col_1: 20.00% ,% VF en col_2: 2.05% ,% VF en col_3: 54.30% ,% VF en col_4: 2.05% ,% VF en col_5: 2.05% ,% VF en col_6: 20.15% ,% VF en col_7: 2.05% ,% VF en col_8: 20.15% ,% VF en col_9: 2.05% ,% VF en col_10: 2.05% ,% VF en col_11: 2.05% ,% VF en col_12: 2.05% ,% VF en col_13: 2.05% 
+
+Hay 41 valores perdidos en la variable de salida.
+
+Dim de la base de datos sin las muestras con variable de salida perdido (1959, 13)
+
+Procesando imputación de valores perdidos en las características . . .
+Imputación finalizada teacher.
+
+% VF en col_1: 0.00% ,% VF en col_2: 0.00% ,% VF en col_3: 0.00% ,% VF en col_4: 0.00% ,% VF en col_5: 0.00% ,% VF en col_6: 0.00% ,% VF en col_7: 0.00% ,% VF en col_8: 0.00% ,% VF en col_9: 0.00% ,% VF en col_10: 0.00% ,% VF en col_11: 0.00% ,% VF en col_12: 0.00% ,% VF en col_13: 0.00% 
+No hay valores perdidos en la base de datos. Ahora se puede procesar
+% VF en col_1: 20.00% ,% VF en col_2: 2.05% ,% VF en col_3: 54.30% ,% VF en col_4: 2.05% ,% VF en col_5: 2.05% ,% VF en col_6: 20.15% ,% VF en col_7: 2.05% ,% VF en col_8: 20.15% ,% VF en col_9: 2.05% ,% VF en col_10: 2.05% ,% VF en col_11: 2.05% ,% VF en col_12: 2.05% ,% VF en col_13: 2.05% 
+
+Hay 41 valores perdidos en la variable de salida.
+
+Dim de la base de datos sin las muestras con variable de salida perdido (1959, 13)
+
+Procesando imputación de valores perdidos en las características . . .
+Imputación finalizada student.
+
+% VF en col_1: 0.00% ,% VF en col_2: 0.00% ,% VF en col_3: 0.00% ,% VF en col_4: 0.00% ,% VF en col_5: 0.00% ,% VF en col_6: 0.00% ,% VF en col_7: 0.00% ,% VF en col_8: 0.00% ,% VF en col_9: 0.00% ,% VF en col_10: 0.00% ,% VF en col_11: 0.00% ,% VF en col_12: 0.00% ,% VF en col_13: 0.00% 
+No hay valores perdidos en la base de datos. Ahora se puede procesar
+</pre></div>
+</div>
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/>testing your code with random data points<br/>
+<b>correct</b> ✅</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L05.02&quot;, &#39;T1&#39;,
+                  inspect.getsource(grader_01), &#39;grader_01&#39;,
+                  source_functions_names_01, source_variables_names_01)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T1 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre>testing your code with random data points<br/>
+<b>correct</b> ✅<pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> bXKOxGuH+Q+/4MbjcDjMb4Q9UfxylZh1EofUIxfXkCCsodeYK7HlSxqUHi14F6tjbLGCTll1a+X8F9fzblBYuuhOwN7PELXTGql/pOEn1FL+6E6v8YvUM6MbbX2cMJS8PvKsqgS03zjCwsOI5mdy1g==</div>
+                    </div></div>
+</div>
+<p>Ahora usemos la función para tener nuestras variables X, Y</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X,Y = clean_data(dataset_df)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>% VF en col_1: 20.00% ,% VF en col_2: 2.05% ,% VF en col_3: 54.30% ,% VF en col_4: 2.05% ,% VF en col_5: 2.05% ,% VF en col_6: 20.15% ,% VF en col_7: 2.05% ,% VF en col_8: 20.15% ,% VF en col_9: 2.05% ,% VF en col_10: 2.05% ,% VF en col_11: 2.05% ,% VF en col_12: 2.05% ,% VF en col_13: 2.05% 
+
+Hay 41 valores perdidos en la variable de salida.
+
+Dim de la base de datos sin las muestras con variable de salida perdido (1959, 13)
+
+Procesando imputación de valores perdidos en las características . . .
+Imputación finalizada student.
+
+% VF en col_1: 0.00% ,% VF en col_2: 0.00% ,% VF en col_3: 0.00% ,% VF en col_4: 0.00% ,% VF en col_5: 0.00% ,% VF en col_6: 0.00% ,% VF en col_7: 0.00% ,% VF en col_8: 0.00% ,% VF en col_9: 0.00% ,% VF en col_10: 0.00% ,% VF en col_11: 0.00% ,% VF en col_12: 0.00% ,% VF en col_13: 0.00% 
+No hay valores perdidos en la base de datos. Ahora se puede procesar
+</pre></div>
+</div>
+</div>
+</div>
+<section id="ejercicio-2-experimentar-svm-para-regresion">
+<h3>Ejercicio 2: Experimentar SVM para regresión<a class="headerlink" href="#ejercicio-2-experimentar-svm-para-regresion" title="Link to this heading">#</a></h3>
+<p>Ahora vamos a crear una función para experimentar con la maquina de soporte vectorial. Para ello debemos hacer lo siguiente:</p>
+<ol class="arabic simple">
+<li><p>Revisar la documentación de la clase de objetos que vamos a usar (ver  <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html">sklearn</a>.</p></li>
+<li><p>Vamos a evaluar el efecto de tres hiperparámetros del SVR: kernel,  gamma y el parámetro de regularización, por lo tanto debemos comprender la relación con el modelo y su efecto.</p></li>
+<li><p>El número máximo de iteraciones debe ser ajustado a 200</p></li>
+<li><p>Utilizar la metodología cross-validation con 4 folds.</p></li>
+<li><p>Usar normalización de datos estandar implementada por sklearn</p></li>
+<li><p>Extraer los vectores de soporte (observe los <em>atributos</em> del modelo SVR de sklearn). Recuerde que estos atributos son accesibles, una vez el modelo es entrenado</p></li>
+<li><p>Utilizar la métrica para calcular el MAPE (usar sklearn).</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+def experiementarSVR(x, y, kernels, gammas,params_reg):
+    &quot;&quot;&quot;función que realizar experimentos sobre una SVM para regresión
+
+    x: numpy.Array, con las muestras del problema
+    y: numpy.Array, con la variable objetivo
+    kernels: List[str], lista con valores a pasar
+        a sklearn correspondiente al kernel de la SVM
+    gammas: List[float], lista con los valores a pasar a
+        sklearn correspondientes al valor de los coeficientes para usar en el
+        kernel
+    params_reg: List[float], lista con los valores a pasar a
+        sklearn para ser usados como parámetro de regularización
+
+    retorna: pd.Dataframe con las siguientes columnas:
+        - 3 columnas con los tres parametros: kernel, gamma, param de regularizacion
+        - porcentaje de error absoluto medio en el cojunto test (promedio de los 4 folds)
+        - intervalo de confianza del porcentaje de error absoluto medio en el cojunto test
+            (desviacion estandar de los 4 folds)
+        - # de Vectores de Soporte promedio para los 4 folds
+        - % de Vectores de Soporte promedio para los 4 folds (0 a 100)
+    &quot;&quot;&quot;
+    idx = 0
+    kf = ...(n_splits=...)
+    # crear una lista con la combinaciones de los elementos de cada list
+    kernels_gammas_regs = list(itertools.product(kernels, gammas, params_reg))
+    resultados = pd.DataFrame()
+
+    for params in kernels_gammas_regs:
+        kernel, gamma, param_reg = params
+        print(&quot;parametros usados&quot;, params) # puede usar para ver los params
+        errores_test = []
+        pct_support_vectors = []
+        num_support_vectors = []
+        for train_index, test_index in kf...(...):
+
+            X_train, X_test = x[train_index], x[test_index]
+            y_train, y_test = y[train_index], y[test_index]
+            # normalizar los datos
+            scaler = StandardScaler()
+            X_train = scaler.fit_transform(X_train)
+            X_test = scaler.transform(X_test)
+
+            #Definir y entrenar el modelo
+
+            svr = ...
+
+            # Validación del modelo
+            ypred = svr.predict(X=...)
+
+            # MAPE de prueba
+            errores_test.append(...)
+
+            # Encontrar el número de vectores de soporte y el calcular el porcentaje que representan
+
+            num_vs =
+            pct_vs =
+
+
+            pct_support_vectors.append(pct_vs)
+            num_support_vectors.append(num_vs)
+
+        resultados.loc[idx,&#39;kernel&#39;] = kernel
+        resultados.loc[idx,&#39;gamma&#39;] = gamma
+        resultados.loc[idx,&#39;param_reg&#39;] = param_reg
+        resultados.loc[idx,&#39;error de prueba (promedio)&#39;] = np.mean(...)
+        resultados.loc[idx,&#39;error de prueba (intervalo de confianza)&#39;] = np.std()
+        resultados.loc[idx,&#39;# de vectores de soporte&#39;] = np.mean(...)
+        resultados.loc[idx,&#39;% de vectores de soporte&#39;] = np.mean(...)
+
+        idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_02(functions, variables, caller_userid):
+    import pandas as pd
+    import numpy as np
+    import itertools
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import KFold
+    from sklearn.svm import SVR
+    from sklearn.metrics import mean_absolute_percentage_error
+
+    def t_experiementarSVR(x, y, kernels, gammas,params_reg):
+      &quot;&quot;&quot;función que realizar experimentos sobre una SVM para regresión
+
+      x: numpy.Array, con las muestras del problema
+      y: numpy.Array, con la variable objetivo
+      kernels: List[str], lista con valores a pasar
+          a sklearn correspondiente al kernel de la SVM
+      gammas: List[float], lista con los valores a pasar a
+          sklearn correspondientes al valor de los coeficientes para usar en el
+          kernel
+      params_reg: List[float], lista con los valores a pasar a
+          sklearn para ser usados como parámetro de regularización
+
+      retorna: pd.Dataframe con las siguientes columnas:
+          - 3 columnas con los tres parametros: kernel, gamma, param de regularizacion
+          - porcentaje de error absoluto medio en el cojunto test (promedio de los 4 folds)
+          - intervalo de confianza del porcentaje de error absoluto medio en el cojunto test
+              (desviacion estandar de los 4 folds)
+          - # de Vectores de Soporte promedio para los 4 folds
+          - % de Vectores de Soporte promedio para los 4 folds (0 a 100)
+      &quot;&quot;&quot;
+      idx = 0
+      kf = KFold(n_splits=4)
+      # crear una lista con la combinaciones de los elementos de cada list
+      kernels_gammas_regs = list(itertools.product(kernels, gammas, params_reg))
+      resultados = pd.DataFrame()
+
+      for params in kernels_gammas_regs:
+          kernel, gamma, param_reg = params
+          print(&quot;parametros usados&quot;, params) # puede usar para ver los params
+          errores_test = []
+          pct_support_vectors = []
+          num_support_vectors = []
+          for train_index, test_index in kf.split(x,y):
+
+              X_train, X_test = x[train_index], x[test_index]
+              y_train, y_test = y[train_index], y[test_index]
+              # normalizar los datos
+              scaler = StandardScaler()
+              X_train = scaler.fit_transform(X_train)
+              X_test = scaler.transform(X_test)
+              svm = SVR(kernel = kernel, gamma = gamma, C = param_reg, max_iter=200)
+              # Entrenar el modelo
+              svm.fit(X=X_train, y=y_train)
+              # Validación del modelo
+              ypred = svm.predict(X=X_test)
+
+              # error y pct de vectores de soporte
+              errores_test.append(mean_absolute_percentage_error(y_true = y_test, y_pred = ypred))
+              # contar muestras de entrenamiento
+              n_train = X_train.shape[0]
+              num_vs = len(svm.support_)
+              pct_vs = (num_vs / n_train ) *100
+              pct_support_vectors.append(pct_vs)
+              num_support_vectors.append(num_vs)
+
+          resultados.loc[idx,&#39;kernel&#39;] = kernel
+          resultados.loc[idx,&#39;gamma&#39;] = gamma
+          resultados.loc[idx,&#39;param_reg&#39;] = param_reg
+          resultados.loc[idx,&#39;error de prueba (promedio)&#39;] = np.mean(errores_test)
+          resultados.loc[idx,&#39;error de prueba (intervalo de confianza)&#39;] = np.std(errores_test)
+          resultados.loc[idx,&#39;# de vectores de soporte&#39;] = np.mean(num_support_vectors)
+          resultados.loc[idx,&#39;% de vectores de soporte&#39;] = np.mean(pct_support_vectors)
+
+          idx+=1
+      return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_experiementarSVR = namespace[&#39;experiementarSVR&#39;]
+
+    msg =  &quot;testing your code with random data points&lt;br/&gt;\n&quot;
+    kernels=[&#39;linear&#39;, &#39;rbf&#39;]
+    gammas = [0.01,0.1]
+    params_reg = [0.1, 1.0,10]
+    for _ in range(4):  # Puedes ajustar el número de iteraciones según sea necesario
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        X = np.random.randn(input_n, input_dim).astype(&#39;f&#39;)
+        y = np.y = np.random.randn(input_n, 1).astype(&#39;f&#39;)
+
+
+        t_resultados = t_experiementarSVR(X,y,kernels,gammas,params_reg)[[&#39;error de prueba (promedio)&#39;,&#39;error de prueba (intervalo de confianza)&#39;,&#39;# de vectores de soporte&#39;,&#39;% de vectores de soporte&#39;]].values
+        s_resultados = s_experiementarSVR(X,y,kernels,gammas,params_reg)[[&#39;error de prueba (promedio)&#39;,&#39;error de prueba (intervalo de confianza)&#39;,&#39;# de vectores de soporte&#39;,&#39;% de vectores de soporte&#39;]].values
+
+        if not np.allclose(t_resultados, s_resultados):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect experiment results&lt;/b&gt;
+            Expecting result &lt;pre&gt;{t_resultados}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_resultados}&lt;/pre&gt;&lt;br/&gt;
+            Check hyperparameter settings\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg + &#39;&lt;b&gt;correct&lt;/b&gt; ✅&#39;
+
+source_functions_names_02 = [&#39;experiementarSVR&#39;]
+source_variables_names_02 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def experiementarSVR(x, y, kernels, gammas,params_reg):
+    &quot;&quot;&quot;función que realizar experimentos sobre una SVM para regresión
+
+    x: numpy.Array, con las muestras del problema
+    y: numpy.Array, con la variable objetivo
+    kernels: List[str], lista con valores a pasar
+        a sklearn correspondiente al kernel de la SVM
+    gammas: List[float], lista con los valores a pasar a
+        sklearn correspondientes al valor de los coeficientes para usar en el
+        kernel
+    params_reg: List[float], lista con los valores a pasar a
+        sklearn para ser usados como parámetro de regularización
+
+    retorna: pd.Dataframe con las siguientes columnas:
+        - 3 columnas con los tres parametros: kernel, gamma, param de regularizacion
+        - porcentaje de error absoluto medio en el cojunto test (promedio de los 4 folds)
+        - intervalo de confianza del porcentaje de error absoluto medio en el cojunto test
+            (desviacion estandar de los 4 folds)
+        - # de Vectores de Soporte promedio para los 4 folds
+        - % de Vectores de Soporte promedio para los 4 folds (0 a 100)
+    &quot;&quot;&quot;
+    idx = 0
+    kf = KFold(n_splits=4)
+    # crear una lista con la combinaciones de los elementos de cada list
+    kernels_gammas_regs = list(itertools.product(kernels, gammas, params_reg))
+    resultados = pd.DataFrame()
+
+    for params in kernels_gammas_regs:
+        kernel, gamma, param_reg = params
+        print(&quot;parametros usados&quot;, params) # puede usar para ver los params
+        errores_test = []
+        pct_support_vectors = []
+        num_support_vectors = []
+        for train_index, test_index in kf.split(x,y):
+
+            X_train, X_test = x[train_index], x[test_index]
+            y_train, y_test = y[train_index], y[test_index]
+            # normalizar los datos
+            scaler = StandardScaler()
+            X_train = scaler.fit_transform(X_train)
+            X_test = scaler.transform(X_test)
+            svm = SVR(kernel = kernel, gamma = gamma, C = param_reg, max_iter=200)
+            # Entrenar el modelo
+            svm.fit(X=X_train, y=y_train)
+            # Validación del modelo
+            ypred = svm.predict(X=X_test)
+
+            # error y pct de vectores de soporte
+            errores_test.append(mean_absolute_percentage_error(y_true = y_test, y_pred = ypred))
+            # contar muestras de entrenamiento
+            n_train = X_train.shape[0]
+            num_vs = len(svm.support_)
+            pct_vs = (num_vs / n_train ) *100
+            pct_support_vectors.append(pct_vs)
+            num_support_vectors.append(num_vs)
+
+        resultados.loc[idx,&#39;kernel&#39;] = kernel
+        resultados.loc[idx,&#39;gamma&#39;] = gamma
+        resultados.loc[idx,&#39;param_reg&#39;] = param_reg
+        resultados.loc[idx,&#39;error de prueba (promedio)&#39;] = np.mean(errores_test)
+        resultados.loc[idx,&#39;error de prueba (intervalo de confianza)&#39;] = np.std(errores_test)
+        resultados.loc[idx,&#39;# de vectores de soporte&#39;] = np.mean(num_support_vectors)
+        resultados.loc[idx,&#39;% de vectores de soporte&#39;] = np.mean(pct_support_vectors)
+
+        idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_02&quot;, source_functions_names_02, source_variables_names_02, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+</pre></div>
+</div>
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/>testing your code with random data points<br/>
+<b>correct</b> ✅</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L05.02&quot;, &#39;T2&#39;,
+                  inspect.getsource(grader_02), &#39;grader_02&#39;,
+                  source_functions_names_02, source_variables_names_02)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T2&#39;);
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para entrenar vamos a ignorar las dos primeras variables, estas corresponden a valores de fechas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># vamos a realizar los experimentos
+resultadosSVR = experiementarSVR(x =X[:,2:],y=Y,
+                                 kernels=[&#39;linear&#39;, &#39;rbf&#39;],
+                                 gammas = [0.01,0.1],
+                                 params_reg = [0.1, 1.0,10]
+                                )
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ver los 5 primeros resultados
+resultadosSVR.sort_values(&#39;error de prueba (promedio)&#39;,ascending=True).head(5)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-ba1677f7-07c5-4307-a26f-d5a8fe001b54" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>kernel</th>
+      <th>gamma</th>
+      <th>param_reg</th>
+      <th>error de prueba (promedio)</th>
+      <th>error de prueba (intervalo de confianza)</th>
+      <th># de vectores de soporte</th>
+      <th>% de vectores de soporte</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>rbf</td>
+      <td>0.01</td>
+      <td>10.0</td>
+      <td>0.050252</td>
+      <td>0.004954</td>
+      <td>25.75</td>
+      <td>1.752638</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>rbf</td>
+      <td>0.01</td>
+      <td>1.0</td>
+      <td>0.053959</td>
+      <td>0.011259</td>
+      <td>54.75</td>
+      <td>3.726527</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>linear</td>
+      <td>0.10</td>
+      <td>0.1</td>
+      <td>0.055444</td>
+      <td>0.010731</td>
+      <td>96.75</td>
+      <td>6.585569</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>linear</td>
+      <td>0.01</td>
+      <td>0.1</td>
+      <td>0.055444</td>
+      <td>0.010731</td>
+      <td>96.75</td>
+      <td>6.585569</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>linear</td>
+      <td>0.10</td>
+      <td>1.0</td>
+      <td>0.055682</td>
+      <td>0.010684</td>
+      <td>97.75</td>
+      <td>6.653654</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ba1677f7-07c5-4307-a26f-d5a8fe001b54')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-ba1677f7-07c5-4307-a26f-d5a8fe001b54 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-ba1677f7-07c5-4307-a26f-d5a8fe001b54');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-a1aab170-a7fc-4708-890d-c7ef84b08fd9">
+  <button class="colab-df-quickchart" onclick="quickchart('df-a1aab170-a7fc-4708-890d-c7ef84b08fd9')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-a1aab170-a7fc-4708-890d-c7ef84b08fd9 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
+#@markdown ¿Cual es el objetivo de las las funciones kernel? Contestar dentro del contexto de las máquinas de sporte vectorial
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
+#@markdown Existe alguna relación entre el porcentaje de vectores de soporte y error esperado?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Para analizar los resultados vamos a crear dos graficas para el mejor modelo encontrado:</p>
+<ol class="arabic simple">
+<li><p>vamos a graficar en el eje x el valor real, en el eje y el valor predicho. El modelo ideal deberia ser una recta que recuerda la identidad</p></li>
+<li><p>en el eje x vamos a dejar un valor incremental y con colores vamos a diferenciar entre el valor real y el valor predicho</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># dividir el conjunto
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+#predicciones
+# OJO: Completar!
+Ypred =  predict_svr(X_train,y_train,X_test,kernel = ..., )
+
+# plots
+
+f, ax = plt.subplots(ncols=2, sharex=False, sharey=False, figsize = (22,6))
+ax[0].scatter(y_test, Ypred)
+ax[0].set_xlabel(&#39;valor real&#39;, fontdict = {&#39;fontsize&#39;: 12})
+ax[0].set_ylabel(&#39;valor predicho&#39;, fontdict = {&#39;fontsize&#39;: 12})
+ax[1].plot(y_test, label = &#39;valor real&#39;, color = &#39;b&#39;, alpha = 0.7)
+ax[1].plot(Ypred, label = &#39;valor predicho&#39;, color = &#39;r&#39;, alpha = 0.5)
+ax[1].legend()
+ax[1].set_ylabel(&#39;Humedad relativa&#39;, fontdict = {&#39;fontsize&#39;: 12})
+plt.show()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+# dividir el conjunto
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+#predicciones
+# OJO: Reemplazar los valores!
+svr = SVR(kernel = &#39;rbf&#39;, gamma = 0.01, C = 10)
+svr.fit(X=X_train, y=y_train)
+Ypred =  svr.predict(X_test)
+
+# plots
+
+f, ax = plt.subplots(ncols=2, sharex=False, sharey=False, figsize = (22,6))
+ax[0].scatter(y_test, Ypred)
+ax[0].set_xlabel(&#39;valor real&#39;, fontdict = {&#39;fontsize&#39;: 12})
+ax[0].set_ylabel(&#39;valor predicho&#39;, fontdict = {&#39;fontsize&#39;: 12})
+ax[1].plot(y_test, label = &#39;valor real&#39;, color = &#39;b&#39;, alpha = 0.7)
+ax[1].plot(Ypred, label = &#39;valor predicho&#39;, color = &#39;r&#39;, alpha = 0.5)
+ax[1].legend()
+ax[1].set_ylabel(&#39;Humedad relativa&#39;, fontdict = {&#39;fontsize&#39;: 12})
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ab9e0bbcd63f0bcc1ab86ee0a3b55675144b3852af985536aa09ae54fad56dfa.png" src="_images/ab9e0bbcd63f0bcc1ab86ee0a3b55675144b3852af985536aa09ae54fad56dfa.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
+#@markdown usando las anteriores graficas, ¿como calificaría el modelo de manera cualitativa?.
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="ejercicio-3-experimentar-svm-para-clasificacion">
+<h2>Ejercicio 3: Experimentar SVM para clasificación<a class="headerlink" href="#ejercicio-3-experimentar-svm-para-clasificacion" title="Link to this heading">#</a></h2>
+<p>En este ejercicio vamos a volver a resolver el problema de clasificación de dígitos. Vamos usar solo 5 clases y realizaremos un pre-procesamiento:</p>
+<ol class="arabic simple">
+<li><p>Mediante PCA reduciremos la dimensionalidad de los datos</p></li>
+<li><p>Vamos a convertir el problema en uno de cuatro clases (diferenciar entre 0, 1, 2 y el resto)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Xcl, Ycl = load_digits(n_class=5,return_X_y=True)
+#--------- preprocesamiento--------------------
+pca = PCA(0.99, whiten=True)
+Xcl = pca.fit_transform(Xcl)
+# cambiar problema de clases
+unique, counts  = np.unique(Ycl, return_counts=True)
+print(&quot;distribución original (claves las etiquetas, valores el número de muestras): \n&quot;, dict(zip(unique, counts )))
+Ycl = np.where(np.isin(Ycl, [0,1,2]), Ycl, 3)
+unique, counts  = np.unique(Ycl, return_counts=True)
+print(&quot;Nueva distribución  (claves las etiquetas, valores el número de muestras): \n&quot;, dict(zip(unique, counts )))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>distribución original (claves las etiquetas, valores el número de muestras): 
+ {np.int64(0): np.int64(178), np.int64(1): np.int64(182), np.int64(2): np.int64(177), np.int64(3): np.int64(183), np.int64(4): np.int64(181)}
+Nueva distribución  (claves las etiquetas, valores el número de muestras): 
+ {np.int64(0): np.int64(178), np.int64(1): np.int64(182), np.int64(2): np.int64(177), np.int64(3): np.int64(364)}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora vamos a crear la función para experimentar con la máquina de soporte vectorial. Los parámetros de la prueba y sus requerimientos se listan a continuación:</p>
+<ol class="arabic simple">
+<li><p>Revisar la documentación correspondiente al modelo <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html#sklearn.svm.SVC">sklearn</a></p></li>
+<li><p>Realizaremos pruebas para ajustar tres hiperparámetros del SVC: kernel,  gamma y el parametro de regularización.</p></li>
+<li><p>El número máximo de iteraciones será ajustado a 500</p></li>
+<li><p>Seleccionar una metodología de cross-validation con 4 folds adecuada para la distribución de datos.</p></li>
+<li><p>Usar normalización de datos estandar implementada por sklearn</p></li>
+<li><p>Extraer los vectores de soporte (observe los <em>atributos</em> del modelo SVC de sklearn). Recuerde que estos atributos son accesibles una vez el modelo es entrenado</p></li>
+<li><p>vamos a probar la dos estragegias multiclase básicas del SVC:</p>
+<ul class="simple">
+<li><p>One Vs One (ver <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsOneClassifier.html">link</a>)</p></li>
+<li><p>One Vs Rest (ver <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html">link</a>)</p></li>
+</ul>
+</li>
+<li><p>Utilizar como medida de desempeño el score de exactitud de sklearn.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+def experiementarSVC(x, y, kernels, gammas,params_reg, estrategia = &#39;ovo&#39;):
+    &quot;&quot;&quot;función que realizar experimentos sobre un SVM para clasificación
+
+    x: numpy.Array, con los datos de entrada del problema
+    y: numpy.Array, con la variable objetivo
+    kernels: List[str], lista con valores a pasar
+        a sklearn correspondiente al kernel de la SVM
+    gammas: List[float], lista con los valores a pasar a
+        sklean correspondiente el valor de los coeficientes para usar en el
+        kernel
+    params_reg: List[float], lista con los valores a a pasar a
+        sklearn para ser usados como parametro de regularización
+    estrategia: str, valor que puede ser ovo (para one vs one) o ovr
+        (para one vs rest)
+
+    retorna: pd.Dataframe con las siguientes columnas:
+        - 3 columnas con los tres parametros: kernel, gamma, param de regularizacion
+        - estrategia de clasificación (ovo o ovr)
+        - Error en el conjunto de entrenamiento (promedio de los 4 folds)
+        - Error en el conjunto de test (promedio de los 4 folds)
+        - % de Vectores de Soporte promedio para los 4 folds (0 a 100)
+    &quot;&quot;&quot;
+    idx = 0
+    kf = ...(n_splits=...)
+    # crear una lista con la combinaciones de los elementos de cada list
+    kernels_gammas_regs = list(itertools.product(kernels, gammas, params_reg))
+    resultados = pd.DataFrame()
+
+    for params in kernels_gammas_regs:
+        kernel, gamma, param_reg = params
+        print(&quot;parametros usados&quot;, params) # puede usar para ver los params
+        errores_train = []
+        errores_test = []
+        pct_support_vectors = []
+
+        for train_index, test_index in kf...(...,...):
+            X_train, X_test = x[train_index], x[test_index]
+            y_train, y_test = y[train_index], y[test_index]
+            # normalizar los datos
+            scaler = StandardScaler()
+            X_train = scaler.fit_transform(X_train)
+            X_test = scaler.transform(X_test)
+
+            #Instanciar y entrenar el modelo con los hiperparámetros adecuados
+            svm = ...
+
+            # calculo de errores
+            y_train_pred = ...
+            y_test_pred = ...
+
+            # error y pct de vectores de soporte
+            errores_train.append(1 - accuracy_score(y_true = y_train, y_pred = y_train_pred))
+            errores_test.append(1 - accuracy_score(y_true = y_test, y_pred = y_test_pred))
+
+            # Calcular el porcentaje de vectores de soporte. Tenga en cuenta que las estrategias
+            # OVO y OVR implican el entrenamiento de varios modelos. En este caso se debe estimar
+            # el promedio de porcentajes de vectores de soporte dentro de los estimadores que hacen parte de
+            # la estrategia multiclase y promediarlos.
+            pct_vs = ...
+
+            pct_support_vectors.append(pct_vs)
+
+        resultados.loc[idx,&#39;kernel&#39;] = kernel
+        resultados.loc[idx,&#39;gamma&#39;] = gamma
+        resultados.loc[idx,&#39;param_reg&#39;] = param_reg
+        resultados.loc[idx,&#39;estrategia&#39;] = ...
+        resultados.loc[idx,&#39;error de entrenamiento&#39;] = np.mean()
+        resultados.loc[idx,&#39;error de prueba&#39;] = np.mean()
+        resultados.loc[idx,&#39;% de vectores de soporte&#39;] = np.mean(...)
+        idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_03(functions, variables, caller_userid):
+    import pandas as pd
+    import numpy as np
+    import itertools
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import KFold, StratifiedKFold
+    from sklearn.svm import SVC
+    from sklearn.metrics import accuracy_score
+    from sklearn.multiclass import OneVsRestClassifier
+    from sklearn.multiclass import OneVsOneClassifier
+
+    def t_experiementarSVC(x, y, kernels, gammas,params_reg, estrategia = &#39;ovo&#39;):
+        &quot;&quot;&quot;función que realizar experimentos sobre un SVM para clasificación
+
+        x: numpy.Array, con los datos de entrada del problema
+        y: numpy.Array, con la variable objetivo
+        kernels: List[str], lista con valores a pasar
+            a sklearn correspondiente al kernel de la SVM
+        gammas: List[float], lista con los valores a pasar a
+            sklean correspondiente el valor de los coeficientes para usar en el
+            kernel
+        params_reg: List[float], lista con los valores a a pasar a
+            sklearn para ser usados como parametro de regularización
+        estrategia: str, valor que puede ser ovo (para one vs one) o ovr
+            (para one vs rest)
+
+        retorna: pd.Dataframe con las siguientes columnas:
+            - 3 columnas con los tres parametros: kernel, gamma, param de regularizacion
+            - estrategia de clasificación (ovo o ovr)
+            - Error en el conjunto de entrenamiento (promedio de los 4 folds)
+            - Error en el conjunto de test (promedio de los 4 folds)
+            - % de Vectores de Soporte promedio para los 4 folds (0 a 100)
+        &quot;&quot;&quot;
+        idx = 0
+        kf = StratifiedKFold(n_splits=4)
+        # crear una lista con la combinaciones de los elementos de cada list
+        kernels_gammas_regs = list(itertools.product(kernels, gammas, params_reg))
+        resultados = pd.DataFrame()
+
+        for params in kernels_gammas_regs:
+            kernel, gamma, param_reg = params
+            print(&quot;parametros usados&quot;, params) # puede usar para ver los params
+            errores_train = []
+            errores_test = []
+            pct_support_vectors = []
+
+            for train_index, test_index in kf.split(x,y):
+                X_train, X_test = x[train_index], x[test_index]
+                y_train, y_test = y[train_index], y[test_index]
+
+                # normalizar los datos
+                scaler = StandardScaler()
+                X_train = scaler.fit_transform(X_train)
+                X_test = scaler.transform(X_test)
+
+                #Instanciar y entrenar el modelo con los hiperparámetros adecuados
+                svm = SVC(kernel = kernel, gamma = gamma, C = param_reg, max_iter=500)
+
+                if estrategia == &#39;ovo&#39;:
+                    svm = OneVsOneClassifier(svm)
+                elif estrategia == &#39;ovr&#39;:
+                    svm = OneVsRestClassifier(svm)
+                svm.fit(X=X_train, y=y_train)
+
+
+                # calculo de errores
+                y_train_pred = svm.predict(X_train)
+                y_test_pred = svm.predict(X_test)
+
+                # error y pct de vectores de soporte
+                errores_train.append(1 - accuracy_score(y_true = y_train, y_pred = y_train_pred))
+                errores_test.append(1 - accuracy_score(y_true = y_test, y_pred = y_test_pred))
+
+                # Calcular el porcentaje de vectores de soporte. Tenga en cuenta que las estrategias
+                # OVO y OVR implican el entrenamiento de varios modelos. En este caso se debe estimar
+                # el promedio de porcentajes de vectores de soporte dentro del objeto OVO u OVR.
+
+                _, n_clases= np.unique(y_train,return_counts=True)
+                n = X_train.shape[0]
+                n_samples = []
+                for i in range(len(n_clases)):
+                  for j in range(i+1,len(n_clases)):
+                      n_samples.append(n_clases[i] + n_clases[j])
+
+                num_vs = 0
+                if estrategia == &#39;ovo&#39;:
+                    for i in range(len(svm.estimators_)):
+                        num_vs += len(svm.estimators_[i].support_)/n_samples[i]
+                    pct_vs = (num_vs / len(svm.estimators_)) *100
+                elif estrategia == &#39;ovr&#39;:
+                    for i in range(len(svm.estimators_)):
+                        num_vs += len(svm.estimators_[i].support_)
+                    pct_vs = (num_vs / (len(svm.estimators_)*n)) *100
+
+                pct_support_vectors.append(pct_vs)
+
+            resultados.loc[idx,&#39;kernel&#39;] = kernel
+            resultados.loc[idx,&#39;gamma&#39;] = gamma
+            resultados.loc[idx,&#39;param_reg&#39;] = param_reg
+            resultados.loc[idx,&#39;estrategia&#39;] = estrategia
+            resultados.loc[idx,&#39;error de entrenamiento&#39;] = np.mean(errores_train)
+            resultados.loc[idx,&#39;error de prueba&#39;] = np.mean(errores_test)
+            resultados.loc[idx,&#39;% de vectores de soporte&#39;] = np.mean(pct_support_vectors)
+            idx+=1
+        return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_experiementarSVC = namespace[&#39;experiementarSVC&#39;]
+
+    msg =  &quot;testing your code with random data points&lt;br/&gt;\n&quot;
+    kernels=[&#39;linear&#39;, &#39;rbf&#39;]
+    gammas = [0.01,0.1]
+    params_reg = [0.1, 1.0,10]
+    estrategias = [&#39;ovo&#39;, &#39;ovr&#39;]
+    for _ in range(4):  # Puedes ajustar el número de iteraciones según sea necesario
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        X = np.random.randn(input_n, input_dim).astype(&#39;f&#39;)
+        n_clases = 4
+        y = np.random.randint(n_clases, size=input_n)
+        estrategia = np.random.choice(estrategias)
+
+
+        t_resultados = t_experiementarSVC(X,y,kernels,gammas,params_reg,estrategia)[[&#39;error de entrenamiento&#39;,&#39;error de prueba&#39;,&#39;% de vectores de soporte&#39;]].values
+        s_resultados = s_experiementarSVC(X,y,kernels,gammas,params_reg,estrategia)[[&#39;error de entrenamiento&#39;,&#39;error de prueba&#39;,&#39;% de vectores de soporte&#39;]].values
+
+        if not np.allclose(t_resultados, s_resultados):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect experiment results&lt;/b&gt;
+            Expecting result &lt;pre&gt;{t_resultados}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_resultados}&lt;/pre&gt;&lt;br/&gt;
+            Check hyperparameter settings\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg + &#39;&lt;b&gt;correct&lt;/b&gt; ✅&#39;
+
+source_functions_names_03 = [&#39;experiementarSVC&#39;]
+source_variables_names_03 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#TEACHER
+def experiementarSVC(x, y, kernels, gammas,params_reg, estrategia = &#39;ovo&#39;):
+    &quot;&quot;&quot;función que realizar experimentos sobre un SVM para clasificación
+
+    x: numpy.Array, con los datos de entrada del problema
+    y: numpy.Array, con la variable objetivo
+    kernels: List[str], lista con valores a pasar
+        a sklearn correspondiente al kernel de la SVM
+    gammas: List[float], lista con los valores a pasar a
+        sklean correspondiente el valor de los coeficientes para usar en el
+        kernel
+    params_reg: List[float], lista con los valores a a pasar a
+        sklearn para ser usados como parametro de regularización
+    estrategia: str, valor que puede ser ovo (para one vs one) o ovr
+        (para one vs rest)
+
+    retorna: pd.Dataframe con las siguientes columnas:
+        - 3 columnas con los tres parametros: kernel, gamma, param de regularizacion
+        - estrategia de clasificación (ovo o ovr)
+        - Error en el conjunto de entrenamiento (promedio de los 4 folds)
+        - Error en el conjunto de test (promedio de los 4 folds)
+        - % de Vectores de Soporte promedio para los 4 folds (0 a 100)
+    &quot;&quot;&quot;
+    idx = 0
+    kf = StratifiedKFold(n_splits=4)
+    # crear una lista con la combinaciones de los elementos de cada list
+    kernels_gammas_regs = list(itertools.product(kernels, gammas, params_reg))
+    resultados = pd.DataFrame()
+
+    for params in kernels_gammas_regs:
+        kernel, gamma, param_reg = params
+        print(&quot;parametros usados&quot;, params) # puede usar para ver los params
+        errores_train = []
+        errores_test = []
+        pct_support_vectors = []
+
+        for train_index, test_index in kf.split(x,y):
+            X_train, X_test = x[train_index], x[test_index]
+            y_train, y_test = y[train_index], y[test_index]
+
+            # normalizar los datos
+            scaler = StandardScaler()
+            X_train = scaler.fit_transform(X_train)
+            X_test = scaler.transform(X_test)
+
+            #Instanciar y entrenar el modelo con los hiperparámetros adecuados
+            svm = SVC(kernel = kernel, gamma = gamma, C = param_reg, max_iter=500)
+
+            if estrategia == &#39;ovo&#39;:
+                svm = OneVsOneClassifier(svm)
+            elif estrategia == &#39;ovr&#39;:
+                svm = OneVsRestClassifier(svm)
+            svm.fit(X=X_train, y=y_train)
+
+
+            # calculo de errores
+            y_train_pred = svm.predict(X_train)
+            y_test_pred = svm.predict(X_test)
+
+            # error y pct de vectores de soporte
+            errores_train.append(1 - accuracy_score(y_true = y_train, y_pred = y_train_pred))
+            errores_test.append(1 - accuracy_score(y_true = y_test, y_pred = y_test_pred))
+
+            # Calcular el porcentaje de vectores de soporte. Tenga en cuenta que las estrategias
+            # OVO y OVR implican el entrenamiento de varios modelos. En este caso se debe estimar
+            # el promedio de porcentajes de vectores de soporte dentro de los estimadores que hacen parte de
+            # la estrategia multiclase y promediarlos.
+
+            _, n_clases= np.unique(y_train,return_counts=True)
+            n = X_train.shape[0]
+            n_samples = []
+            for i in range(len(n_clases)):
+              for j in range(i+1,len(n_clases)):
+                  n_samples.append(n_clases[i] + n_clases[j])
+
+            num_vs = 0
+            if estrategia == &#39;ovo&#39;:
+                for i in range(len(svm.estimators_)):
+                    num_vs += len(svm.estimators_[i].support_)/n_samples[i]
+                pct_vs = (num_vs / len(svm.estimators_)) *100
+            elif estrategia == &#39;ovr&#39;:
+                for i in range(len(svm.estimators_)):
+                    num_vs += len(svm.estimators_[i].support_)
+                pct_vs = (num_vs / (len(svm.estimators_)*n)) *100
+
+            pct_support_vectors.append(pct_vs)
+
+        resultados.loc[idx,&#39;kernel&#39;] = kernel
+        resultados.loc[idx,&#39;gamma&#39;] = gamma
+        resultados.loc[idx,&#39;param_reg&#39;] = param_reg
+        resultados.loc[idx,&#39;estrategia&#39;] = estrategia
+        resultados.loc[idx,&#39;error de entrenamiento&#39;] = np.mean(errores_train)
+        resultados.loc[idx,&#39;error de prueba&#39;] = np.mean(errores_test)
+        resultados.loc[idx,&#39;% de vectores de soporte&#39;] = np.mean(pct_support_vectors)
+        idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_03&quot;, source_functions_names_03, source_variables_names_03, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+</pre></div>
+</div>
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/>testing your code with random data points<br/>
+<b>correct</b> ✅</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L05.02&quot;, &#39;T3&#39;,
+                  inspect.getsource(grader_03), &#39;grader_03&#39;,
+                  source_functions_names_03, source_variables_names_03)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T3&#39;);
+</pre></div>
+</div>
+</div>
+</div>
+<p>Veamos la estrategia OVR</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># vamos a realizar los experimentos
+resultadosSVC_ovr = experiementarSVC(x = Xcl,y=Ycl,
+                                 kernels=[&#39;linear&#39;, &#39;rbf&#39;],
+                                 gammas = [0.01,0.1],
+                                 params_reg = [0.001, 0.01,0.1, 1.0,10],
+                                estrategia = &#39;ovr&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parametros usados (&#39;linear&#39;, 0.01, 0.001)
+parametros usados (&#39;linear&#39;, 0.01, 0.01)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.001)
+parametros usados (&#39;linear&#39;, 0.1, 0.01)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.001)
+parametros usados (&#39;rbf&#39;, 0.01, 0.01)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.001)
+parametros usados (&#39;rbf&#39;, 0.1, 0.01)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ver los mejores modelos
+resultadosSVC_ovr.sort_values(&#39;error de prueba&#39;, ascending=True).head(5)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-20193fc1-cac5-48ec-a40d-99478b60345e" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>kernel</th>
+      <th>gamma</th>
+      <th>param_reg</th>
+      <th>estrategia</th>
+      <th>error de entrenamiento</th>
+      <th>error de prueba</th>
+      <th>% de vectores de soporte</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>17</th>
+      <td>rbf</td>
+      <td>0.1</td>
+      <td>0.100</td>
+      <td>ovr</td>
+      <td>0.0</td>
+      <td>0.277463</td>
+      <td>94.265546</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>rbf</td>
+      <td>0.1</td>
+      <td>0.010</td>
+      <td>ovr</td>
+      <td>0.0</td>
+      <td>0.277463</td>
+      <td>94.154558</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>rbf</td>
+      <td>0.1</td>
+      <td>1.000</td>
+      <td>ovr</td>
+      <td>0.0</td>
+      <td>0.270806</td>
+      <td>87.966949</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>rbf</td>
+      <td>0.1</td>
+      <td>10.000</td>
+      <td>ovr</td>
+      <td>0.0</td>
+      <td>0.246386</td>
+      <td>92.138177</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>rbf</td>
+      <td>0.1</td>
+      <td>0.001</td>
+      <td>ovr</td>
+      <td>0.0</td>
+      <td>0.219725</td>
+      <td>50.684514</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-20193fc1-cac5-48ec-a40d-99478b60345e')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-20193fc1-cac5-48ec-a40d-99478b60345e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-20193fc1-cac5-48ec-a40d-99478b60345e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-8b82a093-fc17-45c9-9762-0cdafcc18ef5">
+  <button class="colab-df-quickchart" onclick="quickchart('df-8b82a093-fc17-45c9-9762-0cdafcc18ef5')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-8b82a093-fc17-45c9-9762-0cdafcc18ef5 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<p>Ahora vamos a ver la estrategia OVO</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># vamos a realizar los experimentos
+resultadosSVC_ovo = experiementarSVC(x = Xcl,y=Ycl,
+                                 kernels=[&#39;linear&#39;, &#39;rbf&#39;],
+                                 gammas = [0.01,0.1],
+                                 params_reg = [0.001, 0.01,0.1, 1.0,10],
+                                estrategia = &#39;ovo&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parametros usados (&#39;linear&#39;, 0.01, 0.001)
+parametros usados (&#39;linear&#39;, 0.01, 0.01)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.001)
+parametros usados (&#39;linear&#39;, 0.1, 0.01)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.001)
+parametros usados (&#39;rbf&#39;, 0.01, 0.01)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.001)
+parametros usados (&#39;rbf&#39;, 0.1, 0.01)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ver los mejores modelos
+resultadosSVC_ovo.sort_values(&#39;error de prueba&#39;, ascending=True).head(5)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-b8e4743e-c7ea-49b3-bec0-ded240cdf4b2" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>kernel</th>
+      <th>gamma</th>
+      <th>param_reg</th>
+      <th>estrategia</th>
+      <th>error de entrenamiento</th>
+      <th>error de prueba</th>
+      <th>% de vectores de soporte</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15</th>
+      <td>rbf</td>
+      <td>0.10</td>
+      <td>0.001</td>
+      <td>ovo</td>
+      <td>0.596004</td>
+      <td>0.596003</td>
+      <td>91.269597</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>rbf</td>
+      <td>0.10</td>
+      <td>0.010</td>
+      <td>ovo</td>
+      <td>0.596004</td>
+      <td>0.596003</td>
+      <td>99.742322</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>rbf</td>
+      <td>0.01</td>
+      <td>0.010</td>
+      <td>ovo</td>
+      <td>0.596004</td>
+      <td>0.596003</td>
+      <td>84.629624</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>rbf</td>
+      <td>0.01</td>
+      <td>0.001</td>
+      <td>ovo</td>
+      <td>0.596004</td>
+      <td>0.596003</td>
+      <td>82.632641</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>rbf</td>
+      <td>0.10</td>
+      <td>0.100</td>
+      <td>ovo</td>
+      <td>0.595634</td>
+      <td>0.596003</td>
+      <td>99.819697</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b8e4743e-c7ea-49b3-bec0-ded240cdf4b2')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-b8e4743e-c7ea-49b3-bec0-ded240cdf4b2 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-b8e4743e-c7ea-49b3-bec0-ded240cdf4b2');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-d86755c4-2a96-40bb-9a4f-0fd56dc8ac04">
+  <button class="colab-df-quickchart" onclick="quickchart('df-d86755c4-2a96-40bb-9a4f-0fd56dc8ac04')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-d86755c4-2a96-40bb-9a4f-0fd56dc8ac04 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
+#@markdown Según el tipo de problema (enfocarse en la distribución de clases) ¿La métrica usada es la adecuada? ¿Cual otra métrica del modulo de sklearn podría ser usada?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ver la relación de parametro de regularización y los vectores de soporte
+import seaborn as sns
+ax= sns.relplot(data = resultadosSVC_ovo, x = &#39;param_reg&#39;, y = &#39;% de vectores de soporte&#39;, kind = &#39;line&#39;, hue =&#39;kernel&#39;, aspect = 1.5)
+ax.set(xscale=&quot;log&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/03abf54ffab57ec180a999a5fcb2884b02815a27f87ac201c262dbe8143287e1.png" src="_images/03abf54ffab57ec180a999a5fcb2884b02815a27f87ac201c262dbe8143287e1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#TEACHER
+from sklearn.metrics import balanced_accuracy_score
+def experiementarSVC(x, y, kernels, gammas,params_reg, estrategia = &#39;ovo&#39;):
+    &quot;&quot;&quot;función que realizar experimentos sobre un SVM para clasificación
+
+    x: numpy.Array, con los datos de entrada del problema
+    y: numpy.Array, con la variable objetivo
+    kernels: List[str], lista con valores a pasar
+        a sklearn correspondiente al kernel de la SVM
+    gammas: List[float], lista con los valores a pasar a
+        sklean correspondiente el valor de los coeficientes para usar en el
+        kernel
+    params_reg: List[float], lista con los valores a a pasar a
+        sklearn para ser usados como parametro de regularización
+    estrategia: str, valor que puede ser ovo (para one vs one) o ovr
+        (para one vs rest)
+
+    retorna: pd.Dataframe con las siguientes columnas:
+        - 3 columnas con los tres parametros: kernel, gamma, param de regularizacion
+        - estrategia de clasificación (ovo o ovr)
+        - Error en el conjunto de entrenamiento (promedio de los 4 folds)
+        - Error en el conjunto de test (promedio de los 4 folds)
+        - % de Vectores de Soporte promedio para los 4 folds (0 a 100)
+    &quot;&quot;&quot;
+    idx = 0
+    kf = StratifiedKFold(n_splits=4)
+    # crear una lista con la combinaciones de los elementos de cada list
+    kernels_gammas_regs = list(itertools.product(kernels, gammas, params_reg))
+    resultados = pd.DataFrame()
+
+    for params in kernels_gammas_regs:
+        kernel, gamma, param_reg = params
+        print(&quot;parametros usados&quot;, params) # puede usar para ver los params
+        errores_train = []
+        errores_test = []
+        pct_support_vectors = []
+
+        for train_index, test_index in kf.split(x,y):
+            X_train, X_test = x[train_index], x[test_index]
+            y_train, y_test = y[train_index], y[test_index]
+
+            # normalizar los datos
+            scaler = StandardScaler()
+            X_train = scaler.fit_transform(X_train)
+            X_test = scaler.transform(X_test)
+
+            #Instanciar y entrenar el modelo con los hiperparámetros adecuados
+            svm = SVC(kernel = kernel, gamma = gamma, C = param_reg, max_iter=500)
+
+            if estrategia == &#39;ovo&#39;:
+                svm = OneVsOneClassifier(svm)
+            elif estrategia == &#39;ovr&#39;:
+                svm = OneVsRestClassifier(svm)
+            svm.fit(X=X_train, y=y_train)
+
+
+            # calculo de errores
+            y_train_pred = svm.predict(X_train)
+            y_test_pred = svm.predict(X_test)
+
+            # error y pct de vectores de soporte
+            errores_train.append(1 - balanced_accuracy_score(y_true = y_train, y_pred = y_train_pred))
+            errores_test.append(1 - balanced_accuracy_score(y_true = y_test, y_pred = y_test_pred))
+
+            # Calcular el porcentaje de vectores de soporte. Tenga en cuenta que las estrategias
+            # OVO y OVR implican el entrenamiento de varios modelos. En este caso se debe estimar
+            # el promedio de porcentajes de vectores de soporte dentro del objeto OVO u OVR.
+
+            _, n_clases= np.unique(y_train,return_counts=True)
+            n = X_train.shape[0]
+            n_samples = []
+            for i in range(len(n_clases)):
+              for j in range(i+1,len(n_clases)):
+                  n_samples.append(n_clases[i] + n_clases[j])
+
+            num_vs = 0
+            if estrategia == &#39;ovo&#39;:
+                for i in range(len(svm.estimators_)):
+                    num_vs += len(svm.estimators_[i].support_)/n_samples[i]
+                pct_vs = (num_vs / len(svm.estimators_)) *100
+            elif estrategia == &#39;ovr&#39;:
+                for i in range(len(svm.estimators_)):
+                    num_vs += len(svm.estimators_[i].support_)
+                pct_vs = (num_vs / (len(svm.estimators_)*n)) *100
+
+            pct_support_vectors.append(pct_vs)
+
+        resultados.loc[idx,&#39;kernel&#39;] = kernel
+        resultados.loc[idx,&#39;gamma&#39;] = gamma
+        resultados.loc[idx,&#39;param_reg&#39;] = param_reg
+        resultados.loc[idx,&#39;estrategia&#39;] = estrategia
+        resultados.loc[idx,&#39;error de entrenamiento&#39;] = np.mean(errores_train)
+        resultados.loc[idx,&#39;error de prueba&#39;] = np.mean(errores_test)
+        resultados.loc[idx,&#39;% de vectores de soporte&#39;] = np.mean(pct_support_vectors)
+        idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#TEACHER
+# vamos a realizar los experimentos
+resultadosSVC_ovr = experiementarSVC(x = Xcl,y=Ycl,
+                                 kernels=[&#39;linear&#39;, &#39;rbf&#39;],
+                                 gammas = [0.01,0.1],
+                                 params_reg = [0.001, 0.01,0.1, 1.0,10],
+                                estrategia = &#39;ovr&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>parametros usados (&#39;linear&#39;, 0.01, 0.001)
+parametros usados (&#39;linear&#39;, 0.01, 0.01)
+parametros usados (&#39;linear&#39;, 0.01, 0.1)
+parametros usados (&#39;linear&#39;, 0.01, 1.0)
+parametros usados (&#39;linear&#39;, 0.01, 10)
+parametros usados (&#39;linear&#39;, 0.1, 0.001)
+parametros usados (&#39;linear&#39;, 0.1, 0.01)
+parametros usados (&#39;linear&#39;, 0.1, 0.1)
+parametros usados (&#39;linear&#39;, 0.1, 1.0)
+parametros usados (&#39;linear&#39;, 0.1, 10)
+parametros usados (&#39;rbf&#39;, 0.01, 0.001)
+parametros usados (&#39;rbf&#39;, 0.01, 0.01)
+parametros usados (&#39;rbf&#39;, 0.01, 0.1)
+parametros usados (&#39;rbf&#39;, 0.01, 1.0)
+parametros usados (&#39;rbf&#39;, 0.01, 10)
+parametros usados (&#39;rbf&#39;, 0.1, 0.001)
+parametros usados (&#39;rbf&#39;, 0.1, 0.01)
+parametros usados (&#39;rbf&#39;, 0.1, 0.1)
+parametros usados (&#39;rbf&#39;, 0.1, 1.0)
+parametros usados (&#39;rbf&#39;, 0.1, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#TEACHER
+# ver los mejores modelos
+resultadosSVC_ovr.sort_values(&#39;error de prueba&#39;, ascending=True).head(5)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-cdb50146-c759-415c-8766-04b9cdafbf1d" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>kernel</th>
+      <th>gamma</th>
+      <th>param_reg</th>
+      <th>estrategia</th>
+      <th>error de entrenamiento</th>
+      <th>error de prueba</th>
+      <th>% de vectores de soporte</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>14</th>
+      <td>rbf</td>
+      <td>0.01</td>
+      <td>10.0</td>
+      <td>ovr</td>
+      <td>0.000000</td>
+      <td>0.016655</td>
+      <td>24.149326</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>rbf</td>
+      <td>0.01</td>
+      <td>1.0</td>
+      <td>ovr</td>
+      <td>0.000456</td>
+      <td>0.037446</td>
+      <td>31.363125</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>linear</td>
+      <td>0.01</td>
+      <td>0.1</td>
+      <td>ovr</td>
+      <td>0.005286</td>
+      <td>0.049401</td>
+      <td>12.014300</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>linear</td>
+      <td>0.10</td>
+      <td>0.1</td>
+      <td>ovr</td>
+      <td>0.005286</td>
+      <td>0.049401</td>
+      <td>12.014300</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>linear</td>
+      <td>0.01</td>
+      <td>1.0</td>
+      <td>ovr</td>
+      <td>0.002532</td>
+      <td>0.051354</td>
+      <td>9.165612</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-cdb50146-c759-415c-8766-04b9cdafbf1d')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-cdb50146-c759-415c-8766-04b9cdafbf1d button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-cdb50146-c759-415c-8766-04b9cdafbf1d');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-b2e2dc0f-ef56-49b2-9a39-2604b41e42cb">
+  <button class="colab-df-quickchart" onclick="quickchart('df-b2e2dc0f-ef56-49b2-9a39-2604b41e42cb')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-b2e2dc0f-ef56-49b2-9a39-2604b41e42cb button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+# --- CREATE or OVERWRITE STUDENTS NOTEBOOK ---
+import init
+from local.lib.rlxmoocapi import utils
+student_notebook_fname = utils.convert_this_notebook_to_student()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">IPython.notebook.save_checkpoint();</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipynbname in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (2024.1.0.0)
+Requirement already satisfied: ipykernel in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipynbname) (6.19.3)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
+Requirement already satisfied: traitlets&gt;=5.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.8.0)
+Requirement already satisfied: debugpy&gt;=1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.6.4)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
+Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
+Requirement already satisfied: packaging in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.2)
+Requirement already satisfied: pyzmq&gt;=17 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.0.1)
+Requirement already satisfied: psutil in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.9.4)
+Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
+Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
+Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: stack-data in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.6.2)
+Requirement already satisfied: backcall in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.0)
+Requirement already satisfied: decorator in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (5.1.1)
+Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.11 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (3.0.36)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.19.1)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
+Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (5.1.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.8.2)
+Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.8.3)
+Requirement already satisfied: platformdirs&gt;=2.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-core&gt;=4.9.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.6.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.11-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.5)
+Requirement already satisfied: six&gt;=1.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (1.16.0)
+Requirement already satisfied: executing&gt;=1.2.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (1.2.0)
+Requirement already satisfied: pure-eval in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
+NOTEBOOK name is lab5_parte2--XX--TEACHER--XX.ipynb
+student notebook writen to &#39;lab5_parte2.ipynb&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-limipiar-base-de-datos-y-completar-codigo">Ejercicio 1: Limipiar base de datos y completar código</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-experimentar-svm-para-regresion">Ejercicio 2: Experimentar SVM para regresión</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-experimentar-svm-para-clasificacion">Ejercicio 3: Experimentar SVM para clasificación</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - Deiry Sofía Navas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
