@@ -21,6 +21,8 @@
 
 **08 - Regresión logística**: [Video 33mins]() <br/> Con base en un modelo de regresión y en el algoritmo de gradiente descedente se introduce el modelo de regresión logística que sirve para resolver problemas de clasificación y se explica su función de costo conocida como <em>cross-entropy</em>.
 
+[Deducción de la función de entropía cruzada](https://github.com/jdariasl/Intro_ML_2025/tree/main/local/content/local/docs/CrossEntropy.pdf)
+
 **09 - Análisis del entrenamiento de una regresión logística**: [Video 11mins]() <br/> Se presentan algunos resultados de la ejecución del proceso de entrenamiento de un modelo de regresión logística, para ayudar a comprender el proceso de minimización de la función de costo a partir del algoritmo de gradiente descendente, la modificación iterativa de la frontera de decisión hasta alcanzar la ubicación óptima (de acuerdo con la función de costo) y su correspondiente interpretación en el espacio de búsqueda.
 
 **10 - Fronteras no lineales con regresión logística**: [Video 14mins]() <br/> Se discute cómo se pueden obtener fronteras de decisión no lineales usando el modelo de regresión logística y los ajustes que deben realizarse para su implementación.
