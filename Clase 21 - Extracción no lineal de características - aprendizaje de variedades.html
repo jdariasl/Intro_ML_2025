@@ -1,0 +1,1139 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reducción de dimensión: Métodos no lineales &#8212; 2025 Introducción al Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Clase 21 - Extracción no lineal de características - aprendizaje de variedades';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características" href="lab6_parte1.html" />
+    <link rel="prev" title="Reducción de dimensión: Análisis Discriminante de Fisher" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2025 Introducción al Machine Learning - Home"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2025 Introducción al Machine Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Course information
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2001%20-%20Introducci%C3%B3n%20al%20Machine%20Learning.html">Introducción al Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Aprendizaje%20no%20supervisado.html">Clustering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2019%20-%20An%C3%A1lisis%20de%20Componentes%20Principales.html">Reducción de dimensión: Análisis de Componentes Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html">Reducción de dimensión: Análisis Discriminante de Fisher</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Reducción de dimensión: Métodos no lineales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
+</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/Clase 21 - Extracción no lineal de características - aprendizaje de variedades.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Clase 21 - Extracción no lineal de características - aprendizaje de variedades.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Reducción de dimensión: Métodos no lineales</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-pca">Kernel PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t-sne-t-distributed-stochastic-neighbor-embedding">t-SNE (t-distributed Stochastic Neighbor Embedding)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umap-uniform-manifold-approximation-and-projection">UMAP (Uniform Manifold Approximation and Projection)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lle-local-linear-embedding">LLE (Local Linear Embedding)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-on-mnist-subset">Comparison on MNIST Subset</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reduccion-de-dimension-metodos-no-lineales">
+<h1>Reducción de dimensión: Métodos no lineales<a class="headerlink" href="#reduccion-de-dimension-metodos-no-lineales" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>En muchos problemas del mundo real, los datos tienen una alta dimensionalidad, lo que dificulta su visualización, procesamiento y análisis.</p>
+<p>La <strong>reducción de dimensionalidad no lineal</strong> busca proyectar estos datos en espacios de menor dimensión mientras se conserva su estructura interna, especialmente cuando las relaciones entre características no son lineales.</p>
+<p><strong>El aprendizaje de variedades</strong> (manifold learning) asume que los datos de alta dimensión yacen sobre una variedad de menor dimensión incrustada en el espacio original. El objetivo es descubrir esa estructura subyacente.</p>
+<p>Entre los métodos más populares se encuentran:</p>
+<ul class="simple">
+<li><p><strong>Kernel PCA</strong>: una extensión de PCA que utiliza funciones kernel para capturar relaciones no lineales.</p></li>
+<li><p><strong>t-SNE</strong>: técnica de visualización que preserva bien la estructura de vecindades locales.</p></li>
+<li><p><strong>UMAP</strong>: método rápido y flexible que equilibra la preservación de estructuras locales y globales.</p></li>
+<li><p><strong>LLE (Local Linear Embedding)</strong>: método que conserva relaciones lineales locales para mapear datos en espacios de menor dimensión.</p></li>
+</ul>
+<p>Estos algoritmos son ampliamente utilizados en áreas como visualización de datos, preprocesamiento para aprendizaje automático y análisis exploratorio.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_swiss_roll, load_digits
+from sklearn.decomposition import PCA, KernelPCA
+from sklearn.manifold import TSNE, LocallyLinearEmbedding
+import umap.umap_ as umap
+from sklearn.preprocessing import StandardScaler
+</pre></div>
+</div>
+</div>
+</div>
+<section id="kernel-pca">
+<h2>Kernel PCA<a class="headerlink" href="#kernel-pca" title="Link to this heading">#</a></h2>
+<p>Kernel PCA (Principal Component Analysis) extiende PCA usando métodos kernel para permitir la reducción de dimensión no lineal.</p>
+<p>De manera similar a como se formula PCA, la clave se encuentra en la matriz de covarianza:
+$<span class="math notranslate nohighlight">\(C = \frac{1}{N}\sum_{j=1}^N {\bf{x}}_j{\bf{x}}_j^{\top} = \frac{1}{N}{\bf{X}}^{\top}{\bf{X}}\)</span>$</p>
+<p>Asumiendo que existe una función <span class="math notranslate nohighlight">\(\phi\)</span> que transforma los vectores de características:</p>
+<div class="math notranslate nohighlight">
+\[C = \frac{1}{N}\sum_{j=1}^N \phi({\bf{x}}_j)\phi({\bf{x}}_j)^{\top}\]</div>
+<p>Los componentes principales en este caso se encuentran resolviendo el siguiente problema de valores propios:</p>
+<div class="math notranslate nohighlight">
+\[N\lambda {\bf{u}} = {\bf{K}}{\bf{u}}\]</div>
+<p>donde <span class="math notranslate nohighlight">\({\bf{K}} = {\bf{X}}{\bf{X}}^{\top}; \;\; K_{ij} = \langle \phi({\bf{x}}_i),\phi({\bf{x}}_j)\rangle\)</span></p>
+<p>Tenga en cuenta que la matriz <span class="math notranslate nohighlight">\(\bf{K}\)</span>, es de <span class="math notranslate nohighlight">\(N \times N\)</span>, no de <span class="math notranslate nohighlight">\(d \times d\)</span>. Recuerden que la dimensión del espacio al que la función <span class="math notranslate nohighlight">\(\phi(\cdot)\)</span> transforma los datos no es necesariamente conocido.</p>
+<p><strong>Nota</strong>: Kernel PCA no está diseñado inherentemente para proyectar nuevas muestras. Por lo que el procedimiento se hace a través de una aproximación que implica estimar el kernel entre la nueva muestra y las muestras de entrenamiento.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Generación de datos
+X, color = make_swiss_roll(n_samples=1000, noise=0.2, random_state=42)
+
+fig = plt.figure(figsize=(6, 5))
+ax = fig.add_subplot(111, projection=&#39;3d&#39;)
+ax.scatter(X[:, 0], X[:, 1], X[:, 2], c=color, cmap=plt.cm.Spectral)
+ax.set_title(&quot;Original 3D Swiss Roll&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/154dec70649dc28767de16fd9c1934b4456e156be66ced700352012591827262.png" src="_images/154dec70649dc28767de16fd9c1934b4456e156be66ced700352012591827262.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Kernel PCA
+kpca = KernelPCA(n_components=2, kernel=&#39;rbf&#39;, gamma=0.01)
+X_kpca = kpca.fit_transform(X)
+
+plt.figure(figsize=(6, 5))
+plt.scatter(X_kpca[:, 0], X_kpca[:, 1], c=color, cmap=plt.cm.Spectral)
+plt.title(&quot;Kernel PCA (RBF Kernel)&quot;)
+plt.xlabel(&quot;PC1&quot;)
+plt.ylabel(&quot;PC2&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/51e5680ccf0f47482852cee662dac4d80c12a2466fe60e74ff9f854fdeae010c.png" src="_images/51e5680ccf0f47482852cee662dac4d80c12a2466fe60e74ff9f854fdeae010c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Transform new data with Kernel PCA
+X_new = X[:5] + np.random.normal(0, 0.1, X[:5].shape)
+X_new_kpca = kpca.transform(X_new)
+print(&quot;\nTransformed new data (Kernel PCA):\n&quot;, X_new_kpca)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Transformed new data (Kernel PCA):
+ [[ 0.22748288  0.42034671]
+ [ 0.53470758  0.07313812]
+ [-0.25807952 -0.30057659]
+ [-0.37999105  0.27971592]
+ [ 0.12504965 -0.53991686]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://scikit-learn.org/stable/auto_examples/decomposition/plot_kernel_pca.html">Otro ejemplo</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.datasets import make_circles
+from sklearn.model_selection import train_test_split
+
+X, y = make_circles(n_samples=1_000, factor=0.3, noise=0.05, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, random_state=0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>_, (train_ax, test_ax) = plt.subplots(ncols=2, sharex=True, sharey=True, figsize=(8, 4))
+
+train_ax.scatter(X_train[:, 0], X_train[:, 1], c=y_train)
+train_ax.set_ylabel(&quot;Feature #1&quot;)
+train_ax.set_xlabel(&quot;Feature #0&quot;)
+train_ax.set_title(&quot;Training data&quot;)
+
+test_ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test)
+test_ax.set_xlabel(&quot;Feature #0&quot;)
+_ = test_ax.set_title(&quot;Testing data&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/82f157233e5c4be997cfdb8dd39e4ab3fbf815e866636b11d8347ea1883d6bb5.png" src="_images/82f157233e5c4be997cfdb8dd39e4ab3fbf815e866636b11d8347ea1883d6bb5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pca = PCA(n_components=2)
+kernel_pca = KernelPCA(
+    n_components=None, kernel=&quot;rbf&quot;, gamma=10, fit_inverse_transform=True, alpha=0.1
+)
+
+X_test_pca = pca.fit(X_train).transform(X_test)
+X_test_kernel_pca = kernel_pca.fit(X_train).transform(X_test)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (orig_data_ax, pca_proj_ax, kernel_pca_proj_ax) = plt.subplots(
+    ncols=3, figsize=(14, 4)
+)
+
+orig_data_ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test)
+orig_data_ax.set_ylabel(&quot;Feature #1&quot;)
+orig_data_ax.set_xlabel(&quot;Feature #0&quot;)
+orig_data_ax.set_title(&quot;Testing data&quot;)
+
+pca_proj_ax.scatter(X_test_pca[:, 0], X_test_pca[:, 1], c=y_test)
+pca_proj_ax.set_ylabel(&quot;Principal component #1&quot;)
+pca_proj_ax.set_xlabel(&quot;Principal component #0&quot;)
+pca_proj_ax.set_title(&quot;Projection of testing data\n using PCA&quot;)
+
+kernel_pca_proj_ax.scatter(X_test_kernel_pca[:, 0], X_test_kernel_pca[:, 1], c=y_test)
+kernel_pca_proj_ax.set_ylabel(&quot;Principal component #1&quot;)
+kernel_pca_proj_ax.set_xlabel(&quot;Principal component #0&quot;)
+_ = kernel_pca_proj_ax.set_title(&quot;Projection of testing data\n using KernelPCA&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/faaf49cf49b9e58c9f18dd3d4f59df2acfa97e3186b5c8d80b17c32805635d7d.png" src="_images/faaf49cf49b9e58c9f18dd3d4f59df2acfa97e3186b5c8d80b17c32805635d7d.png" />
+</div>
+</div>
+<p><strong>Reconstrucción</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_reconstructed_pca = pca.inverse_transform(pca.transform(X_test))
+X_reconstructed_kernel_pca = kernel_pca.inverse_transform(kernel_pca.transform(X_test))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (orig_data_ax, pca_back_proj_ax, kernel_pca_back_proj_ax) = plt.subplots(
+    ncols=3, sharex=True, sharey=True, figsize=(13, 4)
+)
+
+orig_data_ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test)
+orig_data_ax.set_ylabel(&quot;Feature #1&quot;)
+orig_data_ax.set_xlabel(&quot;Feature #0&quot;)
+orig_data_ax.set_title(&quot;Original test data&quot;)
+
+pca_back_proj_ax.scatter(X_reconstructed_pca[:, 0], X_reconstructed_pca[:, 1], c=y_test)
+pca_back_proj_ax.set_xlabel(&quot;Feature #0&quot;)
+pca_back_proj_ax.set_title(&quot;Reconstruction via PCA&quot;)
+
+kernel_pca_back_proj_ax.scatter(
+    X_reconstructed_kernel_pca[:, 0], X_reconstructed_kernel_pca[:, 1], c=y_test
+)
+kernel_pca_back_proj_ax.set_xlabel(&quot;Feature #0&quot;)
+_ = kernel_pca_back_proj_ax.set_title(&quot;Reconstruction via KernelPCA&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3f887c7da19ec4d3f7e4b57e13fc4412eec6956eb4f8a2e6745c521bc83379a9.png" src="_images/3f887c7da19ec4d3f7e4b57e13fc4412eec6956eb4f8a2e6745c521bc83379a9.png" />
+</div>
+</div>
+</section>
+<section id="t-sne-t-distributed-stochastic-neighbor-embedding">
+<h2>t-SNE (t-distributed Stochastic Neighbor Embedding)<a class="headerlink" href="#t-sne-t-distributed-stochastic-neighbor-embedding" title="Link to this heading">#</a></h2>
+<p>t-SNE es una técnica nolinea usando principalmente para propósitos de visualización. t-SNE se ejecuta en dos pasos:</p>
+<ul class="simple">
+<li><p>En primer lugar construye una distribución de probabilidad condicional sobre parejas de muestras en el espacio original, de forma tal que las muestras semejantes reciben alta probabilidad de ser escogidas, mientras que las muestras muy diferentes reciben baja probabilidad de ser escogidas. El concepto de “semejanza” se basa en la distancia entre puntos y densidad en las proximidades de un punto.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[p_{j\mid i} = \frac{\exp(-\lVert\mathbf{x}_i - \mathbf{x}_j\rVert^2 / 2\sigma_i^2)}{\sum_{k \neq i} \exp(-\lVert\mathbf{x}_i - \mathbf{x}_k\rVert^2 / 2\sigma_i^2)}\]</div>
+<div class="math notranslate nohighlight">
+\[p_{ij} = \frac{p_{j\mid i} + p_{i\mid j}}{2N}\]</div>
+<ul class="simple">
+<li><p>En segundo lugar, t-SNE lleva los puntos del espacio de alta dimensionalidad al espacio de baja dimencionalidad a través de un proceso de optimización en el que se intenta conservar los valores de las probabilidades <span class="math notranslate nohighlight">\(p_{ij}\)</span>. Para ello se define una nueva función de distribución en el espacio transformado:
+$<span class="math notranslate nohighlight">\(q_{ij} = \frac{(1 + \lVert \mathbf{y}_i - \mathbf{y}_j\rVert^2)^{-1}}{\sum_k \sum_{l \neq k} (1 + \lVert \mathbf{y}_k - \mathbf{y}_l\rVert^2)^{-1}}\)</span>$</p></li>
+</ul>
+<p>y la ubicación de los puntos <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> se realiza minimizando la divergencia Kullback-Leibler entre las dos distribuciones con respecto a las posiciones de los puntos en el mapa. Dicho con otras palabras: t-SNE intenta reproducir la distribución que existía en el espacio original en el espacio final.</p>
+<p>t-SNE preserva las vecindades locales pero no es apropiada para generalizar.</p>
+<p><strong>Nota</strong>: Si el número de dimensiones es muy alto, Scikit-Learn recomienda en su documentación utilizar un método de reducción de dimensionalidad previo (como PCA) para reducir el conjunto de datos a un número de dimensiones razonable (por ejemplo 50), lo que reducirá el ruido y aligerará la ejecución de t-SNE.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X, color = make_swiss_roll(n_samples=1000, noise=0.2, random_state=42)
+tsne = TSNE(n_components=2, perplexity=30, learning_rate=200, init=&#39;random&#39;, random_state=42)
+X_tsne = tsne.fit_transform(X)
+
+plt.figure(figsize=(6, 5))
+plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=color, cmap=plt.cm.Spectral)
+plt.title(&quot;t-SNE&quot;)
+plt.xlabel(&quot;Dim 1&quot;)
+plt.ylabel(&quot;Dim 2&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d2e9e730c0ad3377e13fbf809612dfaf1c5f078e7912c2b71ad52aa5bbdf1783.png" src="_images/d2e9e730c0ad3377e13fbf809612dfaf1c5f078e7912c2b71ad52aa5bbdf1783.png" />
+</div>
+</div>
+<p><strong>En el segundo ejemplo…</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (orig_data_ax, kernel_pca_proj_ax, tsne_proj_ax) = plt.subplots(
+    ncols=3, figsize=(14, 4)
+)
+
+orig_data_ax.scatter(X_train[:, 0], X_train[:, 1], c=y_train)
+orig_data_ax.set_ylabel(&quot;Feature #1&quot;)
+orig_data_ax.set_xlabel(&quot;Feature #0&quot;)
+orig_data_ax.set_title(&quot;Training data&quot;)
+
+X_train_kernel_pca = kernel_pca.transform(X_train)
+
+kernel_pca_proj_ax.scatter(X_train_kernel_pca[:, 0], X_train_kernel_pca[:, 1], c=y_train)
+kernel_pca_proj_ax.set_ylabel(&quot;Principal component #1&quot;)
+kernel_pca_proj_ax.set_xlabel(&quot;Principal component #0&quot;)
+_ = kernel_pca_proj_ax.set_title(&quot;Projection of training data\n using KernelPCA&quot;)
+
+tsne = TSNE(n_components=2, perplexity=30, learning_rate=200, init=&#39;random&#39;, random_state=42)
+X_tsne = tsne.fit_transform(X_train)
+
+tsne_proj_ax.scatter(X_tsne[:, 0], X_tsne[:, 1], c=y_train)
+tsne_proj_ax.set_ylabel(&quot;t-SNE component #1&quot;)
+tsne_proj_ax.set_xlabel(&quot;t-SNE component #0&quot;)
+_ = tsne_proj_ax.set_title(&quot;Projection of training data\n using t-SNE&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/daac86c869ab28a87506e2fcfa5eba6d4241d98edf5946bf5552c2f76169d82b.png" src="_images/daac86c869ab28a87506e2fcfa5eba6d4241d98edf5946bf5552c2f76169d82b.png" />
+</div>
+</div>
+</section>
+<section id="umap-uniform-manifold-approximation-and-projection">
+<h2>UMAP (Uniform Manifold Approximation and Projection)<a class="headerlink" href="#umap-uniform-manifold-approximation-and-projection" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://umap-learn.readthedocs.io/en/latest/">UMAP</a> es una técnica de reducción de dimensión basada en el aprendizaje de variedades que puede ser usada para propósitos de visualización, similar a t-SNE, pero también como técnica general de reducción de dimensión no lineal.</p>
+<p>El algoritmo se fundamenta en suposiciones sobre los datos relacionadas con la <a class="reference external" href="https://en.wikipedia.org/wiki/Riemannian_manifold">variedad de Riemann</a> y su comprensión implica tener claros algunos conceptos de geometría diferencial que no revisaremos; el lector interesado puedde consultar el paper original en el siguiente <a class="reference external" href="https://arxiv.org/pdf/1802.03426">link</a>.</p>
+<p>De manera general podemos decir que el algoritmo se basada en dos fases:</p>
+<ul class="simple">
+<li><p>Dada una métrica <span class="math notranslate nohighlight">\(D\)</span>, se construye un grafo sopesado de <span class="math notranslate nohighlight">\(k\)</span>-vecinos (cada par de vecinos tiene asociado un peso), a partir de los vectores originales <span class="math notranslate nohighlight">\(\bf{x}\)</span></p></li>
+<li><p>Posteriormente, se define un algoritmo de optimización sobre vectores <span class="math notranslate nohighlight">\(\bf{y}\)</span> de baja dimensión que intente reproducir la topología del grafo original.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># UMAP
+X, color = make_swiss_roll(n_samples=1000, noise=0.2, random_state=42)
+reducer = umap.UMAP(n_neighbors=15, min_dist=0.1, random_state=42)
+X_umap = reducer.fit_transform(X)
+
+plt.figure(figsize=(6, 5))
+plt.scatter(X_umap[:, 0], X_umap[:, 1], c=color, cmap=plt.cm.Spectral)
+plt.title(&quot;UMAP&quot;)
+plt.xlabel(&quot;UMAP 1&quot;)
+plt.ylabel(&quot;UMAP 2&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+OMP: Info #276: omp_set_nested routine deprecated, please use omp_set_max_active_levels instead.
+</pre></div>
+</div>
+<img alt="_images/b49db79ee488415aca71a3939771948957ca567f3580bd8a5cff399a4096e690.png" src="_images/b49db79ee488415aca71a3939771948957ca567f3580bd8a5cff399a4096e690.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Transform new data with UMAP
+X_new_umap = reducer.transform(X_new)
+print(&quot;\nTransformed new data (UMAP):\n&quot;, X_new_umap)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Transformed new data (UMAP):
+ [[ 8.953017    2.5533378 ]
+ [-3.7371802   8.676173  ]
+ [-0.56244224  2.11647   ]
+ [ 2.5500183   1.577043  ]
+ [13.997436    6.824082  ]]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>En el segundo ejemplo…</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>reducer = umap.UMAP(n_neighbors=15, min_dist=0.1, random_state=42)
+reducer.fit(X_train)
+X_test_umap = reducer.transform(X_test)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (orig_data_ax, kernel_pca_proj_ax, umap_proj_ax) = plt.subplots(
+    ncols=3, figsize=(14, 4)
+)
+
+orig_data_ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test)
+orig_data_ax.set_ylabel(&quot;Feature #1&quot;)
+orig_data_ax.set_xlabel(&quot;Feature #0&quot;)
+orig_data_ax.set_title(&quot;Testing data&quot;)
+
+kernel_pca_proj_ax.scatter(X_test_kernel_pca[:, 0], X_test_kernel_pca[:, 1], c=y_test)
+kernel_pca_proj_ax.set_ylabel(&quot;Principal component #1&quot;)
+kernel_pca_proj_ax.set_xlabel(&quot;Principal component #0&quot;)
+_ = kernel_pca_proj_ax.set_title(&quot;Projection of testing data\n using KernelPCA&quot;)
+
+umap_proj_ax.scatter(X_test_umap[:, 0], X_test_umap[:, 1], c=y_test)
+umap_proj_ax.set_ylabel(&quot;UMAP component #1&quot;)
+umap_proj_ax.set_xlabel(&quot;UMAP component #0&quot;)
+_ = umap_proj_ax.set_title(&quot;Projection of testing data\n using UMAP&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cd7631769d18a7b2182842125b9c326a3b5728012fd07931f49de2e32830bbc3.png" src="_images/cd7631769d18a7b2182842125b9c326a3b5728012fd07931f49de2e32830bbc3.png" />
+</div>
+</div>
+<p><strong>Reconstrucción</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X_reconstructed_umap = reducer.inverse_transform(X_test_umap)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (orig_data_ax, kernel_pca_back_proj_ax, umap_back_proj_ax) = plt.subplots(
+    ncols=3, sharex=True, sharey=True, figsize=(13, 4)
+)
+
+orig_data_ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test)
+orig_data_ax.set_ylabel(&quot;Feature #1&quot;)
+orig_data_ax.set_xlabel(&quot;Feature #0&quot;)
+orig_data_ax.set_title(&quot;Original test data&quot;)
+
+kernel_pca_back_proj_ax.scatter(
+    X_reconstructed_kernel_pca[:, 0], X_reconstructed_kernel_pca[:, 1], c=y_test
+)
+kernel_pca_back_proj_ax.set_xlabel(&quot;Feature #0&quot;)
+_ = kernel_pca_back_proj_ax.set_title(&quot;Reconstruction via KernelPCA&quot;)
+
+umap_back_proj_ax.scatter(
+    X_reconstructed_umap[:, 0], X_reconstructed_umap[:, 1], c=y_test
+)
+umap_back_proj_ax.set_xlabel(&quot;Feature #0&quot;)
+_ = umap_back_proj_ax.set_title(&quot;Reconstruction via UMAP&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/85697cbc390e8d6b7e36a7aceffafff83c4f9686d9c0bc4531e190c50eb66e28.png" src="_images/85697cbc390e8d6b7e36a7aceffafff83c4f9686d9c0bc4531e190c50eb66e28.png" />
+</div>
+</div>
+</section>
+<section id="lle-local-linear-embedding">
+<h2>LLE (Local Linear Embedding)<a class="headerlink" href="#lle-local-linear-embedding" title="Link to this heading">#</a></h2>
+<p>LLE es una técnica de reducción de dimensión basada en las vecindades locales. La técnica consiste en dos pasos:</p>
+<ul class="simple">
+<li><p>Primero encuentra los vecinos más cercanos de cada punto y estima pesos que reflejan cómo se relaciona cada muestra con sus vecinos.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\text{Minimiza:} \; \sum_i \left\|{\bf{x}}_i - \sum_j w_{ji}{\bf{x}}_j\right\|^2\]</div>
+<div class="math notranslate nohighlight">
+\[\text{sujeto a:} \; \sum_j w_{ji} = 1\]</div>
+<p>Es decir que estima los pesos de tal manera que cada punto se pueda expresar como una combinación lineal de sus vecinos más cercanos.</p>
+<p>Posteriormente, encuentra vectores de representación en baja dimensión minimizando la función de coste:
+$<span class="math notranslate nohighlight">\( \min_{\bf{y}} \sum_i \left\| {\bf{y}}_i - \sum_j w_{ij} {\bf{y}}_j \right\|^2 \)</span>$</p>
+<p>LLE preserva las relaciones locales y es sensible al reuido y al tamaño de las vecindad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lle = LocallyLinearEmbedding(n_components=2, n_neighbors=12)
+X_lle = lle.fit_transform(X)
+
+plt.figure(figsize=(6, 5))
+plt.scatter(X_lle[:, 0], X_lle[:, 1], c=color, cmap=plt.cm.Spectral)
+plt.title(&quot;Local Linear Embedding&quot;)
+plt.xlabel(&quot;LLE 1&quot;)
+plt.ylabel(&quot;LLE 2&quot;)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1c9bb750138c93e35b9488170a50e382c3564ec2ddfca21b41490f8c2bbd69e6.png" src="_images/1c9bb750138c93e35b9488170a50e382c3564ec2ddfca21b41490f8c2bbd69e6.png" />
+</div>
+</div>
+<p><strong>En el segundo ejemplo…</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>lle = LocallyLinearEmbedding(n_components=2, n_neighbors=12)
+lle.fit(X_train)
+X_test_lle = lle.transform(X_test)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, (orig_data_ax, kernel_pca_proj_ax, lle_proj_ax) = plt.subplots(
+    ncols=3, figsize=(14, 4)
+)
+
+orig_data_ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test)
+orig_data_ax.set_ylabel(&quot;Feature #1&quot;)
+orig_data_ax.set_xlabel(&quot;Feature #0&quot;)
+orig_data_ax.set_title(&quot;Testing data&quot;)
+
+kernel_pca_proj_ax.scatter(X_test_kernel_pca[:, 0], X_test_kernel_pca[:, 1], c=y_test)
+kernel_pca_proj_ax.set_ylabel(&quot;Principal component #1&quot;)
+kernel_pca_proj_ax.set_xlabel(&quot;Principal component #0&quot;)
+_ = kernel_pca_proj_ax.set_title(&quot;Projection of testing data\n using KernelPCA&quot;)
+
+lle_proj_ax.scatter(X_test_lle[:, 0], X_test_lle[:, 1], c=y_test)
+lle_proj_ax.set_ylabel(&quot;LLE component #1&quot;)
+lle_proj_ax.set_xlabel(&quot;LLE component #0&quot;)
+_ = lle_proj_ax.set_title(&quot;Projection of testing data\n using LLE&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2d2ce260cb061ec9448118844c0418e666021f331bb2ece914e05b3f53e03f06.png" src="_images/2d2ce260cb061ec9448118844c0418e666021f331bb2ece914e05b3f53e03f06.png" />
+</div>
+</div>
+</section>
+<section id="comparison-on-mnist-subset">
+<h2>Comparison on MNIST Subset<a class="headerlink" href="#comparison-on-mnist-subset" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;\nLoading MNIST digits subset...&quot;)
+digits = load_digits()
+X_digits = StandardScaler().fit_transform(digits.data)
+y_digits = digits.target
+
+# Kernel PCA
+X_digits_kpca = KernelPCA(n_components=2, kernel=&#39;rbf&#39;, gamma=0.01).fit_transform(X_digits)
+
+# t-SNE
+X_digits_tsne = TSNE(n_components=2, perplexity=30, learning_rate=200, init=&#39;random&#39;, random_state=42).fit_transform(X_digits)
+
+# UMAP
+X_digits_umap = umap.UMAP(n_neighbors=15, min_dist=0.1, random_state=42).fit_transform(X_digits)
+
+# LLE
+X_digits_lle = LocallyLinearEmbedding(n_components=2, n_neighbors=12).fit_transform(X_digits)
+
+# Plotting function
+def plot_embedding(X_embedded, y, title):
+    plt.figure(figsize=(6, 5))
+    scatter = plt.scatter(X_embedded[:, 0], X_embedded[:, 1], c=y, cmap=plt.cm.tab10, s=10)
+    plt.legend(*scatter.legend_elements(), title=&quot;Digits&quot;, bbox_to_anchor=(1.05, 1), loc=&#39;upper left&#39;)
+    plt.title(title)
+    plt.xlabel(&quot;Dim 1&quot;)
+    plt.ylabel(&quot;Dim 2&quot;)
+    plt.tight_layout()
+    plt.show()
+
+# Visualizations
+plot_embedding(X_digits_kpca, y_digits, &quot;MNIST - Kernel PCA&quot;)
+plot_embedding(X_digits_tsne, y_digits, &quot;MNIST - t-SNE&quot;)
+plot_embedding(X_digits_umap, y_digits, &quot;MNIST - UMAP&quot;)
+plot_embedding(X_digits_lle, y_digits, &quot;MNIST - LLE&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading MNIST digits subset...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+</pre></div>
+</div>
+<img alt="_images/8b05b6e5e4cf443409aeed96bd83a3f0889c7419d91c675aeb47ba1e1183e9ed.png" src="_images/8b05b6e5e4cf443409aeed96bd83a3f0889c7419d91c675aeb47ba1e1183e9ed.png" />
+<img alt="_images/d0c6f6a8299d60d06ac62b87bc24fa6e8519838886761646ce7c640e2ec9e16e.png" src="_images/d0c6f6a8299d60d06ac62b87bc24fa6e8519838886761646ce7c640e2ec9e16e.png" />
+<img alt="_images/9d91734f00576f3d27503229217f93e625e5d896e6b56b700ee7ce3bfab25cd4.png" src="_images/9d91734f00576f3d27503229217f93e625e5d896e6b56b700ee7ce3bfab25cd4.png" />
+<img alt="_images/ab1ad6bfe1e28ec31e0f8c4108808222dc7aee6d831fa1130ea93bb069abf5e5.png" src="_images/ab1ad6bfe1e28ec31e0f8c4108808222dc7aee6d831fa1130ea93bb069abf5e5.png" />
+</div>
+</div>
+<p><strong>Hay muchos otros</strong>: <a class="reference external" href="https://wearables.cc.gatech.edu/paper_of_week/isomap.pdf">Isomap</a>, <a class="reference external" href="https://www2.imm.dtu.dk/projects/manifold/Papers/Laplacian.pdf">Laplacian eigenmaps</a>, <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-540-33037-0_14">Multidimensional Scaling</a>, etc.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Reducción de dimensión: Análisis Discriminante de Fisher</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab6_parte1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-pca">Kernel PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#t-sne-t-distributed-stochastic-neighbor-embedding">t-SNE (t-distributed Stochastic Neighbor Embedding)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#umap-uniform-manifold-approximation-and-projection">UMAP (Uniform Manifold Approximation and Projection)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lle-local-linear-embedding">LLE (Local Linear Embedding)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-on-mnist-subset">Comparison on MNIST Subset</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - Deiry Sofía Navas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

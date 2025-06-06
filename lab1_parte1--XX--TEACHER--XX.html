@@ -1,0 +1,2330 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Laboratorio 1 - Parte 1 Regresión polinomial múltiple &#8212; 2025 Introducción al Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab1_parte1--XX--TEACHER--XX';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2025 Introducción al Machine Learning - Home"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2025 Introducción al Machine Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Course information
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2001%20-%20Introducci%C3%B3n%20al%20Machine%20Learning.html">Introducción al Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Unsupervised%20Learning.html">Clustering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2019%20-%20An%C3%A1lisis%20de%20Componentes%20Principales.html">Reducción de dimensión: Análisis de Componentes Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html">Reducción de dimensión: Análisis Discriminante de Fisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul class="simple">
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/lab1_parte1--XX--TEACHER--XX.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab1_parte1--XX--TEACHER--XX.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Laboratorio 1 - Parte 1 Regresión polinomial múltiple</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-contextualizacion-del-problema">Ejercicio 1: Contextualización del problema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2">Ejercicio 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-entrenamiento">Ejercicio 3: Entrenamiento</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-4-polinomio-de-orden-superior">Ejercicio 4: Polinomio de orden superior</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-5-normalizacion">Ejercicio 5: Normalización</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-1-parte-1-regresion-polinomial-multiple">
+<h1>Laboratorio 1 - Parte 1 Regresión polinomial múltiple<a class="headerlink" href="#laboratorio-1-parte-1-regresion-polinomial-multiple" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output text_html"><h3>See <a href='https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L01.01&quot;, varname=&quot;student&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-----------
+you are judaarlo@gmail.com .... wait for the cell below to complete signup
+-----------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student = session.Session(init.endpoint).login(course_id=init.course_id, lab_id=&#39;L01.01&#39;, google_token=google_token)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
+# Ejecuta esta celda!
+from Labs.commons.utils.lab1 import *
+_, db, x, y = part_1()
+y = y.reshape(np.size(y), 1)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cargando librerias y variables al ambiente
+</pre></div>
+</div>
+</div>
+</div>
+<section id="ejercicio-1-contextualizacion-del-problema">
+<h2>Ejercicio 1: Contextualización del problema<a class="headerlink" href="#ejercicio-1-contextualizacion-del-problema" title="Link to this heading">#</a></h2>
+<p>El problema de regresión que abordaremos consiste en predecir el valor de la humedad absoluta en el aire, a partir de varias variables sensadas en el aire (Para más información sobre la base de datos y la contextualización del problema, consulte: <a class="reference external" href="http://archive.ics.uci.edu/ml/datasets/air+quality">http://archive.ics.uci.edu/ml/datasets/air+quality</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># tienes ya cargadas las siguientes variables:
+print(&quot;conjunto de datos&quot;, x)
+print(&quot;variable a predecir&quot;, y)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>conjunto de datos [[   2.6 1360.   150.  ... 1268.    13.6   48.9]
+ [   2.  1292.   112.  ...  972.    13.3   47.7]
+ [   2.2 1402.    88.  ... 1074.    11.9   54. ]
+ ...
+ [   2.4 1142.  -200.  ... 1092.    26.9   18.3]
+ [   2.1 1003.  -200.  ...  770.    28.3   13.5]
+ [   2.2 1071.  -200.  ...  816.    28.5   13.1]]
+variable a predecir [[0.7578]
+ [0.7255]
+ [0.7502]
+ ...
+ [0.6406]
+ [0.5139]
+ [0.5028]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Ejercicio de Codigo
+def num_muestras_carac(X):
+    &quot;&quot;&quot;Esta función es encargada retornar el número de muestras
+        y características del conjunto de datos X
+
+        X: matriz numpy
+        retorna:
+            número de caracteristicas (int/float)
+            número de muestras (int/float)
+    &quot;&quot;&quot;
+
+    return
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def num_muestras_carac(X):
+    return (X.shape[1],X.shape[0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+from local.lib.rlxmoocapi import submit, session
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L01.01&quot;, varname=&quot;teacher&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logging in as julian.ariasl@udea.edu.co... please wait
+
+-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>teacher = session.Session(init.endpoint).login(course_id=init.course_id, lab_id=&#39;L01.01&#39;, google_token=google_token)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_01(functions, variables, caller_userid):
+    import numpy as np
+
+    def t_num_muestras_carac(X):
+        return (X.shape[1],X.shape[0])
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_num_muestras_carac = namespace[&#39;num_muestras_carac&#39;]
+
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        input_data = np.random.randn(input_n,input_dim)
+
+        t_model = t_num_muestras_carac(input_data)
+        s_model = s_num_muestras_carac(input_data)
+
+        msg = &quot;&quot;
+
+        # check first model weights
+        tw = [i for i in t_model]
+        sw = [i for i in s_model]
+        if tw!=sw:
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect estimation of data dimensions&lt;/b&gt;
+            for &lt;tt&gt;input_dim&lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
+            Expecting result &lt;pre&gt;{(input_dim,input_n)}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_model}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+
+source_functions_names_01 = [&#39;num_muestras_carac&#39;]
+source_variables_names_01 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def num_muestras_carac(X):
+    return (X.shape[1],X.shape[0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_01&quot;, source_functions_names_01, source_variables_names_01, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L01.01&quot;, &#39;T1&#39;,
+                  inspect.getsource(grader_01), &#39;grader_01&#39;,
+                  source_functions_names_01, source_variables_names_01)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T1 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> 5gSV+mY9J3nnmNzMGwY2iYe92vBdw2zM43pwVX1mhlT8dzWTtK26wR59gAs410sGK1OucYctSqIfUjtnMaDC6isFKNnhz4xrCGYiOEQqZbrFZJSwcY8OqbwcHmQeJPIdnstNeoGHVuTh7nbSMUv2jg==</div>
+                    </div></div>
+</div>
+</section>
+<section id="ejercicio-2">
+<h2>Ejercicio 2<a class="headerlink" href="#ejercicio-2" title="Link to this heading">#</a></h2>
+<p>Analice los siguientes métodos de la teoría  de modelos de  <em>regresión polinomial múltiple</em>:</p>
+<ol class="arabic simple">
+<li><p>error cuadrático medio (<strong>ECM</strong>)</p></li>
+<li><p>modelo de regresión múltiple (<strong>regression</strong>)</p></li>
+<li><p>calculo del costo de la regresión (<strong>cost</strong>)</p></li>
+<li><p>extension de matriz (<strong>extension_matriz</strong>)</p></li>
+</ol>
+<p>La siguiente celda contiene la implementación de estas 4 funciones. Analizar y entender su funcionamiento</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def ECM(Y_est,Y):
+    &quot;&quot;&quot;función para calcular el error cuadratico medio
+    Y_est: debe contener los valores predichos por el modelo
+    Y: debe contener los valores reales
+    retorna: error cuadratico medio
+    &quot;&quot;&quot;
+    N = np.size(Y)
+    ecm = np.sum((Y_est.reshape(N,1) - Y.reshape(N,1))**2)/(N)
+    return ecm
+
+def regression(X, W):
+    &quot;&quot;&quot;calcula la regresión multiple
+    X: los valores que corresponden a las características
+    W: son los pesos usadados para realizar la regresión
+    retorna: valor estimado
+    &quot;&quot;&quot;
+    Yest = np.dot(X,W)    #con np.dot se realiza el producto matricial. Aquí X es dim [Nxd] y W es dim [dx1]
+    return Yest           #Esta variable contiene la salida de f(X,W)
+
+
+def cost_f(W,X,Y):
+    &quot;&quot;&quot;calcula la función de costo de la regresión para un vector W dado
+    W: son los pesos usadados para realizar la regresión
+    X: los valores que corresponden a las caractersiticas
+    Y: el valor de salida esperado
+
+    retorna: valor de costo
+    &quot;&quot;&quot;
+
+    m = len(Y)
+    y_est = regression(X,W)
+    cost = (1/2*m) * np.sum(np.square(y_est-Y))
+    return cost
+
+def extension_matriz(X):
+    &quot;&quot;&quot;función que realiza la extensión de la matriz X
+    X: los valores que corresponden a las características sin extender
+    Y: el valor de salida esperado
+
+    retorna: X_ext: matriz con unos extendidos, Y: matriz con dimensiones ajustadas
+    &quot;&quot;&quot;
+    #Obtenemos las dimensiones antes de exteneder la matriz
+    caracterisitcas, muestras = num_muestras_carac(X)
+    #Extendemos la matriz X
+    unos = np.ones(muestras).reshape(-1,1)
+    X_ext = np.concatenate((unos, X), axis=1)
+    X_ext = X_ext.reshape(muestras, caracterisitcas+1)
+    return X_ext
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#¿cual es el objetivo de la extension_matriz? recordar que estamos &quot;ajustando&quot; en una regresión
+
+respuesta = &#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora vamos a completar el código de la regla de actualización de los parámetros del algoritmo de <font color='blue'>gradiente_descedente</font>:</p>
+<div class="math notranslate nohighlight">
+\[w_j(iter) = w_j(iter-1) - \eta \frac{\partial E(w)}{\partial w_j}\]</div>
+<p>recordar que</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial E(w)}{\partial w_j} = \frac{\partial E({\bf{w}})}{\partial w_j} = \frac{1}{N}\sum_{i=1}^{N}\left( f({\bf{x}}_i,{\bf{w}}) - y_i\right) \frac{\partial }{\partial w_j} f({\bf{x}}_i, {\bf{w}})\]</div>
+<p>Recuerde que debe usar las funciones ya implementadas y no usar <strong>ninguna otra libreria</strong>, adicional a las librerias ya pre-cargadas como numpy (se puede llamar con np.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Ejercicio de codigo
+def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
+    &quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple
+    X: Matriz de datos
+    Y: vector con los valores a predecir
+    W: Vector de parámetros del modelo
+    eta: Taza de aprendizaje
+
+    retorna: W el valor de los parámetros de la regresión polinómica
+             costos: array con el costo por iteración
+    &quot;&quot;&quot;
+    # nuevamente usamos la función
+    # para saber el número de muestras y características
+    X_ext = extension_matriz(X)
+    caracterisitcas, N = num_muestras_carac(X_ext)
+    #Inicializamos el vector de parámetros con ceros
+    if w_ini is not None:
+        W = w_ini
+    else:
+        W = np.zeros((1,caracterisitcas))
+    W = W.reshape(np.size(W), 1)
+    # incializamos vector para almacenar costos
+    costos = np.zeros(iteraciones)
+
+    for i in range(iteraciones):
+        ## Aca debes completar la función! recuerda que solo debes usar numpy (np.funcion_a_usar)
+        # o las funciones definidas anteriormente
+        # Puedes usar las funciones definidas antes
+        y_est =
+        f_xw_min_yi =
+
+        # acutaliza
+        W =
+
+        #Estima el valor de la función de costo para el W actual
+        costos[i] = cost(W,X_ext,Y)
+
+    return W, costos
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def gradiente_descendente(X, Y, eta, iteraciones):
+
+    return
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_02(functions, variables, caller_userid):
+    import numpy as np
+
+    def t_gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
+        &quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple
+        X: Matriz de datos
+        Y: vector con los valores a predecir
+        W: Vector de parámetros del modelo
+        eta: Taza de aprendizaje
+
+        retorna: W el valor de de los parametros de regresión polinomica
+                 costos: array con el costo por iteracion
+        &quot;&quot;&quot;
+        # nuevamente usamos la función
+        # para saber el numero de muestras y caractersiticas
+        caracterisitcas, N = num_muestras_carac(X)
+
+        unos = np.array([np.ones(N)]).reshape(-1,1)
+        X_ext = np.concatenate((unos, X), axis=1)
+
+        caracterisitcas = caracterisitcas + 1
+
+        #Inicializamos el vector de parámetros con ceros y
+
+        if w_ini is not None:
+            W = w_ini
+        else:
+            W = np.zeros((1,caracterisitcas))
+        W = W.reshape(np.size(W), 1)
+        # incializamos vector para almacenar costos
+        costos = np.zeros(iteraciones)
+
+        for i in range(iteraciones):
+            ## Aca debes completar la funcion! recuerda que solo debes usar numpy (np.funcion_a_usar)
+            # o las funciones definidas anteriormente
+            # usa la funcion que hace la regresion y que definimos antes
+            y_est = np.dot(X_ext,W)
+            f_xw_min_yi = (y_est.reshape(-1,1) - Y.reshape(-1,1)).T@X_ext
+            # acutaliza
+            W = W -(eta/N)*f_xw_min_yi.T
+            costos[i] = (1/2*N) * np.sum(np.square(y_est-Y))
+
+        return W, costos
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    num_muestras_carac = namespace[&#39;num_muestras_carac&#39;]
+    s_gradiente_descendente = namespace[&#39;gradiente_descendente&#39;]
+    extension_matriz = namespace[&#39;extension_matriz&#39;]
+    cost_f = namespace[&#39;cost_f&#39;]
+    regression = namespace[&#39;regression&#39;]
+
+    eta = 0.0001
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500)+20
+        input_data = np.random.randn(input_n,input_dim)
+        output_target = np.random.randn(input_n)
+
+        #Test for W = zeros
+
+        t_W, t_costos = t_gradiente_descendente(input_data, output_target, eta, input_dim)
+        s_W, s_costos = s_gradiente_descendente(input_data, output_target, eta, input_dim)
+
+        msg = &quot;&quot;
+
+        # check first vector dimension
+        if len(t_W)!=len(s_W):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect model dimensions&lt;/b&gt;
+            For &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim}&lt;hr/&gt;
+            Expecting weights vector dim &lt;pre&gt;{len(t_W)}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{len(s_W)}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+        # check model weights
+
+        if not np.allclose(t_W,s_W):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt;
+            for &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
+            Expecting result &lt;pre&gt;{t_W}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_W}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+        # check loss function
+        if not np.allclose(t_costos,s_costos):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt;
+            For &lt;tt&gt;Max iterations &lt;/tt&gt;={input_dim} &lt;hr/&gt;
+            Expecting loss function values &lt;pre&gt;{t_costos}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_costos}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+        w_ini = np.random.randn(input_dim + 1)*0.01
+        t_W, t_costos = t_gradiente_descendente(input_data, output_target, eta, input_dim, w_ini = w_ini)
+        s_W, s_costos = s_gradiente_descendente(input_data, output_target, eta, input_dim, w_ini = w_ini)
+
+        # check model weights
+        if not np.allclose(t_W,s_W):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect estimation of model parameters for non-zero initialization&lt;/b&gt;
+            for &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
+            Expecting result &lt;pre&gt;{t_W}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_W}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+
+source_functions_names_02 = [&#39;num_muestras_carac&#39;,&#39;gradiente_descendente&#39;,&#39;extension_matriz&#39;,&#39;cost_f&#39;,&#39;regression&#39;]
+source_variables_names_02 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def gradiente_descendente(X, Y, eta, iteraciones, w_ini = None):
+    &quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple
+    X: Matriz de datos
+    Y: vector con los valores a predecir
+    W: Vector de parámetros del modelo
+    eta: Taza de aprendizaje
+
+    retorna: W el valor de de los parametros de regresión polinomica
+             costos: array con el costo por iteracion
+    &quot;&quot;&quot;
+    # nuevamente usamos la función
+    # para saber el numero de muestras y caractersiticas
+    X_ext = extension_matriz(X)
+    caracterisitcas, N = num_muestras_carac(X_ext)
+    #Inicializamos el vector de parámetros con ceros y
+
+    if w_ini is not None:
+        W = w_ini
+    else:
+        W = np.zeros((1,caracterisitcas))
+    W = W.reshape(np.size(W), 1)
+    # incializamos vector para almacenar costos
+    costos = np.zeros(iteraciones)
+
+    for i in range(iteraciones):
+        ## Aca debes completar la funcion! recuerda que solo debes usar numpy (np.funcion_a_usar)
+        # o las funciones definidas anteriormente
+        # usa la funcion que hace la regresion y que definimos antes
+        y_est = regression(X_ext,W)
+        f_xw_min_yi = (y_est.reshape(-1,1) - Y.reshape(-1,1)).T@X_ext
+        # acutaliza
+        W = W -(eta/N)*f_xw_min_yi.T
+        costos[i] = cost_f(W,X_ext,Y)
+
+    return W, costos
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_02&quot;, source_functions_names_02, source_variables_names_02, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L01.01&quot;, &#39;T2&#39;,
+                  inspect.getsource(grader_02), &#39;grader_02&#39;,
+                  source_functions_names_02, source_variables_names_02)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T2&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T2 submitted.</b> <b><font color="blue">your grade is 0</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>Incorrect estimation of model parameters</b> 
+            for <tt>initial dim </tt>=5 and <tt>n_samples</tt>=373<hr/>
+            Expecting result <pre>[[ 1.59498106e-06]
+ [ 1.11932778e-05]
+ [-4.94140749e-05]
+ [ 1.13162335e-05]
+ [ 5.73074564e-07]
+ [ 4.40343038e-06]]</pre> <br/>
+            but got <pre>[[ 1.59498106e-06]
+ [ 1.11932778e-05]
+ [-4.94140749e-05]
+ [ 1.13162335e-05]
+ [ 5.73074564e-07]
+ [ 4.40343038e-06]]</pre><br/><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> 71Kif+m3/Ryl0PoYk2dj0xTpor9RVb9MZz+IRSmO8dDBx+Vx2tFWpgXa5M0mmq/53/1V/+C7PVcimuCeXmOt2Me1jlh5SRuq2ewVWkjSfVhvP9JZ9z7N1BSgYcw0NHRdWJKZHXNAwigSGdEXsHhMoQ==</div>
+                    </div></div>
+</div>
+</section>
+<section id="ejercicio-3-entrenamiento">
+<h2>Ejercicio 3: Entrenamiento<a class="headerlink" href="#ejercicio-3-entrenamiento" title="Link to this heading">#</a></h2>
+<p>Con la función implementada vamos a entrenar un modelo y calcular su error de entrenamiento. Antes de realizar esto, debemos separar nuestro conjunto de datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># esto para lograr reproductibilidad
+# de nuestro modelo
+random.seed(1)
+# usamos nuestra funcion para obtener el numero de muestras
+_, N = num_muestras_carac(x)
+ind=np.random.permutation(N)
+Xtrain = x[ind[0:int(math.ceil(0.7*N))],:]
+Xtest = x[ind[int(math.ceil(0.7*N)):N],:]
+Ytrain = y[ind[0:int(math.ceil(0.7*N))]]
+Ytest = y[ind[int(math.ceil(0.7*N)):N]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+# ¿Porqué debemos hacer partición de datos? ¿Qué representa Xtrain, qué diferencia tiene con Xtest?
+respuesta = &#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora entrena ejecutando la siguiente linea de codigo y verifiquemos el comportamiento del costo</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>W, costo = gradiente_descendente(Xtrain, Ytrain, eta = 0.0001, iteraciones=5)
+# graficar iteraciones y el costo
+plt.plot(range(5), costo)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/45d6083baa9417d166d679b19b520ffdfd93456f5614570738f11fc6b29871ef.png" src="_images/45d6083baa9417d166d679b19b520ffdfd93456f5614570738f11fc6b29871ef.png" />
+</div>
+</div>
+<p>El costo es la medida que el algoritmo de optimización intenta mejorar. Sin embargo, para este tipo de problemas al final debemos evaluar que tan bien estamos modelando nuestra salida. Vamos a evaluar nuestro modelo calculando el error cuadrático medio. Para ello vamos crear a una función. Recuerda usar las funciones definidas anteriormente.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Ejercicio de Código
+def evaluar_modelo (W, X_to_test, Y_True):
+    &quot;&quot;&quot; función que evalúa un modelo de regresión usando el error cuadrático medio
+
+    W: es un matriz con los parámetros del modelo entrenados
+    X_to_test: conjunto de datos para usar en la evaluación del modelo
+    Y_True: valores reales para usar en la evaluación del modelo
+
+    retorna: el error cuadrático medio
+    &quot;&quot;&quot;
+    ## Comienza a completar tu codigo. recuerda usar la funciones ya definidas
+    X_to_test_ext = extension_matriz(X_to_test)
+    y_est =
+    error =
+
+    return(error)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_03(functions, variables, caller_userid):
+    import numpy as np
+
+    def t_evaluar_modelo(W, X_to_test, Y_True):
+        &quot;&quot;&quot; función que evalúa un modelo de regresión usando el error cuadrático medio
+
+        W: es un matriz con los parámetros del modelo entrenados
+        X_to_test: conjunto de datos para usar en la evaluación del modelo
+        Y_True: valores reales para usar en la evaluación del modelo
+
+        retorna: el error cuadrático medio
+        &quot;&quot;&quot;
+        ## Comienza a completar tu codigo. recuerda usar la funciones ya definidas
+        X_to_test_ext = extension_matriz(X_to_test)
+        y_est = X_to_test_ext@W
+        error = np.mean(np.square(y_est.reshape(-1,1)-Y_True.reshape(-1,1)))
+
+        return(error)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    num_muestras_carac = namespace[&#39;num_muestras_carac&#39;]
+    s_gradiente_descendente = namespace[&#39;gradiente_descendente&#39;]
+    s_evaluar_modelo = namespace[&#39;evaluar_modelo&#39;]
+    extension_matriz = namespace[&#39;extension_matriz&#39;]
+    regression = namespace[&#39;regression&#39;]
+    cost_f = namespace[&#39;cost_f&#39;]
+    ECM = namespace[&#39;ECM&#39;]
+
+    eta = 0.0001
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500)+20
+        input_data = np.random.randn(input_n,input_dim)
+        output_target = np.random.randn(input_n)
+
+        #Test for W = zeros
+
+        s_W, _ = s_gradiente_descendente(input_data, output_target, eta, input_dim)
+
+        t_ecm = t_evaluar_modelo(s_W, input_data, output_target)
+        s_ecm = s_evaluar_modelo(s_W, input_data, output_target)
+
+        msg = &quot;&quot;
+
+        # check error estimation
+        if t_ecm!=s_ecm:
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect error estimation&lt;/b&gt;
+            For &lt;tt&gt;weight vector &lt;/tt&gt;={s_W}&lt;hr/&gt;
+            Expecting ECM &lt;pre&gt;{t_ecm}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_ecm}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+
+source_functions_names_03 = [&#39;gradiente_descendente&#39;,&#39;num_muestras_carac&#39;,&#39;evaluar_modelo&#39;,&#39;extension_matriz&#39;,&#39;regression&#39;,&#39;cost_f&#39;,&#39;ECM&#39;]
+source_variables_names_03 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def evaluar_modelo (W, X_to_test, Y_True):
+    &quot;&quot;&quot; funcion que evalua un modelo de regresión usando el error cuadratico medio
+
+    W: es un matriz con los parametros del modelo entrenados
+    X_to_test: conjunto de datos para usar en el evaluamiento del modelo
+    Y_True: valores reales para usar en el evaluamiento del modelo
+
+    retorna: el error cuadratico medio
+    &quot;&quot;&quot;
+    ## Comienza a completar tu codigo. recuerda usar la funciones ya definidas
+    X_to_test_ext = extension_matriz(X_to_test)
+    y_est = X_to_test_ext@W
+    error = np.mean(np.square(y_est.reshape(-1,1)-Y_True.reshape(-1,1)))
+
+    return(error)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_03&quot;, source_functions_names_03, source_variables_names_03, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L01.01&quot;, &#39;T3&#39;,
+                  inspect.getsource(grader_03), &#39;grader_03&#39;,
+                  source_functions_names_03, source_variables_names_03)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T3&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T3 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> SKKKNU5EhPm5mYL/gtjvM32dxlddyLSt13iUG9lnwbauTq1/kjSf+uJJOx52O92botBCrmz857mal86uLMU/gdDSbMsQn5jy/jdlVIq/eLptCUNXl+SY1zIZsE6I4RVkcdyNLE4+SjOOKo3DxdLK0Q==</div>
+                    </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># y ahora usala para calcular el error, para evaluar el modelo
+error_train = evaluar_modelo(W, X_to_test = Xtrain,  Y_True = Ytrain)
+print(&quot;error en entrenamiento del modelo&quot;, error_train)
+error_test = evaluar_modelo(W, X_to_test = Xtest,  Y_True = Ytest)
+print(&quot;error en la evaluación del modelo&quot;, error_test)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>error en entrenamiento del modelo 3.148569732924661e+28
+error en la evaluación del modelo 3.163900694153439e+28
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ¿Que tan bueno es tu modelo?
+respuesta = &#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-4-polinomio-de-orden-superior">
+<h2>Ejercicio 4: Polinomio de orden superior<a class="headerlink" href="#ejercicio-4-polinomio-de-orden-superior" title="Link to this heading">#</a></h2>
+<p>Hasta ahora lo que hemos realizado es un regresión lineal de orden 1. Nuestro siguiente objetivo es tomar esta regresión y transformarla en un polinomio de mayor orden. Comprenda el funcionamiento de la función propuesta:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Potencia de polinomio
+def potenciaPolinomio(X,grado):
+    &quot;&quot;&quot;calcula la potencia del polinomio
+    X: los valores que corresponden a las caractersiticas
+    grado: es el grado para realizar la potencia al polinomio
+    retorna: el valor de X despues de elevarlo al grado del polinimoo indicado
+    &quot;&quot;&quot;
+    X2 = X.copy()
+
+    if grado != 1:
+        for i in range(2,grado+1):
+            Xadd = X**i
+            X2 = np.concatenate((X2, Xadd), axis=1)
+
+    return X2
+</pre></div>
+</div>
+</div>
+</div>
+<p>ahora debemos usar esta función para completar la siguiente.
+<strong>PISTAS</strong></p>
+<ul class="simple">
+<li><p>Usa las funciones previamente construidas</p></li>
+<li><p>Para completar <code class="docutils literal notranslate"><span class="pre">gradiente_descendente_poly</span></code> Tener presente que buscamos realizar este proceso: aplicar la <code class="docutils literal notranslate"><span class="pre">potenciaPolinomio</span></code> -&gt;  aplicar gradiente descendente</p></li>
+<li><p>Para completar <code class="docutils literal notranslate"><span class="pre">evaluar_modelo_poly</span></code> Tener presente que buscamos realizar este proceso: aplicar la <code class="docutils literal notranslate"><span class="pre">potenciaPolinomio</span></code>  -&gt; evaluar el modelo</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Ejercicio de codigo
+def gradiente_descendente_poly (X, Y, eta, iteraciones, grado):
+    &quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple
+    X: Matriz de datos extendida
+    Y: vector con los valores a predecir
+    W: Vector de parámetros del modelo
+    eta: Taza de aprendizaje
+    iteraciones: numero de iteraciones maximo para el gradiente
+    grado: el valor del polinomio a usar
+
+    retorna: W el valor de de los parametros de regresión polinomica
+             costo: array con el valor del costo por cada iteracion
+
+    &quot;&quot;&quot;
+    ## completa el codigo
+    X2 =
+    W, costo =
+    return (W, costo)
+
+def evaluar_modelo_poly (W, X_to_test, Y_True, grado):
+    &quot;&quot;&quot; funcion que evalua un modelo de regresión usando el error cuadratico medio
+
+    W: es un matriz con los parametros del modelo entrenados
+    X_to_test: conjunto de datos para usar en el evaluamiento del modelo
+    Y_True: valores reales para usar en el evaluamiento del modelo
+    grado: grado del polinimio a usar
+
+    retorna: el error cuadratico medio
+    &quot;&quot;&quot;
+    ## Comienza a completar tu codigo. recuerda usar la funciones ya definidas
+    X2 =
+    error =
+
+    return(error)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_04(functions, variables, caller_userid):
+    import numpy as np
+
+    def t_gradiente_descendente_poly (X, Y, eta, iteraciones, grado):
+        &quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple
+        X: Matriz de datos extendida
+        Y: vector con los valores a predecir
+        W: Vector de parámetros del modelo
+        eta: Taza de aprendizaje
+        iteraciones: numero de iteraciones maximo para el gradiente
+        grado: el valor del polinomio a usar
+
+        retorna: W el valor de de los parametros de regresión polinomica
+                 costo: array con el valor del costo por cada iteracion
+
+        &quot;&quot;&quot;
+        ## completa el codigo
+        X2 = potenciaPolinomio(X,grado)
+        W, costo = gradiente_descendente(X2, Y, eta, iteraciones)
+        return (W, costo)
+
+    def t_evaluar_modelo_poly (W, X_to_test, Y_True, grado):
+        &quot;&quot;&quot; funcion que evalua un modelo de regresión usando el error cuadratico medio
+
+        W: es un matriz con los parametros del modelo entrenados
+        X_to_test: conjunto de datos para usar en el evaluamiento del modelo
+        Y_True: valores reales para usar en el evaluamiento del modelo
+        grado: grado del polinimio a usar
+
+        retorna: el error cuadratico medio
+        &quot;&quot;&quot;
+        ## Comienza a completar tu codigo. recuerda usar la funciones ya definidas
+        X2 = potenciaPolinomio(X_to_test,grado)
+        error = evaluar_modelo (W, X2, Y_True)
+
+        return(error)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_gradiente_descendente_poly = namespace[&#39;gradiente_descendente_poly&#39;]
+    s_evaluar_modelo_poly = namespace[&#39;evaluar_modelo_poly&#39;]
+    num_muestras_carac = namespace[&#39;num_muestras_carac&#39;]
+    gradiente_descendente = namespace[&#39;gradiente_descendente&#39;]
+    evaluar_modelo = namespace[&#39;evaluar_modelo&#39;]
+    extension_matriz = namespace[&#39;extension_matriz&#39;]
+    regression = namespace[&#39;regression&#39;]
+    cost_f = namespace[&#39;cost_f&#39;]
+    potenciaPolinomio = namespace[&#39;potenciaPolinomio&#39;]
+    ECM = namespace[&#39;ECM&#39;]
+
+    eta = 0.0001
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+        input_dim = np.random.randint(5)+5
+        grado = np.random.randint(3) + 1
+        input_n = np.random.randint(500) + 20
+        input_data = np.random.randn(input_n,input_dim)
+        output_target = np.random.randn(input_n)
+
+        #Test for W = zeros
+
+        t_W, t_costos = t_gradiente_descendente_poly(input_data, output_target, eta, input_dim, grado)
+        s_W, s_costos = s_gradiente_descendente_poly(input_data, output_target, eta, input_dim, grado)
+
+        t_ecm = t_evaluar_modelo_poly(t_W, input_data, output_target, grado)
+        s_ecm = s_evaluar_modelo_poly(t_W, input_data, output_target, grado)
+
+        msg = &quot;&quot;
+
+        # check first vector dimension
+        if len(t_W)!=len(s_W):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect model dimensions&lt;/b&gt;
+            For &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim}&lt;hr/&gt;
+            Expecting weights vector dim &lt;pre&gt;{len(t_W)}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{len(s_W)}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+        # check model weights
+
+        if (t_W!=s_W).any():
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt;
+            for &lt;tt&gt;initial dim &lt;/tt&gt;={input_dim} and &lt;tt&gt;n_samples&lt;/tt&gt;={input_n}&lt;hr/&gt;
+            Expecting result &lt;pre&gt;{t_W}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_W}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+        if not np.allclose(t_costos,s_costos):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect estimation of model parameters&lt;/b&gt;
+            For &lt;tt&gt;Max iterations &lt;/tt&gt;={input_dim} &lt;hr/&gt;
+            Expecting loss function values &lt;pre&gt;{t_costos}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_costos}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+        # check error estimation
+        if t_ecm!=s_ecm:
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect error estimation&lt;/b&gt;
+            For &lt;tt&gt;weight vector &lt;/tt&gt;={s_W}&lt;hr/&gt;
+            Expecting ECM &lt;pre&gt;{t_ecm}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_ecm}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+        # check model weights
+
+
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+
+source_functions_names_04 = [&#39;evaluar_modelo_poly&#39;,&#39;gradiente_descendente_poly&#39;,&#39;potenciaPolinomio&#39;,&#39;gradiente_descendente&#39;,&#39;num_muestras_carac&#39;,&#39;evaluar_modelo&#39;,&#39;extension_matriz&#39;,&#39;regression&#39;,&#39;cost_f&#39;,&#39;ECM&#39;]
+source_variables_names_04 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def gradiente_descendente_poly (X, Y, eta, iteraciones, grado):
+    &quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple
+    X: Matriz de datos extendida
+    Y: vector con los valores a predecir
+    W: Vector de parámetros del modelo
+    eta: Taza de aprendizaje
+    iteraciones: numero de iteraciones maximo para el gradiente
+    grado: el valor del polinomio a usar
+
+    retorna: W el valor de de los parametros de regresión polinomica
+             costo: array con el valor del costo por cada iteracion
+
+    &quot;&quot;&quot;
+    ## completa el codigo
+    X2 = potenciaPolinomio(X,grado)
+    W, costo = gradiente_descendente(X2, Y, eta, iteraciones)
+    return (W, costo)
+
+def evaluar_modelo_poly (W, X_to_test, Y_True, grado):
+    &quot;&quot;&quot; funcion que evalua un modelo de regresión usando el error cuadratico medio
+
+    W: es un matriz con los parametros del modelo entrenados
+    X_to_test: conjunto de datos para usar en el evaluamiento del modelo
+    Y_True: valores reales para usar en el evaluamiento del modelo
+    grado: grado del polinimio a usar
+
+    retorna: el error cuadratico medio
+    &quot;&quot;&quot;
+    ## Comienza a completar tu codigo. recuerda usar la funciones ya definidas
+    X2 = potenciaPolinomio(X_to_test,grado)
+    error = evaluar_modelo (W, X2, Y_True)
+
+    return(error)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_04&quot;, source_functions_names_04, source_variables_names_04, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L01.01&quot;, &#39;T4&#39;,
+                  inspect.getsource(grader_04), &#39;grader_04&#39;,
+                  source_functions_names_04, source_variables_names_04)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T4&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T4 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> zP6piWGRHho3omMHjSIyGZ8weti+CA3Jqhri8Q1Tyfn4AUci+xNtz/Aw4e01TKTrsCVcspKmlA03f33RJIDYNtmMhDkO7RNha/fFY4Ccoet3rZTNoL5kdyAJ+KxvOmY+m1EzMDuMmxky3yvvMavxDQ==</div>
+                    </div></div>
+</div>
+<p>Entrenemos y evaluemos el comportamiento del costo con la regresion polinómica ¿Vemos algún cambio positivo?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># entrenamos
+W, costo_poly = gradiente_descendente_poly(Xtrain, Ytrain, eta = 0.0001, iteraciones=5, grado = 2)
+plt.plot(range(5), costo_poly)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa4784e6a90&gt;]
+</pre></div>
+</div>
+<img alt="_images/04615b313aa944ae7c92d9043dffbdc7bfcb0383c4551eb2e4c289b5b64d86c8.png" src="_images/04615b313aa944ae7c92d9043dffbdc7bfcb0383c4551eb2e4c289b5b64d86c8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># completa los parametros para evaluar el modelo
+error_test = evaluar_modelo_poly(W, X_to_test = Xtest,  Y_True = Ytest, grado = 2)
+print(&quot;error en la evaluación del modelo&quot;, error_test)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>error en la evaluación del modelo 1.2794264298177105e+90
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-5-normalizacion">
+<h2>Ejercicio 5: Normalización<a class="headerlink" href="#ejercicio-5-normalizacion" title="Link to this heading">#</a></h2>
+<p>En nuestro primer experimento vamos a evaluar el rendimiento del modelo usando varias tasas de aprendizaje y grados de polinomios. Vamos a dejar por ahora un número de iteraciones fijas = 5. Para ello completa la siguiente función.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Ejercicio de codigo
+def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
+    &quot;&quot;&quot; función para realizar experimentos.
+    Xtrain: conjunto de datos de entrenamiento
+    Xtest: conjunto de datos para evaluación
+    Ytrain: salidas reales del conjunto de entrenamiento
+    Ytest: salidas reales del conjunto de evaluación
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje
+        para realizar los experimentos
+    grados: Es una lista con los valores númericos de grados
+        para realizar los experimentos
+    retorna: un dataframe con el resultados de los experimentos
+    &quot;&quot;&quot;
+    numero_iter = 5
+
+    resultados = pd.DataFrame()
+    idx = 0 # indice
+    for eta in tasas:
+        for grado in grados:
+
+            # ignorar el costo
+            W, _ = ...
+            error = ...
+
+            resultados.loc[idx,&#39;grado&#39;] = grado
+            resultados.loc[idx,&#39;tasa de aprendizaje&#39;] = eta
+            resultados.loc[idx,&#39;ecm&#39;] = error
+            idx = idx+1
+
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def experimentar (Xtrain, Xtest, Ytrain, Ytest, tasas, grados):
+    &quot;&quot;&quot; funcion para realizar experimentos.
+    Xtrain: conjunto de datos
+    Xtest:
+    Ytrain:
+    Ytest:
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje
+        para realizar los experimentos
+    grados: Es una lista con los valores númericos de grados
+        para realizar los experimentos
+    retorna: un dataframe con el resultados de los experimentos
+    &quot;&quot;&quot;
+    numero_iter = 5
+
+    resultados = pd.DataFrame()
+    idx = 0 # indice
+    for eta in tasas:
+        for grado in grados:
+
+            # ignorar el costo
+            W, _ = gradiente_descendente_poly (Xtrain, Ytrain, eta, numero_iter, grado)
+            error = evaluar_modelo_poly (W, Xtest, Ytest, grado)
+
+            resultados.loc[idx,&#39;grado&#39;] = grado
+            resultados.loc[idx,&#39;tasa de aprendizaje&#39;] = eta
+            resultados.loc[idx,&#39;ecm&#39;] = error
+            idx = idx+1
+
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Ahora ejecutamos la función desarrollada para ver los resultados
+tasas_aprendizaje = [1e-6, 1e-5, 1e-3, 1e-2]
+grados_polinomio = [1,2]
+resultados_ex1 = experimentar(Xtrain, Xtest, Ytrain, Ytest, tasas_aprendizaje, grados_polinomio)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Imprimimos los resultados
+resultados_ex1
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>grado</th>
+      <th>tasa de aprendizaje</th>
+      <th>ecm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>0.000001</td>
+      <td>5.171895e+07</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>0.000001</td>
+      <td>1.279425e+70</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>0.000010</td>
+      <td>2.718436e+18</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.0</td>
+      <td>0.000010</td>
+      <td>1.279426e+80</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.0</td>
+      <td>0.001000</td>
+      <td>3.211874e+38</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.0</td>
+      <td>0.001000</td>
+      <td>1.279426e+100</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.0</td>
+      <td>0.010000</td>
+      <td>3.216708e+48</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.0</td>
+      <td>0.010000</td>
+      <td>1.279426e+110</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Si has implementado todo correctamente, parecieria que nuestros entrenamientos no esta logrando buenos resultados (hasta parece haber errores infinitos! o no determinados!).</p>
+<p>Crea una función que implemente la normalización z-score: <span class="math notranslate nohighlight">\(\bar{x} = \frac{x-\mu}{\sigma}\)</span>. Debe estimar los parámetros de la normalización con los datos de entrenamiento y aplicar la normalización tanto a los datos de entrenamiento como a los de test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Ejercicio de codigo
+def normalizar(Xtrain, Xtest):
+    &quot;&quot;&quot; función para normalizar los datos
+    Xtrain: matriz de datos de entrenamiento a normalizar
+    Xtest: matriz de datos de evaluación a normalizar
+    retorna: matrices normalizadas
+    &quot;&quot;&quot;
+
+    Xtrain_n = ...
+    Xtest_n = ...
+    # si hay una desviacion por cero, reemplazamos los nan
+    Xtrain_n = np.nan_to_num(Xtrain_n)
+    Xtest_n = np.nan_to_num(Xtest_n)
+    return (Xtrain_n, Xtest_n)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_05(functions, variables, caller_userid):
+    import numpy as np
+
+    def t_normalizar(Xtrain, Xtest):
+        &quot;&quot;&quot; función que se usa para normalizar los datos con
+        un metodo especifico
+        Xtrain: matriz de datos entrenamiento a normalizar
+        Xtest: matriz de datos evaluación a normalizar
+        retorna: matrices normalizadas
+        &quot;&quot;&quot;
+
+        media = np.mean(Xtrain, axis = 0)
+        desvia = np.std(Xtrain, axis = 0)
+        Xtrain_n = (Xtrain - media )/desvia
+        Xtest_n = (Xtest - media )/desvia
+        # si hay una desviacion por cero, reemplazamos los nan
+        Xtrain_n = np.nan_to_num(Xtrain_n)
+        Xtest_n = np.nan_to_num(Xtest_n)
+        return (Xtrain_n, Xtest_n)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_normalizar = namespace[&#39;normalizar&#39;]
+    potenciaPolinomio = namespace[&#39;potenciaPolinomio&#39;]
+
+
+    msg = &quot;testing your code with 100 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+        input_dim = np.random.randint(5)+5
+        grado = np.random.randint(5) + 1
+        input_n = np.random.randint(500) + 20
+        x_train = potenciaPolinomio(np.random.randn(input_n,input_dim)+np.random.randn(input_n,input_dim),grado)
+        x_test = potenciaPolinomio(np.random.randn(int(input_n*0.5),input_dim),grado)
+
+        #Test for W = zeros
+
+        t_x_train_n, t_x_test_n = t_normalizar(x_train,x_test)
+        s_x_train_n, s_x_test_n = s_normalizar(x_train,x_test)
+
+        msg = &quot;&quot;
+
+
+        # check model weights
+
+        if (t_x_train_n!=s_x_train_n).any():
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect normalization of training set&lt;/b&gt;
+            Expecting result &lt;pre&gt;{t_x_train_n}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_x_train_n}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+        # check error estimation
+        if (t_x_test_n!=s_x_test_n).any():
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect normalization of testing set&lt;/b&gt;
+            Expecting result &lt;pre&gt;{t_x_test_n}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_x_test_n}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+        # check model weights
+
+
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+
+source_functions_names_05 = [&#39;potenciaPolinomio&#39;,&#39;normalizar&#39;]
+source_variables_names_05 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def normalizar(Xtrain, Xtest):
+    &quot;&quot;&quot; función que se usa para normalizar los datos con
+    un método específico
+    Xtrain: matriz de datos de entrenamiento a normalizar
+    Xtest: matriz de datos de evaluación a normalizar
+    retorna: matrices normalizadas
+    &quot;&quot;&quot;
+
+    media = np.mean(Xtrain, axis = 0)
+    desvia = np.std(Xtrain, axis = 0)
+    Xtrain_n = (Xtrain - media )/desvia
+    Xtest_n = (Xtest - media )/desvia
+    # si hay una desviacion por cero, reemplazamos los nan
+    Xtrain_n = np.nan_to_num(Xtrain_n)
+    Xtest_n = np.nan_to_num(Xtest_n)
+    return (Xtrain_n, Xtest_n)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_05&quot;, source_functions_names_05, source_variables_names_05, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L01.01&quot;, &#39;T5&#39;,
+                  inspect.getsource(grader_05), &#39;grader_05&#39;,
+                  source_functions_names_05, source_variables_names_05)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T5&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T5 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> mp0ct89KoCa7jeBiKYzkaNr5GaIwIE6ZNavzKR+aw6YBiGmmBOWE8z8NQZCXnUm1IqD08XHUlv7dBDaFGKpTP8gqW+6KEw/xBWoDwrV1zzCAa/L9MMI5DWh7E41vGrV7I9dbd5oSYOpsQFZ90y0odQ==</div>
+                    </div></div>
+</div>
+<p>Ahora vuelve a realizar los mismos experimentos, pero esta vez usa los valores de salida de la función anterior.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Xtrain_n, Xtest_n = normalizar(Xtrain, Xtest)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>resultados_ex2 = experimentar(Xtrain_n, Xtest_n, Ytrain, Ytest, tasas_aprendizaje, grados_polinomio)
+#para ver los resultados
+resultados_ex2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>grado</th>
+      <th>tasa de aprendizaje</th>
+      <th>ecm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>0.000001</td>
+      <td>1525.863862</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>0.000001</td>
+      <td>1524.577908</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>0.000010</td>
+      <td>1525.195934</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.0</td>
+      <td>0.000010</td>
+      <td>1512.386151</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.0</td>
+      <td>0.001000</td>
+      <td>1453.508566</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2.0</td>
+      <td>0.001000</td>
+      <td>605.766870</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1.0</td>
+      <td>0.010000</td>
+      <td>941.753376</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2.0</td>
+      <td>0.010000</td>
+      <td>15.297947</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ejecuta esta linea de codigo para graficar tus resultados
+import matplotlib.pyplot as plt
+
+# Grouping the data for plotting
+grouped = resultados_ex2.groupby([&#39;tasa de aprendizaje&#39;, &#39;grado&#39;])[&#39;ecm&#39;].mean().unstack()
+
+# Creating the bar plot
+fig, ax = plt.subplots()
+grouped.plot(kind=&#39;bar&#39;, ax=ax)
+
+# Labels and title
+ax.set_xlabel(&#39;Tasa de aprendizaje&#39;)
+ax.set_ylabel(&#39;ECM&#39;)
+ax.set_title(&#39;ECM vs Tasa de Aprendizaje por Grado&#39;)
+
+# Adding legend
+ax.legend(title=&#39;Grado&#39;)
+
+plt.xticks(rotation=45)  # Rotate x-axis labels if necessary
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/20805d39620de2840297fd96b5ec0a0b0f942c454d1f324d488348021b894782.png" src="_images/20805d39620de2840297fd96b5ec0a0b0f942c454d1f324d488348021b894782.png" />
+</div>
+</div>
+<p>Ten en cuenta el resutaldo de los  dos experimentos y  responde la  siguiente pregunta abierta</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Pregunta abierta
+#¿Qué proceso hace la normalización sobre los datos? Consulte qué es el número de condición de una matriz y analice qué relación tiene ese concepto con el proceso de normalización
+respuesta = &quot;&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Pregunta abierta
+#¿cuáles son los tipos de normalización más comunes. ¿Piensa en cuándo es más apropiado usar uno u otro?
+respuesta = &quot;&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finalmente, en nuestro tercer experimento, vamos a ver el efecto de las iteraciones sobre el error. Completa la siguiente función. Esta vez la tasa de aprendizaje es constante.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## ejercicio de codigo
+def experimentar_2 (Xtrain, Xtest, Ytrain, Ytest, iteraciones, grados):
+    &quot;&quot;&quot; función para realizar experimentos.
+    Xtrain: conjunto de datos de entrenamiento
+    Xtest: conjunto de datos para evaluación
+    Ytrain: salida real para el conjunto de entrenamiento
+    Ytest: salida real para el conjunto de evaluación
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje
+        para realizar los experimentos
+    rangos: Es una lista con los valores númericos de grados
+        para realizar los experimentos
+    retorna: un dataframe con el resultados de los experimentos
+    &quot;&quot;&quot;
+    eta = 1e-2
+    resultados = pd.DataFrame()
+    idx = 0 # indice
+    for itera in iteraciones:
+        for grado in grados:
+            # ignora el costo
+            W , _= ...
+            error = ...
+
+            resultados.loc[idx,&#39;iteraciones&#39;] = itera
+            resultados.loc[idx,&#39;grado&#39;] = grado
+            resultados.loc[idx,&#39;ecm&#39;] = error
+            idx = idx+1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def experimentar_2 (Xtrain, Xtest, Ytrain, Ytest, iteraciones, grados):
+    &quot;&quot;&quot; funcion para realizar experimentos.
+    Xtrain: conjunto de datos
+    Xtest:
+    Ytrain:
+    Ytest:
+    tasas: Es una lista con los valores númericos de tasas de aprendizaje
+        para realizar los experimentos
+    rangos: Es una lista con los valores númericos de grados
+        para realizar los experimentos
+    retorna: un dataframe con el resultados de los experimentos
+    &quot;&quot;&quot;
+    eta = 1e-2
+    resultados = pd.DataFrame()
+    idx = 0 # indice
+    for itera in iteraciones:
+        for grado in grados:
+            # ignora el costo
+            W , _= gradiente_descendente_poly (Xtrain, Ytrain, eta, itera, grado)
+            error = evaluar_modelo_poly (W, Xtest, Ytest, grado)
+
+            resultados.loc[idx,&#39;iteraciones&#39;] = itera
+            resultados.loc[idx,&#39;grado&#39;] = grado
+            resultados.loc[idx,&#39;ecm&#39;] = error
+            idx = idx+1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_iters = [1,5,10,50, 100,200, 1000, 2000]
+grados_polinomio = [1,2]
+# usamos la función para evaliar los resultados
+resultados_ex3 = experimentar_2(Xtrain_n, Xtest_n, Ytrain, Ytest, num_iters, grados_polinomio )
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ejecuta esta linea de código para ver gráficamente tus resultados
+import matplotlib.pyplot as plt
+
+grados = resultados_ex3[&#39;grado&#39;].unique()
+fig, axes = plt.subplots(1, len(grados), figsize=(5 * len(grados), 5), sharey=True)
+
+if len(grados) == 1:
+    axes = [axes]
+
+for ax, grado in zip(axes, grados):
+    subset = resultados_ex3[resultados_ex3[&#39;grado&#39;] == grado]
+    ax.plot(subset[&#39;iteraciones&#39;], subset[&#39;ecm&#39;], marker=&#39;o&#39;, linestyle=&#39;-&#39;)
+    ax.set_title(f&#39;Grado {grado}&#39;)
+    ax.set_xlabel(&#39;Iteraciones&#39;)
+    ax.set_ylabel(&#39;ECM&#39;)
+
+plt.tight_layout()
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6cd042fd0820439f775774eaef1eff8be36a10bd6b3e486a865ed3157adede99.png" src="_images/6cd042fd0820439f775774eaef1eff8be36a10bd6b3e486a865ed3157adede99.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+# --- CREATE or OVERWRITE STUDENTS NOTEBOOK ---
+import init
+from local.lib.rlxmoocapi import utils
+student_notebook_fname = utils.convert_this_notebook_to_student()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">IPython.notebook.save_checkpoint();</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipynbname in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (2024.1.0.0)
+Requirement already satisfied: ipykernel in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipynbname) (6.19.3)
+Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
+Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
+Requirement already satisfied: traitlets&gt;=5.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.8.0)
+Requirement already satisfied: pyzmq&gt;=17 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.0.1)
+Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
+Requirement already satisfied: packaging in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.2)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
+Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: debugpy&gt;=1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.6.4)
+Requirement already satisfied: psutil in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.9.4)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.11 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (3.0.36)
+Requirement already satisfied: decorator in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (5.1.1)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
+Requirement already satisfied: stack-data in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.6.2)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.19.1)
+Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
+Requirement already satisfied: backcall in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.8.2)
+Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
+Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (5.1.0)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.8.3)
+Requirement already satisfied: platformdirs&gt;=2.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-core&gt;=4.9.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.6.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.11-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.5)
+Requirement already satisfied: six&gt;=1.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (1.16.0)
+Requirement already satisfied: pure-eval in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
+Requirement already satisfied: executing&gt;=1.2.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (1.2.0)
+NOTEBOOK name is lab1_parte1--XX--TEACHER--XX.ipynb
+student notebook writen to &#39;lab1_parte1.ipynb&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-contextualizacion-del-problema">Ejercicio 1: Contextualización del problema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2">Ejercicio 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-entrenamiento">Ejercicio 3: Entrenamiento</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-4-polinomio-de-orden-superior">Ejercicio 4: Polinomio de orden superior</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-5-normalizacion">Ejercicio 5: Normalización</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - Deiry Sofía Navas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
