@@ -229,9 +229,6 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Clustering</a></li>
-
-
-
 <li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul>
 </details></li>
@@ -259,7 +256,7 @@
 <li class="toctree-l2"><a class="reference internal" href="lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN/EXTRACCIÓN DE CARACTERÍSTICAS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
 
@@ -270,8 +267,12 @@
 <li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">U9. OTROS PARADIGMAS DE APREDIZAJE</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2022%20-%20Aprendizaje%20semi-supervisado.html">Aprendizaje semi-supervisado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2023%20-%20Aprendizaje%20por%20refuerzo.html">Aprendizaje por refuerzo</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U10_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
 </ul>
@@ -455,21 +456,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Clustering</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias-generales">Referencias Generales</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-jerarquicos-aglomerativos">Métodos jerárquicos/aglomerativos</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas-de-los-metodos-aglomerativos">Ventajas y desventajas de los métodos aglomerativos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias-generales">Referencias Generales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-jerarquicos-aglomerativos">Métodos jerárquicos/aglomerativos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas-de-los-metodos-aglomerativos">Ventajas y desventajas de los métodos aglomerativos</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-clustering">Métodos de clustering</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-metodo-duro">k-means (método duro)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas">Desventajas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numero-de-clusters">Número de clusters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-silhouette">Coeficiente silhouette</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-clustering">Métodos de clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-metodo-duro">k-means (método duro)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas">Desventajas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numero-de-clusters">Número de clusters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-silhouette">Coeficiente silhouette</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -487,13 +486,12 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="clustering">
+<section class="tex2jax_ignore mathjax_ignore" id="clustering">
 <h1>Clustering<a class="headerlink" href="#clustering" title="Link to this heading">#</a></h1>
 <p>Una tarea muy común en el análisis de datos es el agrupamiento (clustering) de conjuntos de objetos, de tal manera que los objetos queden organizados en subgrupos en los que los elementos son más similares entre ellos que en relación con objetos de otros subgrupos. Este tipo de problemas corresponde al <b>aprendizaje no supervisado</b> y son de gran utilidad en diferentes campos. Si queremos establecer el patrón de comportamiento de un usuario de dispositivo móvil, se puede utilizar la información de GPS y los luagres de mayor interés para el usuario, en un cierto radio de cobertura, quedarán agrupados.</p>
 <p>El algoritmo EM puede ser usado como técnica de agrupamiento porque es en realidad una técnica no supervisada, que agrupa los datos en diferentes subconjuntos representando cada uno por una distribución Gaussiana, sin embargo existen otros métodos alternativos al EM, que pueden ser usados en problemas de agrupamiento (No en clasificación).</p>
-</section>
 <section id="referencias-generales">
-<h1>Referencias Generales<a class="headerlink" href="#referencias-generales" title="Link to this heading">#</a></h1>
+<h2>Referencias Generales<a class="headerlink" href="#referencias-generales" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Cluster_analysis">Cluster Analysis on Wikipedia</a></p></li>
 <li><p><a class="reference external" href="https://arxiv.org/pdf/1109.2378v1.pdf">Modern hierarchical, agglomerative
@@ -505,7 +503,7 @@ clustering algorithms</a></p></li>
 <p><img alt="alt text" src="_images/Colorful_books.jpg" /></p>
 </section>
 <section id="metodos-jerarquicos-aglomerativos">
-<h1>Métodos jerárquicos/aglomerativos<a class="headerlink" href="#metodos-jerarquicos-aglomerativos" title="Link to this heading">#</a></h1>
+<h2>Métodos jerárquicos/aglomerativos<a class="headerlink" href="#metodos-jerarquicos-aglomerativos" title="Link to this heading">#</a></h2>
 <p>Son los métodos más comunes para resumir la estructura de un conjunto de muestras. Los esquemas de clustering aglomerativo comienzan con el conjunto de datos divido en nodos que representan cada una de las muestras y paso a paso van uniendo los nodos más cercanos para formar un nuevo nodo, hasta que el final sólo se obtiene un nodo que representa el conjunto de datos completo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -651,7 +649,7 @@ clustering algorithms</a></p></li>
 </div>
 </div>
 <section id="ventajas-y-desventajas-de-los-metodos-aglomerativos">
-<h2>Ventajas y desventajas de los métodos aglomerativos<a class="headerlink" href="#ventajas-y-desventajas-de-los-metodos-aglomerativos" title="Link to this heading">#</a></h2>
+<h3>Ventajas y desventajas de los métodos aglomerativos<a class="headerlink" href="#ventajas-y-desventajas-de-los-metodos-aglomerativos" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>No es necesario definir previamente el número de clusters, pueden definirse a partir del dendograma o definiendo el umbral a partir de la distancia entre grupos.</p></li>
 <li><p>Son fáciles de implementar y los dendogramas son un herramienta últi para interpretar el resultado.</p></li>
@@ -663,13 +661,13 @@ clustering algorithms</a></p></li>
 </section>
 </section>
 <section id="metodos-de-clustering">
-<h1>Métodos de clustering<a class="headerlink" href="#metodos-de-clustering" title="Link to this heading">#</a></h1>
+<h2>Métodos de clustering<a class="headerlink" href="#metodos-de-clustering" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Métodos duros</strong>: En este caso se asigna cada muestra a exactamente un sólo cluster</p></li>
 <li><p><strong>Métodos suaves</strong>: Métodos que asignan cada muestra a diferentes clusters o conglomerados con diferentes grados de pertenencia.</p></li>
 </ul>
 <section id="k-means-metodo-duro">
-<h2>k-means (método duro)<a class="headerlink" href="#k-means-metodo-duro" title="Link to this heading">#</a></h2>
+<h3>k-means (método duro)<a class="headerlink" href="#k-means-metodo-duro" title="Link to this heading">#</a></h3>
 <p>El algoritmo K-means es tal vez el más popular algoritmo de clustering, éste agrupa los datos intentando separar las muestras en <span class="math notranslate nohighlight">\(K\)</span> grupos de igual varianza, minimizando un criterio conocido como la <em>inercia</em> o la dispersión intra-cluster:</p>
 <p>Minimizar $<span class="math notranslate nohighlight">\(\sum_{k=1}^K \sum_{{\bf{x}}_k \in C_k} \| {\bf{x}}_k - \mu_k\|^2\)</span><span class="math notranslate nohighlight">\( Con respecto a \)</span>\mu_k$.</p>
 <p><span class="math notranslate nohighlight">\(\mu_k\)</span> corresponde al centroide del cluster <span class="math notranslate nohighlight">\(k\)</span>-ésimo y <span class="math notranslate nohighlight">\(C_k\)</span> representa todo el conjunto de muestras pertenecientes al cluster <span class="math notranslate nohighlight">\(k\)</span>.</p>
@@ -8483,7 +8481,7 @@ if (outputEl) {{
 </div>
 </section>
 <section id="desventajas">
-<h2>Desventajas<a class="headerlink" href="#desventajas" title="Link to this heading">#</a></h2>
+<h3>Desventajas<a class="headerlink" href="#desventajas" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Es muy dependiente de la inicialización, se recomienda usar no una inicialización aleatoria, sino el parámetro <strong>init=’k-means++’</strong>, que inicializa los centroides en puntos distantes  y produce mejores resultados.</p></li>
 <li><p>En sklearn también se puede hacer uso del parámetro <strong>n_init=10</strong>, para que el algoritmo se inicialice varias veces y nos devuelva la solución de menor inercia.</p></li>
@@ -8532,7 +8530,7 @@ if (outputEl) {{
 </div>
 </section>
 <section id="numero-de-clusters">
-<h2>Número de clusters<a class="headerlink" href="#numero-de-clusters" title="Link to this heading">#</a></h2>
+<h3>Número de clusters<a class="headerlink" href="#numero-de-clusters" title="Link to this heading">#</a></h3>
 <p>Escoger el número de clusters puede ser una tarea complicada cuando no se tiene información a priori sobre el número de grupos existente en los datos. Existen diferentes criterios para seleccionar el número de clusters, pero ninguno de ellos es completamente acertado. Una forma habitual es utilizar una medida conocida como el porcentaje de varianza explicada, el cual se define como el cociente entre la varianza entre grupos sobre total de varianza.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -8584,7 +8582,7 @@ if (outputEl) {{
 </div>
 </section>
 <section id="coeficiente-silhouette">
-<h2>Coeficiente silhouette<a class="headerlink" href="#coeficiente-silhouette" title="Link to this heading">#</a></h2>
+<h3>Coeficiente silhouette<a class="headerlink" href="#coeficiente-silhouette" title="Link to this heading">#</a></h3>
 <p>Es una de las medidas más usadas para escoger el número de clusters. Asuma que las muestras han sido agrupadas en <span class="math notranslate nohighlight">\(k\)</span> clusers, el coeficiente silhouette para una muestra está dado por:</p>
 <p>$<span class="math notranslate nohighlight">\( S(i) = \frac{b(i) - a(i)}{\max(a(i),b(i))}\)</span><span class="math notranslate nohighlight">\(, si \)</span>|C_i| &gt; 1$</p>
 <p><span class="math notranslate nohighlight">\(a(i) = \frac{1}{|C_i|-1}\sum_{j\in C_i, i \neq j} d(i,j)\)</span> es la distancia media entre la muestra <span class="math notranslate nohighlight">\(i\)</span>, y todas las otras muestras en el mismo cluster.</p>
@@ -8625,6 +8623,7 @@ if (outputEl) {{
 <img alt="_images/c3a11634228534bc84d39c6272be290f97bc60d72d4f3f7efe78147659c20caf.png" src="_images/c3a11634228534bc84d39c6272be290f97bc60d72d4f3f7efe78147659c20caf.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -8692,21 +8691,19 @@ if (outputEl) {{
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Clustering</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias-generales">Referencias Generales</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-jerarquicos-aglomerativos">Métodos jerárquicos/aglomerativos</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas-de-los-metodos-aglomerativos">Ventajas y desventajas de los métodos aglomerativos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias-generales">Referencias Generales</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-jerarquicos-aglomerativos">Métodos jerárquicos/aglomerativos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas-de-los-metodos-aglomerativos">Ventajas y desventajas de los métodos aglomerativos</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-clustering">Métodos de clustering</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-metodo-duro">k-means (método duro)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas">Desventajas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numero-de-clusters">Número de clusters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-silhouette">Coeficiente silhouette</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-clustering">Métodos de clustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-metodo-duro">k-means (método duro)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas">Desventajas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numero-de-clusters">Número de clusters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coeficiente-silhouette">Coeficiente silhouette</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
