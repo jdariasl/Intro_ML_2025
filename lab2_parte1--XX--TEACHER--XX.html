@@ -1,0 +1,2500 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Laboratorio 2 - Parte 1. KNN para un problema de clasificación &#8212; 2025 Introducción al Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab2_parte1--XX--TEACHER--XX';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2025 Introducción al Machine Learning - Home"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2025 Introducción al Machine Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Course information
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2001%20-%20Introducci%C3%B3n%20al%20Machine%20Learning.html">Introducción al Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Unsupervised%20Learning.html">Clustering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2019%20-%20An%C3%A1lisis%20de%20Componentes%20Principales.html">Reducción de dimensión: Análisis de Componentes Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html">Reducción de dimensión: Análisis Discriminante de Fisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul class="simple">
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/lab2_parte1--XX--TEACHER--XX.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab2_parte1--XX--TEACHER--XX.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Laboratorio 2 - Parte 1. KNN para un problema de clasificación</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-1-exploracion-de-datos">Tarea 1: Exploración de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-2-clasificacion-con-k-vecinos">Tarea 2: Clasificación con K-vecinos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-3-evaluar-el-modelo-de-k-vecinos">Tarea 3: Evaluar el modelo de K-vecinos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-4-ventana-de-parzen">Tarea 4: Ventana de Parzen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-5-validar-modelo-ventana-con-parzen">Tarea 5 - Validar modelo ventana con Parzen</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-2-parte-1-knn-para-un-problema-de-clasificacion">
+<h1>Laboratorio 2 - Parte 1. KNN para un problema de clasificación<a class="headerlink" href="#laboratorio-2-parte-1-knn-para-un-problema-de-clasificacion" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output text_html"><h3>See <a href='https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L02.01&quot;, varname=&quot;student&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logging in as julian.ariasl@udea.edu.co... please wait
+
+-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student = session.Session(init.endpoint).login(course_id=init.course_id, lab_id=&#39;L02.01&#39;, google_token=google_token)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
+# Ejecuta esta celda!
+from Labs.commons.utils.lab2 import *
+_, x, y = part_1()
+y = y.reshape(np.size(y), 1)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="tarea-1-exploracion-de-datos">
+<h2>Tarea 1: Exploración de datos<a class="headerlink" href="#tarea-1-exploracion-de-datos" title="Link to this heading">#</a></h2>
+<p>Usaremos el dataset iris para el problema de clasificación. En el UCI Machine Learning Repository se encuentra más información en el siguiente <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/iris">link</a> .</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;muestra de los 5 primeros renglones de x:\n&quot;, x[0:5, :])
+print(&quot;muestra de los 5 primeros renglones de y:\n&quot;, y[0:5])
+print (&quot;¿el resultado de esta instrucción que información nos brinda?&quot;, x.shape[0])
+print (&quot;¿el resultado de esta instrucción que información nos brinda?&quot;, x.shape[1])
+print (&quot;¿el resultado de esta instrucción que información nos brinda?&quot;, len(np.unique(y)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>muestra de los 5 primeros renglones de x:
+ [[5.1 3.5 1.4 0.2]
+ [4.9 3.  1.4 0.2]
+ [4.7 3.2 1.3 0.2]
+ [4.6 3.1 1.5 0.2]
+ [5.  3.6 1.4 0.2]]
+muestra de los 5 primeros renglones de y:
+ [[0]
+ [0]
+ [0]
+ [0]
+ [0]]
+¿el resultado de esta instrucción que información nos brinda? 150
+¿el resultado de esta instrucción que información nos brinda? 4
+¿el resultado de esta instrucción que información nos brinda? 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>En un problema de clasificación, tener un desbalance de muestras puede ser perjudicial para el proceso de entrenamiento. Vamos a crear una función para verificar el número de muestras por clases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Ejercicio de código
+def muestras_por_clases (Y):
+    &quot;&quot;&quot;Función que calcula el número de muestras por cada clase
+    Y: vector de numpy con las etiquetas de las muestras del conjunto X
+    retorna: diccionario [int/float:int/float]
+        con la estructura:{etiquetaclase1: número de muestras clase1, etiquetaclase2: número de muestras clase2}
+    &quot;&quot;&quot;
+    dicto = {}
+
+    ## Pista se puede asginar keys a diccionario: dict[etiqueta] = valor
+    for
+
+
+
+    return (dicto)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+from local.lib.rlxmoocapi import submit, session
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L02.01&quot;, varname=&quot;teacher&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logging in as julian.ariasl@udea.edu.co... please wait
+
+-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>teacher = session.Session(init.endpoint).login(course_id=init.course_id, lab_id=&#39;L02.01&#39;, google_token=google_token)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_01(functions, variables, caller_userid):
+    import numpy as np
+
+    def t_muestras_por_clases(Y):
+        dicto = dict(zip(np.unique(Y,return_counts=True)[0], np.unique(Y,return_counts=True)[1]))
+        return (dicto)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_muestras_por_clases = namespace[&#39;muestras_por_clases&#39;]
+
+    msg = &quot;testing your code with 10 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+        n_class = np.random.randint(0, 100, size=10)
+
+        n_classes = np.random.randint(5)+3
+        input_n = np.random.randint(500) + 20
+        output_target = np.random.randint(0, n_classes, size=input_n)
+
+        t_model = t_muestras_por_clases(output_target)
+        s_model = s_muestras_por_clases(output_target)
+
+        msg = &quot;&quot;
+
+        # check first model weights
+        tw = [t_model[key] for key in sorted(t_model.keys())]
+        sw = [s_model[key] for key in sorted(s_model.keys())]
+
+        if tw!=sw:
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect estimation of data dimensions&lt;/b&gt;
+            for &lt;tt&gt;target_vector&lt;/tt&gt;={output_target} &lt;hr/&gt;
+            Expecting result &lt;pre&gt;{tw}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{sw}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+
+source_functions_names_01 = [&#39;muestras_por_clases&#39;]
+source_variables_names_01 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def muestras_por_clases (Y):
+    dicto = {}
+    ## Pista se puede asginar keys a diccionario: dict[etiqueta] = valor
+    dicto = dict(zip(np.unique(Y,return_counts=True)[0], np.unique(Y,return_counts=True)[1]))
+
+    return (dicto)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+# Define las funciones que se van a evaluar (sin incluir la definición)
+functions = {&#39;muestras_por_clases&#39;: muestras_por_clases}
+# Ejecuta el grader y muestra los resultados
+score, message = grader_01(functions)
+print(f&quot;Score: {score}\nMessage: {message}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Score: 5
+Message: &lt;b&gt;correct&lt;/b&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_01&quot;, source_functions_names_01, source_variables_names_01, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L02.01&quot;, &#39;T1&#39;,
+                  inspect.getsource(grader_01), &#39;grader_01&#39;,
+                  source_functions_names_01, source_variables_names_01)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T1 submitted.</b> <b><font color="blue">your grade is 0</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>Incorrect estimation of data dimensions</b> 
+            for <tt>target_vector</tt>=[1 1 2 0 0 0 0 2 0 1 0 1 1 0 0 2 1 1 1 0 2 0 2 2 1 2 2 1 1 1 0 2 1 2 0 0 2
+ 1 1 0 0 2 1 2 0 2 1 0 2 1 1 1 2 1 1 2 0 0 2 1 2 0 2 2 0 1 1 2 2 2 0 0 1 2
+ 2 1 2 2 2 1 0 1 1 1 2 0 1 0 0 2 2 2 2 0 0 2 1 2 0 2 2 2 1 1 1 2 2 0 0 2 0
+ 0 1 2 2 2 0 1 1 2 2 2 0 0 2 1 1 1 1 0 0 1 0 0 0 1 1 0 2 1 2 1 0 2 1 1 2 0
+ 2 1 0 2 2] <hr/>
+            Expecting result <pre>[46, 51, 56]</pre> <br/>
+            but got <pre>[47, 52, 57]</pre><br/><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> Kfs1R34+a2EDrcgiiOHeP/ThZHjQzoeSS7EjU5dxlTvCzPQrPWsOMwc3G2GZEuM1ocXBJ6FLGsXX8+Nv6pBu2S7ZGe0P+NzNZdCsS7lC3FRggO6v0s/ebCs52VE4xNlPb3uMZRhSmOZxcsCIapDysQ==</div>
+                    </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># con esta linea de código puedes ver la dsitribución de forma gráfica
+fig, ax = plt.subplots()
+ax.bar(muestras_por_clases(y).keys(), muestras_por_clases(y).values())
+ax.set_title(&quot;número de muestras por clase&quot;)
+ax.set_xlabel(&quot;etiqueta de clase&quot;)
+ax.set_ylabel(&quot;# muestras por clase&quot;)
+ax.set_xticks(list(muestras_por_clases(y).keys()))
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0b112fc58e86beee1d1358a4712af917e994fef8551736c1e9e3e2846e3ba893.png" src="_images/0b112fc58e86beee1d1358a4712af917e994fef8551736c1e9e3e2846e3ba893.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Pregunta Abierta
+#@markdown  ¿Cómo calificaria la distribución de clases desde el punto de vista de un problema de clasificación?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tarea-2-clasificacion-con-k-vecinos">
+<h2>Tarea 2: Clasificación con K-vecinos<a class="headerlink" href="#tarea-2-clasificacion-con-k-vecinos" title="Link to this heading">#</a></h2>
+<p>Recordemos los conceptos vistos en la teoría sobre los modelos basados en los K-vecinos más cercanos. En este ejercicio vamos a escribir la función que implementa este modelo. Pero primero vamos a definir la función que nos ayudará a calcular el error de clasificación.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def ErrorClas(Y_lest, Y):
+    &quot;&quot;&quot;función que calcula el error de clasificación
+    Y_lest: numpy array con las predicciones de etiqueta
+    Y: etiquetas reales
+    retorna: error de clasificación (int)
+    &quot;&quot;&quot;
+    error = 1 - np.sum(Y_lest == Y)/len(Y)
+
+    return error
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ahora si es hora del ejercicio. Ten en cuenta lo siguiente:</p>
+<p><b>Pistas</b></p>
+<ol class="arabic simple">
+<li><p>Para el cáculo de la distancia entre vectores existen varias opciones:</p>
+<ol class="arabic simple">
+<li><p>Usar la función la distancia entre matrices <code class="docutils literal notranslate"><span class="pre">scipy.spatial.distance.cdist</span></code>(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cdist.html#scipy.spatial.distance.cdist">Ejemplo</a>)–esta puede ser usada directamente como <code class="docutils literal notranslate"><span class="pre">cdist(...)</span></code>. Entiende la salida de esta función. Al usarla, se logra un rendimiento superior.</p></li>
+<li><p>Usar la función de distancia euclidiana <code class="docutils literal notranslate"><span class="pre">scipy.spatial.distance.euclidean</span></code>(<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.euclidean.html">Ejemplo</a>)–puede acceder a ella directamente como <code class="docutils literal notranslate"><span class="pre">euclidean</span></code>. Aca debe pensar en un algoritmo elemento a elemento, por lo tanto menos eficiente.</p></li>
+</ol>
+</li>
+<li><p>También serán de utilidad las funciones <code class="docutils literal notranslate"><span class="pre">np.sort</span></code> y <code class="docutils literal notranslate"><span class="pre">np.argsort</span></code>.</p></li>
+<li><p>Ten presente que la moda es una operación que calcula el valor más común. En el <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.mode.html">notebook ya se encuentra cargada esta operacion</a>, es posible usarla de esta manera : <code class="docutils literal notranslate"><span class="pre">mode(y)</span></code></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Ejercicio de codigo
+def knn_clasificacion (k, X_train, Y_train, X_test):
+    &quot;&quot;&quot; Función que implementa el modelo de K-Vecino mas cercanos
+        para clasificación
+    k (int): valor de vecinos a usar
+    X_train: es la matriz con las muestras de entrenamiento
+    Y_train: es un vector con los valores de salida para cada una de las muestras de entrenamiento
+    X_test: es la matriz con las muestras de validación
+    retorna: las estimaciones del modelo KNN para el conjunto X_test
+             esta matriz debe tener un shape de [row/muestras de X_test]
+             y las distancias de X_test respecto a X_train, esta matrix
+             debe tener un shape de [rows de X_test, rows X_train]
+             lo que es lo mismo [muestras de X_test, muestras de X_train]
+    &quot;&quot;&quot;
+    if k &gt; X_train.shape[0]:
+        print(&quot;k no puede ser menor que las muestras de entrenamiento&quot;)
+        return(None)
+    distancias =
+    Yest = np.zeros(X_test.shape[0])
+
+    for
+
+
+    return (Yest, distancias)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_02(functions, variables, caller_userid):
+    import numpy as np
+    from scipy.spatial.distance import cdist, euclidean
+    from scipy.stats import mode
+
+    def t_knn_clasificacion(k, X_train, Y_train, X_test):
+      if k &gt; X_train.shape[0]:
+          print(&quot;k no puede ser menor que las muestras de entrenamiento&quot;)
+          return(None)
+      N = X_test.shape[0]
+      distancia = cdist(X_test,X_train)
+      index = np.argsort(distancia,axis=1)[:,0:k]
+      temp = np.tile(Y_train.reshape(-1,1), (1, N)).transpose()
+      Y_est = mode(np.take_along_axis(temp, index, axis=1),axis=1)[0]
+      return (Y_est, distancia)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_knn_clasificacion = namespace[&#39;knn_clasificacion&#39;]
+
+    msg = &quot;testing your code with 10 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        xtrains = np.random.randn(input_n,input_dim)
+        n_classes = np.random.randint(2)+2
+        ytrains = np.random.randint(0, n_classes, size=input_n)
+        xtests = np.random.randn(int(input_n/2),input_dim)
+        k = np.random.randint(5)+1
+        t_model, t_distances = t_knn_clasificacion(k, xtrains, ytrains, xtests)
+        s_model, s_distances = s_knn_clasificacion(k, xtrains, ytrains, xtests)
+
+        msg = &quot;&quot;
+
+        # check distances shape
+        if t_distances.shape!=s_distances.shape:
+          msg += f&quot;&quot;&quot;
+          &lt;b&gt;Incorrect distance matrix shape&lt;/b&gt;
+          for &lt;tt&gt;n_samples_train&lt;/tt&gt;={input_n} and &lt;tt&gt;n_samples_test&lt;/tt&gt;={int(input_n/2)}&lt;hr/&gt;
+          Expecting result &lt;pre&gt;{t_distances.shape}&lt;/pre&gt; &lt;br/&gt;
+          but got &lt;pre&gt;{s_distances.shape}&lt;/pre&gt;&lt;br/&gt;\n
+          &quot;&quot;&quot;
+          return 0, msg
+
+        # check model predictions
+        if not np.array_equal(t_model, s_model):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect classification&lt;/b&gt;
+            for test samples&lt;hr/&gt;
+            Expecting result &lt;pre&gt;{t_model}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_model}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+
+source_functions_names_02 = [&#39;knn_clasificacion&#39;]
+source_variables_names_02 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def knn_clasificacion (k, X_train, Y_train, X_test):
+    import numpy as np
+    from scipy.spatial import distance
+    from scipy.stats import mode
+
+    if k &gt; X_train.shape[0]:
+        print(&quot;k no puede ser menor que las muestras de entrenamiento&quot;)
+        return(None)
+    N = X_test.shape[0]
+    distancias =np.zeros((N,X_train.shape[0]))
+    Y_est = np.zeros(X_test.shape[0])
+    for i in range(N):
+        distancia = distance.cdist(X_test[i].reshape(1,np.size(X_test[i],0)),X_train)[0]
+        index = np.argsort(distancia)
+        j = index[0:k]
+        Y_est[i] = mode(Y_train[j])[0]
+        distancias[i] = distancia
+    return (Y_est, distancias)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_02&quot;, source_functions_names_02, source_variables_names_02, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L02.01&quot;, &#39;T2&#39;,
+                  inspect.getsource(grader_02), &#39;grader_02&#39;,
+                  source_functions_names_02, source_variables_names_02)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T2&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T2 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> OpOMr1lmzq5d3R2XPVx76nTVORI7I0znciuZQYYt3g9WH0RZKgg5FUbW+4KPRLoakqHiG/nYp63WoaW0FPXILIJddwg7iZKD5axDDi4qiQIl4ZXwqX5O1wJ5qC/6ymdYuqIpnIfrKebTEfsCf9YY6Q==</div>
+                    </div></div>
+</div>
+</section>
+<section id="tarea-3-evaluar-el-modelo-de-k-vecinos">
+<h2>Tarea 3: Evaluar el modelo de K-vecinos<a class="headerlink" href="#tarea-3-evaluar-el-modelo-de-k-vecinos" title="Link to this heading">#</a></h2>
+<p>Ahora vamos a probar nuestro algoritmo. Pero antes de esto, debemos dividir nuestro conjunto de datos, para lo cual usaremos una función llamada train_test_split de la libreria sklearn. <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">Aca puedes ver la ayuda</a>. Entiende su funcionamiento. Vamos a usarla para crear una función con una propoción fija  de 80%-20% entre nuestro conjunto de entrenamiento y de pruebas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de codigo
+def train_test_split_fix(X, y, test_size=..., random_state=...):
+    &quot;&quot;&quot;función que divide el conjunto de datos en
+        entrenamiento y pruebas usando una proporción
+        fija de 20 % (test_size) para el conjunto de pruebas.
+        Fije la semilla en cero para que los resultados sean
+        reproducibles.
+
+    X: matriz de numpy con las muestras y características
+    Y: matriz de numpy con las etiquetas reales
+    retorna:
+        Xtrain: conjunto de datos para entrenamiento
+        Xtest: conjunto de datos para pruebas
+        Ytrain: conjunto  de etiquetas para entrenamiento
+        Ytest: conjunto de etiquetas para prueba
+    &quot;&quot;&quot;
+    X_train, X_test, y_train, y_test = ( ...)
+
+    return (X_train, X_test, y_train, y_test)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def train_test_split_fix(X, y, test_size=0.2, random_state=0):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
+    return (X_train, X_test, y_train, y_test)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Vamos a proceder a experimentar. Para ello vamos a crear una función que realiza los experimentos usando las funciones previamente construidas. En el código se hace uso de la función <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html">StandardScaler</a>, para normalizar los datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Ejercicio de código
+def experimentar (ks, X, Y):
+    &quot;&quot;&quot;Función que realiza los experimentos con knn usando
+       una estrategia de validacion entrenamiento y pruebas
+
+    ks: List[int/float] lista con los valores de k-vecinos a usar
+    X: matriz de numpy conjunto con muestras y caracteristicas
+    Y: vector de numpy con los valores de las etiquetas
+
+    retorna: dataframe con los resultados
+    &quot;&quot;&quot;
+
+    # dividimos usando la función
+    Xtrain, Xtest, Ytrain, Ytest = train_test_split_fix(X,Y,test_size=0.2, random_state=0)
+
+    # se llama el objeto
+    scaler = StandardScaler()
+    # Se calculan los parametros
+    scaler.fit(Xtrain)
+    # se usa el objeto con los parametros calculados
+    # realizar la normalización
+    Xtrain= scaler.transform(Xtrain)
+    Xtest = scaler.transform(Xtest)
+
+    resultados = pd.DataFrame()
+    idx = 0
+    for k in ks:
+        # iteramos sobre la lista de k&#39;s
+        resultados.loc[idx,&#39;k-vecinos&#39;] = k
+        Yest, dist = ...
+        resultados.loc[idx,&#39;error de prueba&#39;] = ...
+        idx+=1
+
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
+#@markdown ¿Qué tipo de normalización ejecuta la función `StandardScaler`?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_03(functions, variables, caller_userid):
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import train_test_split
+    import pandas as pd
+    import numpy as np
+
+    def t_train_test_split_fix(X, Y, test_size=0.2, random_state=0):
+        Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, Y, test_size=test_size, random_state=random_state)
+        return Xtrain, Xtest, Ytrain, Ytest
+
+    def t_experimentar(ks, X, Y):
+        # dividimos usando la función
+        Xtrain, Xtest, Ytrain, Ytest = train_test_split_fix(X,Y,test_size=0.2, random_state=0)
+        # se llama el objeto
+        scaler = StandardScaler()
+        # Se calculan los parametros
+        scaler.fit(Xtrain)
+        # se usa el objeto con los parametros calculados
+        # realizar la normalización
+        Xtrain= scaler.transform(Xtrain)
+        Xtest = scaler.transform(Xtest)
+
+        resultados = pd.DataFrame()
+        idx = 0
+        for k in ks:
+            # iteramos sobre la lista de k&#39;s
+            resultados.loc[idx,&#39;k-vecinos&#39;] = k
+            Yest, dist = knn_clasificacion(k, Xtrain, Ytrain, Xtest)
+            errorTest = ErrorClas(Yest,Ytest)
+            resultados.loc[idx,&#39;error en conjunto prueba&#39;]=errorTest
+            idx+=1
+        return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_experimentar = namespace[&#39;experimentar&#39;]
+    s_train_test_split_fix = namespace[&#39;train_test_split_fix&#39;]
+    knn_clasificacion = namespace[&#39;knn_clasificacion&#39;]
+    ErrorClas = namespace[&#39;ErrorClas&#39;]
+
+    msg =  &quot;testing your code with random data points&lt;br/&gt;\n&quot;
+
+    s_train_test_split_fix = namespace[&#39;train_test_split_fix&#39;]
+
+    msg = &quot;testing your code&lt;br/&gt;\n&quot;
+    for _ in range(10):  # Puedes ajustar el número de iteraciones según sea necesario
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        n_classes = np.random.randint(2)+2
+        X = np.random.rand(input_n, input_dim)
+        y = np.random.randint(0, n_classes, size=input_n)
+
+        t_X_train, t_X_test, t_y_train, t_y_test = t_train_test_split_fix(X, y)
+        s_X_train, s_X_test, s_y_train, s_y_test = s_train_test_split_fix(X, y)
+
+        if not (np.array_equal(t_X_train, s_X_train) and
+                np.array_equal(t_X_test, s_X_test) and
+                np.array_equal(t_y_train, s_y_train) and
+                np.array_equal(t_y_test, s_y_test)):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect train-test split&lt;/b&gt;
+            Expecting result shapes &lt;pre&gt;{(t_X_train.shape, t_X_test.shape, t_y_train.shape, t_y_test.shape)}&lt;/pre&gt; &lt;br/&gt;
+            but got shapes &lt;pre&gt;{(s_X_train.shape, s_X_test.shape, s_y_train.shape, s_y_test.shape)}&lt;/pre&gt;&lt;br/&gt;\n
+            Expecting result content &lt;pre&gt;{(t_X_train, t_X_test, t_y_train, t_y_test)}&lt;/pre&gt; &lt;br/&gt;
+            but got content &lt;pre&gt;{(s_X_train, s_X_test, s_y_train, s_y_test)}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+    train_test_split_fix = namespace[&#39;train_test_split_fix&#39;]
+    ks = [1, 3, 5]
+    for _ in range(10):  # Puedes ajustar el número de iteraciones según sea necesario
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        n_classes = np.random.randint(2)+2
+        X = np.random.rand(input_n, input_dim)
+        y = np.random.randint(0, n_classes, size=input_n)
+
+        t_resultados = t_experimentar(ks, X, y)
+        s_resultados = s_experimentar(ks, X, y)
+
+        if not t_resultados.equals(s_resultados):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect experiment results&lt;/b&gt;
+            Expecting result &lt;pre&gt;{t_resultados}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_resultados}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg + &#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+
+source_functions_names_03 = [&#39;experimentar&#39;,&#39;train_test_split_fix&#39;,&#39;knn_clasificacion&#39;,&#39;ErrorClas&#39;]
+source_variables_names_03 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def experimentar (ks, X, Y):
+    from sklearn.preprocessing import StandardScaler
+    # dividimos usando la función
+    Xtrain, Xtest, Ytrain, Ytest = train_test_split_fix(X,Y,test_size=0.2, random_state=0)
+
+    # se llama el objeto
+    scaler = StandardScaler()
+    # Se calculan los parametros
+    scaler.fit(Xtrain)
+    # se usa el objeto con los parametros calculados
+    # realizar la normalización
+    Xtrain= scaler.transform(Xtrain)
+    Xtest = scaler.transform(Xtest)
+
+    resultados = pd.DataFrame()
+    idx = 0
+    for k in ks:
+        # iteramos sobre la lista de k&#39;s
+        resultados.loc[idx,&#39;k-vecinos&#39;] = k
+        Yest, dist = knn_clasificacion(k, Xtrain, Ytrain, Xtest)
+        errorTest = ErrorClas(Yest,Ytest)
+        resultados.loc[idx,&#39;error en conjunto prueba&#39;]=errorTest
+        idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_03&quot;, source_functions_names_03, source_variables_names_03, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/>testing your code<br/>
+<b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L02.01&quot;, &#39;T3&#39;,
+                  inspect.getsource(grader_03), &#39;grader_03&#39;,
+                  source_functions_names_03, source_variables_names_03)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T3&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T3 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre>testing your code<br/>
+<b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> SAi254n13aDYxwN5k+gQgcVrw1mHwwiTMR3wCqmBU2uFsESWXC3ptV6xpsHxjxd/pS4T7HDtwSIDnxK+aSZm1pc2G/SIj30GVppDvzuz2KixNYjC5/KZIUO7H7zzMmn2bgtK85vswr2qP8ASh7kbEw==</div>
+                    </div></div>
+</div>
+<p>Ahora ejecuta los experimentos con k = 2,3,4,5,6,7,10</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>resultados = experimentar ([2,3,4,5,6,7,10], x, y)
+resultados
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-185-8c4d08ea2406&gt;:17: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  Y_est[i] = mode(Y_train[j])[0]
+&lt;ipython-input-185-8c4d08ea2406&gt;:17: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  Y_est[i] = mode(Y_train[j])[0]
+&lt;ipython-input-185-8c4d08ea2406&gt;:17: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  Y_est[i] = mode(Y_train[j])[0]
+&lt;ipython-input-185-8c4d08ea2406&gt;:17: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  Y_est[i] = mode(Y_train[j])[0]
+&lt;ipython-input-185-8c4d08ea2406&gt;:17: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  Y_est[i] = mode(Y_train[j])[0]
+&lt;ipython-input-185-8c4d08ea2406&gt;:17: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  Y_est[i] = mode(Y_train[j])[0]
+&lt;ipython-input-185-8c4d08ea2406&gt;:17: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  Y_est[i] = mode(Y_train[j])[0]
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-ee3d101f-a761-4f60-9ba6-f013ede50077" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>k-vecinos</th>
+      <th>error en conjunto prueba</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2.0</td>
+      <td>-10.100000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>-10.100000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.0</td>
+      <td>-10.100000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5.0</td>
+      <td>-9.866667</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6.0</td>
+      <td>-9.866667</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7.0</td>
+      <td>-9.866667</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>10.0</td>
+      <td>-9.866667</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-ee3d101f-a761-4f60-9ba6-f013ede50077')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-ee3d101f-a761-4f60-9ba6-f013ede50077 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-ee3d101f-a761-4f60-9ba6-f013ede50077');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-344b6d42-a4ea-4568-bc23-ed4bf3b66e8d">
+  <button class="colab-df-quickchart" onclick="quickchart('df-344b6d42-a4ea-4568-bc23-ed4bf3b66e8d')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-344b6d42-a4ea-4568-bc23-ed4bf3b66e8d button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_27d30d32-92a7-471d-967b-255911f92c20">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('resultados')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_27d30d32-92a7-471d-967b-255911f92c20 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('resultados');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="tarea-4-ventana-de-parzen">
+<h2>Tarea 4: Ventana de Parzen<a class="headerlink" href="#tarea-4-ventana-de-parzen" title="Link to this heading">#</a></h2>
+<p>Ahora vamos a utilizar el metodo de ventana de parzen. Debemos recordar de las clases teóricas, que para aplicar este método, debemos usar una función kernel. En la siguiente celda se proponen dos funciones para:</p>
+<ol class="arabic simple">
+<li><p>Cálculo de un kernel gausiano</p></li>
+<li><p>Cálculo de la ventana de parzen, es decir del término: <span class="math notranslate nohighlight">\( \sum_{i=1}^{N} K(u_i)\)</span>, siendo <span class="math notranslate nohighlight">\(\;\; u_i = \frac{d({\bf{x}}^*,{\bf{x}}_i)}{h}\)</span> y la función <span class="math notranslate nohighlight">\(K\)</span> el kernel gausiano</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def kernel_gaussiano(x):
+    &quot;&quot;&quot;Calcula el kernel gaussiano de x
+    x: matriz/vector de numpy
+    retorna: el valor de de kernel gaussiano
+    &quot;&quot;&quot;
+    return np.exp((-0.5)*x**2)
+
+def ParzenWindow(x,Data,h):
+    &quot;&quot;&quot;&quot;ventana de parzen
+    x: vector con representando una sola muestra
+    Data: vector de muestras de entrenamiento
+    h: ancho de la ventana de kernel
+    retorna: el valor de ventana de parzen para una muestra
+    &quot;&quot;&quot;
+    h = h
+    Ns = Data.shape[0]
+    suma = 0
+    for k in range(Ns):
+        u = euclidean(x,Data[k,:])
+        suma += kernel_gaussiano(u/h)
+    return suma
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
+#@markdown ¿Qué objetivo tiene la función kernel? Contestar en el contexto del método de la ventana de parzen
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Una vez entendidos los anteriores metodos, los vamos a usar para resolver el ejercicio de código.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+def parzenClass(h, Xtrain, Ytrain, Xtest):
+    &quot;&quot;&quot; Función que implementa el método de ventana de parzen
+        para clasificación
+
+    h (float): ancho de la ventana
+    Xtrain: matriz con las muestras de entrenamiento
+    Ytrain: vector con los valores de salida para cada una de las muestras de entrenamiento
+
+    retorna: - las estimaciones del modelo parzen para el conjunto Xtest
+              esta matriz debe tener un shape de [row/muestras de Xtest]
+             - las probabilidades obtenidas con el método de vetana de Parzen para cada clase [row/muestras de Xtest, número de clases]
+    &quot;&quot;&quot;
+
+    ## pista: recuerde el termino que acompaña al sumatoria (N)
+
+    for
+
+    #Debe retornar un vector que contenga las predicciones para cada una de las muestras en Xtest, en el mismo orden.
+    return Yest, fds_matrix
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_04(functions, variables, caller_userid):
+    import numpy as np
+    from scipy.spatial.distance import cdist, euclidean
+
+    def t_parzenClass(h, Xtrain, Ytrain, Xtest):
+      &quot;&quot;&quot; Funcion que implementa metodo de ventana de parzen para
+          para clasificación
+
+      h (float): ancho de h de la ventana
+      Xtrain: es la matriz con las muestras de entrenamiento
+      Ytrain: es un vector con los valores de salida pra cada una de las muestras de entrenamiento
+
+      retorna: - las estimaciones del modelo parzen para el conjunto Xtest
+                esta matriz debe tener un shape de [row/muestras de Xtest]
+              - las probabilidades de la vetana [row/muestras de Xtest, número de clases]
+      &quot;&quot;&quot;
+      N = Xtest.shape[0]
+      clases = np.unique(Ytrain)
+      fds_matrix = np.zeros((N, len(clases)))
+      Yest = np.zeros(N)
+      for i in clases:
+        index = np.where(Ytrain == i)
+        train = Xtrain[index]
+        distancia = kernel_gaussiano(cdist(Xtest,train)/h)
+        fds_matrix[:,i] = np.sum(distancia,axis=1)/len(train)
+      Y_est = np.argmax(fds_matrix,axis=1)
+
+      return Y_est, fds_matrix
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_parzenClass = namespace[&#39;parzenClass&#39;]
+    ParzenWindow = namespace[&#39;ParzenWindow&#39;]
+    kernel_gaussiano = namespace[&#39;kernel_gaussiano&#39;]
+
+
+    msg = &quot;testing your code with 10 random data points&lt;br/&gt;&quot;
+    for _ in range(10):
+
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        xtrains = np.random.randn(input_n,input_dim)
+        n_classes = np.random.randint(2)+2
+        ytrains = np.random.randint(0, n_classes, size=input_n)
+        xtests = np.random.randn(int(input_n/2),input_dim)
+        h = np.random.randn(1)
+        t_model, t_prob = t_parzenClass(h, xtrains, ytrains, xtests)
+        s_model, s_prob = s_parzenClass(h, xtrains, ytrains, xtests)
+
+        msg = &quot;&quot;
+
+        # check probabilities
+        if not np.allclose(t_prob, s_prob):
+          msg += f&quot;&quot;&quot;
+          &lt;b&gt;Incorrect probability estimation&lt;/b&gt;
+          Expecting result &lt;pre&gt;{t_prob}&lt;/pre&gt; &lt;br/&gt;
+          but got &lt;pre&gt;{s_prob}&lt;/pre&gt;&lt;br/&gt;\n
+          &quot;&quot;&quot;
+          return 0, msg
+
+        # check model predictions
+        if not np.array_equal(t_model, s_model):
+            msg += f&quot;&quot;&quot;
+            &lt;b&gt;Incorrect classification&lt;/b&gt;
+            for test samples&lt;hr/&gt;
+            Expecting result &lt;pre&gt;{t_model}&lt;/pre&gt; &lt;br/&gt;
+            but got &lt;pre&gt;{s_model}&lt;/pre&gt;&lt;br/&gt;\n
+            &quot;&quot;&quot;
+            return 0, msg
+
+    return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+
+source_functions_names_04 = [&#39;parzenClass&#39;,&#39;ParzenWindow&#39;,&#39;kernel_gaussiano&#39;]
+source_variables_names_04 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def parzenClass(h, Xtrain, Ytrain, Xtest):
+    &quot;&quot;&quot; Funcion que implementa metodo de ventana de parzen para
+        para clasificación
+
+    h (float): ancho de h de la ventana
+    Xtrain: es la matriz con las muestras de entrenamiento
+    Ytrain: es un vector con los valores de salida pra cada una de las muestras de entrenamiento
+
+    retorna: - las estimaciones del modelo parzen para el conjunto Xtest
+              esta matriz debe tener un shape de [row/muestras de Xtest]
+             - las probabilidades de la vetana [row/muestras de Xtest, número de clases]
+    &quot;&quot;&quot;
+    Yest = np.zeros(Xtest.shape[0])
+    clases = np.unique(Ytrain)
+    fds_matrix = np.zeros((Xtest.shape[0], len(clases)))
+
+    for n, sample in enumerate(Xtest):
+        auxiliar = np.zeros(len(clases))
+        for idx, label in enumerate(clases):  # Usamos un índice para acceder
+            index = np.where(Ytrain == label)[0]
+            train = Xtrain[index,:]
+
+            # Asegurarnos de que &#39;train&#39; siempre sea 2D
+            #train = train.reshape(-1, Xtrain.shape[1])  # Esto garantiza que &#39;train&#39; tenga 2 dimensiones
+
+            auxiliar[idx] = (ParzenWindow(sample, train, h)) / (len(train))
+        fds_matrix[n] = auxiliar
+        max_idx = np.argmax(auxiliar)
+        Yest[n] = clases[max_idx]
+
+    return Yest, fds_matrix
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_04&quot;, source_functions_names_04, source_variables_names_04, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L02.01&quot;, &#39;T4&#39;,
+                  inspect.getsource(grader_04), &#39;grader_04&#39;,
+                  source_functions_names_04, source_variables_names_04)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T4&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T4 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre><b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> QbgH1me3NewuApHx/G2Pa6FrCU1t/GVJfGSxX+l0bsuVVcbdkI4BNHN6CqpsttGTaVDnaDQIhBVouuWsI1hCSPT6q5Nm4ddqJARliOZWZt3/L4T4uSYrbiMjm2xc8+033UBezIQGz0VGj2gF98768g==</div>
+                    </div></div>
+</div>
+</section>
+<section id="tarea-5-validar-modelo-ventana-con-parzen">
+<h2>Tarea 5 - Validar modelo ventana con Parzen<a class="headerlink" href="#tarea-5-validar-modelo-ventana-con-parzen" title="Link to this heading">#</a></h2>
+<p>Ahora vamos a realizar los experimentos, recordar usar la misma metodologia de validación, usando la función previamente creada.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+def experimentarParzen (hs, X, Y):
+    &quot;&quot;&quot;Función que realiza los experimentos con el modelo de Venatan de Parzen usando
+       una estrategia de validación con entrenamiento y pruebas
+
+    hs: List[int/float] lista con los valores de h a usar
+    X: matriz con el conjunto de muestras de la base de datos
+    Y: vector de numpy con los valores de las etiquetas de clase de cada muestra
+
+    retorna: dataframe con los resultados, debe contener las siguientes columnas:
+        - el ancho de la ventana y el error medio de prueba
+    &quot;&quot;&quot;
+
+
+    resultados = pd.DataFrame()
+    idx = 0
+    Xtrain, Xtest, Ytrain, Ytest = ...(X,Y)
+    scaler = StandardScaler()
+    #normalizamos los datos
+    scaler.fit(Xtrain)
+    Xtrain = scaler.transform(Xtrain)
+    Xtest = scaler.transform(Xtest)
+
+    # iteramos sobre los valores de hs
+    for h in hs:
+
+        Yest, probabilidades = ...
+        resultados.loc[idx,&#39;ancho de ventana&#39;] = h
+        resultados.loc[idx,&#39;error de prueba&#39;] = ...
+
+        idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_05(functions, variables, caller_userid):
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import train_test_split
+    from scipy.spatial.distance import cdist, euclidean
+    import pandas as pd
+    import numpy as np
+
+    def t_experimentarParzen(hs, X, Y):
+        # dividimos usando la función
+        Xtrain, Xtest, Ytrain, Ytest = train_test_split_fix(X,Y,test_size=0.2, random_state=0)
+        # se llama el objeto
+        scaler = StandardScaler()
+        # Se calculan los parametros
+        scaler.fit(Xtrain)
+        # se usa el objeto con los parametros calculados
+        # realizar la normalización
+        Xtrain= scaler.transform(Xtrain)
+        Xtest = scaler.transform(Xtest)
+
+        resultados = pd.DataFrame()
+        idx = 0
+        for h in hs:
+            # iteramos sobre la lista de h&#39;s
+            Yest, probabilidades = parzenClass(h,Xtrain,Ytrain,Xtest)
+            errorTest = ErrorClas(Yest,Ytest)
+            resultados.loc[idx,&#39;valor h&#39;] = h
+            resultados.loc[idx,&#39;error en conjunto prueba&#39;] = errorTest
+            idx+=1
+        return (resultados)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_experimentarParzen = namespace[&#39;experimentarParzen&#39;]
+    train_test_split_fix = namespace[&#39;train_test_split_fix&#39;]
+    parzenClass = namespace[&#39;parzenClass&#39;]
+    ErrorClas = namespace[&#39;ErrorClas&#39;]
+    ParzenWindow = namespace[&#39;ParzenWindow&#39;]
+    kernel_gaussiano = namespace[&#39;kernel_gaussiano&#39;]
+
+    msg =  &quot;testing your code with random data points&lt;br/&gt;\n&quot;
+
+    window_sizes = [0.1, 0.5]
+    for _ in range(10):  # Puedes ajustar el número de iteraciones según sea necesario
+        input_dim = np.random.randint(5)+5
+        input_n = np.random.randint(500) + 20
+        n_classes = np.random.randint(2)+2
+        X = np.random.rand(input_n, input_dim)
+        y = np.random.randint(0, n_classes, size=input_n)
+
+        try:
+            t_resultados = t_experimentarParzen(window_sizes, X, y)
+            s_resultados = s_experimentarParzen(window_sizes, X, y)
+
+             # Compara los valores generales del DataFrame
+            if not np.allclose(t_resultados.values, s_resultados.values, rtol=1e-5, atol=1e-8):
+                msg += f&quot;&quot;&quot;
+                &lt;b&gt;Incorrect experiment results&lt;/b&gt;&lt;br/&gt;
+                Expecting result &lt;pre&gt;{t_resultados.values}&lt;/pre&gt; &lt;br/&gt;
+                but got &lt;pre&gt;{s_resultados.values}&lt;/pre&gt;&lt;br/&gt;\n
+                &quot;&quot;&quot;
+                return 0, msg
+
+        except IndexError as e:
+            msg += f&quot;Error encountered: {e}\n&quot;
+            return 0, msg
+        except Exception as e:
+            msg += f&quot;General error encountered: {e}\n&quot;
+            return 0, msg
+
+    return 5, msg + &#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+
+
+source_functions_names_05 = [&#39;experimentarParzen&#39;,&#39;parzenClass&#39;,&#39;ParzenWindow&#39;,&#39;kernel_gaussiano&#39;,&#39;ErrorClas&#39;,&#39;train_test_split_fix&#39;]
+source_variables_names_05 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+def experimentarParzen (hs, X, Y):
+    # dividimos usando la función
+    Xtrain, Xtest, Ytrain, Ytest = train_test_split_fix(X,Y,test_size=0.2, random_state=0)
+    # se llama el objeto
+    scaler = StandardScaler()
+    # Se calculan los parametros
+    scaler.fit(Xtrain)
+    # se usa el objeto con los parametros calculados
+    # realizar la normalización
+    Xtrain= scaler.transform(Xtrain)
+    Xtest = scaler.transform(Xtest)
+
+    resultados = pd.DataFrame()
+    idx = 0
+    for h in hs:
+        # iteramos sobre la lista de h&#39;s
+        Yest, probabilidades = parzenClass(h,Xtrain,Ytrain,Xtest)
+        errorTest = ErrorClas(Yest,Ytest)
+        resultados.loc[idx,&#39;valor h&#39;] = h
+        resultados.loc[idx,&#39;error en conjunto prueba&#39;] = errorTest
+        idx+=1
+    return (resultados)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_05&quot;, source_functions_names_05, source_variables_names_05, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/>testing your code with random data points<br/>
+<b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L02.01&quot;, &#39;T5&#39;,
+                  inspect.getsource(grader_05), &#39;grader_05&#39;,
+                  source_functions_names_05, source_variables_names_05)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T5&#39;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+                    <b>T5 submitted.</b> <b><font color="blue">your grade is 5</font></b> 
+                    <p/><pre>----- grader message -------</pre>testing your code with random data points<br/>
+<b>correct</b><pre>----------------------------</pre>
+                    <p/><p/>
+                    <div style="font-size:10px"><b>SUBMISSION CODE</b> /DCTgO/RDRQcGpabysxiEoXnNJYCN7ILoPBTlK0Rpk52FU8WqMKgKkfQ29x6XLbyhsZRTTHrnVNpwqOxq4dHWGlalyYi/SAMw34/WIYwIV+21SpLllGSEtAbiRI6PKbhbgm93bT6aMN+7vfaOTyj5w==</div>
+                    </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>hs = [0.05, 0.1, 0.5, 1, 2, 5, 10]
+experimentos_parzen = experimentarParzen(hs,x,y)
+experimentos_parzen
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-db07b79f-10d0-4cde-9f82-d0ea6d4eb0d7" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>valor h</th>
+      <th>error en conjunto prueba</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.05</td>
+      <td>-10.100000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.10</td>
+      <td>-10.100000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.50</td>
+      <td>-10.100000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.00</td>
+      <td>-10.100000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2.00</td>
+      <td>-10.333333</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>5.00</td>
+      <td>-10.100000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>10.00</td>
+      <td>-10.100000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-db07b79f-10d0-4cde-9f82-d0ea6d4eb0d7')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-db07b79f-10d0-4cde-9f82-d0ea6d4eb0d7 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-db07b79f-10d0-4cde-9f82-d0ea6d4eb0d7');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-51e70ebc-21ca-47df-b772-fd5521b78e70">
+  <button class="colab-df-quickchart" onclick="quickchart('df-51e70ebc-21ca-47df-b772-fd5521b78e70')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-51e70ebc-21ca-47df-b772-fd5521b78e70 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+  <div id="id_7feec6fa-5732-4447-8671-a8e816c21755">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('experimentos_parzen')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_7feec6fa-5732-4447-8671-a8e816c21755 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('experimentos_parzen');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
+#@markdown ¿En el método de ventana de parzen, porqué no hay necesidad de definir el número de vecinos cercanos?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
+#@markdown ¿Por qué el KNN y la ventana de parzen son modelos no parámetricos?
+respuesta = &quot;&quot; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+# --- CREATE or OVERWRITE STUDENTS NOTEBOOK ---
+import init
+from local.lib.rlxmoocapi import utils
+student_notebook_fname = utils.convert_this_notebook_to_student()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">IPython.notebook.save_checkpoint();</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipynbname in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (2024.1.0.0)
+Requirement already satisfied: ipykernel in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipynbname) (6.19.3)
+Requirement already satisfied: packaging in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.2)
+Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
+Requirement already satisfied: traitlets&gt;=5.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.8.0)
+Requirement already satisfied: psutil in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.9.4)
+Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
+Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: pyzmq&gt;=17 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.0.1)
+Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
+Requirement already satisfied: debugpy&gt;=1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.6.4)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
+Requirement already satisfied: stack-data in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.6.2)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.11 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (3.0.36)
+Requirement already satisfied: decorator in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (5.1.1)
+Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
+Requirement already satisfied: backcall in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.0)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.19.1)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.8.2)
+Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
+Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (5.1.0)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.8.3)
+Requirement already satisfied: platformdirs&gt;=2.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-core&gt;=4.9.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.6.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.11-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.5)
+Requirement already satisfied: six&gt;=1.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (1.16.0)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
+Requirement already satisfied: pure-eval in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: executing&gt;=1.2.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (1.2.0)
+NOTEBOOK name is lab2_parte1--XX--TEACHER--XX.ipynb
+student notebook writen to &#39;lab2_parte1.ipynb&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-1-exploracion-de-datos">Tarea 1: Exploración de datos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-2-clasificacion-con-k-vecinos">Tarea 2: Clasificación con K-vecinos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-3-evaluar-el-modelo-de-k-vecinos">Tarea 3: Evaluar el modelo de K-vecinos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-4-ventana-de-parzen">Tarea 4: Ventana de Parzen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tarea-5-validar-modelo-ventana-con-parzen">Tarea 5 - Validar modelo ventana con Parzen</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - Deiry Sofía Navas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

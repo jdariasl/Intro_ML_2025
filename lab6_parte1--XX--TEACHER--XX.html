@@ -1,0 +1,2289 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características &#8212; 2025 Introducción al Machine Learning</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab6_parte1--XX--TEACHER--XX';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2025 Introducción al Machine Learning - Home"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2025 Introducción al Machine Learning - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Course information
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2001%20-%20Introducci%C3%B3n%20al%20Machine%20Learning.html">Introducción al Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Unsupervised%20Learning.html">Clustering</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="Clase%2019%20-%20An%C3%A1lisis%20de%20Componentes%20Principales.html">Reducción de dimensión: Análisis de Componentes Principales</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html">Reducción de dimensión: Análisis Discriminante de Fisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
+</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/lab6_parte1--XX--TEACHER--XX.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lab6_parte1--XX--TEACHER--XX.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-entrenamiento-sin-seleccion-de-caracteristicas">Ejercicio 1: Entrenamiento sin selección de características</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-entrenamiento-con-seleccion-de-caracteristicas">Ejercicio 2: Entrenamiento con selección de características</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-comparacion-de-los-resultados-del-modelo">Ejercicio 3:  Comparación de los resultados del modelo</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="laboratorio-6-parte-1-reduccion-de-dimension-y-seleccion-de-caracteristicas">
+<h1>Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características<a class="headerlink" href="#laboratorio-6-parte-1-reduccion-de-dimension-y-seleccion-de-caracteristicas" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget -nc --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+import init; init.init(force_download=False); init.get_weblink()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<meta name="google-signin-client_id"
+      content="461673936472-kdjosv61up3ac1ajeuq6qqu72upilmls.apps.googleusercontent.com"/>
+<script src="https://apis.google.com/js/client:platform.js?onload=google_button_start"></script>
+    </div><div class="output text_html"><h3>See <a href='https://m5knaekxo6.execute-api.us-west-2.amazonaws.com/dev-v0001/rlxmooc/web/login' target='_blank'>my courses and progress</a></h2></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from local.lib.rlxmoocapi import submit, session
+import inspect
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L06.01&quot;, varname=&quot;student&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logging in as julian.ariasl@udea.edu.co... please wait
+
+-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#configuración del laboratorio
+# Ejecuta esta celda!
+from Labs.commons.utils.lab6 import *
+_, x, y = part_1()
+</pre></div>
+</div>
+</div>
+</div>
+<p>Este ejercicio tiene como objetivo implementar varias técnicas de selección de características y usar regresion logística para resolver un problema de clasificación multiclase.</p>
+<p>Para el problema de clasificación usaremos la siguiente base de datos: <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Cardiotocography">https://archive.ics.uci.edu/ml/datasets/Cardiotocography</a></p>
+<p>Analice la base de datos, sus características, su variable de salida y el contexto del problema.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;Dimensiones de la base de datos de entrenamiento. dim de x: &#39; + str(np.shape(x)) + &#39;\tdim de y: &#39; + str(np.shape(y)))
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dimensiones de la base de datos de entrenamiento. dim de x: (2126, 22)	dim de y: (2126,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;Dimensiones de la base de datos de entrenamiento. Dim de x: &#39; + str(np.shape(x)) + &#39;\tDim de y: &#39; + str(np.shape(y)))
+
+clases, muestras_por_clase = np.unique(y, return_counts=True)
+print(&quot;las clases son&quot;, clases, &quot;el conteo&quot;,muestras_por_clase)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dimensiones de la base de datos de entrenamiento. Dim de x: (2126, 22)	Dim de y: (2126,)
+las clases son [1 2 3] el conteo [1655  295  176]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Observación para las librerias sklearn</strong></p>
+<p>Llamar explícitamente los parametros de las librerias de sklearn (e.j. si se quiere usar el parametro <code class="docutils literal notranslate"><span class="pre">kernel</span></code> del <code class="docutils literal notranslate"><span class="pre">SVC</span></code>, se debe llamar <code class="docutils literal notranslate"><span class="pre">SVC(kernel='rbf'</span></code>))</p>
+<section id="ejercicio-1-entrenamiento-sin-seleccion-de-caracteristicas">
+<h2>Ejercicio 1: Entrenamiento sin selección de características<a class="headerlink" href="#ejercicio-1-entrenamiento-sin-seleccion-de-caracteristicas" title="Link to this heading">#</a></h2>
+<p>En nuestro primer ejercicio debemos completar la función para entrenar una SVM para resolver un problema de clasificación. Debemos completar siguiendo las recomendaciones:</p>
+<ol class="arabic simple">
+<li><p>Mantener los parámetros sugeridos de la regresión logística.</p></li>
+<li><p>Asignar el parametro de StratifiedKFold a los splits</p></li>
+<li><p>Usar la area bajo la curva ROC como medida de error del modulo <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">metrics de sklearn</a>. Tener en cuenta que esta función recibe un score, que es diferente a la predicción (explorar que método debemos usar para nuestro caso de problema y usar un estrategia One vs One).</p></li>
+<li><p>Esta función la vamos a usar como base para comparar nuestros métodos de selección de características.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+def entrenamiento_sin_seleccion_caracteristicas(X, Y, splits):
+    &quot;&quot;&quot;
+    Función que ejecuta el entrenamiento del modelo sin una selección particular
+    de las características
+
+      Parámetros:
+        X: matriz con las características
+        Y: Matriz con la variable objetivo
+        splits : número de particiones  a realizar
+
+      Retorna:
+      1. El modelo entreando
+      2. El vector de errores
+      3. El Intervalo de confianza
+      4. El tiempo de procesamiento
+    &quot;&quot;&quot;
+
+    j = 0
+    kf = StratifiedKFold...
+    clases = ...
+
+    for train_index, test_index in kf.split(X=X, y=Y):
+        X_train, X_test = X[train_index], X[test_index]
+        y_train, y_test = Y[train_index], Y[test_index]
+
+        # Escalado
+        scaler = StandardScaler()
+        X_train = ...
+        X_test = ...
+
+        # Clasificador SVM
+        clf = SVC(..., random_state=42)
+
+        # Entrenamiento el modelo.
+        # Para calcular el costo computacional
+        tiempo_i = time.time()
+        clf.fit(X=X_train,y=y_train)
+
+        # Scores para ROC AUC
+        y_score = clf.decision_function(X_test)
+        y_test_bin = label_binarize(y_test, classes=clases)
+
+        # Scores para ROC AUC
+        y_score = ...
+        y_test_bin = label_binarize(y_test, classes=clases)
+
+        # Cálculo del AUC con estrategia One-vs-One
+        auc = roc_auc_score....
+
+        Errores[j] = auc
+        times[j] = time.time() - tiempo_i
+        j += 1
+
+    return ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+from local.lib.rlxmoocapi import submit, session
+session.LoginSequence(endpoint=init.endpoint, course_id=init.course_id, lab_id=&quot;L06.01&quot;, varname=&quot;teacher&quot;);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>logging in as julian.ariasl@udea.edu.co... please wait
+
+-------------
+using course session introml::udea.pre.20251
+success!! you are logged in
+-------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_01(functions, variables, caller_userid):
+    import numpy as np
+    import time
+    from sklearn.model_selection import StratifiedKFold
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.preprocessing import StandardScaler, label_binarize
+    from sklearn.metrics import confusion_matrix, roc_auc_score
+    from sklearn.svm import SVC
+
+    def t_entrenamiento_sin_seleccion_caracteristicas(X, Y, splits):
+        #Implemetamos la metodología de validación
+        rendimiento = np.ones(splits)
+        times = np.ones(splits)
+        j = 0
+        kf = StratifiedKFold(n_splits = splits,shuffle=True, random_state=42)
+        clases = np.unique(Y)
+
+        for train_index, test_index in kf.split(X=X, y=Y):
+            X_train, X_test = X[train_index], X[test_index]
+            y_train, y_test = Y[train_index], Y[test_index]
+
+            # Escalado
+            scaler = StandardScaler()
+            X_train = scaler.fit_transform(X_train)
+            X_test = scaler.transform(X_test)
+
+            # Clasificador SVM
+            clf = SVC(kernel=&quot;linear&quot;, probability=True, decision_function_shape=&quot;ovo&quot;, random_state=42)
+
+            # Entrenamiento el modelo.
+            # Para calcular el costo computacional
+            tiempo_i = time.time()
+            clf.fit(X=X_train,y=y_train)
+
+            # Scores para ROC AUC
+            y_score = clf.decision_function(X_test)
+            y_test_bin = label_binarize(y_test, classes=clases)
+
+            # Scores para ROC AUC
+            y_score = clf.decision_function(X_test)
+            y_test_bin = label_binarize(y_test, classes=clases)
+
+            # Cálculo del AUC con estrategia One-vs-One
+            auc = roc_auc_score(y_test_bin, y_score, multi_class=&quot;ovo&quot;, average=&quot;macro&quot;)
+
+            rendimiento[j] = auc
+            times[j] = time.time() - tiempo_i
+            j += 1
+        # RENDIMIENTO_VALIDACION, STD_RENDIMIENTO_VALIDACION, TIEMPO_EJECUCION
+        return clf, np.mean(rendimiento), np.std(rendimiento), np.mean(times)
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_entrenamiento_sin_seleccion_caracteristicas = namespace[&#39;entrenamiento_sin_seleccion_caracteristicas&#39;]
+
+    msg = &quot;testing your code with random data points&lt;br/&gt;&quot;
+
+    for _ in range(5):
+
+      num_samples  = np.random.randint(500) + 20
+      num_features = np.random.randint(10) + 2
+      splits = 5  # Número de particiones
+
+      X = np.random.randn(num_samples, num_features)  # Matriz de características
+      Y = np.random.choice([0, 1], size=num_samples)  # Clases binarias
+
+      msg = &quot;&quot;
+              # Ejecutar la función de referencia y la del usuario
+      try:
+          _, t_err, t_ic, t_ex = t_entrenamiento_sin_seleccion_caracteristicas(X, Y, splits)
+          _, s_err, s_ic, s_ex = s_entrenamiento_sin_seleccion_caracteristicas(X, Y, splits)
+      except Exception as e:
+          return 0, f&quot;Error al ejecutar la función: {str(e)}&quot;
+
+      if not np.allclose(t_err, s_err, atol=1e-2):
+          msg += f&quot;Rendimiento esperado: {t_err},     obtenido: {s_err}&lt;br/&gt;&quot;
+          return 0, msg
+
+      if not np.allclose(t_ic, s_ic, atol=1e-2):
+          msg += f&quot;Desviación estándar esperada: {t_ic},     obtenida: {s_ic}&lt;br/&gt;&quot;
+          return 0, msg
+
+      if not np.allclose(t_ex, s_ex, atol=1e-2):
+          msg += f&quot;Tiempo esperado: {t_ex},     obtenido: {s_ex}&lt;br/&gt;&quot;
+          return 0, msg
+
+
+      return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+source_functions_names_01 = [&#39;entrenamiento_sin_seleccion_caracteristicas&#39;]
+source_variables_names_01 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def entrenamiento_sin_seleccion_caracteristicas(X, Y, splits):
+    import numpy as np
+    from sklearn.model_selection import StratifiedKFold
+    from sklearn.preprocessing import StandardScaler, label_binarize
+    from sklearn.metrics import confusion_matrix, roc_auc_score
+    from sklearn.svm import SVC
+
+    #Implemetamos la metodología de validación
+    errores = np.ones(splits)
+    times = np.ones(splits)
+    j = 0
+    kf = StratifiedKFold(n_splits = splits,shuffle=True, random_state=42)
+    clases = np.unique(Y)
+
+    for train_index, test_index in kf.split(X=X, y=Y):
+        X_train, X_test = X[train_index], X[test_index]
+        y_train, y_test = Y[train_index], Y[test_index]
+
+        # Escalado
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train)
+        X_test = scaler.transform(X_test)
+
+        # Clasificador SVM
+        clf = SVC(kernel=&quot;linear&quot;, probability=True, decision_function_shape=&quot;ovo&quot;, random_state=42)
+
+        # Entrenamiento el modelo.
+        # Para calcular el costo computacional
+        tiempo_i = time.time()
+        clf.fit(X=X_train,y=y_train)
+
+        # Scores para ROC AUC
+        y_score = clf.decision_function(X_test)
+        y_test_bin = label_binarize(y_test, classes=clases)
+
+        # Scores para ROC AUC
+        y_score = clf.decision_function(X_test)
+        y_test_bin = label_binarize(y_test, classes=clases)
+
+        # Cálculo del AUC con estrategia One-vs-One
+        auc = roc_auc_score(y_test_bin, y_score, multi_class=&quot;ovo&quot;, average=&quot;macro&quot;)
+
+        errores[j] = auc
+        times[j] = time.time() - tiempo_i
+        j += 1
+
+    return clf, np.mean(errores), np.std(errores), np.mean(times)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_01&quot;, source_functions_names_01, source_variables_names_01, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L06.01&quot;, &#39;T1&#39;,
+                  inspect.getsource(grader_01), &#39;grader_01&#39;,
+                  source_functions_names_01, source_variables_names_01)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T1&#39;);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@markdown En sus palabras ¿Cuál es el proceso ejecutado por la función roc_auc_score que calcula la área sobre la curva roc?
+respuesta = &#39;&#39; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-2-entrenamiento-con-seleccion-de-caracteristicas">
+<h2>Ejercicio 2: Entrenamiento con selección de características<a class="headerlink" href="#ejercicio-2-entrenamiento-con-seleccion-de-caracteristicas" title="Link to this heading">#</a></h2>
+<p>La siguiente función “wrapper” nos permite hacer una selección de características utilizando la <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.RFE.html">librería recursive feature elimination de Sci-kit Learn</a>.</p>
+<p>Esta librería es un método de selección características wrapper, que usa los coeficientes derivados de  un estimador entrenado para estimar que características tienen mayor poder predictivo.</p>
+<p>Para completar debemos tener en cuenta lo siguiente:</p>
+<ol class="arabic simple">
+<li><p>Para el número de características usar el parámetro feature_numbers</p></li>
+<li><p>Establecer el paso = 1 para ir eliminando las características</p></li>
+<li><p>Asumir que el estimador se crea externamente de la función</p></li>
+<li><p>Entender los campos del RFE disponibles despues de entrenarlo para obtener:</p>
+<ol class="arabic simple">
+<li><p>La máscara para saber que características fueron seleccionadas</p></li>
+<li><p>El ranking de las características</p></li>
+</ol>
+</li>
+<li><p>Usar como estimador regresión de vectores de soporte (SVR) como estimador</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+def recursive_feature_elimination_wrapper(estimator, feature_numbers, X,Y):
+    &quot;&quot;&quot;
+    Esta función es un envoltorio del objeto RFE de sklearn
+
+    Parámetros:
+    estimator: un modelo entregado como parámetro
+    feature_numbers(int): el número de características a considerar
+    X (numpy.array): el arreglo numpy de muestras de entrada
+    Y (numpy.array): el vector de etiquetas correspondiente
+
+    Retorna:
+    El modelo entrenado
+    La máscara de características seleccionada, array [longitud de caracterisitcas de X]
+    El ranking de características, array [longitud de caracterisitcas de X]
+    El objeto RFE entrenado sobre el set reducido de características
+    El tiempo de ejecución
+    &quot;&quot;&quot;
+    rfe = ...(estimator=..., n_features_to_select=..., step=...)
+    tiempo_i = time.time()
+    rfe.fit...
+    time_o = time.time()-tiempo_i
+    feature_mask = rfe...
+    features_rank = rfe...
+    estimator = rfe...
+
+    return rfe, feature_mask, features_rank, estimator, time_o
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_02(functions, variables, caller_userid):
+    import numpy as np
+    import time
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.feature_selection import RFE
+    from sklearn.svm import SVC
+
+    def t_recursive_feature_elimination_wrapper(estimator, feature_numbers, X,Y):
+        rfe = RFE(estimator=estimator , n_features_to_select=feature_numbers , step=1)
+        tiempo_i = time.time()
+        rfe.fit(X=X , y= Y)
+        time_o = time.time()-tiempo_i
+        feature_mask = rfe.support_
+        features_rank = rfe.ranking_
+        estimator = rfe.estimator_
+
+        return rfe, feature_mask, features_rank, estimator, time_o
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_recursive_feature_elimination_wrapper = namespace[&#39;recursive_feature_elimination_wrapper&#39;]
+
+    msg = &quot;testing your code with random data points&lt;br/&gt;&quot;
+
+    for _ in range(5):
+
+      num_samples  = np.random.randint(500) + 20
+      num_features = np.random.randint(10) + 2
+
+      X = np.random.randn(num_samples, num_features)  # Matriz de características
+      Y = np.random.choice([0, 1], size=num_samples)
+      estimator = SVC(kernel=&quot;linear&quot;) #LogisticRegression(solver=&quot;liblinear&quot;)
+      msg = &quot;&quot;
+              # Ejecutar la función de referencia y la del usuario
+      try:
+          _, t_mask, t_rank, t_estimator, t_time = t_recursive_feature_elimination_wrapper(estimator, num_features, X, Y)
+          _, s_mask, s_rank, s_estimator, s_time = s_recursive_feature_elimination_wrapper(estimator, num_features, X, Y)
+      except Exception as e:
+          return 0, f&quot;Error al ejecutar la función: {str(e)}&quot;
+
+      if not np.array_equal(t_mask, s_mask):
+          msg += f&quot;Máscara esperada: {t_mask}, obtenida: {s_mask}&lt;br/&gt;&quot;
+          return 0, msg
+
+      if not np.array_equal(t_rank, s_rank):
+          msg += f&quot;Ranking esperado: {t_rank}, obtenido: {s_rank}&lt;br/&gt;&quot;
+          return 0, msg
+
+      if not np.allclose(t_time, s_time, atol=1e-2):
+          msg += f&quot;Tiempo esperado: {t_time}, obtenido: {s_time}&lt;br/&gt;&quot;
+          return 0, msg
+
+
+      return 5, msg+&#39;&lt;b&gt;correct&lt;/b&gt;&#39;
+source_functions_names_02 = [&#39;recursive_feature_elimination_wrapper&#39;]
+source_variables_names_02 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def recursive_feature_elimination_wrapper(estimator, feature_numbers, X,Y):
+
+    rfe = RFE(estimator=estimator , n_features_to_select=feature_numbers , step=1)
+    tiempo_i = time.time()
+    rfe.fit(X=X , y= Y)
+    time_o = time.time()-tiempo_i
+    feature_mask = rfe.support_
+    features_rank = rfe.ranking_
+    estimator = rfe.estimator_
+
+    return rfe, feature_mask, features_rank, estimator, time_o
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_02&quot;, source_functions_names_02, source_variables_names_02, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>correct</b></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L06.01&quot;, &#39;T2&#39;,
+                  inspect.getsource(grader_02), &#39;grader_02&#39;,
+                  source_functions_names_02, source_variables_names_02)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T2&#39;);
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Preguntas Abierta
+#@markdown Explicar ¿Qué diferencia tiene el método implementado con un método que usa un criterio tipo filtro para la selección de características?
+respuesta = &#39;&#39; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ejercicio-3-comparacion-de-los-resultados-del-modelo">
+<h2>Ejercicio 3:  Comparación de los resultados del modelo<a class="headerlink" href="#ejercicio-3-comparacion-de-los-resultados-del-modelo" title="Link to this heading">#</a></h2>
+<p>Ahora en la siguiente función, vamos a usar la función planteada para realizar experimentos con la selección de características. Para ello:</p>
+<ol class="arabic simple">
+<li><p>Utilizar una metodología cross-validation estratificada.</p></li>
+<li><p>Considerando p características, retorne el modelo entrenado, el vector de errores, el intervalo de confianza y el tiempo de ejecución.</p></li>
+<li><p>Vamos a retornar un DataFrame con las siguientes columnas:</p>
+<ul class="simple">
+<li><p>CON_SEL: indicando si se uso selección de características</p></li>
+<li><p>NUM_VAR: número de selección de características</p></li>
+<li><p>NUM_SPLITS: número de particiones realizadas</p></li>
+<li><p>T_EJECUCION: tiempo de ejecución</p></li>
+<li><p>EXACTITUD_BALANCEADA</p></li>
+<li><p>STD_EXACTITUD_BALANCEADA</p></li>
+</ul>
+</li>
+<li><p>En la primera fila del dataframe vamos a incluir la evaluación del modelo SVM sin selección de características (usando la función creada en el primer ejercicio) y sin particionar el set de datos.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#ejercicio de código
+def experimentar(n_feats, n_sets, X, Y):
+    &quot;&quot;&quot;
+    Esta función realiza la comparación del desempeño de RFE utilizando diferente
+    número de feats y particionando el conjunto de datos en diferente número de
+    subconjuntos
+
+    Parámetros:
+    X (numpy.array), El arreglo numpy de características
+    Y (numpy.array), El vector de etiquetas
+    n_feats, Vector de números enteros que indica el número de características
+              que debe utilizar el modelo
+    n_sets, Vector de números enteros que indica el número de particiones
+
+    Retorna:
+    - DataFrame con las columnas: DESCRIPCION, T_EJECUCION ERROR_VALIDACION,
+    y STD_ERROR_VALIDACION
+
+    &quot;&quot;&quot;
+    df = pd.DataFrame()
+    idx = 0
+    for split_number in n_sets:
+    #Sin selección de características
+        # se ignorar las otras salidas
+        _,err,ic,t_ex = entrenamiento_sin_seleccion_caracteristicas(...)
+
+        df.loc[idx,&#39;CON_SEL&#39;] = &#39;NO&#39;
+        df.loc[idx,&#39;NUM_VAR&#39;] = X.shape[1]
+        df.loc[idx,&#39;NUM_SPLITS&#39;] = ...
+        df.loc[idx,&#39;TIEMPO_EJECUCION&#39;] = ...
+        df.loc[idx,&#39;EXACTITUD_BALANCEADA&#39;] = ...
+        df.loc[idx,&#39;EXACTITUD_BALANCEADA&#39;] = ...
+        idx+=1
+    print(&quot;termina experimentos sin selección&quot;)
+    #Con selección de características
+    for f in n_feats:
+        for split_number in n_sets:
+            #Implemetamos la metodología de validación
+            Errores = np.ones(split_number)
+            Score = np.ones(split_number)
+            times = np.ones(split_number)
+            kf = ...(n_splits=split_number)
+            j = 0
+            for train_index, test_index in kf.split(...,...):
+
+                X_train, X_test = X[train_index], X[test_index]
+                y_train, y_test = Y[train_index], Y[test_index]
+                scaler = ...
+                X_train = ...
+                X_test = ...
+
+                #Configure el modelo SVM para que usa un kernel lineal,
+                #retorne probabilidades, use una estrategia all vs all y
+                #ajuste la semilla a 0.
+                clf =  SVM...
+
+                # se ignorar las otras salidas
+                rfe, _, _, _, t = recursive_feature_elimination_wrapper...
+                Errores[j]=...
+                times[j] = t
+                j+=1
+
+            df.loc[idx,&#39;CON_SEL&#39;] = &#39;SI&#39;
+            df.loc[idx,&#39;NUM_VAR&#39;] = f
+            df.loc[idx,&#39;NUM_SPLITS&#39;] = ...
+            df.loc[idx, &#39;TIEMPO_EJECUCION&#39;] = ...
+            df.loc[idx,&#39;EXACTITUD_BALANCEADA&#39;] = ...
+            df.loc[idx, &#39;STD_EXACTITUD_BALANCEADA&#39;] = ...
+            idx+=1
+    return df
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-19-0930fb039012&gt;&quot;</span><span class="gt">, line </span><span class="mi">52</span>
+    <span class="n">clf</span> <span class="o">=</span>  <span class="n">SVM</span><span class="o">...</span>
+              <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER DEFINEGRADER
+def grader_03(functions, variables, caller_userid):
+    import numpy as np
+    import pandas as pd
+    import time
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.feature_selection import RFE
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import StratifiedKFold
+    from sklearn.metrics import confusion_matrix, balanced_accuracy_score
+    from sklearn.svm import SVC
+
+    def t_experimentar(n_feats, n_sets, X, Y):
+        df = pd.DataFrame()
+        idx = 0
+        # Sin selección de características
+        for split_number in n_sets:
+            _, err, ic, t_ex = entrenamiento_sin_seleccion_caracteristicas(X=X, Y=Y, splits=split_number)
+            df.loc[idx, &#39;CON_SEL&#39;] = &#39;NO&#39;
+            df.loc[idx, &#39;NUM_VAR&#39;] = X.shape[1]
+            df.loc[idx, &#39;NUM_SPLITS&#39;] = split_number
+            df.loc[idx, &#39;TIEMPO_EJECUCION&#39;] = t_ex
+            df.loc[idx, &#39;EXACTITUD_BALANCEADA&#39;] = err
+            df.loc[idx, &#39;STD_EXACTITUD_BALANCEADA&#39;] = ic
+            idx += 1
+
+        # Con selección de características
+        for features in n_feats:
+            for split_number in n_sets:
+                rendimiento = np.ones(split_number)
+                times = np.ones(split_number)
+                kf = StratifiedKFold(n_splits=split_number)
+                j = 0
+                for train_index, test_index in kf.split(X, Y):
+                    X_train, X_test = X[train_index], X[test_index]
+                    y_train, y_test = Y[train_index], Y[test_index]
+
+                    scaler = StandardScaler()
+                    X_train = scaler.fit_transform(X=X_train)
+                    X_test = scaler.transform(X=X_test)
+
+                    clf = SVC(kernel=&quot;linear&quot;, probability=True, decision_function_shape=&quot;ovo&quot;, random_state=0)
+
+                    rfe, _, _, _, t = recursive_feature_elimination_wrapper(
+                        estimator=clf,
+                        feature_numbers=features,
+                        X=X_train,
+                        Y=y_train
+                    )
+
+                    ypred = rfe.predict(X=X_test)
+
+                    # Evaluación para multiclase usando balanced accuracy
+                    rendimiento[j] = balanced_accuracy_score(y_test, ypred)
+                    times[j] = t
+                    j += 1
+
+                df.loc[idx, &#39;CON_SEL&#39;] = &#39;SI&#39;
+                df.loc[idx, &#39;NUM_VAR&#39;] = features
+                df.loc[idx, &#39;NUM_SPLITS&#39;] = split_number
+                df.loc[idx, &#39;TIEMPO_EJECUCION&#39;] = np.mean(times)
+                df.loc[idx, &#39;EXACTITUD_BALANCEADA&#39;] = np.mean(rendimiento)
+                df.loc[idx, &#39;STD_EXACTITUD_BALANCEADA&#39;] = np.std(rendimiento)
+                idx += 1
+
+        return df
+
+    # retrieve definitions
+    namespace = locals()
+    for f in functions.values():
+        exec(f, namespace)
+
+    s_experimentar = namespace[&#39;experimentar&#39;]
+    entrenamiento_sin_seleccion_caracteristicas = namespace[&#39;entrenamiento_sin_seleccion_caracteristicas&#39;]
+    recursive_feature_elimination_wrapper = namespace[&#39;recursive_feature_elimination_wrapper&#39;]
+
+    msg = &quot;testing your code with random data points&lt;br/&gt;&quot;
+
+    for _ in range(5):
+
+      num_samples  = np.random.randint(500) + 20
+      num_features = np.random.randint(10) + 2
+      n_feats = [1, 2, 3]  # número de características seleccionadas
+      n_sets = [2, 3, 5]   # números de splits
+
+      X = np.random.randn(num_samples, num_features)  # Matriz de características
+      Y = np.random.choice([0, 1], size=num_samples)  # Clases binarias
+
+      msg = &quot;&quot;
+              # Ejecutar la función de referencia y la del usuario
+      try:
+          t_df = t_experimentar(n_feats, n_sets, X, Y)
+          s_df = s_experimentar(n_feats, n_sets, X, Y)
+      except Exception as e:
+          return 0, f&quot;Error al ejecutar la función: {str(e)}&quot;
+
+      # 1️⃣ Verificar que tengan la misma forma (filas y columnas)
+      if t_df.shape != s_df.shape:
+          return 0, f&quot;Error: La forma del DataFrame no coincide.&lt;br/&gt;&quot; \
+                    f&quot;🔹 &lt;b&gt;Esperado:&lt;/b&gt; {t_df.shape}&lt;br/&gt;&quot; \
+                    f&quot;🔹 &lt;b&gt;Obtenido:&lt;/b&gt; {s_df.shape}&lt;br/&gt;&quot;
+
+      # 2️⃣ Verificar que tengan las mismas columnas
+      missing_cols = set(t_df.columns) - set(s_df.columns)
+      extra_cols = set(s_df.columns) - set(t_df.columns)
+
+      if missing_cols:
+          return 0, f&quot;Faltan columnas en el resultado del usuario: {missing_cols}.&quot;
+      if extra_cols:
+          return 0, f&quot;Hay columnas extra en el resultado del usuario: {extra_cols}.&quot;
+
+      # 3️⃣ Verificar los tipos de datos de las columnas
+      for column in t_df.columns:
+          if t_df[column].dtype != s_df[column].dtype:
+              return 0, f&quot;Error en la columna &lt;b&gt;{column}&lt;/b&gt;:&lt;br/&gt;&quot; \
+                        f&quot;🔹 &lt;b&gt;Tipo esperado:&lt;/b&gt; {t_df[column].dtype}&lt;br/&gt;&quot; \
+                        f&quot;🔹 &lt;b&gt;Tipo obtenido:&lt;/b&gt; {s_df[column].dtype}&lt;br/&gt;&quot;
+
+      # 4️⃣ Comparar los valores con una tolerancia del 5%
+      tolerancia = 0.05
+      for column in t_df.columns:
+          if np.issubdtype(t_df[column].dtype, np.number):  # Solo comparar columnas numéricas
+              diff = np.abs(t_df[column] - s_df[column])
+              max_diff = diff.max()
+              if (diff &gt; tolerancia).any():
+                  idx_error = diff.idxmax()  # Encontrar el índice donde hay mayor diferencia
+                  return 0, f&quot;⚠️ Diferencias significativas en la columna &lt;b&gt;{column}&lt;/b&gt;:&lt;br/&gt;&quot; \
+                            f&quot;🔹 &lt;b&gt;Esperado:&lt;/b&gt; {t_df[column][idx_error]}&lt;br/&gt;&quot; \
+                            f&quot;🔹 &lt;b&gt;Obtenido:&lt;/b&gt; {s_df[column][idx_error]}&lt;br/&gt;&quot; \
+
+      msg += &quot;&lt;b&gt;Correcto&lt;/b&gt;: La implementación genera el DataFrame esperado.&lt;br/&gt;&quot;
+
+
+      return 5, msg
+source_functions_names_03 = [&#39;experimentar&#39;,&#39;entrenamiento_sin_seleccion_caracteristicas&#39;,&#39;recursive_feature_elimination_wrapper&#39;]
+source_variables_names_03 = []
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+def experimentar(n_feats, n_sets, X, Y):
+    import numpy as np
+    import pandas as pd
+    import time
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.feature_selection import RFE
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.model_selection import StratifiedKFold
+    from sklearn.metrics import confusion_matrix, balanced_accuracy_score
+    from sklearn.svm import SVC
+
+    df = pd.DataFrame()
+    idx = 0
+
+    # Sin selección de características
+    for split_number in n_sets:
+        _, err, ic, t_ex = entrenamiento_sin_seleccion_caracteristicas(X=X, Y=Y, splits=split_number)
+        df.loc[idx, &#39;CON_SEL&#39;] = &#39;NO&#39;
+        df.loc[idx, &#39;NUM_VAR&#39;] = X.shape[1]
+        df.loc[idx, &#39;NUM_SPLITS&#39;] = split_number
+        df.loc[idx, &#39;TIEMPO_EJECUCION&#39;] = t_ex
+        df.loc[idx, &#39;EXACTITUD_BALANCEADA&#39;] = err
+        df.loc[idx, &#39;STD_EXACTITUD_BALANCEADA&#39;] = ic
+        idx += 1
+
+    # Con selección de características
+    for features in n_feats:
+        for split_number in n_sets:
+            rendimiento = np.ones(split_number)
+            times = np.ones(split_number)
+            kf = StratifiedKFold(n_splits=split_number)
+            j = 0
+            for train_index, test_index in kf.split(X, Y):
+                X_train, X_test = X[train_index], X[test_index]
+                y_train, y_test = Y[train_index], Y[test_index]
+
+                scaler = StandardScaler()
+                X_train = scaler.fit_transform(X=X_train)
+                X_test = scaler.transform(X=X_test)
+
+                clf = SVC(kernel=&quot;linear&quot;, probability=True, decision_function_shape=&quot;ovo&quot;, random_state=0)
+
+                rfe, _, _, _, t = recursive_feature_elimination_wrapper(
+                    estimator=clf,
+                    feature_numbers=features,
+                    X=X_train,
+                    Y=y_train
+                )
+
+                ypred = rfe.predict(X=X_test)
+
+                # Evaluación para multiclase usando balanced accuracy
+                rendimiento[j] = balanced_accuracy_score(y_test, ypred)
+                times[j] = t
+                j += 1
+
+            df.loc[idx, &#39;CON_SEL&#39;] = &#39;SI&#39;
+            df.loc[idx, &#39;NUM_VAR&#39;] = features
+            df.loc[idx, &#39;NUM_SPLITS&#39;] = split_number
+            df.loc[idx, &#39;TIEMPO_EJECUCION&#39;] = np.mean(times)
+            df.loc[idx, &#39;EXACTITUD_BALANCEADA&#39;] = np.mean(rendimiento)
+            df.loc[idx, &#39;STD_EXACTITUD_BALANCEADA&#39;] = np.std(rendimiento)
+            idx += 1
+
+    return df
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+import inspect
+teacher.run_grader_locally(&quot;grader_03&quot;, source_functions_names_03, source_variables_names_03, locals())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><h1>grade: <font color='red'>5</font></h1><hr><h1>grader message</h1><hr/><b>Correcto</b>: La implementación genera el DataFrame esperado.<br/></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER SETGRADER
+import inspect
+teacher.set_grader(teacher.course_id, &quot;L06.01&quot;, &#39;T3&#39;,
+                  inspect.getsource(grader_03), &#39;grader_03&#39;,
+                  source_functions_names_03, source_variables_names_03)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Registra tu solución en línea</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>student.submit_task(namespace=globals(), task_id=&#39;T3&#39;);
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ejecuta la celda de codigo para realizar los experimentos</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dfr = experimentar(n_feats = [3, 5, 10,15,20], n_sets = [3,6], X= x, Y=y)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Utilizando el <em>DataFrame</em> definido en la función anterior, retorne la mejor configuración del “Número de características” que resultó ,as beneficiosa. Identifique en términos de “Costo computacional” y “Eficiencia del Modelo”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># podemos cambiar las forma de organizar el df para observar qué diferencias hay
+# cuando se cambia  la prioridad de alguno de los dos parámetros
+dfr.sort_values([&#39;EXACTITUD_BALANCEADA&#39;, &quot;TIEMPO_EJECUCION&quot;], ascending=[False, True])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-082f157b-d865-4198-83eb-c97c7d6b5ef5" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CON_SEL</th>
+      <th>NUM_VAR</th>
+      <th>NUM_SPLITS</th>
+      <th>TIEMPO_EJECUCION</th>
+      <th>EXACTITUD_BALANCEADA</th>
+      <th>STD_EXACTITUD_BALANCEADA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>SI</td>
+      <td>20.0</td>
+      <td>3.0</td>
+      <td>0.326662</td>
+      <td>0.850994</td>
+      <td>0.043400</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>SI</td>
+      <td>10.0</td>
+      <td>3.0</td>
+      <td>1.301425</td>
+      <td>0.848227</td>
+      <td>0.043263</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>SI</td>
+      <td>20.0</td>
+      <td>6.0</td>
+      <td>0.460530</td>
+      <td>0.844635</td>
+      <td>0.064085</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>SI</td>
+      <td>15.0</td>
+      <td>6.0</td>
+      <td>1.384228</td>
+      <td>0.842403</td>
+      <td>0.061451</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>SI</td>
+      <td>15.0</td>
+      <td>3.0</td>
+      <td>0.828572</td>
+      <td>0.837961</td>
+      <td>0.044207</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>SI</td>
+      <td>10.0</td>
+      <td>6.0</td>
+      <td>2.054654</td>
+      <td>0.830788</td>
+      <td>0.086155</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>SI</td>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>2.630600</td>
+      <td>0.811788</td>
+      <td>0.127368</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SI</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>2.110540</td>
+      <td>0.798087</td>
+      <td>0.100780</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>SI</td>
+      <td>3.0</td>
+      <td>6.0</td>
+      <td>2.779737</td>
+      <td>0.757735</td>
+      <td>0.118689</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SI</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>2.205654</td>
+      <td>0.724338</td>
+      <td>0.098574</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NO</td>
+      <td>22.0</td>
+      <td>6.0</td>
+      <td>0.168346</td>
+      <td>0.384595</td>
+      <td>0.017066</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>NO</td>
+      <td>22.0</td>
+      <td>3.0</td>
+      <td>0.135634</td>
+      <td>0.379734</td>
+      <td>0.005171</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-082f157b-d865-4198-83eb-c97c7d6b5ef5')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-082f157b-d865-4198-83eb-c97c7d6b5ef5 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-082f157b-d865-4198-83eb-c97c7d6b5ef5');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-f1776478-dc0d-4c1c-96ee-93d04eaafdc1">
+  <button class="colab-df-quickchart" onclick="quickchart('df-f1776478-dc0d-4c1c-96ee-93d04eaafdc1')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-f1776478-dc0d-4c1c-96ee-93d04eaafdc1 button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<p>Veamos como se relaciona el tiempo de ejecución con los splits y la selección de caracteristicas</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import seaborn as sns
+d_toplot = pd.melt(dfr,id_vars=[&#39;CON_SEL&#39;, &#39;NUM_VAR&#39;, &#39;NUM_SPLITS&#39;], value_vars=[&#39;EXACTITUD_BALANCEADA&#39;, &#39;TIEMPO_EJECUCION&#39;])
+sns.relplot(data = d_toplot,
+    x = &#39;NUM_VAR&#39;,
+    y = &#39;value&#39;,
+    hue = &#39;CON_SEL&#39;,
+    style = &#39;NUM_SPLITS&#39;,
+    col = &#39;variable&#39;,
+    kind=&#39;scatter&#39;,
+    facet_kws = {&#39;sharey&#39; : False},
+    aspect=1.2,
+    s=150)
+plt.show()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6ecdf8cba0c992a63f8defcfca2206b18a8cb6a30afefb2ce48e14d4d9abbdab.png" src="_images/6ecdf8cba0c992a63f8defcfca2206b18a8cb6a30afefb2ce48e14d4d9abbdab.png" />
+</div>
+</div>
+<p>Ahora use el mejor modelo para entrenar nuevamente el modelo y saber que caracteristicas tienen el mejor poder predictivo. Use el # de caracteristicas que resulto mejor cuando se realizo alguna selección de caracteristicas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># observemos el mejor modelo cuando se realizo selección de caracteristicas
+dfr[dfr[&#39;CON_SEL&#39;] == &#39;SI&#39;].sort_values([&quot;EXACTITUD_BALANCEADA&quot;], ascending=[False]).head(2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-086a4c8d-e53c-4157-a6fb-7c143a60fa77" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>CON_SEL</th>
+      <th>NUM_VAR</th>
+      <th>NUM_SPLITS</th>
+      <th>TIEMPO_EJECUCION</th>
+      <th>EXACTITUD_BALANCEADA</th>
+      <th>STD_EXACTITUD_BALANCEADA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>SI</td>
+      <td>20.0</td>
+      <td>3.0</td>
+      <td>0.326662</td>
+      <td>0.850994</td>
+      <td>0.043400</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>SI</td>
+      <td>10.0</td>
+      <td>3.0</td>
+      <td>1.301425</td>
+      <td>0.848227</td>
+      <td>0.043263</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-086a4c8d-e53c-4157-a6fb-7c143a60fa77')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-086a4c8d-e53c-4157-a6fb-7c143a60fa77 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-086a4c8d-e53c-4157-a6fb-7c143a60fa77');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+<div id="df-4f9df3b6-106e-4784-9367-02c2e5f0387f">
+  <button class="colab-df-quickchart" onclick="quickchart('df-4f9df3b6-106e-4784-9367-02c2e5f0387f')"
+            title="Suggest charts"
+            style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+  </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+  <script>
+    async function quickchart(key) {
+      const quickchartButtonEl =
+        document.querySelector('#' + key + ' button');
+      quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+      quickchartButtonEl.classList.add('colab-df-spinner');
+      try {
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      } catch (error) {
+        console.error('Error during call to suggestCharts:', error);
+      }
+      quickchartButtonEl.classList.remove('colab-df-spinner');
+      quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+    }
+    (() => {
+      let quickchartButtonEl =
+        document.querySelector('#df-4f9df3b6-106e-4784-9367-02c2e5f0387f button');
+      quickchartButtonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+    })();
+  </script>
+</div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<p><strong>Ahora, completa la siguiente celda de código, para incluir la selección de características, con el número encontrado anteriormente</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>clf = SVC(...)#Use la misma configuración establecida en la anterior función experimentar
+rfe, feature_mask, _, _, _ = recursive_feature_elimination_wrapper(clf, 10 , x,y)
+
+mask_explicada = &quot;\n&quot;.join([f&quot;feature {i+1} : {m}&quot; for i,m in zip(range(x.shape[1]), feature_mask)])
+
+print(f&quot;Esta es la máscara (debería contener solo valores True y False) \n {mask_explicada}&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Esta es la máscara (debería ser solo valores True y False) 
+ feature 1 : True
+feature 2 : True
+feature 3 : False
+feature 4 : False
+feature 5 : True
+feature 6 : False
+feature 7 : True
+feature 8 : False
+feature 9 : True
+feature 10 : False
+feature 11 : False
+feature 12 : False
+feature 13 : False
+feature 14 : False
+feature 15 : True
+feature 16 : True
+feature 17 : False
+feature 18 : True
+feature 19 : False
+feature 20 : False
+feature 21 : True
+feature 22 : True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Recordemos el <a class="reference external" href="https://jdariasl.github.io/ML_2020/Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">concepto de importancia de variables de los metodos basados en arboles</a>.</p>
+<p>El siguiente código implementa el cálculo de la importancia de variables en nuestro problema.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># entrenar random forest
+from sklearn.ensemble import RandomForestClassifier
+feature_names = [f&quot;feature {i+1}&quot; for i in range(x.shape[1])]
+forest = RandomForestClassifier(random_state=0)
+forest.fit(x, y)
+#obtener la importnacia de variables
+importances = forest.feature_importances_
+std = np.std([tree.feature_importances_ for tree in forest.estimators_], axis=0)
+# Graficar las importancia
+fig, ax = plt.subplots(figsize = (12,6))
+forest_importances = pd.Series(importances, index=feature_names)
+forest_importances.plot.bar(yerr=std, ax=ax)
+ax.set_title(&quot;Importancia de variables&quot;)
+ax.set_ylabel(&quot;Valor medio en dismunución de impureza&quot;)
+fig.tight_layout()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5fcf8bc85000a3d00f4d14d538e79e330ec1153a94f19dfc45663b945f33253c.png" src="_images/5fcf8bc85000a3d00f4d14d538e79e330ec1153a94f19dfc45663b945f33253c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#@title Pregunta Abierta
+#@markdown ¿Son consistentes los resultados de los métodos?
+respuesta = &#39;&#39; #@param {type:&quot;string&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># completa con el mejor número de características
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+from sklearn.metrics import confusion_matrix
+
+BEST_NUM_CARACTERISTICAS = 10
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
+selector = RFE(estimator= LogisticRegression(),
+              n_features_to_select=BEST_NUM_CARACTERISTICAS ,
+              step=1)
+
+estimators = [(&#39;normalización&#39;, StandardScaler()),
+              (&#39;Selección&#39;, selector),
+              (&#39;Clasificador&#39;,  LogisticRegression()),
+              ]
+
+pipe_selector = Pipeline(estimators)
+
+pipe_selector.fit(X=X_train, y=y_train)
+
+# se puede usar para predecir:
+confusion_matrix(y_true = y_test , y_pred = pipe_selector.predict(X=X_test), normalize=&#39;true&#39;).ravel()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.97897898, 0.01201201, 0.00900901, 0.09375   , 0.84375   ,
+       0.0625    , 0.10344828, 0.17241379, 0.72413793])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## TEACHER
+# --- CREATE or OVERWRITE STUDENTS NOTEBOOK ---
+import init
+from local.lib.rlxmoocapi import utils
+student_notebook_fname = utils.convert_this_notebook_to_student()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/javascript">IPython.notebook.save_checkpoint();</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Ignoring invalid distribution -ensorflow (/Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -ensorflow (/Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipynbname in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (2024.1.0.0)
+Requirement already satisfied: ipykernel in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipynbname) (6.19.3)
+Requirement already satisfied: debugpy&gt;=1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.6.4)
+Requirement already satisfied: psutil in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.9.4)
+Requirement already satisfied: tornado&gt;=6.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (6.2)
+Requirement already satisfied: jupyter-client&gt;=6.1.12 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (7.4.8)
+Requirement already satisfied: nest-asyncio in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (1.5.6)
+Requirement already satisfied: pyzmq&gt;=17 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.0.1)
+Requirement already satisfied: matplotlib-inline&gt;=0.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.6)
+Requirement already satisfied: traitlets&gt;=5.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (5.8.0)
+Requirement already satisfied: comm&gt;=0.1.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.2.2)
+Requirement already satisfied: packaging in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (24.2)
+Requirement already satisfied: appnope in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (0.1.3)
+Requirement already satisfied: ipython&gt;=7.23.1 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipykernel-&gt;ipynbname) (8.7.0)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (4.8.0)
+Requirement already satisfied: backcall in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.0)
+Requirement already satisfied: decorator in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (5.1.1)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.11 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (3.0.36)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.18.2)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.19.1)
+Requirement already satisfied: stack-data in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.6.2)
+Requirement already satisfied: pickleshare in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.5)
+Requirement already satisfied: entrypoints in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (0.4)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.8.2)
+Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (5.1.0)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.8.3)
+Requirement already satisfied: platformdirs&gt;=2.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from jupyter-core&gt;=4.9.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (2.6.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.11-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.5)
+Requirement already satisfied: six&gt;=1.5 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from python-dateutil&gt;=2.8.2-&gt;jupyter-client&gt;=6.1.12-&gt;ipykernel-&gt;ipynbname) (1.16.0)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (2.2.1)
+Requirement already satisfied: executing&gt;=1.2.0 in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (1.2.0)
+Requirement already satisfied: pure-eval in /Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=7.23.1-&gt;ipykernel-&gt;ipynbname) (0.2.2)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Ignoring invalid distribution -ensorflow (/Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NOTEBOOK name is lab6_parte1--XX--TEACHER--XX.ipynb
+student notebook writen to &#39;lab6_parte1.ipynb&#39;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING: Ignoring invalid distribution -ensorflow (/Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -ensorflow (/Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages)
+WARNING: Ignoring invalid distribution -ensorflow (/Users/julian/opt/anaconda3/envs/tensorflow/lib/python3.9/site-packages)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-1-entrenamiento-sin-seleccion-de-caracteristicas">Ejercicio 1: Entrenamiento sin selección de características</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-2-entrenamiento-con-seleccion-de-caracteristicas">Ejercicio 2: Entrenamiento con selección de características</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicio-3-comparacion-de-los-resultados-del-modelo">Ejercicio 3:  Comparación de los resultados del modelo</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - Deiry Sofía Navas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
