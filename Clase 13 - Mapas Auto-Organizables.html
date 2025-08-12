@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Mapas Auto-Organizables &#8212; 2025 Introducción al Machine Learning</title>
   
@@ -14,45 +15,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -60,16 +62,12 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-51547737-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'UA-51547737-2');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Clase 13 - Mapas Auto-Organizables';</script>
@@ -86,23 +84,19 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,20 +118,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -152,13 +138,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
-  
   
   
   
@@ -168,23 +150,12 @@
       
     
     
-    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2025 Introducción al Machine Learning - Home"/>
-    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2025 Introducción al Machine Learning - Home"/>`);</script>
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -195,61 +166,58 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
 
 
 
 
 
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2001%20-%20Introducci%C3%B3n%20al%20Machine%20Learning.html">Introducción al Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
 
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Aprendizaje%20no%20supervisado.html">Clustering</a></li>
-
-
-
 <li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><ul class="current">
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Mapas Auto-Organizables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
-</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
@@ -257,9 +225,9 @@
 
 <li class="toctree-l2"><a class="reference internal" href="lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN/EXTRACCIÓN DE CARACTERÍSTICAS</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
 
@@ -268,13 +236,18 @@
 <li class="toctree-l2"><a class="reference internal" href="Clase%2021%20-%20Extracci%C3%B3n%20no%20lineal%20de%20caracter%C3%ADsticas%20-%20aprendizaje%20de%20variedades.html">Reducción de dimensión: Métodos no lineales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">U9. OTROS PARADIGMAS DE APREDIZAJE</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2022%20-%20Aprendizaje%20semi-supervisado.html">Aprendizaje semi-supervisado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2023%20-%20Aprendizaje%20por%20refuerzo.html">Aprendizaje por refuerzo</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U10_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -290,7 +263,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -299,14 +272,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -331,14 +304,14 @@
       
       <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/Clase 13 - Mapas Auto-Organizables.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+   title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Colab logo" src="_static/images/logo_colab.png">
+    <img src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -412,28 +385,26 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -467,13 +438,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="mapas-auto-organizables">
-<h1>Mapas Auto-Organizables<a class="headerlink" href="#mapas-auto-organizables" title="Link to this heading">#</a></h1>
+<h1>Mapas Auto-Organizables<a class="headerlink" href="#mapas-auto-organizables" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -494,7 +465,7 @@ document.write(`
 <li><b>Adaptación sináptica</b>: Es el paso de adaptación, en el que se reajustan los pesos de la red, para favorecer las neuronas actividas</li>
 </ul>
 <section id="proceso-de-competicion">
-<h2>Proceso de Competición<a class="headerlink" href="#proceso-de-competicion" title="Link to this heading">#</a></h2>
+<h2>Proceso de Competición<a class="headerlink" href="#proceso-de-competicion" title="Permalink to this heading">#</a></h2>
 <p>Para mantener la notación utilizada en la gráfica, supongamos que <span class="math notranslate nohighlight">\(m\)</span> es la dimensión del espacio de entrada, es decir el número de características. Cada muestra estará entonces representada por un vector <span class="math notranslate nohighlight">\({\bf{x}}=[x_1,x_2,...,x_m]^T\)</span>. El vector de pesos sinápticos de cada neurona en la red tiene la misma dimensión del espacio de entrada. Para la neurona <span class="math notranslate nohighlight">\(j\)</span>, el vector estará dado por <span class="math notranslate nohighlight">\({\bf{w}}=[w_{j1},w_{j2},...,w_{jm}]^T\)</span>, para <span class="math notranslate nohighlight">\(j=1,2,...,K\)</span>.</p>
 <p>Para encontrar la neurona que mejor “combina” con un determinado vector de entrada <span class="math notranslate nohighlight">\(\bf{x}\)</span>, podemos evaluar los productos internos <span class="math notranslate nohighlight">\({\bf{w}}_j^T{\bf{x}}\)</span> y encontrar la neurona <span class="math notranslate nohighlight">\(j\)</span> para la cual dicho producto es mayor. El producto es mayor cuando el ángulo entre los vectores es 0, es decir que encontrar la neurona con mayor producto interno <span class="math notranslate nohighlight">\({\bf{w}}_j^T{\bf{x}}\)</span>, es matemáticamente equivalente a encontrar la neurona <span class="math notranslate nohighlight">\(j\)</span> para la cual la distancia entre los vectores <span class="math notranslate nohighlight">\({\bf{w}}_j\)</span> y <span class="math notranslate nohighlight">\({\bf{x}}\)</span> sea mínima.</p>
 <p>La neurona ganadora será entonces aquella que cumpla la condición:</p>
@@ -503,7 +474,7 @@ document.write(`
 <p>donde <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> denota la cuadrícula de neuronas (el conjunto de neuronas).</p>
 </section>
 <section id="proceso-cooperativo">
-<h2>Proceso cooperativo<a class="headerlink" href="#proceso-cooperativo" title="Link to this heading">#</a></h2>
+<h2>Proceso cooperativo<a class="headerlink" href="#proceso-cooperativo" title="Permalink to this heading">#</a></h2>
 <p>La neurona ganadora estará ubicada en el centro de una <b>vencidad topológica </b> de neuronas cooperantes, intentado emular las vecindades neurobológicas observadas en el cerebro humano. La vecindad topológica estará definida por la cercanía física entre las neuronas de la cuadrícula, definiendo un umbral de vecindad para las neuronas cooperantes. Para emular, biologicamente, de mejor manera el comportamiento de las neuronas en la corteza cerebral, la vecindad no se define de manera rígida, sino que por el contrario se usa una función que permita definir el “nivel de cooperación” de cualquier neurona en relación con la neurona ganadora, a partir de la distancia existente entre ambas.</p>
 <p>La vecindad topológica centrada en la neurona ganadora <span class="math notranslate nohighlight">\(i\)</span> y cualquier otra neurona exitada <span class="math notranslate nohighlight">\(j\)</span>, se define como:</p>
 <div class="math notranslate nohighlight">
@@ -517,7 +488,7 @@ document.write(`
 \[h_{j,i({\bf{x}})}(t)=\exp\left(-\frac{d_{j,i}^2}{2\sigma^2(t)}\right), \;\; t=0,1,2,...\]</div>
 </section>
 <section id="proceso-de-adaptacion">
-<h2>Proceso de Adaptación<a class="headerlink" href="#proceso-de-adaptacion" title="Link to this heading">#</a></h2>
+<h2>Proceso de Adaptación<a class="headerlink" href="#proceso-de-adaptacion" title="Permalink to this heading">#</a></h2>
 <p>Esta es la última parte del proceso, en la cual se implementa el “auto-organizamiento” de la red. Para esto, el vector de pesos sináptico <span class="math notranslate nohighlight">\({\bf{w}}_j\)</span> de la neurona <span class="math notranslate nohighlight">\(j\)</span>, debe cambiar con relación al vector de entrada <span class="math notranslate nohighlight">\(\bf{x}\)</span>. Como el objetivo es que cada uno de los pesos de las neuronas se muevan en la dirección del vector entrada, siempre y cuando la neurona a actualizar esté en la región de vecindad de la neurona ganadora, la función de actualización en la iteración <span class="math notranslate nohighlight">\(t+1\)</span> tiene la forma:</p>
 <div class="math notranslate nohighlight">
 \[{\bf{w}}_j(t+1)={\bf{w}}_j(t)+\eta(t)h_{j,i({\bf{x}})}(t)({\bf{x}}(t)-{\bf{w}}_j(t))\]</div>
@@ -528,8 +499,8 @@ document.write(`
 <p>Veamos un ejemplo</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Se debe instalar la siguiente libreria
-!pip install git+https://github.com/sevamoo/SOMPY.git
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Se debe instalar la siguiente libreria</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/sevamoo/SOMPY.git
 </pre></div>
 </div>
 </div>
@@ -555,38 +526,38 @@ Successfully installed SOMPY-1.1.1
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#from mvpa2.suite import *
-import numpy as np
-colors = np.array(
-         [[0., 0., 0.],
-          [0., 0., 1.],
-          [0., 0., 0.5],
-          [0.125, 0.529, 1.0],
-          [0.33, 0.4, 0.67],
-          [0.6, 0.5, 1.0],
-          [0., 1., 0.],
-          [1., 0., 0.],
-          [0., 1., 1.],
-          [1., 0., 1.],
-          [1., 1., 0.],
-          [1., 1., 1.],
-          [.33, .33, .33],
-          [.5, .5, .5],
-          [.66, .66, .66]])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#from mvpa2.suite import *</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+         <span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">0.125</span><span class="p">,</span> <span class="mf">0.529</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.67</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">.33</span><span class="p">,</span> <span class="mf">.33</span><span class="p">,</span> <span class="mf">.33</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">],</span>
+          <span class="p">[</span><span class="mf">.66</span><span class="p">,</span> <span class="mf">.66</span><span class="p">,</span> <span class="mf">.66</span><span class="p">]])</span>
 
-# store the names of the colors for visualization later on
-color_names = \
-        [&#39;black&#39;, &#39;blue&#39;, &#39;darkblue&#39;, &#39;skyblue&#39;,
-         &#39;greyblue&#39;, &#39;lilac&#39;, &#39;green&#39;, &#39;red&#39;,
-         &#39;cyan&#39;, &#39;violet&#39;, &#39;yellow&#39;, &#39;white&#39;,
-         &#39;darkgrey&#39;, &#39;mediumgrey&#39;, &#39;lightgrey&#39;]
+<span class="c1"># store the names of the colors for visualization later on</span>
+<span class="n">color_names</span> <span class="o">=</span> \
+        <span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;darkblue&#39;</span><span class="p">,</span> <span class="s1">&#39;skyblue&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;greyblue&#39;</span><span class="p">,</span> <span class="s1">&#39;lilac&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="s1">&#39;violet&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;darkgrey&#39;</span><span class="p">,</span> <span class="s1">&#39;mediumgrey&#39;</span><span class="p">,</span> <span class="s1">&#39;lightgrey&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import sompy
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sompy</span>
 </pre></div>
 </div>
 </div>
@@ -601,17 +572,17 @@ Loaded backend module://ipykernel.pylab.backend_inline version unknown.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sm = sompy.SOMFactory().build(colors, [20, 30], normalization = &#39;var&#39;, initialization=&#39;random&#39;, neighborhood = &#39;gaussian&#39;, component_names=[&#39;R&#39;,&#39;G&#39;,&#39;B&#39;])
-sm.train(n_job=4, verbose=False, train_len_factor=0.5, train_rough_len=2, train_finetune_len=100)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sm</span> <span class="o">=</span> <span class="n">sompy</span><span class="o">.</span><span class="n">SOMFactory</span><span class="p">()</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span> <span class="n">normalization</span> <span class="o">=</span> <span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="n">initialization</span><span class="o">=</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="n">neighborhood</span> <span class="o">=</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">component_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">,</span><span class="s1">&#39;G&#39;</span><span class="p">,</span><span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<span class="n">sm</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">n_job</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">train_len_factor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">train_rough_len</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">train_finetune_len</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sompy.visualization.mapview import View2D
-view2D  = View2D(50,50,&quot;rand data&quot;,text_size=10)
-view2D.show(sm, col_sz=4, which_dim=&quot;all&quot;, denormalize=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sompy.visualization.mapview</span> <span class="kn">import</span> <span class="n">View2D</span>
+<span class="n">view2D</span>  <span class="o">=</span> <span class="n">View2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="s2">&quot;rand data&quot;</span><span class="p">,</span><span class="n">text_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">view2D</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">sm</span><span class="p">,</span> <span class="n">col_sz</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">which_dim</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">denormalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -621,9 +592,9 @@ view2D.show(sm, col_sz=4, which_dim=&quot;all&quot;, denormalize=True)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>codebook = sm._normalizer.denormalize_by(sm.data_raw, sm.codebook.matrix)
-mp = codebook.reshape(sm.codebook.mapsize[0],sm.codebook.mapsize[1],codebook.shape[1])
-mp.shape
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">codebook</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">_normalizer</span><span class="o">.</span><span class="n">denormalize_by</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">data_raw</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">codebook</span><span class="o">.</span><span class="n">matrix</span><span class="p">)</span>
+<span class="n">mp</span> <span class="o">=</span> <span class="n">codebook</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">codebook</span><span class="o">.</span><span class="n">mapsize</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">sm</span><span class="o">.</span><span class="n">codebook</span><span class="o">.</span><span class="n">mapsize</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">codebook</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -636,20 +607,20 @@ mp.shape
 <p>Definiendo un SOM con una cuadrícula de 20x40 neuronas de salida y 400 iteraciones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
-#som = SimpleSOMMapper((20, 30), 400, learning_rate=0.05)
-#som.train(colors)
-Neurons = np.arange(sm.codebook.matrix.shape[0]).reshape(sm.codebook.mapsize[0],sm.codebook.mapsize[1])
-plt.figure(figsize=(15,8))
-plt.imshow(mp, origin=&#39;lower&#39;)
-mapped = sm.project_data(colors)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="c1">#som = SimpleSOMMapper((20, 30), 400, learning_rate=0.05)</span>
+<span class="c1">#som.train(colors)</span>
+<span class="n">Neurons</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">codebook</span><span class="o">.</span><span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">codebook</span><span class="o">.</span><span class="n">mapsize</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">sm</span><span class="o">.</span><span class="n">codebook</span><span class="o">.</span><span class="n">mapsize</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+<span class="n">mapped</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">project_data</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
 
-plt.title(&#39;Color SOM&#39;)
-# SOM&#39;s kshape is (rows x columns), while matplotlib wants (X x Y)
-for i,j in enumerate(mapped):
-    m = np.asarray(np.where(Neurons == j)).flatten()
-    plt.text(m[1], m[0], color_names[i], ha=&#39;center&#39;, va=&#39;center&#39;,
-           bbox=dict(facecolor=&#39;white&#39;, alpha=0.5, lw=0))
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Color SOM&#39;</span><span class="p">)</span>
+<span class="c1"># SOM&#39;s kshape is (rows x columns), while matplotlib wants (X x Y)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mapped</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Neurons</span> <span class="o">==</span> <span class="n">j</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color_names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+           <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -659,28 +630,28 @@ for i,j in enumerate(mapped):
 </div>
 </section>
 <section id="veamos-un-ejemplo-donde-un-algoritmo-de-clustering-convencional-tendria-problemas-y-el-som-no">
-<h2>Veamos un ejemplo donde un algoritmo de clustering convencional tendría problemas y el SOM no<a class="headerlink" href="#veamos-un-ejemplo-donde-un-algoritmo-de-clustering-convencional-tendria-problemas-y-el-som-no" title="Link to this heading">#</a></h2>
+<h2>Veamos un ejemplo donde un algoritmo de clustering convencional tendría problemas y el SOM no<a class="headerlink" href="#veamos-un-ejemplo-donde-un-algoritmo-de-clustering-convencional-tendria-problemas-y-el-som-no" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
-dlen = 700
-tetha = np.random.uniform(low=0,high=2*np.pi,size=dlen)[:,np.newaxis]
-X1 = 3*np.cos(tetha)+ .22*np.random.rand(dlen,1)
-Y1 = 3*np.sin(tetha)+ .22*np.random.rand(dlen,1)
-Data1 = np.concatenate((X1,Y1),axis=1)
-X2 = 1*np.cos(tetha)+ .22*np.random.rand(dlen,1)
-Y2 = 1*np.sin(tetha)+ .22*np.random.rand(dlen,1)
-Data2 = np.concatenate((X2,Y2),axis=1)
-X3 = 5*np.cos(tetha)+ .22*np.random.rand(dlen,1)
-Y3 = 5*np.sin(tetha)+ .22*np.random.rand(dlen,1)
-Data3 = np.concatenate((X3,Y3),axis=1)
-X4 = 8*np.cos(tetha)+ .22*np.random.rand(dlen,1)
-Y4 = 8*np.sin(tetha)+ .22*np.random.rand(dlen,1)
-Data4 = np.concatenate((X4,Y4),axis=1)
-Data2 = np.concatenate((Data1,Data2,Data3,Data4),axis=0)
-fig = plt.figure()
-fig.set_size_inches(7,7)
-plt.plot(Data2[:,0],Data2[:,1],&#39;ob&#39;,alpha=0.2, markersize=4)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">dlen</span> <span class="o">=</span> <span class="mi">700</span>
+<span class="n">tetha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">dlen</span><span class="p">)[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="n">X1</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tetha</span><span class="p">)</span><span class="o">+</span> <span class="mf">.22</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">dlen</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Y1</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tetha</span><span class="p">)</span><span class="o">+</span> <span class="mf">.22</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">dlen</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X1</span><span class="p">,</span><span class="n">Y1</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tetha</span><span class="p">)</span><span class="o">+</span> <span class="mf">.22</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">dlen</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Y2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tetha</span><span class="p">)</span><span class="o">+</span> <span class="mf">.22</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">dlen</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X2</span><span class="p">,</span><span class="n">Y2</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X3</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tetha</span><span class="p">)</span><span class="o">+</span> <span class="mf">.22</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">dlen</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Y3</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tetha</span><span class="p">)</span><span class="o">+</span> <span class="mf">.22</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">dlen</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Data3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X3</span><span class="p">,</span><span class="n">Y3</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X4</span> <span class="o">=</span> <span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">tetha</span><span class="p">)</span><span class="o">+</span> <span class="mf">.22</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">dlen</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Y4</span> <span class="o">=</span> <span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">tetha</span><span class="p">)</span><span class="o">+</span> <span class="mf">.22</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">dlen</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Data4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X4</span><span class="p">,</span><span class="n">Y4</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Data2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">Data1</span><span class="p">,</span><span class="n">Data2</span><span class="p">,</span><span class="n">Data3</span><span class="p">,</span><span class="n">Data4</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Data2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Data2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;ob&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -693,7 +664,7 @@ plt.plot(Data2[:,0],Data2[:,1],&#39;ob&#39;,alpha=0.2, markersize=4)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Data2.shape
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Data2</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -705,19 +676,19 @@ plt.plot(Data2[:,0],Data2[:,1],&#39;ob&#39;,alpha=0.2, markersize=4)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mapsize = [50,50]
-som = sompy.SOMFactory.build(Data2, mapsize, mask=None, mapshape=&#39;planar&#39;, lattice=&#39;rect&#39;, normalization=&#39;var&#39;, initialization=&#39;pca&#39;, neighborhood=&#39;gaussian&#39;, training=&#39;batch&#39;, name=&#39;sompy&#39;)  # this will use the default parameters, but i can change the initialization and neighborhood methods
-som.train(n_job=1, verbose=False, train_finetune_len=200)  # verbose=&#39;debug&#39; will print more, and verbose=None wont print anything
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
+<span class="n">som</span> <span class="o">=</span> <span class="n">sompy</span><span class="o">.</span><span class="n">SOMFactory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">Data2</span><span class="p">,</span> <span class="n">mapsize</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mapshape</span><span class="o">=</span><span class="s1">&#39;planar&#39;</span><span class="p">,</span> <span class="n">lattice</span><span class="o">=</span><span class="s1">&#39;rect&#39;</span><span class="p">,</span> <span class="n">normalization</span><span class="o">=</span><span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="n">initialization</span><span class="o">=</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">neighborhood</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sompy&#39;</span><span class="p">)</span>  <span class="c1"># this will use the default parameters, but i can change the initialization and neighborhood methods</span>
+<span class="n">som</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">n_job</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">train_finetune_len</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>  <span class="c1"># verbose=&#39;debug&#39; will print more, and verbose=None wont print anything</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>v = sompy.mapview.View2DPacked(50, 50, &#39;test&#39;,text_size=8)  
-# could be done in a one-liner: sompy.mapview.View2DPacked(300, 300, &#39;test&#39;).show(som)
-v.show(som, what=&#39;codebook&#39;, which_dim=[0,1], cmap=None, col_sz=6) #which_dim=&#39;all&#39; default
-# v.save(&#39;2d_packed_test&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">sompy</span><span class="o">.</span><span class="n">mapview</span><span class="o">.</span><span class="n">View2DPacked</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="n">text_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>  
+<span class="c1"># could be done in a one-liner: sompy.mapview.View2DPacked(300, 300, &#39;test&#39;).show(som)</span>
+<span class="n">v</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">som</span><span class="p">,</span> <span class="n">what</span><span class="o">=</span><span class="s1">&#39;codebook&#39;</span><span class="p">,</span> <span class="n">which_dim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col_sz</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span> <span class="c1">#which_dim=&#39;all&#39; default</span>
+<span class="c1"># v.save(&#39;2d_packed_test&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -727,13 +698,13 @@ v.show(som, what=&#39;codebook&#39;, which_dim=[0,1], cmap=None, col_sz=6) #whic
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#In this case, K-means simply fails as expected
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#In this case, K-means simply fails as expected</span>
 
-v = sompy.mapview.View2DPacked(2, 2, &#39;test&#39;,text_size=8)  
-#first you can do clustering. Currently only K-means on top of the trained som
-cl = som.cluster(n_clusters=4)
-v.show(som, what=&#39;cluster&#39;)
-# v.save(&#39;kmeans_test&#39;)
+<span class="n">v</span> <span class="o">=</span> <span class="n">sompy</span><span class="o">.</span><span class="n">mapview</span><span class="o">.</span><span class="n">View2DPacked</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="n">text_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>  
+<span class="c1">#first you can do clustering. Currently only K-means on top of the trained som</span>
+<span class="n">cl</span> <span class="o">=</span> <span class="n">som</span><span class="o">.</span><span class="n">cluster</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">v</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">som</span><span class="p">,</span> <span class="n">what</span><span class="o">=</span><span class="s1">&#39;cluster&#39;</span><span class="p">)</span>
+<span class="c1"># v.save(&#39;kmeans_test&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -747,11 +718,11 @@ v.show(som, what=&#39;cluster&#39;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#But Umatrix finds the clusters easily
-u = sompy.umatrix.UMatrixView(50, 50, &#39;umatrix&#39;, show_axis=True, text_size=8, show_text=True)
-#This is the Umat value
-UMAT  = u.build_u_matrix(som, distance=1, row_normalized=False)
-UMAT = u.show(som, distance2=1, row_normalized=False, show_data=True, contooor=False, blob=False)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#But Umatrix finds the clusters easily</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">sompy</span><span class="o">.</span><span class="n">umatrix</span><span class="o">.</span><span class="n">UMatrixView</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;umatrix&#39;</span><span class="p">,</span> <span class="n">show_axis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">show_text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">#This is the Umat value</span>
+<span class="n">UMAT</span>  <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">build_u_matrix</span><span class="p">(</span><span class="n">som</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row_normalized</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">UMAT</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">som</span><span class="p">,</span> <span class="n">distance2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row_normalized</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">contooor</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">blob</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -761,16 +732,16 @@ UMAT = u.show(som, distance2=1, row_normalized=False, show_data=True, contooor=F
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.datasets import load_iris
-data = load_iris()
-X = data.data
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">data</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>X.shape
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -782,7 +753,7 @@ X = data.data
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt.scatter(X[:,0],X[:,1],c=data.target)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -795,19 +766,19 @@ X = data.data
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mapsize = [20,20]
-som = sompy.SOMFactory.build(X, mapsize, mask=None, mapshape=&#39;planar&#39;, lattice=&#39;rect&#39;, normalization=&#39;var&#39;, initialization=&#39;pca&#39;, neighborhood=&#39;gaussian&#39;, training=&#39;batch&#39;, name=&#39;sompy&#39;)  # this will use the default parameters, but i can change the initialization and neighborhood methods
-som.train(n_job=1, verbose=False, train_finetune_len=200)  # verbose=&#39;debug&#39; will print more, and verbose=None wont print anything
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapsize</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">]</span>
+<span class="n">som</span> <span class="o">=</span> <span class="n">sompy</span><span class="o">.</span><span class="n">SOMFactory</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">mapsize</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mapshape</span><span class="o">=</span><span class="s1">&#39;planar&#39;</span><span class="p">,</span> <span class="n">lattice</span><span class="o">=</span><span class="s1">&#39;rect&#39;</span><span class="p">,</span> <span class="n">normalization</span><span class="o">=</span><span class="s1">&#39;var&#39;</span><span class="p">,</span> <span class="n">initialization</span><span class="o">=</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">neighborhood</span><span class="o">=</span><span class="s1">&#39;gaussian&#39;</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sompy&#39;</span><span class="p">)</span>  <span class="c1"># this will use the default parameters, but i can change the initialization and neighborhood methods</span>
+<span class="n">som</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">n_job</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">train_finetune_len</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>  <span class="c1"># verbose=&#39;debug&#39; will print more, and verbose=None wont print anything</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>v = sompy.mapview.View2DPacked(20, 20, &#39;test&#39;,text_size=8)  
-# could be done in a one-liner: sompy.mapview.View2DPacked(300, 300, &#39;test&#39;).show(som)
-v.show(som, what=&#39;codebook&#39;, which_dim=[0,1,2,3], cmap=None, col_sz=6) #which_dim=&#39;all&#39; default
-# v.save(&#39;2d_packed_test&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">sompy</span><span class="o">.</span><span class="n">mapview</span><span class="o">.</span><span class="n">View2DPacked</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="n">text_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>  
+<span class="c1"># could be done in a one-liner: sompy.mapview.View2DPacked(300, 300, &#39;test&#39;).show(som)</span>
+<span class="n">v</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">som</span><span class="p">,</span> <span class="n">what</span><span class="o">=</span><span class="s1">&#39;codebook&#39;</span><span class="p">,</span> <span class="n">which_dim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col_sz</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span> <span class="c1">#which_dim=&#39;all&#39; default</span>
+<span class="c1"># v.save(&#39;2d_packed_test&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -817,11 +788,11 @@ v.show(som, what=&#39;codebook&#39;, which_dim=[0,1,2,3], cmap=None, col_sz=6) #
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#But Umatrix finds the clusters easily
-u = sompy.umatrix.UMatrixView(20, 20, &#39;umatrix&#39;, show_axis=True, text_size=8, show_text=True)
-#This is the Umat value
-UMAT  = u.build_u_matrix(som, distance=1, row_normalized=False)
-UMAT = u.show(som, distance2=1, row_normalized=False, show_data=True, contooor=False, blob=False)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#But Umatrix finds the clusters easily</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">sompy</span><span class="o">.</span><span class="n">umatrix</span><span class="o">.</span><span class="n">UMatrixView</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;umatrix&#39;</span><span class="p">,</span> <span class="n">show_axis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">show_text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">#This is the Umat value</span>
+<span class="n">UMAT</span>  <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">build_u_matrix</span><span class="p">(</span><span class="n">som</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row_normalized</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">UMAT</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">som</span><span class="p">,</span> <span class="n">distance2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">row_normalized</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">contooor</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">blob</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -858,10 +829,11 @@ UMAT = u.show(som, distance2=1, row_normalized=False, show_data=True, contooor=F
 
               
               
-              
-              
-                <footer class="prev-next-footer d-print-none">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html"
@@ -881,7 +853,10 @@ UMAT = u.show(som, distance2=1, row_normalized=False, show_data=True, contooor=F
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -889,7 +864,6 @@ UMAT = u.show(som, distance2=1, row_normalized=False, show_data=True, contooor=F
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -922,10 +896,9 @@ By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - 
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -949,8 +922,8 @@ By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - 
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

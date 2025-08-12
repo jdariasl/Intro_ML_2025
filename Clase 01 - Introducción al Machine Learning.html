@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Introducción al Machine Learning &#8212; 2025 Introducción al Machine Learning</title>
   
@@ -14,45 +15,46 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -60,16 +62,12 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-51547737-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){ dataLayer.push(arguments); }
-                gtag('js', new Date());
-                gtag('config', 'UA-51547737-2');
-            </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Clase 01 - Introducción al Machine Learning';</script>
@@ -86,23 +84,19 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,20 +118,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -152,13 +138,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
-  
   
   
   
@@ -168,23 +150,12 @@
       
     
     
-    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2025 Introducción al Machine Learning - Home"/>
-    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2025 Introducción al Machine Learning - Home"/>`);</script>
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -195,55 +166,58 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><ul class="simple">
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Intro_python.html">Google Colab y Jupyter Notebooks</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Introducción al Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
-</ul><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. KNN para un problema de regresión</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
 
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Unsupervised%20Learning.html">Clustering</a></li>
-
-
-
-<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. Comparación de metodos de clusterización</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Aprendizaje%20no%20supervisado.html">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales - perceptrón multicapa</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
@@ -251,21 +225,29 @@
 
 <li class="toctree-l2"><a class="reference internal" href="lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><ul>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN/EXTRACCIÓN DE CARACTERÍSTICAS</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2019%20-%20An%C3%A1lisis%20de%20Componentes%20Principales.html">Reducción de dimensión: Análisis de Componentes Principales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html">Reducción de dimensión: Análisis Discriminante de Fisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2021%20-%20Extracci%C3%B3n%20no%20lineal%20de%20caracter%C3%ADsticas%20-%20aprendizaje%20de%20variedades.html">Reducción de dimensión: Métodos no lineales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><ul class="simple">
-</ul><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary>
-</details></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">U9. OTROS PARADIGMAS DE APREDIZAJE</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2022%20-%20Aprendizaje%20semi-supervisado.html">Aprendizaje semi-supervisado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2023%20-%20Aprendizaje%20por%20refuerzo.html">Aprendizaje por refuerzo</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U10_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -281,7 +263,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -290,14 +272,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -322,14 +304,14 @@
       
       <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/Clase 01 - Introducción al Machine Learning.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch on Colab"
+   title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img alt="Colab logo" src="_static/images/logo_colab.png">
+    <img src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -403,28 +385,26 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -445,21 +425,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion"><font color="blue">Definición</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-definicion-font"><font color="blue">Definición</font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-aplicaciones-de-ml">Ejemplos de aplicaciones de ML:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-a-partir-de-datos">Modelos a partir de datos</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aproximacion-mecanicista">Aproximación mecanicista:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aproximacion-en-machine-learning">Aproximación en Machine Learning:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-calibracion-dependera-de-la-muestra-de-datos-con-que-se-cuente"><font color="red">La calibración dependerá de la muestra de datos con que se cuente!</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-la-calibracion-dependera-de-la-muestra-de-datos-con-que-se-cuente-font"><font color="red">La calibración dependerá de la muestra de datos con que se cuente!</font></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-real-tenemos-una-muestra-de-los-datos">Caso real: Tenemos una muestra de los datos</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algunas-conclusiones">Algunas conclusiones:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-implica-resolver-un-problema-de-ml"><font color="blue"> ¿Qué implica resolver un problema de ML? </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-que-implica-resolver-un-problema-de-ml-font"><font color="blue"> ¿Qué implica resolver un problema de ML? </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-aprendizaje-de-maquina">Tipos de Aprendizaje de Máquina</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formalmente">Formalmente…</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizaje-predictivo-o-supervisado-supervised-learning">Aprendizaje predictivo o supervisado (Supervised Learning)</a></li>
@@ -481,33 +461,33 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduccion-al-machine-learning">
-<h1>Introducción al Machine Learning<a class="headerlink" href="#introduccion-al-machine-learning" title="Link to this heading">#</a></h1>
+<h1>Introducción al Machine Learning<a class="headerlink" href="#introduccion-al-machine-learning" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!wget --no-cache -O init.py -q https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
-import init; init.init(force_download=False); 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
+<span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> 
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="definicion">
-<h2><font color='blue'>Definición</font><a class="headerlink" href="#definicion" title="Link to this heading">#</a></h2>
+<section id="font-color-blue-definicion-font">
+<h2><font color='blue'>Definición</font><a class="headerlink" href="#font-color-blue-definicion-font" title="Permalink to this heading">#</a></h2>
 <p>El aprendizaje de máquina  (En inglés: Machine Learning (ML)) es una rama de la inteligencia artifical enfocada al estudio de sistemas que pueden “aprender” a partir de datos. De acuerdo con [1], ML son un conjunto de métodos que pueden detectar automáticamente patrones en un conjunto de datos, aprenderlos y luego usarlos para predicir datos futuros o realizar otro tipo de decisiones bajo incertidumbre.</p>
 <section id="ejemplos-de-aplicaciones-de-ml">
-<h3>Ejemplos de aplicaciones de ML:<a class="headerlink" href="#ejemplos-de-aplicaciones-de-ml" title="Link to this heading">#</a></h3>
+<h3>Ejemplos de aplicaciones de ML:<a class="headerlink" href="#ejemplos-de-aplicaciones-de-ml" title="Permalink to this heading">#</a></h3>
 <li>Reconocimiento de Rostros</li><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/face_recog.jpg&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/face_recog.jpg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -517,7 +497,7 @@ import init; init.init(force_download=False);
 </div>
 <li>Reconocimiento de objetos</li><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/Computer-Vision1.png&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Computer-Vision1.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -527,7 +507,7 @@ import init; init.init(force_download=False);
 </div>
 <li>Reconocimiento de voz</li><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/voice-assistants.jpg&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/voice-assistants.jpg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -537,7 +517,7 @@ import init; init.init(force_download=False);
 </div>
 <li>Traducción</li><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/Translators.jpg&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Translators.jpg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -547,7 +527,7 @@ import init; init.init(force_download=False);
 </div>
 <li>¿Y la IA generativa es también ML?</li><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/stable-diffusion-xl.jpg&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/stable-diffusion-xl.jpg&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -558,68 +538,66 @@ import init; init.init(force_download=False);
 </section>
 </section>
 <section id="modelos-a-partir-de-datos">
-<h2>Modelos a partir de datos<a class="headerlink" href="#modelos-a-partir-de-datos" title="Link to this heading">#</a></h2>
+<h2>Modelos a partir de datos<a class="headerlink" href="#modelos-a-partir-de-datos" title="Permalink to this heading">#</a></h2>
 <section id="aproximacion-mecanicista">
-<h3>Aproximación mecanicista:<a class="headerlink" href="#aproximacion-mecanicista" title="Link to this heading">#</a></h3>
+<h3>Aproximación mecanicista:<a class="headerlink" href="#aproximacion-mecanicista" title="Permalink to this heading">#</a></h3>
 <p>Cuando se conocen los principios físicos o las leyes que rigen la interacción entre las variables del problema y que producen la salida objetivo de predicción.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/Model.png&quot;, width = 600, height = 400)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Model.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">400</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/fc8cf59ba7121403573188568ccf2c5a059c4a9f86c8f99dc060d5480f07e1cc.png"><img alt="_images/fc8cf59ba7121403573188568ccf2c5a059c4a9f86c8f99dc060d5480f07e1cc.png" src="_images/fc8cf59ba7121403573188568ccf2c5a059c4a9f86c8f99dc060d5480f07e1cc.png" style="width: 600px; height: 400px;" />
-</a>
+<img alt="_images/fc8cf59ba7121403573188568ccf2c5a059c4a9f86c8f99dc060d5480f07e1cc.png" src="_images/fc8cf59ba7121403573188568ccf2c5a059c4a9f86c8f99dc060d5480f07e1cc.png" />
 </div>
 </div>
 </section>
 <section id="aproximacion-en-machine-learning">
-<h3>Aproximación en Machine Learning:<a class="headerlink" href="#aproximacion-en-machine-learning" title="Link to this heading">#</a></h3>
+<h3>Aproximación en Machine Learning:<a class="headerlink" href="#aproximacion-en-machine-learning" title="Permalink to this heading">#</a></h3>
 <p>Cuando se desconocen las leyes que rigen las relaciones entre las variables y se tratan de descubir a patir de los datos mismos, usando un enfoque correlacional.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/Model2.png&quot;, width = 800, height = 500)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Model2.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/a9017521394f67937ddbcd6da6c51f3298364bc08c96f543e804267eee28fd59.png"><img alt="_images/a9017521394f67937ddbcd6da6c51f3298364bc08c96f543e804267eee28fd59.png" src="_images/a9017521394f67937ddbcd6da6c51f3298364bc08c96f543e804267eee28fd59.png" style="width: 800px; height: 500px;" />
-</a>
+<img alt="_images/a9017521394f67937ddbcd6da6c51f3298364bc08c96f543e804267eee28fd59.png" src="_images/a9017521394f67937ddbcd6da6c51f3298364bc08c96f543e804267eee28fd59.png" />
 </div>
 </div>
 <p>Las plantillas (templates) son entonces los diferentes modelos y algoritmos de machine learning que encontramos en la literatura y en las librerías y frameworks para el entrenamiento de sistemas basados en ML.</p>
 </section>
-<section id="la-calibracion-dependera-de-la-muestra-de-datos-con-que-se-cuente">
-<h3><font color='red'>La calibración dependerá de la muestra de datos con que se cuente!</font><a class="headerlink" href="#la-calibracion-dependera-de-la-muestra-de-datos-con-que-se-cuente" title="Link to this heading">#</a></h3>
+<section id="font-color-red-la-calibracion-dependera-de-la-muestra-de-datos-con-que-se-cuente-font">
+<h3><font color='red'>La calibración dependerá de la muestra de datos con que se cuente!</font><a class="headerlink" href="#font-color-red-la-calibracion-dependera-de-la-muestra-de-datos-con-que-se-cuente-font" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from scipy import stats
-from scipy import optimize
-import numpy as np
-import matplotlib.pyplot as plt
-%matplotlib inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 
-d1 = stats.norm(loc=10,scale=2)
-d2 = stats.norm(loc=17,scale=3)
+<span class="n">d1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>x = np.linspace(5,25,1000)
-minx = x[np.argmin(np.abs(d1.pdf(x)-d2.pdf(x)))]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">minx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">d1</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="n">d2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)))]</span>
 
-print (&quot;frontera óptima en %.2f&quot;%minx)
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;frontera óptima en </span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">minx</span>)
 
-x = np.linspace(0,30,100)
-plt.plot(x, d1.pdf(x), color=&quot;red&quot;, label=&quot;pop 1&quot;)
-plt.plot(x, d2.pdf(x), color=&quot;blue&quot;, label=&quot;pop 2&quot;)
-plt.axvline(minx, color=&quot;black&quot;, label=u&quot;óptimo = %.2f&quot;%minx)
-plt.grid()
-plt.legend();
-plt.show()
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d1</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;pop 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d2</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;pop 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">minx</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">u</span><span class="s2">&quot;óptimo = </span><span class="si">%.2f</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">minx</span>)
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -631,51 +609,51 @@ plt.show()
 </div>
 </div>
 <section id="caso-real-tenemos-una-muestra-de-los-datos">
-<h4>Caso real: Tenemos una muestra de los datos<a class="headerlink" href="#caso-real-tenemos-una-muestra-de-los-datos" title="Link to this heading">#</a></h4>
+<h4>Caso real: Tenemos una muestra de los datos<a class="headerlink" href="#caso-real-tenemos-una-muestra-de-los-datos" title="Permalink to this heading">#</a></h4>
 <p><span class="math notranslate nohighlight">\(\rightarrow\)</span> ¿Cómo determinamos donde poner la frontera?</p>
 <p><span class="math notranslate nohighlight">\(\rightarrow\)</span> ¿Qué frontera quisiéramos obtener?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.tree import DecisionTreeClassifier
-from sklearn.naive_bayes import GaussianNB
-def show_1D_dataset_samples(n, n_datasets=10, dot_alpha=.5, line_alpha=.5, figsize=(20,5)):
-    fig, axs = plt.subplots(1, 2,figsize=figsize)
-    for i in range(n_datasets):
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="k">def</span> <span class="nf">show_1D_dataset_samples</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n_datasets</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">dot_alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">line_alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">)):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_datasets</span><span class="p">):</span>
 
-        m1 = d1.rvs(n)
-        m2 = d2.rvs(n)
-        X = np.append(m1, m2).reshape(-1,1)
-        y = np.r_[[0]*len(m1)+[1]*len(m2)]
+        <span class="n">m1</span> <span class="o">=</span> <span class="n">d1</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">m2</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">m2</span><span class="p">)]</span>
         
-        estimator = DecisionTreeClassifier(max_depth=1)
-        estimator.fit(X,y)
-        Xr = np.linspace(5, 30, 100).reshape(-1,1)
-        yr = estimator.predict(Xr)
+        <span class="n">estimator</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">Xr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">yr</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xr</span><span class="p">)</span>
             
-        axs[0].plot(Xr[yr==0], [i]*np.sum(yr==0), color=&quot;red&quot;, alpha=line_alpha, lw=4)
-        axs[0].plot(Xr[yr==1], [i]*np.sum(yr==1), color=&quot;blue&quot;, alpha=line_alpha, lw=4)
-        axs[0].scatter(m1, [i+.1]*len(m1), color=&quot;red&quot;, alpha=dot_alpha, s=100)
-        axs[0].scatter(m2, [i+.1]*len(m2), color=&quot;blue&quot;, alpha=dot_alpha, s=100)
-        #-----------------------------------------
-        estimator = GaussianNB()
-        estimator.fit(X,y)
-        yr = estimator.predict(Xr)     
-        axs[1].plot(Xr[yr==0], [i]*np.sum(yr==0), color=&quot;red&quot;, alpha=line_alpha, lw=4)
-        axs[1].plot(Xr[yr==1], [i]*np.sum(yr==1), color=&quot;blue&quot;, alpha=line_alpha, lw=4)
-        axs[1].scatter(m1, [i+.1]*len(m1), color=&quot;red&quot;, alpha=dot_alpha, s=100)
-        axs[1].scatter(m2, [i+.1]*len(m2), color=&quot;blue&quot;, alpha=dot_alpha, s=100) 
-    axs[1].axis(&quot;off&quot;)
-    axs[1].set_title(&#39;Plantilla de modelo 2&#39;)
-    axs[0].axis(&quot;off&quot;)
-    axs[0].set_title(&#39;Plantilla de modelo 1&#39;)
-    plt.show()
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xr</span><span class="p">[</span><span class="n">yr</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">yr</span><span class="o">==</span><span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">line_alpha</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xr</span><span class="p">[</span><span class="n">yr</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">yr</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">line_alpha</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mf">.1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">m1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">dot_alpha</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mf">.1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">m2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">dot_alpha</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+        <span class="c1">#-----------------------------------------</span>
+        <span class="n">estimator</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+        <span class="n">estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">yr</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xr</span><span class="p">)</span>     
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xr</span><span class="p">[</span><span class="n">yr</span><span class="o">==</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">yr</span><span class="o">==</span><span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">line_alpha</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xr</span><span class="p">[</span><span class="n">yr</span><span class="o">==</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">yr</span><span class="o">==</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">line_alpha</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mf">.1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">m1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">dot_alpha</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">m2</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mf">.1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">m2</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">dot_alpha</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span> 
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Plantilla de modelo 2&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Plantilla de modelo 1&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>show_1D_dataset_samples(10, dot_alpha=.3)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_1D_dataset_samples</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dot_alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -685,7 +663,7 @@ def show_1D_dataset_samples(n, n_datasets=10, dot_alpha=.5, line_alpha=.5, figsi
 </div>
 </section>
 <section id="algunas-conclusiones">
-<h4>Algunas conclusiones:<a class="headerlink" href="#algunas-conclusiones" title="Link to this heading">#</a></h4>
+<h4>Algunas conclusiones:<a class="headerlink" href="#algunas-conclusiones" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>La frontera cambiará de forma dependiendo de la “plantilla” de modelo que se use.</p></li>
 <li><p>La frontera cambiará de ubicación si cambia la muestra, entre más datos se tengan, menos variación se obtendrá.</p></li>
@@ -694,8 +672,8 @@ def show_1D_dataset_samples(n, n_datasets=10, dot_alpha=.5, line_alpha=.5, figsi
 </section>
 </section>
 </section>
-<section id="que-implica-resolver-un-problema-de-ml">
-<h2><font color='blue'> ¿Qué implica resolver un problema de ML? </font><a class="headerlink" href="#que-implica-resolver-un-problema-de-ml" title="Link to this heading">#</a></h2>
+<section id="font-color-blue-que-implica-resolver-un-problema-de-ml-font">
+<h2><font color='blue'> ¿Qué implica resolver un problema de ML? </font><a class="headerlink" href="#font-color-blue-que-implica-resolver-un-problema-de-ml-font" title="Permalink to this heading">#</a></h2>
 <p><strong>Primero</strong> realizamos experimentos (ciencia), <strong>después</strong> desarrollamos productos (ingeniería)</p>
 <p>Dos roles <span class="math notranslate nohighlight">\(\rightarrow\)</span> dos flujos de trabajo:</p>
 <ul class="simple">
@@ -704,93 +682,88 @@ def show_1D_dataset_samples(n, n_datasets=10, dot_alpha=.5, line_alpha=.5, figsi
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/ML_user.jpeg&quot;, width = 800)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/ML_user.jpeg&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/a3cce1b83543ea7e206c7f7e11b6774bd700fe23ff071964d4c2ee9e06f79b5e.jpg"><img alt="_images/a3cce1b83543ea7e206c7f7e11b6774bd700fe23ff071964d4c2ee9e06f79b5e.jpg" src="_images/a3cce1b83543ea7e206c7f7e11b6774bd700fe23ff071964d4c2ee9e06f79b5e.jpg" style="width: 800px;" />
-</a>
+<img alt="_images/a3cce1b83543ea7e206c7f7e11b6774bd700fe23ff071964d4c2ee9e06f79b5e.jpg" src="_images/a3cce1b83543ea7e206c7f7e11b6774bd700fe23ff071964d4c2ee9e06f79b5e.jpg" />
 </div>
 </div>
 <p>Cuando el problema que queremos resolver no es estándar, o la solución que nos proporcionan los modelos convencionales no satisface los requerimientos del problema, debemos entrar en el rol de <strong>diseñador</strong> y proponer los ajustes necesarios o incluso un nuevo modelo para el problema de interés.</p>
 </section>
 <section id="tipos-de-aprendizaje-de-maquina">
-<h2>Tipos de Aprendizaje de Máquina<a class="headerlink" href="#tipos-de-aprendizaje-de-maquina" title="Link to this heading">#</a></h2>
+<h2>Tipos de Aprendizaje de Máquina<a class="headerlink" href="#tipos-de-aprendizaje-de-maquina" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/ML_types.png&quot;, width = 1000)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/ML_types.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/ca0207602ed921024e029010847632dc5ef1593dc67c6974214bae5d7a2bbaa3.png"><img alt="_images/ca0207602ed921024e029010847632dc5ef1593dc67c6974214bae5d7a2bbaa3.png" src="_images/ca0207602ed921024e029010847632dc5ef1593dc67c6974214bae5d7a2bbaa3.png" style="width: 1000px;" />
-</a>
+<img alt="_images/ca0207602ed921024e029010847632dc5ef1593dc67c6974214bae5d7a2bbaa3.png" src="_images/ca0207602ed921024e029010847632dc5ef1593dc67c6974214bae5d7a2bbaa3.png" />
 </div>
 </div>
 <section id="formalmente">
-<h3>Formalmente…<a class="headerlink" href="#formalmente" title="Link to this heading">#</a></h3>
+<h3>Formalmente…<a class="headerlink" href="#formalmente" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="aprendizaje-predictivo-o-supervisado-supervised-learning">
-<h3>Aprendizaje predictivo o supervisado (Supervised Learning)<a class="headerlink" href="#aprendizaje-predictivo-o-supervisado-supervised-learning" title="Link to this heading">#</a></h3>
+<h3>Aprendizaje predictivo o supervisado (Supervised Learning)<a class="headerlink" href="#aprendizaje-predictivo-o-supervisado-supervised-learning" title="Permalink to this heading">#</a></h3>
 <p>En el cual el objetivo es aprender un mapeo a partir de entradas <span class="math notranslate nohighlight">\({\bf{x}} = [x_1,x_2,\cdots,x_d]\)</span> a salidas <span class="math notranslate nohighlight">\(y\)</span>, dado un conjunto de pares entrada-salida etiquetados <span class="math notranslate nohighlight">\(\mathcal{D} = \left\lbrace  \left( {\bf{x}}_i, y_i \right) \right\rbrace _{i=1} ^{N}\)</span>. En este caso <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> se conoce como el <b>conjunto de entrenamiento</b> y <span class="math notranslate nohighlight">\(N\)</span> es el número de muestras de entrenamiento.</p>
 <p>En una forma simple, cada muestra de entrenamiento <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> es un vector de números <span class="math notranslate nohighlight">\(d\)</span>-dimensional que representa variables o medidas del sistema o fenómeno que se desea modelar y que en el contexto del aprendizaje de máquinas es común llamarlas <b>características</b> (en inglés <b>features</b>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/Supervised.png&quot;, width = 1000)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Supervised.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/a534675d888af0917d7304c7566f03c9b02d04f476fc6c98592f75d4be62ffb0.png"><img alt="_images/a534675d888af0917d7304c7566f03c9b02d04f476fc6c98592f75d4be62ffb0.png" src="_images/a534675d888af0917d7304c7566f03c9b02d04f476fc6c98592f75d4be62ffb0.png" style="width: 1000px;" />
-</a>
+<img alt="_images/a534675d888af0917d7304c7566f03c9b02d04f476fc6c98592f75d4be62ffb0.png" src="_images/a534675d888af0917d7304c7566f03c9b02d04f476fc6c98592f75d4be62ffb0.png" />
 </div>
 </div>
 </section>
 <section id="descriptivo-o-no-supervisado-unsupervised-learning">
-<h3>Descriptivo o no supervisado (Unsupervised Learning)<a class="headerlink" href="#descriptivo-o-no-supervisado-unsupervised-learning" title="Link to this heading">#</a></h3>
+<h3>Descriptivo o no supervisado (Unsupervised Learning)<a class="headerlink" href="#descriptivo-o-no-supervisado-unsupervised-learning" title="Permalink to this heading">#</a></h3>
 <p>En este caso unicamente se cuenta con un conjunto <span class="math notranslate nohighlight">\(\mathcal{D} = \left\lbrace  \left( {\bf{x}}_i \right) \right\rbrace _{i=1} ^{N}\)</span>; y el objetivo es encontrar “patrones interesantes” en los datos. Algunas veces se le llama <b>Descubrimiento de conocimiento</b></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/Unsupervised.png&quot;, width = 1000)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Unsupervised.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/e3795da80410f676f0bd4148b28f39209b0cc4a81de731fded7e5c86dbd40001.png"><img alt="_images/e3795da80410f676f0bd4148b28f39209b0cc4a81de731fded7e5c86dbd40001.png" src="_images/e3795da80410f676f0bd4148b28f39209b0cc4a81de731fded7e5c86dbd40001.png" style="width: 1000px;" />
-</a>
+<img alt="_images/e3795da80410f676f0bd4148b28f39209b0cc4a81de731fded7e5c86dbd40001.png" src="_images/e3795da80410f676f0bd4148b28f39209b0cc4a81de731fded7e5c86dbd40001.png" />
 </div>
 </div>
 <p>El aprendizaje se puede realizar en muchos tipos de objetos:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/Clustering.png&quot;, width = 800, height = 400)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Clustering.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">400</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/cc75785ae6965335606e37b109b2fd35060d8bc5235f0df76b134a8df1410228.png"><img alt="_images/cc75785ae6965335606e37b109b2fd35060d8bc5235f0df76b134a8df1410228.png" src="_images/cc75785ae6965335606e37b109b2fd35060d8bc5235f0df76b134a8df1410228.png" style="width: 800px; height: 400px;" />
-</a>
+<img alt="_images/cc75785ae6965335606e37b109b2fd35060d8bc5235f0df76b134a8df1410228.png" src="_images/cc75785ae6965335606e37b109b2fd35060d8bc5235f0df76b134a8df1410228.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="tipos-de-problemas-supervisados">
-<h2>Tipos de problemas supervisados<a class="headerlink" href="#tipos-de-problemas-supervisados" title="Link to this heading">#</a></h2>
+<h2>Tipos de problemas supervisados<a class="headerlink" href="#tipos-de-problemas-supervisados" title="Permalink to this heading">#</a></h2>
 <p>En general <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> puede representar un objeto complejo como una imagen, un video, una palabra, una frase, un mensaje de correo electrónico, un cliente de un crédito bancario, una serie de tiempo, una cadena de ADN, una molécula, un grafo, etc. En el aprendizaje supervisado, si la variable de salida <span class="math notranslate nohighlight">\(t_i\)</span> toma valores discretos (es categórica), el problema de aprendizaje se conoce como <b>Clasificación</b>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn import datasets
-iris = datasets.load_iris()
-X, y = iris.data, iris.target
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="n">iris</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">load_iris</span><span class="p">()</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>
 
-import matplotlib.pyplot as plt
-plt.title(&#39;Problema de 3 clases&#39;, fontsize=14)
-plt.xlabel(iris.feature_names[1])
-plt.ylabel(iris.feature_names[2])
-plt.scatter(X[:,1], X[:,2],c=y,cmap=&quot;Accent&quot;)
-plt.show()
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Problema de 3 clases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Accent&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -801,20 +774,20 @@ plt.show()
 <p>Si por el contrario <span class="math notranslate nohighlight">\(y_i\)</span> toma valores reales, el problema se conoce como <b>Regresión</b>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = np.array([1, 2, 3])
-x = np.linspace(0,10,100);
-y1 = np.zeros(100)
-y2 = np.zeros(100)
-for i in range(len(x)):
-    b = np.array([x[i],x[i]**2,1])
-    y1[i] = sum(a*b +  30*(np.random.rand() - 0.5))
-    y2[i] = sum(a*b)
-plt.title(u&#39;Problema de regresión&#39;, fontsize=14)
-plt.xlabel(u&#39;Característica 1&#39;)
-plt.ylabel(u&#39;Variable a predecir&#39;)
-plt.scatter(x, y1)
-plt.plot(x,y2,&#39;r&#39;)
-plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">y1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="o">+</span>  <span class="mi">30</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">y2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Problema de regresión&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Característica 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Variable a predecir&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y2</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -824,35 +797,33 @@ plt.show()
 </div>
 </section>
 <section id="retos-que-deben-ser-enfrentados-dentro-del-aprendizaje-de-maquina">
-<h2>Retos que deben ser enfrentados dentro del aprendizaje de máquina<a class="headerlink" href="#retos-que-deben-ser-enfrentados-dentro-del-aprendizaje-de-maquina" title="Link to this heading">#</a></h2>
+<h2>Retos que deben ser enfrentados dentro del aprendizaje de máquina<a class="headerlink" href="#retos-que-deben-ser-enfrentados-dentro-del-aprendizaje-de-maquina" title="Permalink to this heading">#</a></h2>
 <p>Cuando nos enfrentamos a un problema de aprendizaje vamos a encontrarnos con una serie de situaciones que harán la tarea un problema no trivial.</p>
 <p><b>Clasificación</b></p>
 <li>Las clases son colecciones de objetos no necesariamente idénticos, entonces cada clase queda definida por las muestras con las que se cuente para entrenar el sistema </li><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/ICVariability.png&quot;, width = 700)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/ICVariability.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">700</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/d3ca09fcea106a93b170928885d4ab92a75f378d32bad07b4d2345086a856a39.png"><img alt="_images/d3ca09fcea106a93b170928885d4ab92a75f378d32bad07b4d2345086a856a39.png" src="_images/d3ca09fcea106a93b170928885d4ab92a75f378d32bad07b4d2345086a856a39.png" style="width: 700px;" />
-</a>
+<img alt="_images/d3ca09fcea106a93b170928885d4ab92a75f378d32bad07b4d2345086a856a39.png" src="_images/d3ca09fcea106a93b170928885d4ab92a75f378d32bad07b4d2345086a856a39.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Image(&quot;local/imgs/ICSimilarity.png&quot;, width = 650)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/ICSimilarity.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">650</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<a class="reference internal image-reference" href="_images/384a201ddcfeb6b4f354245d62081a7608d5fc562d5c8f55502d9ef05c2f977e.png"><img alt="_images/384a201ddcfeb6b4f354245d62081a7608d5fc562d5c8f55502d9ef05c2f977e.png" src="_images/384a201ddcfeb6b4f354245d62081a7608d5fc562d5c8f55502d9ef05c2f977e.png" style="width: 650px;" />
-</a>
+<img alt="_images/384a201ddcfeb6b4f354245d62081a7608d5fc562d5c8f55502d9ef05c2f977e.png" src="_images/384a201ddcfeb6b4f354245d62081a7608d5fc562d5c8f55502d9ef05c2f977e.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="diseno-de-un-modelo-de-ml">
-<h2>Diseño de un modelo de ML<a class="headerlink" href="#diseno-de-un-modelo-de-ml" title="Link to this heading">#</a></h2>
+<h2>Diseño de un modelo de ML<a class="headerlink" href="#diseno-de-un-modelo-de-ml" title="Permalink to this heading">#</a></h2>
 <p>Cuando nos enfrentamos al problema de aprendizaje de máquina debemos responder a tres preguntas fundamentales:</p>
 <ul class="simple">
 <li><p>Cuál es el <b>modelo</b> que vamos a usar teniendo en cuenta el problema a resolver, es decir la estructura que tiene el conjunto de datos. Es importante tener en cuenta que todo modelo tiene parámetros que se deben ajustar para que pueda adaptarse (‘aprender’), al problema particular que deseamos abordar.</p></li>
@@ -878,7 +849,7 @@ plt.show()
 </ul>
 <p>El último nivel es necesario sobre todo en casos en los que se abordan problemas avanzados en los que las soluciones predefinidas no son suficientes para alcanzar un solución satisfactoria.</p>
 </div><section id="bibliografia">
-<h3>Bibliografía<a class="headerlink" href="#bibliografia" title="Link to this heading">#</a></h3>
+<h3>Bibliografía<a class="headerlink" href="#bibliografia" title="Permalink to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -908,10 +879,11 @@ plt.show()
 
               
               
-              
-              
-                <footer class="prev-next-footer d-print-none">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="titles/U1_description.html"
@@ -931,7 +903,10 @@ plt.show()
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -940,28 +915,27 @@ plt.show()
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definicion"><font color="blue">Definición</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-definicion-font"><font color="blue">Definición</font></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos-de-aplicaciones-de-ml">Ejemplos de aplicaciones de ML:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-a-partir-de-datos">Modelos a partir de datos</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aproximacion-mecanicista">Aproximación mecanicista:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aproximacion-en-machine-learning">Aproximación en Machine Learning:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#la-calibracion-dependera-de-la-muestra-de-datos-con-que-se-cuente"><font color="red">La calibración dependerá de la muestra de datos con que se cuente!</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-la-calibracion-dependera-de-la-muestra-de-datos-con-que-se-cuente-font"><font color="red">La calibración dependerá de la muestra de datos con que se cuente!</font></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caso-real-tenemos-una-muestra-de-los-datos">Caso real: Tenemos una muestra de los datos</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algunas-conclusiones">Algunas conclusiones:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#que-implica-resolver-un-problema-de-ml"><font color="blue"> ¿Qué implica resolver un problema de ML? </font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-que-implica-resolver-un-problema-de-ml-font"><font color="blue"> ¿Qué implica resolver un problema de ML? </font></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tipos-de-aprendizaje-de-maquina">Tipos de Aprendizaje de Máquina</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formalmente">Formalmente…</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aprendizaje-predictivo-o-supervisado-supervised-learning">Aprendizaje predictivo o supervisado (Supervised Learning)</a></li>
@@ -995,10 +969,9 @@ By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - 
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1022,8 +995,8 @@ By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - 
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
