@@ -43,7 +43,7 @@ Para acceder a las sesiones sincrónicas: Lunes - Jueves: [zoom link](https://ud
 
 Para acceder a las grabaciones debe ingresar a [Ude@](https://udearroba.udea.edu.co), buscar el curso entre sus cursos matrículados e ingresar en la opción *Encuentros sincrónicos* que se encuentra en el menú de la izquierda.
 
-Laboratorios: - Presencial (Martes 8-10) [zoom link](https://udearroba.zoom.us/j/92063196721)
+Laboratorios: - Presencial (Martes 8-10) [zoom link](https://udearroba.zoom.us/j/99672212508)
               - Virtual (Martes 10-12) [zoom link](https://udearroba.zoom.us/j/96637484177)
 
 <!---

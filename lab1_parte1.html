@@ -446,15 +446,15 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-nc<span class="w"> </span>--no-cache<span class="w"> </span>-O<span class="w"> </span>init.py<span class="w"> </span>-q<span class="w"> </span>https://raw.githubusercontent.com/jdariasl/Intro_ML_2025/master/init.py
-<span class="kn">import</span> <span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">init</span><span class="o">.</span><span class="n">get_weblink</span><span class="p">()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">init</span><span class="p">;</span> <span class="n">init</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">force_download</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">init</span><span class="o">.</span><span class="n">get_weblink</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">local.lib.rlxmoocapi</span> <span class="kn">import</span> <span class="n">submit</span><span class="p">,</span> <span class="n">session</span>
-<span class="kn">import</span> <span class="nn">inspect</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">local.lib.rlxmoocapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">submit</span><span class="p">,</span> <span class="n">session</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
 <span class="n">session</span><span class="o">.</span><span class="n">LoginSequence</span><span class="p">(</span><span class="n">endpoint</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">course_id</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">course_id</span><span class="p">,</span> <span class="n">lab_id</span><span class="o">=</span><span class="s2">&quot;L01.01&quot;</span><span class="p">,</span> <span class="n">varname</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -464,7 +464,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#configuración del laboratorio</span>
 <span class="c1"># Ejecuta esta celda!</span>
-<span class="kn">from</span> <span class="nn">Labs.commons.utils.lab1</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Labs.commons.utils.lab1</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="n">_</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">part_1</span><span class="p">()</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -486,13 +486,13 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Ejercicio de Codigo</span>
-<span class="k">def</span> <span class="nf">num_muestras_carac</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Esta función es encargada retornar el número de muestras</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">num_muestras_carac</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Esta función se encarga de retornar el número de muestras</span>
 <span class="sd">        y características del conjunto de datos X</span>
 
 <span class="sd">        X: matriz numpy</span>
 <span class="sd">        retorna:</span>
-<span class="sd">            número de caracteristicas (int/float)</span>
+<span class="sd">            número de características (int/float)</span>
 <span class="sd">            número de muestras (int/float)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -522,17 +522,17 @@ document.write(`
 <p>La siguiente celda contiene la implementación de estas 4 funciones. Analizar y entender su funcionamiento</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ECM</span><span class="p">(</span><span class="n">Y_est</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;función para calcular el error cuadratico medio</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ECM</span><span class="p">(</span><span class="n">Y_est</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;función para calcular el error cuadrático medio</span>
 <span class="sd">    Y_est: debe contener los valores predichos por el modelo</span>
 <span class="sd">    Y: debe contener los valores reales</span>
-<span class="sd">    retorna: error cuadratico medio</span>
+<span class="sd">    retorna: error cuadrático medio</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
     <span class="n">ecm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">Y_est</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">Y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ecm</span>
 
-<span class="k">def</span> <span class="nf">regression</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">regression</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;calcula la regresión multiple</span>
 <span class="sd">    X: los valores que corresponden a las características</span>
 <span class="sd">    W: son los pesos usadados para realizar la regresión</span>
@@ -542,10 +542,10 @@ document.write(`
     <span class="k">return</span> <span class="n">Yest</span>           <span class="c1">#Esta variable contiene la salida de f(X,W)</span>
 
 
-<span class="k">def</span> <span class="nf">cost_f</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cost_f</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;calcula la función de costo de la regresión para un vector W dado</span>
 <span class="sd">    W: son los pesos usadados para realizar la regresión</span>
-<span class="sd">    X: los valores que corresponden a las caractersiticas</span>
+<span class="sd">    X: los valores que corresponden a las características</span>
 <span class="sd">    Y: el valor de salida esperado</span>
 
 <span class="sd">    retorna: valor de costo</span>
@@ -556,7 +556,7 @@ document.write(`
     <span class="n">cost</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">y_est</span><span class="o">-</span><span class="n">Y</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">cost</span>
 
-<span class="k">def</span> <span class="nf">extension_matriz</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extension_matriz</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;función que realiza la extensión de la matriz X</span>
 <span class="sd">    X: los valores que corresponden a las características sin extender</span>
 <span class="sd">    Y: el valor de salida esperado</span>
@@ -594,7 +594,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Ejercicio de codigo</span>
-<span class="k">def</span> <span class="nf">gradiente_descendente</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">iteraciones</span><span class="p">,</span> <span class="n">w_ini</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gradiente_descendente</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">iteraciones</span><span class="p">,</span> <span class="n">w_ini</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple</span>
 <span class="sd">    X: Matriz de datos</span>
 <span class="sd">    Y: vector con los valores a predecir</span>
@@ -652,7 +652,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># esto para lograr reproductibilidad</span>
 <span class="c1"># de nuestro modelo</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># usamos nuestra funcion para obtener el numero de muestras</span>
+<span class="c1"># usamos nuestra función para obtener el número de muestras</span>
 <span class="n">_</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="n">num_muestras_carac</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">ind</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="n">Xtrain</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">0.7</span><span class="o">*</span><span class="n">N</span><span class="p">))],:]</span>
@@ -687,7 +687,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Ejercicio de Código</span>
-<span class="k">def</span> <span class="nf">evaluar_modelo</span> <span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X_to_test</span><span class="p">,</span> <span class="n">Y_True</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluar_modelo</span> <span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X_to_test</span><span class="p">,</span> <span class="n">Y_True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; función que evalúa un modelo de regresión usando el error cuadrático medio</span>
 
 <span class="sd">    W: es un matriz con los parámetros del modelo entrenados</span>
@@ -740,11 +740,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Potencia de polinomio</span>
-<span class="k">def</span> <span class="nf">potenciaPolinomio</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">grado</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">potenciaPolinomio</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">grado</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;calcula la potencia del polinomio</span>
-<span class="sd">    X: los valores que corresponden a las caractersiticas</span>
-<span class="sd">    grado: es el grado para realizar la potencia al polinomio</span>
-<span class="sd">    retorna: el valor de X despues de elevarlo al grado del polinimoo indicado</span>
+<span class="sd">    X: los valores que corresponden a las características</span>
+<span class="sd">    grado: es el grado para elevar la potencia al polinomio</span>
+<span class="sd">    retorna: el valor de X después de elevarlo al grado del polinomio indicado</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">X2</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -768,16 +768,16 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Ejercicio de codigo</span>
-<span class="k">def</span> <span class="nf">gradiente_descendente_poly</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">iteraciones</span><span class="p">,</span> <span class="n">grado</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gradiente_descendente_poly</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">iteraciones</span><span class="p">,</span> <span class="n">grado</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gradiente descendente para regresión lineal múltiple</span>
 <span class="sd">    X: Matriz de datos extendida</span>
 <span class="sd">    Y: vector con los valores a predecir</span>
 <span class="sd">    W: Vector de parámetros del modelo</span>
 <span class="sd">    eta: Taza de aprendizaje</span>
 <span class="sd">    iteraciones: numero de iteraciones maximo para el gradiente</span>
-<span class="sd">    grado: el valor del polinomio a usar</span>
+<span class="sd">    grado: el valor del grado del polinomio a usar</span>
 
-<span class="sd">    retorna: W el valor de de los parametros de regresión polinomica</span>
+<span class="sd">    retorna: W el vector con los parámetros de la regresión polinomica</span>
 <span class="sd">             costo: array con el valor del costo por cada iteracion</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -786,17 +786,17 @@ document.write(`
     <span class="n">W</span><span class="p">,</span> <span class="n">costo</span> <span class="o">=</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">costo</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">evaluar_modelo_poly</span> <span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X_to_test</span><span class="p">,</span> <span class="n">Y_True</span><span class="p">,</span> <span class="n">grado</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; funcion que evalua un modelo de regresión usando el error cuadratico medio</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluar_modelo_poly</span> <span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X_to_test</span><span class="p">,</span> <span class="n">Y_True</span><span class="p">,</span> <span class="n">grado</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; función que evalúa un modelo de regresión usando el error cuadrático medio</span>
 
-<span class="sd">    W: es un matriz con los parametros del modelo entrenados</span>
-<span class="sd">    X_to_test: conjunto de datos para usar en el evaluamiento del modelo</span>
-<span class="sd">    Y_True: valores reales para usar en el evaluamiento del modelo</span>
-<span class="sd">    grado: grado del polinimio a usar</span>
+<span class="sd">    W: es un matriz con los parámetros del modelo entrenado</span>
+<span class="sd">    X_to_test: conjunto de datos para usar en la evaluación del modelo</span>
+<span class="sd">    Y_True: valores reales para usar en la evaluación del modelo</span>
+<span class="sd">    grado: grado del polinomio a usar</span>
 
-<span class="sd">    retorna: el error cuadratico medio</span>
+<span class="sd">    retorna: el error cuadrático medio</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">## Comienza a completar tu codigo. recuerda usar la funciones ya definidas</span>
+    <span class="c1">## Comienza a completar tu codigo. Recuerda usar la funciones ya definidas</span>
     <span class="n">X2</span> <span class="o">=</span>
     <span class="n">error</span> <span class="o">=</span>
 
@@ -825,7 +825,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># completa los parametros para evaluar el modelo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># completa los parámetros para evaluar el modelo</span>
 <span class="n">error_test</span> <span class="o">=</span> <span class="n">evaluar_modelo_poly</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X_to_test</span> <span class="o">=</span> <span class="n">Xtest</span><span class="p">,</span>  <span class="n">Y_True</span> <span class="o">=</span> <span class="n">Ytest</span><span class="p">,</span> <span class="n">grado</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;error en la evaluación del modelo&quot;</span><span class="p">,</span> <span class="n">error_test</span><span class="p">)</span>
 </pre></div>
@@ -839,7 +839,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Ejercicio de codigo</span>
-<span class="k">def</span> <span class="nf">experimentar</span> <span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">,</span> <span class="n">Ytest</span><span class="p">,</span> <span class="n">tasas</span><span class="p">,</span> <span class="n">grados</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">experimentar</span> <span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">,</span> <span class="n">Ytest</span><span class="p">,</span> <span class="n">tasas</span><span class="p">,</span> <span class="n">grados</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; función para realizar experimentos.</span>
 <span class="sd">    Xtrain: conjunto de datos de entrenamiento</span>
 <span class="sd">    Xtest: conjunto de datos para evaluación</span>
@@ -895,7 +895,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Ejercicio de codigo</span>
-<span class="k">def</span> <span class="nf">normalizar</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">normalizar</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; función para normalizar los datos</span>
 <span class="sd">    Xtrain: matriz de datos de entrenamiento a normalizar</span>
 <span class="sd">    Xtest: matriz de datos de evaluación a normalizar</span>
@@ -940,7 +940,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejecuta esta linea de codigo para graficar tus resultados</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Grouping the data for plotting</span>
 <span class="n">grouped</span> <span class="o">=</span> <span class="n">resultados_ex2</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;tasa de aprendizaje&#39;</span><span class="p">,</span> <span class="s1">&#39;grado&#39;</span><span class="p">])[</span><span class="s1">&#39;ecm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
@@ -963,7 +963,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Ten en cuenta el resutaldo de los  dos experimentos y  responde la  siguiente pregunta abierta</p>
+<p>Ten en cuenta el resutaldo de los  dos experimentos y  responde las  siguientes preguntas abiertas</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pregunta abierta</span>
@@ -986,7 +986,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## ejercicio de codigo</span>
-<span class="k">def</span> <span class="nf">experimentar_2</span> <span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">,</span> <span class="n">Ytest</span><span class="p">,</span> <span class="n">iteraciones</span><span class="p">,</span> <span class="n">grados</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">experimentar_2</span> <span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">,</span> <span class="n">Ytest</span><span class="p">,</span> <span class="n">iteraciones</span><span class="p">,</span> <span class="n">grados</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; función para realizar experimentos.</span>
 <span class="sd">    Xtrain: conjunto de datos de entrenamiento</span>
 <span class="sd">    Xtest: conjunto de datos para evaluación</span>
@@ -1020,7 +1020,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_iters</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">]</span>
 <span class="n">grados_polinomio</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
-<span class="c1"># usamos la función para evaliar los resultados</span>
+<span class="c1"># usamos la función para evaluar los resultados</span>
 <span class="n">resultados_ex3</span> <span class="o">=</span> <span class="n">experimentar_2</span><span class="p">(</span><span class="n">Xtrain_n</span><span class="p">,</span> <span class="n">Xtest_n</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">,</span> <span class="n">Ytest</span><span class="p">,</span> <span class="n">num_iters</span><span class="p">,</span> <span class="n">grados_polinomio</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -1028,8 +1028,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejecuta esta linea de código para ver gráficamente tus resultados</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ejecuta esta línea de código para ver gráficamente tus resultados</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">grados</span> <span class="o">=</span> <span class="n">resultados_ex3</span><span class="p">[</span><span class="s1">&#39;grado&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">grados</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">grados</span><span class="p">),</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
