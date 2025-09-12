@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Google Colab y Jupyter Notebooks &#8212; 2025 Introducción al Machine Learning</title>
   
@@ -15,46 +14,45 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-51547737-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -62,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-51547737-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-51547737-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Intro_python';</script>
@@ -84,19 +86,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,12 +124,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -138,9 +152,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -150,12 +168,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/fudea.jpg" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/fudea.jpg" class="logo__image only-light" alt="2025 Introducción al Machine Learning - Home"/>
+    <script>document.write(`<img src="_static/fudea.jpg" class="logo__image only-dark" alt="2025 Introducción al Machine Learning - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -166,7 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="titles/U0_IntroLabs.html">INTRODUCCIÓN A PYTHON, NUMPY Y OTRAS HERRAMIENTAS</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Google Colab y Jupyter Notebooks</a></li>
 
 
@@ -174,50 +203,53 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U1_description.html">U1. INTRODUCCIÓN AL MACHINE LEARNING</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2001%20-%20Introducci%C3%B3n%20al%20Machine%20Learning.html">Introducción al Machine Learning</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2002%20-%20Regresi%C3%B3n%20lineal%20y%20regresi%C3%B3n%20log%C3%ADstica.html"><font color="blue">Modelos básicos de aprendizaje</font></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2003%20-%20Funciones%20discriminantes%20Gausianas.html">Modelos de clasificación empleando funciones de densidad Gausianas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab1_parte1.html">Laboratorio 1 - Parte 1 Regresión polinomial múltiple</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab1_parte2.html">Laboratorio 1 - Parte 2. Regresión logística</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U2_description.html">U2. MODELOS NO PARÁMETRICOS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2004%20-%20Modelos%20no%20Param%C3%A9tricos.html">Modelos no parámetricos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte1.html">Laboratorio 2 - Parte 1. KNN para un problema de clasificación</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab2_parte2.html">Laboratorio 2 - Parte 2. Modelos no paramétricos - regresión</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U3_description.html">U3. COMPLEJIDAD DE MODELOS Y VALIDACIÓN</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2005%20-%20M%C3%A9tricas%20de%20error.html"><font color="blue">Métricas de evaluación</font></a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2006%20-%20Complejidad%20de%20modelos%2C%20sobreajuste%20y%20metodolog%C3%ADas%20de%20validaci%C3%B3n.html"><font color="blue">Complejidad de modelos </font></a></li>
 
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2007%20-%20Regularizaci%C3%B3n.html">Sobreajuste y Regularización</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U4_description.html">U4. APRENDIZAJE NO SUPERVISADO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2008%20-%20Modelos%20de%20Mezclas%20de%20Gausianas.html">Modelos de Mezcla de Funciones Gausianas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Aprendizaje%20no%20supervisado.html">Clustering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clase%2009%20-%20Unsupervised%20Learning.html">Clustering</a></li>
+
+
+
 <li class="toctree-l2"><a class="reference internal" href="lab3_parte1.html">Laboratorio 3 - Parte 1. GMM para clasificación y <em>clustering</em></a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U5_description.html">U5. MODELOS DE ÁRBOLES Y ENSAMBLES</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2010%20-%20%C3%81rboles%20de%20Decisi%C3%B3n%2C%20Voting%2C%20Bagging%2C%20Random%20Forest.html">Árboles de decisión</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2011%20-%20Boosting%2C%20Stacking.html">Boosting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab3_parte2.html">Laboratorio 3 - Parte 2. Comparación de metodos basados en árboles</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U6_description.html">U6. REDES NEURONALES ARTIFICIALES</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2012%20-%20Redes%20Neuronales%20Artificiales.html">Redes Neuronales Artificiales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2013%20-%20Mapas%20Auto-Organizables.html">Mapas Auto-Organizables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2014%20-%20Redes%20Neuronales%20Recurrentes.html">Redes Neuronales Recurrentes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte1.html">Laboratorio 4 - Parte 1. Redes neuronales artificiales - perceptrón multicapa</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab4_parte2.html">Laboratorio 4 - Parte 2. Regularización de modelos.</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U7_description.html">U7. MÁQUINAS DE VECTORES DE SOPORTE</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2015%20-%20M%C3%A1quinas%20de%20Vectores%20de%20Soporte.html">Máquinas de Vectores de Soporte</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2016%20-%20Estrategias%20Multiclase%20basadas%20en%20clasificadores%20binarios.html">One vs all (one vs the rest)</a></li>
@@ -226,28 +258,22 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="lab5_parte1.html">Laboratorio 5 - Parte 1. Redes recurrentes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab5_parte2.html">Laboratorio 5 - Parte 2. Máquinas de Vectores de Soporte</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN/EXTRACCIÓN DE CARACTERÍSTICAS</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U8_description.html">U8. SELECCIÓN EXTRACCIÓN DE CARACTERÍSTICAS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2017%20-%20Selecci%C3%B3n%20de%20Caracter%C3%ADsticas.html">Selección de Características</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2018%20-%20Lasso%20y%20redes%20el%C3%A1sticas.html">LASSO (Least Absolute Shrinkage and Selection Operator)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="Clase%2019%20-%20An%C3%A1lisis%20de%20Componentes%20Principales.html">Reducción de dimensión: Análisis de Componentes Principales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Clase%2020%20-%20An%C3%A1lisis%20Discriminante%20de%20Fisher.html">Reducción de dimensión: Análisis Discriminante de Fisher</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2021%20-%20Extracci%C3%B3n%20no%20lineal%20de%20caracter%C3%ADsticas%20-%20aprendizaje%20de%20variedades.html">Reducción de dimensión: Métodos no lineales</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab6_parte1.html">Laboratorio 6 - Parte 1: Reducción de dimensión y Selección de características</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lab6_parte2.html">Laboratorio 6 - Parte 2: Reducción de dimensión PCA y LDA</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">U9. OTROS PARADIGMAS DE APREDIZAJE</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2022%20-%20Aprendizaje%20semi-supervisado.html">Aprendizaje semi-supervisado</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Clase%2023%20-%20Aprendizaje%20por%20refuerzo.html">Aprendizaje por refuerzo</a></li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U10_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="titles/U9_description.html">A1. SESIONES EXTRA DE LABORATORIO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Labs/Extra/Basic_Preprocessing_FeatureEngineering.html">Preprocesamiento e Ingeniería de características</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Labs/Extra/DespliegueModelos.html">Despliegue de modelos en ambientes productivos</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -263,7 +289,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -272,14 +298,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -304,14 +330,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/jdariasl/Intro_ML_2025/blob/master/Intro_python.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="_static/images/logo_colab.png">
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -385,26 +411,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -456,7 +484,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <p><strong>Recuerda que una vez abierto, Da clic en “Copiar en Drive”, de lo contrario no podras alamancenar tu progreso</strong></p>
 <div class="cell docutils container">
@@ -465,15 +493,15 @@ document.write(`
 <span class="c1"># esta configura librerias y ciertas funciones</span>
 <span class="c1"># necesarias para esta sesión</span>
 <span class="o">!</span>wget<span class="w"> </span>https://raw.githubusercontent.com/jdariasl/ML_2020/master/Labs/commons/utils/general.py<span class="w"> </span>-O<span class="w"> </span>general.py
-<span class="kn">from</span> <span class="nn">Labs.commons.utils.general</span> <span class="kn">import</span> <span class="n">configure_intro</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Labs.commons.utils.general</span><span class="w"> </span><span class="kn">import</span> <span class="n">configure_intro</span>
 <span class="n">configure_intro</span><span class="p">()</span>
-<span class="kn">from</span> <span class="nn">intro</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">intro</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
 </div>
 </div>
 <section id="google-colab-y-jupyter-notebooks">
-<h1>Google Colab y Jupyter Notebooks<a class="headerlink" href="#google-colab-y-jupyter-notebooks" title="Permalink to this heading">#</a></h1>
+<h1>Google Colab y Jupyter Notebooks<a class="headerlink" href="#google-colab-y-jupyter-notebooks" title="Link to this heading">#</a></h1>
 <p>Un Jupyter notebook es un proyecto open source que permite ejecutar interactivamente varios lenjuages de programación. Su nombre es un referencia a los lenguajes que fueron principales en el inicio el proyecto: JUlia, PYThon y R. Pero en la actulidad se han expandido a muchos otras más. Este proyecto también se conocio antes bajo el nombre de <strong>IPython Notebooks</strong>.  Los notebooks, en su formato “crudo” son un archivo <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> que es renderizado para permitir combinar tanto codigo, texto (Usando <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>), lenguaje matemático y graficas.</p>
 <p>Los notebooks pueden ser ejecutados en diferentes entornos. Estos entornos pueden ser locales (requieren instalación y configuración) o en la nube por medio de un navegador moderno (no requiere ninguna configuración).</p>
 <ul class="simple">
@@ -497,7 +525,7 @@ document.write(`
 <p>Cada dia cobra mas fuerza la siguiente idea: <strong>los notebooks son usados en las primeras etapas de desarollo de una aplicación de ML. Pero cuando el modelo cada vez esta más cerca a un entorno “productivo”, el codigo de un notebook debe ser refactorizado a un codigo que sea mas sencillo de mantener y administrar</strong> (<a class="reference external" href="https://www.youtube.com/watch?v=7jiPeIFXb6U">En este video se hace una discusión interesante y otras críticas</a>).</p>
 <p>En las últimas sesiones de nuestro laboratorio, realizaremos una práctica donde ahondaremos un poco más en este tema.</p>
 <section id="manejo-de-google-colab">
-<h2>Manejo de Google Colab<a class="headerlink" href="#manejo-de-google-colab" title="Permalink to this heading">#</a></h2>
+<h2>Manejo de Google Colab<a class="headerlink" href="#manejo-de-google-colab" title="Link to this heading">#</a></h2>
 <p>Colaboratory, o Colab, permite escribir y ejecutar código de Python en un navegador, con las siguentes ventajas:</p>
 <ul class="simple">
 <li><p>Sin configuración requerida (Python, Jupyter)</p></li>
@@ -535,7 +563,7 @@ document.write(`
 </div>
 <p><strong>Ahora es tu turno</strong>
 Haz click en la opción “+ Texto” (en la parte de arriba o al final de la celda, tambien te debe aparecer si dirijes el puntero en la parte inferior de la celda).  Añade una celda de texto y prueba escribir algo.</p>
-<p>Luego, añade una celda de código  en la opción ” + Codigo”  (en la parte de arriba o al final de la celda, tambien te debe aparecer si dirijes el puntero en la parte inferior de la celda) y escribe las siguientes lineas y ejecutalas.</p>
+<p>Luego, añade una celda de código  en la opción “ + Codigo”  (en la parte de arriba o al final de la celda, tambien te debe aparecer si dirijes el puntero en la parte inferior de la celda) y escribe las siguientes lineas y ejecutalas.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zero_to_nine</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">zero_to_nine</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -547,11 +575,11 @@ Haz click en la opción “+ Texto” (en la parte de arriba o al final de la ce
 </section>
 </section>
 <section id="conceptos-de-python">
-<h1>Conceptos de Python<a class="headerlink" href="#conceptos-de-python" title="Permalink to this heading">#</a></h1>
+<h1>Conceptos de Python<a class="headerlink" href="#conceptos-de-python" title="Link to this heading">#</a></h1>
 <p>En esta sección se hace una presentación de conceptos utiles de Python, si bien para el desarrollo del curso no es necesario y no se busca que las practicas esten enfocadas a desarrollar habilidades especificas de Python, si es de utilidad tener claras algunas capacidades de Python.</p>
 <p>Durante nuestra sesión</p>
 <section id="basicos">
-<h2>Básicos<a class="headerlink" href="#basicos" title="Permalink to this heading">#</a></h2>
+<h2>Básicos<a class="headerlink" href="#basicos" title="Link to this heading">#</a></h2>
 <p>Aca solo veremos conceptos que van ser muy comunes en nuestro laboratorio. Se recomienda leer y praticas la siguiente subsección.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -632,7 +660,7 @@ Haz click en la opción “+ Texto” (en la parte de arriba o al final de la ce
 </div>
 </section>
 <section id="profundizacion">
-<h2>Profundización<a class="headerlink" href="#profundizacion" title="Permalink to this heading">#</a></h2>
+<h2>Profundización<a class="headerlink" href="#profundizacion" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Conjuntos</span>
@@ -661,7 +689,7 @@ Haz click en la opción “+ Texto” (en la parte de arriba o al final de la ce
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># funciones</span>
-<span class="k">def</span> <span class="nf">is_a_sum_with_bonus</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_a_sum_with_bonus</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span><span class="mi">1</span>
     <span class="n">resultado</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">resultado</span><span class="p">)</span>
@@ -743,7 +771,7 @@ Haz click en la opción “+ Texto” (en la parte de arriba o al final de la ce
 </section>
 </section>
 <section id="manejo-vectores-y-matrices-en-numpy">
-<h1>Manejo vectores y matrices en NumPy<a class="headerlink" href="#manejo-vectores-y-matrices-en-numpy" title="Permalink to this heading">#</a></h1>
+<h1>Manejo vectores y matrices en NumPy<a class="headerlink" href="#manejo-vectores-y-matrices-en-numpy" title="Link to this heading">#</a></h1>
 <p>NumPy es un paquete que proporciona herramientas y técnicas para manipular estructuras de datos con matrices, es mucho mejor que las listas de Python, tiene acceso y escritura más rápida. Posee una amplia colección de herramientas y técnicas que se pueden utilizar para resolver problemas mátematicos, además de que contiene todas las funciones para trabajar con matrices.</p>
 <p>A continuación encontrá algunas funciones muy útiles para los laboratorios, tales como:</p>
 <ul class="simple">
@@ -756,7 +784,7 @@ Haz click en la opción “+ Texto” (en la parte de arriba o al final de la ce
 </ul>
 <p>Y en la subsección Siguiente se da algunos ejemplos para profundizar en el manejo de numpy.</p>
 <section id="id1">
-<h2>Básicos<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Básicos<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>El paquete NumPy introdujo los arrays N-dimensionales, acontinuación se mostrará las rutinas más utilizadas en los laboratorios. (Más rutinas <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/routines.array-creation.html">aquí</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1082,7 +1110,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># implementacion con numpy</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
@@ -1112,7 +1140,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 <p>Con ciclos <strong>for</strong> tenemos una implementación que es casi 200 %  más lenta que la implementación “vectorizada”.</p>
 </section>
 <section id="profundizacion-en-numpy">
-<h2>Profundización en numpy<a class="headerlink" href="#profundizacion-en-numpy" title="Permalink to this heading">#</a></h2>
+<h2>Profundización en numpy<a class="headerlink" href="#profundizacion-en-numpy" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Calculo del promedio</span>
@@ -1201,9 +1229,9 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 </section>
 </section>
 <section id="manejo-de-estructuras-de-datos-en-pandas-graficos-en-matplotlib">
-<h1>Manejo de estructuras de datos en Pandas. Graficos en matplotlib<a class="headerlink" href="#manejo-de-estructuras-de-datos-en-pandas-graficos-en-matplotlib" title="Permalink to this heading">#</a></h1>
+<h1>Manejo de estructuras de datos en Pandas. Graficos en matplotlib<a class="headerlink" href="#manejo-de-estructuras-de-datos-en-pandas-graficos-en-matplotlib" title="Link to this heading">#</a></h1>
 <section id="id2">
-<h2>Básicos<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>Básicos<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># en la configuracion inical se hace import pandas as pd</span>
@@ -1417,7 +1445,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 </div>
 </section>
 <section id="id3">
-<h2>Profundización<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>Profundización<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>Graficas de barras</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1501,7 +1529,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 </section>
 </section>
 <section id="estructura-de-los-laboratorios">
-<h1>Estructura de los laboratorios<a class="headerlink" href="#estructura-de-los-laboratorios" title="Permalink to this heading">#</a></h1>
+<h1>Estructura de los laboratorios<a class="headerlink" href="#estructura-de-los-laboratorios" title="Link to this heading">#</a></h1>
 <p>En los laboratorios van encontrar diferentes clases de ejercicios, estos se pueden resumir en los siguientes puntos</p>
 <ol class="arabic simple">
 <li><p>Contextualización del problema y entedimiento de los datos</p></li>
@@ -1526,7 +1554,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 <span class="c1"># cuando estes seguro comienza a escribir tu codigo</span>
 <span class="c1"># dentro de la función</span>
 <span class="c1"># NO MODIFIQUES el nombre de la funcion</span>
-<span class="k">def</span> <span class="nf">mult_matrices</span> <span class="p">(</span><span class="n">matriz_a</span><span class="p">,</span> <span class="n">matriz_b</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mult_matrices</span> <span class="p">(</span><span class="n">matriz_a</span><span class="p">,</span> <span class="n">matriz_b</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Esta funcion debera devolver la multiplicacion de matrices entre las dos matrices entrantes</span>
 <span class="sd">    matriz_a, matriz_b: matrices en numpy</span>
 <span class="sd">    retorna: debe retornar el resultado de multiplicar las dos entradas</span>
@@ -1548,7 +1576,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 <span class="c1"># donde tu funcion debe ejecutar el codigo del modelo</span>
 <span class="c1">## y retornar el modelo entrenado</span>
 <span class="c1">## Ejercicio de Codigo ##</span>
-<span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_model</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; esta función debe entrenar un modelo de regression pero solo inicializando</span>
 <span class="sd">        aleatorimente</span>
 <span class="sd">    train_data: a matriz numpy con las muestras de entrenamiento </span>
@@ -1571,7 +1599,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># y con las funciones debes usarla para completar los experimentos y llenar el dataframe</span>
 <span class="c1"># debes variar el parametro de 0 a 5</span>
 <span class="c1">## Ejercicio de Codigo ##</span>
-<span class="k">def</span> <span class="nf">experimentar</span> <span class="p">(</span><span class="n">Xtest</span><span class="p">,</span> <span class="n">ytest</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">experimentar</span> <span class="p">(</span><span class="n">Xtest</span><span class="p">,</span> <span class="n">ytest</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Esta función debe realizar los experimentos, de manera programatica.}</span>
 <span class="sd">       Debe devolver un datarame con los errrores por cada parametro.</span>
 <span class="sd">    Xtest: matriz numpy con los valores del conjunto para test</span>
@@ -1615,7 +1643,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 </ul>
 </section>
 <section id="recomendaciones-finales-para-la-entrega-de-los-laboratorios">
-<h1>Recomendaciones Finales para la entrega de los laboratorios<a class="headerlink" href="#recomendaciones-finales-para-la-entrega-de-los-laboratorios" title="Permalink to this heading">#</a></h1>
+<h1>Recomendaciones Finales para la entrega de los laboratorios<a class="headerlink" href="#recomendaciones-finales-para-la-entrega-de-los-laboratorios" title="Link to this heading">#</a></h1>
 <ol class="arabic simple">
 <li><p>Los espacios para laboratorio son para <strong>ustedes</strong>, traten de aprovecharlos al máximo.</p></li>
 <li><p>Es invalido enviar los laboratorios vía correo electronico y otro medio que no haya sido especificado. Se debe seguir el proceso basado en la plataforma de autocorreción.</p></li>
@@ -1652,11 +1680,10 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="titles/U0_IntroLabs.html"
@@ -1676,10 +1703,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1687,6 +1711,7 @@ En este  ejercicio tambien vas observar en funcionamiento un concepto de <em>num
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1737,9 +1762,10 @@ By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - 
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1763,8 +1789,8 @@ By <b>Julián Arias</b>/ Universidad de Antioquia -- Labs por Germán E. Melo - 
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
