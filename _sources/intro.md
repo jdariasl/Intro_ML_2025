@@ -24,12 +24,13 @@
 
 ## Proyecto
 
-La guía para la realización del proyecto puede ser consultada en: [pdf](https://github.com/jdariasl/Intro_ML_2025/tree/master/local/imgs/GuiaProyecto.pdf)
+La guía para la realización del proyecto puede ser consultada en: [pdf](https://github.com/jdariasl/Intro_ML_2025/tree/master/local/docs/Guia_proyecto_Modelos_II.pdf)
 
 Para los proyectos se debe seleccionar un problema de aprendizaje supervisado. Se recomienda revisar las bases de datos incluidas en:
 
 - [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)
 - [Kaggle](https://www.kaggle.com/)
+- [OpenML](https://www.openml.org/)
 
 Una vez comience el semestre se compartirán algunos archivos que contienen algunos datasets que no pueden ser seleccionados debido a problemas con la información o a que el alcance del reto no es suficiente como proyecto del curso.
 
