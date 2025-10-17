@@ -402,7 +402,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -418,6 +420,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquinas-de-vectores-de-soporte-para-problemas-de-clasificacion">Máquinas de Vectores de Soporte para problemas de clasificación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquinas-de-vectores-de-soporte-para-problemas-de-regresion">Máquinas de Vectores de Soporte para problemas de regresión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#esquemas-multiclase-basados-en-clasificadores-binarios">Esquemas multiclase basados en clasificadores binarios</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -429,6 +441,22 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="u7-maquinas-de-vectores-de-soporte">
 <h1>U7. MÁQUINAS DE VECTORES DE SOPORTE<a class="headerlink" href="#u7-maquinas-de-vectores-de-soporte" title="Link to this heading">#</a></h1>
+<section id="maquinas-de-vectores-de-soporte-para-problemas-de-clasificacion">
+<h2>Máquinas de Vectores de Soporte para problemas de clasificación<a class="headerlink" href="#maquinas-de-vectores-de-soporte-para-problemas-de-clasificacion" title="Link to this heading">#</a></h2>
+<p><strong>50 - Introducción al criterio de maximización del margen</strong>: <a class="reference external" href="https://youtu.be/Wvto_a2KUIc">Video 11mins</a> <br/> Se discute el principio de funcionamiento de maximización del margen, que utilizan las máquinas de vectores de soporte para resolver problemas de clasificación, y se definen los conceptos de minimización del riesgo empírico y minimización del riesgo estructural.</p>
+<p><strong>51 - Función de coste y entrenamiento de las SVC</strong>: <a class="reference external" href="https://youtu.be/xiT85Pso1t8">Video 30mins</a> <br/> Discutimos la formulación matemática de la función de coste que se usa en las Máquinas de Vectores de Soporte para Clasificación en su forma primal y en su forma dual, y la forma funcional que toma el modelo cuando reemplazamos la expresión matemática que representa el óptimo del vector de pesos.</p>
+<p><strong>52 - Funciones kernel y vectores de soporte</strong>: <a class="reference external" href="https://youtu.be/qnIiONgfUGM">Video 15mins</a> <br/> Discutimos la formulación matemática de la función de coste que se usa en las Máquinas de Vectores de Soporte para Clasificación en su forma primal y en su forma dual, y la forma funcional que toma el modelo cuando reemplazamos la expresión matemática que representa el óptimo del vector de pesos.</p>
+<p><strong>53 - SVC de margen suave</strong>: <a class="reference external" href="https://youtu.be/45efIdv9btY">Video 22mins</a> <br/> Discutimos las modificaciones que es necesario realizar a la función de coste, para que las SVC puedan ser usadas en contextos reales en los que las muestras de cada clase no son linealmente separables.</p>
+</section>
+<section id="maquinas-de-vectores-de-soporte-para-problemas-de-regresion">
+<h2>Máquinas de Vectores de Soporte para problemas de regresión<a class="headerlink" href="#maquinas-de-vectores-de-soporte-para-problemas-de-regresion" title="Link to this heading">#</a></h2>
+<p><strong>54 - Función de coste y entrenamiento de las SVR</strong>: <a class="reference external" href="https://youtu.be/1NTToJ8I4xo">Video 29mins</a> <br/> Discutimos cómo se extiende la formulación de las máquinas de vectores de soporte para resolver problemas de regresión, haciendo hincapié en la función de error y el significado que tienen en este caso las variables de relajación y los coeficientes de Lagrange en términos de los cuales queda definido el modelo predictivo.</p>
+</section>
+<section id="esquemas-multiclase-basados-en-clasificadores-binarios">
+<h2>Esquemas multiclase basados en clasificadores binarios<a class="headerlink" href="#esquemas-multiclase-basados-en-clasificadores-binarios" title="Link to this heading">#</a></h2>
+<p><strong>55 - Esquema uno vs. todos</strong>: <a class="reference external" href="https://youtu.be/G3xqz0uvfOw">Video 27mins</a> <br/> Se presenta el esquema básico de uno vs. todos que permite resolver problemas multiclase a partir de modelos biclase y sus implicaciones en términos de costo computacional y de diseño. Este esquema es aplicable a partir de cualquier modelo biclase, entre los que se incluyen las SVC, y permite resolver problemas multiclase y multietiqueta.</p>
+<p><strong>56 - Esquemas uno vs. uno y jerárquico</strong>: <a class="reference external" href="https://youtu.be/ikKTW69E0cM">Video 10mins</a> <br/> Se presentan los esquemas uno vs uno y jerárquico que, al igual que el esquema anterior, permiten resolver problemas multiclase a partir de modelos biclase. Se discuten las implicaciones en términos de costo computacional de estos esquemas en comparación con el esquema uno vs. todos.</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -487,6 +515,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquinas-de-vectores-de-soporte-para-problemas-de-clasificacion">Máquinas de Vectores de Soporte para problemas de clasificación</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maquinas-de-vectores-de-soporte-para-problemas-de-regresion">Máquinas de Vectores de Soporte para problemas de regresión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#esquemas-multiclase-basados-en-clasificadores-binarios">Esquemas multiclase basados en clasificadores binarios</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

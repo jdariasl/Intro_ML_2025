@@ -24,4 +24,4 @@
 
 **48 - Redes Neuronales Recurrentes Bidireccionales**: [Video 5mins](https://youtu.be/CwZ2wyZzMJs) <br/> Revisamos una arquitectura alternativa de red neuronal recurrente que procesa las secuencias de entrada en los dos sentidos de manera simultánea.
 
-**49 - Introducción a las redes LSTM y GRU**: [Video 17mins](https://youtu.be/GgPuTt_vHgU) <br/> Se introducen dos arquitecturas de redes neuronales recurrentes que incluyen unidades báscias diferentes al perceptrón estándar y tiene la capacidad de almacenar memoría de largo y corto alcance.
+**49 - Introducción a las redes LSTM y GRU**: [Video 17mins](https://youtu.be/GgPuTt_vHgU) <br/> Se introducen dos arquitecturas de redes neuronales recurrentes que incluyen unidades básicas diferentes al perceptrón estándar y tienen la capacidad de almacenar memoria de largo y corto alcance.
