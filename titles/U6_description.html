@@ -402,7 +402,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -418,6 +420,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-perceptron-y-la-arquitectura-perceptron-multicapa">El Perceptrón y La arquitectura Perceptron Multicapa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-de-propagacion-hacia-atras">Algoritmo de propagación hacia atrás</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-arquitecturas-de-red">Otras arquitecturas de red</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -429,6 +441,25 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="u6-redes-neuronales-artificiales">
 <h1>U6. REDES NEURONALES ARTIFICIALES<a class="headerlink" href="#u6-redes-neuronales-artificiales" title="Link to this heading">#</a></h1>
+<section id="el-perceptron-y-la-arquitectura-perceptron-multicapa">
+<h2>El Perceptrón y La arquitectura Perceptron Multicapa<a class="headerlink" href="#el-perceptron-y-la-arquitectura-perceptron-multicapa" title="Link to this heading">#</a></h2>
+<p><strong>40 - Las Neuronas biológicas y el Modelo Perceptrón</strong>: <a class="reference internal" href="#"><span class="xref myst">Video 21mins</span></a> <br/> Se introduce el perceptrón como un modelo bioinspirado que emula el comportamiento básico de una neurona biológica y el concepto tradicional de redes neuronales artificales.</p>
+<p><strong>41 - Perceptrones Multicapa</strong>: <a class="reference internal" href="#"><span class="xref myst">Video 21mins</span></a> <br/> Se analiza la arquitectura básica de las redes neuronales artificales, conocida como perceptrón multicapa y se discuten elementos clave como las funciones de activación y la descripción matemática del proceso de propagación hacia adelante en una red neuronal artificial.</p>
+</section>
+<section id="algoritmo-de-propagacion-hacia-atras">
+<h2>Algoritmo de propagación hacia atrás<a class="headerlink" href="#algoritmo-de-propagacion-hacia-atras" title="Link to this heading">#</a></h2>
+<p><strong>42 - Backpropagation</strong>: <a class="reference internal" href="#"><span class="xref myst">Video 21mins</span></a> <br/> Se explica el proceso de entrenamiento de las redes neuronales artificiales, el concepto de propagación hacia atrás del error y los pasos que es necesario llevar a cabo para completar un época del algoritmo de entrenamiento. Se discute también el problema conocido como desvanecimiento del gradiente y cómo se enfrenta.</p>
+<p><strong>43 - Esquemas de entrenamiento</strong>: <a class="reference internal" href="#"><span class="xref myst">Video 21mins</span></a> <br/> Se discuten los requerimientos en términos de memoria y cómputo que tiene el algoritmo Backpropagation y se introducen los esquemas de entrenamiento Batch, mini-batch y online, que ayudan a mitigar algunos de las limitaciones encontradas durante el entrenamiento, así como algunos ejemplos prácticos.</p>
+</section>
+<section id="otras-arquitecturas-de-red">
+<h2>Otras arquitecturas de red<a class="headerlink" href="#otras-arquitecturas-de-red" title="Link to this heading">#</a></h2>
+<p><strong>44 - Mapas auto-organizables</strong>: <a class="reference external" href="https://youtu.be/3DO9FJhPt3k">Video 28mins</a> <br/> Se presentan los principios de funcionamiento y el algoritmo de entrenamiento de una red neuronal conocida como Mapa auto-organizable, que puede ser usada para resolver problemas no supervisados de agrupamiento.</p>
+<p><strong>45 - Ejemplos prácticos con Mapas auto-organizables</strong>: <a class="reference external" href="https://youtu.be/VzIstWRtqPw">Video 9mins</a> <br/> Se presenta el ejemplo típico de aplicación de los SOM usando un conjunto de muestras de 3 dimensiones, que pueden ser interpretadas como componentes de color. Adicionalmente, se muestra el desempeño del modelo cuando se aplica a un problema de agrupamiento de datos que conforman variedades y se compara con el resultado de un k-means. Se introduce el concepto de matriz U y la identificación del número de grupos detectados por el modelo.</p>
+<p><strong>46 - Introducción a la analítica de secuencias</strong>: <a class="reference external" href="https://youtu.be/JzOumjQ-7qA">Video 23mins</a> <br/> Se introduce el concepto de secuencia, una modalidad de información en la que la suposición de independencia entre observaciones ya no se puede asumir en todos los casos. Se discute la arquitectura básica de red neuronal diseñada para trabajar con secuencias y diferentes configuraciones que pueden construirse con este tipo de redes para resolver diferentes tareas de ML.</p>
+<p><strong>47 - Redes Neuronales Recurrentes</strong>: <a class="reference external" href="https://youtu.be/rrrjZSVnr0M">Video 36mins</a> <br/> Se revisa el proceso de propagación hacia adelante de las redes neuronales recurrentes y su algoritmo de entrenamiento; se discuten las limitaciones del modelo y se presenta un ejemplo implementado con dos librerías diferentes.</p>
+<p><strong>48 - Redes Neuronales Recurrentes Bidireccionales</strong>: <a class="reference external" href="https://youtu.be/CwZ2wyZzMJs">Video 5mins</a> <br/> Revisamos una arquitectura alternativa de red neuronal recurrente que procesa las secuencias de entrada en los dos sentidos de manera simultánea.</p>
+<p><strong>49 - Introducción a las redes LSTM y GRU</strong>: <a class="reference external" href="https://youtu.be/GgPuTt_vHgU">Video 17mins</a> <br/> Se introducen dos arquitecturas de redes neuronales recurrentes que incluyen unidades báscias diferentes al perceptrón estándar y tiene la capacidad de almacenar memoría de largo y corto alcance.</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -487,6 +518,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#el-perceptron-y-la-arquitectura-perceptron-multicapa">El Perceptrón y La arquitectura Perceptron Multicapa</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-de-propagacion-hacia-atras">Algoritmo de propagación hacia atrás</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#otras-arquitecturas-de-red">Otras arquitecturas de red</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
