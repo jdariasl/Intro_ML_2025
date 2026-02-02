@@ -459,7 +459,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-la-seleccion-de-variables">Ventajas de la selección de variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema">Problema</a></li>
@@ -470,15 +469,9 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-basados-en-correlacion-y-en-medidas-de-teoria-de-la-informacion">Criterios basados en correlación y en medidas de teoría de la información</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas-de-cada-uno-de-los-tipos-de-criterio">Ventajas y Desventajas de cada uno de los tipos de criterio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtro">Filtro</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas">Ventajas</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas">Desventajas</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper">Wrapper</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ventajas</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Desventajas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas-de-cada-uno-de-los-tipos-de-criterio">Ventajas y Desventajas de cada uno de los tipos de criterio</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtro">Filtro</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper">Wrapper</a></li>
 </ul>
 </li>
 </ul>
@@ -489,19 +482,21 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencial-hacia-atras-sequential-backward-selection-sbs">2. Selección secuencial hacia atrás (Sequential Backward Selection - SBS)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Algoritmo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Algoritmo</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-mas-l-menos-r-lrs">3. Selección Más-L Menos-R (LRS)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Algoritmo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Algoritmo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-bidireccional-bds">Busqueda Bidireccional (BDS)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Algoritmo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-bidireccional-bds">4. Busqueda Bidireccional (BDS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Algoritmo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs">Selección secuencia flotante (Sequential Floating Selection (SFFS y SFBS))</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-sffs-sfbs-es-analogo">Algoritmo SFFS (SFBS es análogo)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs">5. Selección secuencia flotante (Sequential Floating Selection (SFFS y SFBS))</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-sffs-sfbs-es-analogo">Algoritmo SFFS (SFBS es análogo)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -517,12 +512,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="seleccion-de-caracteristicas">
 <h1>Selección de Características<a class="headerlink" href="#seleccion-de-caracteristicas" title="Link to this heading">#</a></h1>
-<section id="julian-d-arias-londono">
-<h2>Julián D. Arias Londoño<a class="headerlink" href="#julian-d-arias-londono" title="Link to this heading">#</a></h2>
-<p>Profesor Asociado<br />
-Departamento de Ingeniería de Sistemas<br />
-Universidad de Antioquia, Medellín, Colombia<br />
-<a class="reference external" href="mailto:julian&#46;ariasl&#37;&#52;&#48;udea&#46;edu&#46;co">julian<span>&#46;</span>ariasl<span>&#64;</span>udea<span>&#46;</span>edu<span>&#46;</span>co</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -530,7 +519,6 @@ Universidad de Antioquia, Medellín, Colombia<br />
 </div>
 </div>
 </div>
-</section>
 <section id="introduccion">
 <h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
 <p>En anteriores sesiones hemos discutido algunas razones por las cuales puede ser necesario reducir el número de variables en un problema de aprendizaje automático. Principalmente hemos aludido a la necesidad de llevar a cabo un proceso de reducción de dimensión, debido al problema conocido como “maldición de la dimensionalidad”, sin embargo, son múltiples los beneficios que podemos obtener.</p>
@@ -606,31 +594,23 @@ Universidad de Antioquia, Medellín, Colombia<br />
 </section>
 <section id="ventajas-y-desventajas-de-cada-uno-de-los-tipos-de-criterio">
 <h3>Ventajas y Desventajas de cada uno de los tipos de criterio<a class="headerlink" href="#ventajas-y-desventajas-de-cada-uno-de-los-tipos-de-criterio" title="Link to this heading">#</a></h3>
-</section>
 <section id="filtro">
-<h3>Filtro<a class="headerlink" href="#filtro" title="Link to this heading">#</a></h3>
-<section id="ventajas">
-<h4>Ventajas<a class="headerlink" href="#ventajas" title="Link to this heading">#</a></h4>
+<h4>Filtro<a class="headerlink" href="#filtro" title="Link to this heading">#</a></h4>
+<p><strong>Ventajas</strong></p>
 <ul>
 <li>Rápida ejecución. Los filtro involucran generalmente cálculos no iterativos relacionados con el conjunto de datos, por lo cual son mucho más rápidos que el entrenamiento de un modelo de predicción.</li>
 <li>Generalidad. Debido a que los filtros evalúan las propiedades intrínsecas de los datos, más que las interacciones con un modelo de aprendizaje particular, sus resultados exhiben más generalidad, es decir que la solución puede ser "buena" para una familia más grande de modelos.</li>
-</ul></section>
-<section id="desventajas">
-<h4>Desventajas<a class="headerlink" href="#desventajas" title="Link to this heading">#</a></h4>
+</ul><p><strong>Desventajas</strong></p>
 <ul>
 <li>Tendencia a seleccionar subconjuntos de características grandes. Debido a que las funciones objetivo son usualmente monótonas, el filtro tiende a seleccionar el conjunto completo de variables como el mejor.</li>
 </ul></section>
-</section>
 <section id="wrapper">
-<h3>Wrapper<a class="headerlink" href="#wrapper" title="Link to this heading">#</a></h3>
-<section id="id1">
-<h4>Ventajas<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<h4>Wrapper<a class="headerlink" href="#wrapper" title="Link to this heading">#</a></h4>
+<p><strong>Ventajas</strong></p>
 <ul>
 <li>Exactitud. Los wrappers generalmente alcanzan mejores tasas de predicción que los filtros, debido a que ellos están ajustados especifícamente para reducir el error de validación.</li>
 <li>Capacidad de generalización. Debido a que los criterios wrappers usan una metodología de validación, tienen la capacidad de evitar el sobre ajuste y proporcionar mejor capacidad de generalización.</li>
-</ul></section>
-<section id="id2">
-<h4>Desventajas<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+</ul><p><strong>Desventajas</strong></p>
 <ul>
 <li>Ejecución lenta. Debido a que el wrapper debe entrenar un clasificador por cada subconjunto de variables (o varios si se usa validación cruzada), el costo computacional puede ser muy alto.</li>
 <li>Falta de generalidad. Debido a que el criterio wrapper usa un modelo de predicción específico, el subconjunto de variables finalmente seleccionado, puede ser bueno para el modelo específico usado como criterio, pero no tan bueno para otros modelos.</li>
@@ -660,8 +640,8 @@ Universidad de Antioquia, Medellín, Colombia<br />
 <section id="seleccion-secuencial-hacia-atras-sequential-backward-selection-sbs">
 <h3>2. Selección secuencial hacia atrás (Sequential Backward Selection - SBS)<a class="headerlink" href="#seleccion-secuencial-hacia-atras-sequential-backward-selection-sbs" title="Link to this heading">#</a></h3>
 <p>El método SBS es análogo al método anterior pero comenzando con el conjunto completo y eliminando una característica a la vez. La característica eliminada es aquella para la cual el criterio <span class="math notranslate nohighlight">\(J\)</span> decresca en menor valor (o incluso aumente).</p>
-<section id="id3">
-<h4>Algoritmo<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<section id="id1">
+<h4>Algoritmo<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
  <ol>
   <li>Inicializar el conjunto lleno $X_0 = X$</li>
   <li>Seleccionar la siguiente característica $x^- = \arg\max_{x \in X_k } \left[ J(X_k - x)\right] $</li>
@@ -674,8 +654,8 @@ Universidad de Antioquia, Medellín, Colombia<br />
 <h3>3. Selección Más-L Menos-R (LRS)<a class="headerlink" href="#seleccion-mas-l-menos-r-lrs" title="Link to this heading">#</a></h3>
 <p>Este es un método que permite algún nivel de retractación en el proceso de selección de características. Si <span class="math notranslate nohighlight">\(L &gt; R\)</span>, el algoritmo corresponde a un procedimiento hacia adelante, primero se adicionan <span class="math notranslate nohighlight">\(L\)</span> características al conjunto actual usando la estrategia SFS, y posteriormente se remueven las peores <span class="math notranslate nohighlight">\(R\)</span> características usando SBS.</p>
 <p>Si por el contrario <span class="math notranslate nohighlight">\(L &lt; R\)</span> el proceso es hacia atrá, comenzando con el conjunto completo, removiendo <span class="math notranslate nohighlight">\(R\)</span> y posteriormente adicionando <span class="math notranslate nohighlight">\(L\)</span> variables.</p>
-<section id="id4">
-<h4>Algoritmo<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<section id="id2">
+<h4>Algoritmo<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
  <ol><li>Evalúe:</li>
   <ul>
 <li>Si $L > R$ entonces</li>
@@ -703,14 +683,14 @@ Universidad de Antioquia, Medellín, Colombia<br />
 </section>
 </section>
 <section id="busqueda-bidireccional-bds">
-<h3>Busqueda Bidireccional (BDS)<a class="headerlink" href="#busqueda-bidireccional-bds" title="Link to this heading">#</a></h3>
+<h3>4. Busqueda Bidireccional (BDS)<a class="headerlink" href="#busqueda-bidireccional-bds" title="Link to this heading">#</a></h3>
 <p>En este caso los métodos SFS y SBS se ejecutan de manera simultánea, sin embargo para garantizar que el método converge a una solución, se establecen las siguientes reglas:</p>
 <ul>
 <li>Características seleccionadas por SFS para ser añadidas, no pueden ser removidas por SBS</li>
 <li>Características eliminadas por SBS no pueden ser añadidas por SFS</li>
 <li>Si por ejemplo, antes de que SFS intente adicionar una nueva característica, el método evalúa si dicha característica ya fue removida por SBS y, si fue removida previamente, intenta adicionar la segunda mejor variable. SBS opera de manera similar.</li>
-</ul><section id="id5">
-<h4>Algoritmo<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+</ul><section id="id3">
+<h4>Algoritmo<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
  <ol><li>Comience SFS con el conjunto vacío $X_F = \{\emptyset\}$</li>
   <li>Comience SBS con el conjunto completo $X_B = X$</li>
    <li>Seleccione la mejor característica</li>
@@ -727,15 +707,14 @@ Universidad de Antioquia, Medellín, Colombia<br />
 </ol> </section>
 </section>
 <section id="seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs">
-<h3>Selección secuencia flotante (Sequential Floating Selection (SFFS y SFBS))<a class="headerlink" href="#seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs" title="Link to this heading">#</a></h3>
+<h3>5. Selección secuencia flotante (Sequential Floating Selection (SFFS y SFBS))<a class="headerlink" href="#seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs" title="Link to this heading">#</a></h3>
 <p>Este método es una extensión del método LRS, que incorpora propiedades flexibles de retractación. En lugar de fijar los valores de <span class="math notranslate nohighlight">\(L\)</span> y <span class="math notranslate nohighlight">\(R\)</span> previamente, esté método permite que los valores sean determinados a partir de los datos. La dimensionalidad del conjunto de características seleccionado “flota” hacia arriba y hacia abajo, durante las iteraciones del algoritmo.</p>
 <p>Existen dos métodos flotantes:</p>
 <ul>
 <li> <b>Sequential Floating Forward Selection</b>, el cual comienza con el conjunto vacío, el cual una vez terminado el paso hacia adelante, realiza pasos hacia atrás siempre y cuando se incremente el criterio de selección definido.</li>
 <li> <b>Sequential Floating Backward Selection</b>, el cual comienza con el conjunto completo y en el primer paso elimina variables. De manera análoga a SFFS, esté método adiciona variables en la medida en que éstas incrementen el criterio de selección.</li>
-</ul></section>
-<section id="algoritmo-sffs-sfbs-es-analogo">
-<h3>Algoritmo SFFS (SFBS es análogo)<a class="headerlink" href="#algoritmo-sffs-sfbs-es-analogo" title="Link to this heading">#</a></h3>
+</ul><section id="algoritmo-sffs-sfbs-es-analogo">
+<h4>Algoritmo SFFS (SFBS es análogo)<a class="headerlink" href="#algoritmo-sffs-sfbs-es-analogo" title="Link to this heading">#</a></h4>
  <ol>
      <li>Comience con el conjunto vacío $X_0 = \{\emptyset\}$</li>
      <li>Seleccione la mejor característica</li>
@@ -760,6 +739,7 @@ Universidad de Antioquia, Medellín, Colombia<br />
               </ul>
           </ul>    
 </ol> </section>
+</section>
 </section>
 </section>
 
@@ -827,7 +807,6 @@ Universidad de Antioquia, Medellín, Colombia<br />
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julian-d-arias-londono">Julián D. Arias Londoño</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-de-la-seleccion-de-variables">Ventajas de la selección de variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problema">Problema</a></li>
@@ -838,15 +817,9 @@ Universidad de Antioquia, Medellín, Colombia<br />
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#criterios-basados-en-correlacion-y-en-medidas-de-teoria-de-la-informacion">Criterios basados en correlación y en medidas de teoría de la información</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas-de-cada-uno-de-los-tipos-de-criterio">Ventajas y Desventajas de cada uno de los tipos de criterio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtro">Filtro</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas">Ventajas</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas">Desventajas</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper">Wrapper</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Ventajas</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Desventajas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-y-desventajas-de-cada-uno-de-los-tipos-de-criterio">Ventajas y Desventajas de cada uno de los tipos de criterio</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtro">Filtro</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapper">Wrapper</a></li>
 </ul>
 </li>
 </ul>
@@ -857,19 +830,21 @@ Universidad de Antioquia, Medellín, Colombia<br />
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencial-hacia-atras-sequential-backward-selection-sbs">2. Selección secuencial hacia atrás (Sequential Backward Selection - SBS)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Algoritmo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Algoritmo</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-mas-l-menos-r-lrs">3. Selección Más-L Menos-R (LRS)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Algoritmo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Algoritmo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-bidireccional-bds">Busqueda Bidireccional (BDS)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Algoritmo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#busqueda-bidireccional-bds">4. Busqueda Bidireccional (BDS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Algoritmo</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs">Selección secuencia flotante (Sequential Floating Selection (SFFS y SFBS))</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-sffs-sfbs-es-analogo">Algoritmo SFFS (SFBS es análogo)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-secuencia-flotante-sequential-floating-selection-sffs-y-sfbs">5. Selección secuencia flotante (Sequential Floating Selection (SFFS y SFBS))</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#algoritmo-sffs-sfbs-es-analogo">Algoritmo SFFS (SFBS es análogo)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

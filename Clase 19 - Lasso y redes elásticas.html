@@ -460,18 +460,19 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LASSO (Least Absolute Shrinkage and Selection Operator)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-lasso">Características LASSO:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-ejemplo-entrenamiento">Primer Ejemplo (Entrenamiento):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segundo-ejemplo-entrenamiento-y-prediccion">Segundo Ejemplo (Entrenamiento y Predicción):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tercer-ejemplo-entrenamiento-y-prediccion">Tercer Ejemplo (Entrenamiento y Predicción):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cuarto-ejemplo-incidencia-del-parametro-de-regularizacion">Cuarto Ejemplo (Incidencia del parámetro de regularización):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-lasso">Ventajas LASSO:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas-lasso">Desventajas LASSO:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variantes">Variantes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-lasso">Características LASSO:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-ejemplo-entrenamiento">Primer Ejemplo (Entrenamiento):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segundo-ejemplo-entrenamiento-y-prediccion">Segundo Ejemplo (Entrenamiento y Predicción):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tercer-ejemplo-entrenamiento-y-prediccion">Tercer Ejemplo (Entrenamiento y Predicción):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuarto-ejemplo-incidencia-del-parametro-de-regularizacion">Cuarto Ejemplo (Incidencia del parámetro de regularización):</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#elastic-nets">Elastic Nets</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliografia">Bibliografía</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-lasso">Ventajas LASSO:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas-lasso">Desventajas LASSO:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variantes">Variantes:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elastic-nets">Elastic Nets</a></li>
 </ul>
 </li>
 </ul>
@@ -506,9 +507,8 @@ document.write(`
 <p><span class="math notranslate nohighlight">\(\cdot\)</span> Los parametros <span class="math notranslate nohighlight">\(\lambda\)</span> y <span class="math notranslate nohighlight">\(s\)</span> respectivamente controlan la regularización. Si el valor de <span class="math notranslate nohighlight">\(\lambda=0\)</span> entonces LASSO se comportaría como una regresión lineal, si <span class="math notranslate nohighlight">\(\lambda\)</span> es muy grande entonces todos los coeficientes <span class="math notranslate nohighlight">\(w_j\)</span> tienden a 0. Si la regularización se especifíca en función de la segunda representación, entonces el valor de la variable <span class="math notranslate nohighlight">\(s\)</span> influye en el modelo de forma inversa a <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <p>El algoritmo LASSO consiste en determinar <span class="math notranslate nohighlight">\({\bf{w}}(\lambda)\)</span> para todo <span class="math notranslate nohighlight">\(\lambda \ge 0\)</span>. Finalmente de lo que se trata es de determinar el mejor valor <span class="math notranslate nohighlight">\(\lambda\)</span> de manera que perduren únicamente las variables explicativas del modelo. La estimación del valor <span class="math notranslate nohighlight">\(\lambda\)</span> se obtiene por validación cruzada.</p>
 <p>Algunos algoritmos importantes para resolver LASSO reduciendo la complejidad computacional son: LARS y coordenada descentente.</p>
-</section>
 <section id="primer-ejemplo-entrenamiento">
-<h2>Primer Ejemplo (Entrenamiento):<a class="headerlink" href="#primer-ejemplo-entrenamiento" title="Link to this heading">#</a></h2>
+<h3>Primer Ejemplo (Entrenamiento):<a class="headerlink" href="#primer-ejemplo-entrenamiento" title="Link to this heading">#</a></h3>
 <p>En el primer ejemplo se muestra el vector resultante después de aplicar LASSO a un conjunto de datos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -529,7 +529,7 @@ document.write(`
 </div>
 </section>
 <section id="segundo-ejemplo-entrenamiento-y-prediccion">
-<h2>Segundo Ejemplo (Entrenamiento y Predicción):<a class="headerlink" href="#segundo-ejemplo-entrenamiento-y-prediccion" title="Link to this heading">#</a></h2>
+<h3>Segundo Ejemplo (Entrenamiento y Predicción):<a class="headerlink" href="#segundo-ejemplo-entrenamiento-y-prediccion" title="Link to this heading">#</a></h3>
 <p>En el segundo ejemplo se ve como después del entrenamiento y obtención de los parámetros, se hace una predicción.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -564,7 +564,7 @@ r^2 on test data : 0.982851
 </div>
 </section>
 <section id="tercer-ejemplo-entrenamiento-y-prediccion">
-<h2>Tercer Ejemplo (Entrenamiento y Predicción):<a class="headerlink" href="#tercer-ejemplo-entrenamiento-y-prediccion" title="Link to this heading">#</a></h2>
+<h3>Tercer Ejemplo (Entrenamiento y Predicción):<a class="headerlink" href="#tercer-ejemplo-entrenamiento-y-prediccion" title="Link to this heading">#</a></h3>
 <p>En el tercer ejemplo se genera una mayor cantidad de datos, se observan la matriz de los valores generados y la gráfica asociada</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -658,7 +658,7 @@ r^2 on test data : 0.384710
 </div>
 </section>
 <section id="cuarto-ejemplo-incidencia-del-parametro-de-regularizacion">
-<h2>Cuarto Ejemplo (Incidencia del parámetro de regularización):<a class="headerlink" href="#cuarto-ejemplo-incidencia-del-parametro-de-regularizacion" title="Link to this heading">#</a></h2>
+<h3>Cuarto Ejemplo (Incidencia del parámetro de regularización):<a class="headerlink" href="#cuarto-ejemplo-incidencia-del-parametro-de-regularizacion" title="Link to this heading">#</a></h3>
 <p>En el cuarto ejemplo se ve una gráfica que se conoce como LassoPath que muestra la influecia del valor de regularización sobre los parámetros del modelo.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -702,6 +702,7 @@ r^2 on test data : 0.384710
 </div>
 </div>
 </section>
+</section>
 <section id="ventajas-lasso">
 <h2>Ventajas LASSO:<a class="headerlink" href="#ventajas-lasso" title="Link to this heading">#</a></h2>
 <p>Permite identificar fácil y directamente las variables que no son pertinentes para el modelo (Se convierten directamente en 0 a través del estimador), por lo cual no es necesario hacer test de hipótesis.</p>
@@ -714,14 +715,13 @@ r^2 on test data : 0.384710
 <p>No se puede garantizar que LASSO obtiene siempre las variables pertinentes de cualquier modelo dado.</p>
 <p>Matemáticamente es difícil calcular el error estándar del método, ya que la estimación que propone no es lineal y la penalización de la norma 1 no es derivable. Para solventar dicho problema se propone un cálculo probabilístico para obtener una varianza del error estimado.</p>
 </section>
-<section id="variantes">
-<h2>Variantes:<a class="headerlink" href="#variantes" title="Link to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="variantes">
+<h1>Variantes:<a class="headerlink" href="#variantes" title="Link to this heading">#</a></h1>
 <p>A partir de la formulación LASSO se han creado variantes, algunas de ellas son :</p>
 <p>Regresion Elastic Net, Regresion Lasso Adaptativo, Regresion Lasso Relajado</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="elastic-nets">
-<h1>Elastic Nets<a class="headerlink" href="#elastic-nets" title="Link to this heading">#</a></h1>
+<section id="elastic-nets">
+<h2>Elastic Nets<a class="headerlink" href="#elastic-nets" title="Link to this heading">#</a></h2>
 <p>Es una variante de los métodos de regresión con regularización, en el cual se incluyen dos términos de regularización en lugar de uno.</p>
 <div class="math notranslate nohighlight">
 \[\arg\min_{\bf{w}} \sum_{i=1}^n\left(\left(y_i-\sum_{j=0}^dw_jx_{ij}\right)^2+\lambda_1\sum_{j=1}^d|w_j| + \lambda_2\sum_{j=1}^d w_j^2\right)\]</div>
@@ -906,12 +906,6 @@ r^2 on test data : 0.240176
 <img alt="_images/f92240e9dd6b5d52819e6e3d08f6687d5b357958c04bd9e4a99588f0e2a00601.png" src="_images/f92240e9dd6b5d52819e6e3d08f6687d5b357958c04bd9e4a99588f0e2a00601.png" />
 </div>
 </div>
-<section id="bibliografia">
-<h2>Bibliografía<a class="headerlink" href="#bibliografia" title="Link to this heading">#</a></h2>
-<p>Effron, B et al. Least Angle Regression. Annals of Statistics. (2004)</p>
-<p>Friedman, Jerome et al. Regularization Paths for Generalized Linear Models via Coordinate Descent. Journal of Statistical Software (2010)</p>
-<p>Murphy, Kevin. Machine Learning, A probabilistic Perspective. MIT Press. (2012)</p>
-<p>Tibshirani, Robert. Regression Shrinkage and Selection via the Lasso. Journal of the Royal Statistical Society, Volumen 58, Issue 1, (1996)</p>
 </section>
 </section>
 
@@ -980,18 +974,19 @@ r^2 on test data : 0.240176
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LASSO (Least Absolute Shrinkage and Selection Operator)</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-lasso">Características LASSO:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-ejemplo-entrenamiento">Primer Ejemplo (Entrenamiento):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segundo-ejemplo-entrenamiento-y-prediccion">Segundo Ejemplo (Entrenamiento y Predicción):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tercer-ejemplo-entrenamiento-y-prediccion">Tercer Ejemplo (Entrenamiento y Predicción):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cuarto-ejemplo-incidencia-del-parametro-de-regularizacion">Cuarto Ejemplo (Incidencia del parámetro de regularización):</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-lasso">Ventajas LASSO:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas-lasso">Desventajas LASSO:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variantes">Variantes:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caracteristicas-lasso">Características LASSO:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#primer-ejemplo-entrenamiento">Primer Ejemplo (Entrenamiento):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#segundo-ejemplo-entrenamiento-y-prediccion">Segundo Ejemplo (Entrenamiento y Predicción):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tercer-ejemplo-entrenamiento-y-prediccion">Tercer Ejemplo (Entrenamiento y Predicción):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cuarto-ejemplo-incidencia-del-parametro-de-regularizacion">Cuarto Ejemplo (Incidencia del parámetro de regularización):</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#elastic-nets">Elastic Nets</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliografia">Bibliografía</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ventajas-lasso">Ventajas LASSO:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#desventajas-lasso">Desventajas LASSO:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variantes">Variantes:</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elastic-nets">Elastic Nets</a></li>
 </ul>
 </li>
 </ul>

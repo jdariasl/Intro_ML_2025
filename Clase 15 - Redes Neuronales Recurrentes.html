@@ -461,9 +461,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-time-bptt">Backpropagation through time (BPTT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales-recurrentes-bidireccionales">Redes Neuronales Recurrentes Bidireccionales</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-short-term-memory-rnn-lstm">Long Short Term Memory RNN (LSTM)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-weighted-average">Exponential Weighted Average</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliografia">Bibliografía</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-short-term-memory-rnn-lstm">Long Short Term Memory RNN (LSTM)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-weighted-average">Exponential Weighted Average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliografia">Bibliografía</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -691,9 +693,8 @@ Epoch [500/500], Loss: 0.0136
 <p><img alt="alt text" src="_images/sigmoid_vanishing_gradient.png" /></p>
 <p>Este problema ha sido estudiado ampliamente y se han propuesto múltiples alternativas desde finales de los años 80 y comienzos de los 90. De todas las arquitecturas propuestas, la de mayor éxito es una en la que se reemplazan los perceptrones por otro tipo de unidades básicas, llamadas celulas. Las redes neuronales recurrentes compuestas por dichas célculas se conocen con el nombre de Long-Short-Term-Memory Neural Networks (LSTM). Las LSTM fueron propuestas en 1997 y tienen la capacidad de aprender dependencias de tiempo corto, largo y así mismo de decir cuándo olvidar.</p>
 <p><img alt="alt text" src="_images/LSTM2.jpeg" /></p>
-</section>
 <section id="exponential-weighted-average">
-<h2>Exponential Weighted Average<a class="headerlink" href="#exponential-weighted-average" title="Link to this heading">#</a></h2>
+<h3>Exponential Weighted Average<a class="headerlink" href="#exponential-weighted-average" title="Link to this heading">#</a></h3>
 <p>Las LSTM usan como principio el promedio acumulado conocido como Exponential Weighted Moving Average (EWMA) y que originalmente fue propuesto para unas unidades conocidas como “Leaky Units”. El EWMA tiene en cuenta más o menos información del pasado, de acuerdo con un parámetero. La regla de acumulación está dada por: <span class="math notranslate nohighlight">\(\mu^{(t)} \leftarrow \beta \mu^{(t-1)} + (1 - \beta)\upsilon^{(t)}\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -934,8 +935,9 @@ Test Score: 47.46 RMSE
 </div>
 </section>
 <section id="bibliografia">
-<h2>Bibliografía<a class="headerlink" href="#bibliografia" title="Link to this heading">#</a></h2>
+<h3>Bibliografía<a class="headerlink" href="#bibliografia" title="Link to this heading">#</a></h3>
 <p>[1] Googfellow, I.; Bengio, Y.; Courville, A. “Deep Learning”, The MIT Press, Cambridge, MA, USA, 2016.</p>
+</section>
 </section>
 </section>
 
@@ -1005,9 +1007,11 @@ Test Score: 47.46 RMSE
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backpropagation-through-time-bptt">Backpropagation through time (BPTT)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#redes-neuronales-recurrentes-bidireccionales">Redes Neuronales Recurrentes Bidireccionales</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-short-term-memory-rnn-lstm">Long Short Term Memory RNN (LSTM)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-weighted-average">Exponential Weighted Average</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliografia">Bibliografía</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-short-term-memory-rnn-lstm">Long Short Term Memory RNN (LSTM)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-weighted-average">Exponential Weighted Average</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bibliografia">Bibliografía</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

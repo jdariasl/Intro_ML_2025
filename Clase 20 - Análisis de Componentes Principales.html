@@ -459,13 +459,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#veamos-algunas-proyecciones-posibles">Veamos algunas proyecciones posibles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalmente">Formalmente…</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-en-reconocimiento-de-rosotros-eigenfaces">Ejemplo en reconocimiento de rosotros (EigenFaces)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-numero-de-componentes">Selección del número de componentes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referencias</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-en-reconocimiento-de-rosotros-eigenfaces">Ejemplo en reconocimiento de rosotros (EigenFaces)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-numero-de-componentes">Selección del número de componentes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referencias</a></li>
 </ul>
 </li>
 </ul>
@@ -517,8 +513,7 @@ cantidad de variación presente en el conjunto original de variables.</p>
 <img alt="_images/51cc1cad92689b9bac0f485051c31a5cea0ce5e4bdbf54f3ddd49df5c9d571b5.png" src="_images/51cc1cad92689b9bac0f485051c31a5cea0ce5e4bdbf54f3ddd49df5c9d571b5.png" />
 </div>
 </div>
-<section id="veamos-algunas-proyecciones-posibles">
-<h2>Veamos algunas proyecciones posibles<a class="headerlink" href="#veamos-algunas-proyecciones-posibles" title="Link to this heading">#</a></h2>
+<p><strong>Veamos algunas proyecciones posibles</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
@@ -554,9 +549,7 @@ cantidad de variación presente en el conjunto original de variables.</p>
 <img alt="_images/7c0e874e05cbb9a693fd1889b15234e6143e3d31d619e2e921c4a7ae1cb3816e.png" src="_images/7c0e874e05cbb9a693fd1889b15234e6143e3d31d619e2e921c4a7ae1cb3816e.png" />
 </div>
 </div>
-</section>
-<section id="formalmente">
-<h2>Formalmente…<a class="headerlink" href="#formalmente" title="Link to this heading">#</a></h2>
+<p><strong>Formalmente…</strong></p>
 <p>Supongamos que contamos con un matriz <span class="math notranslate nohighlight">\(\bf{X}\)</span> que contiene <span class="math notranslate nohighlight">\(N\)</span> muestras cada una de <span class="math notranslate nohighlight">\(d\)</span> variables. Para el cálculo de las proyecciones de PCA es necesario que los elementos de la matriz <span class="math notranslate nohighlight">\(\bf{X}\)</span> tengan media cero, así que suponemos que previamente hemos extraído la media a cada una de las variables. Por lo tanto la matriz de covarianza de los datos está dada por:</p>
 <div class="math notranslate nohighlight">
 \[\frac{1}{N}{\bf{X}}^T{\bf{X}}\]</div>
@@ -721,7 +714,6 @@ cualquiera <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> sobr
 <img alt="_images/0936e165845a620415c33d7d24f69a7dfd2df4fba8d27f93578f50740eb24e1d.png" src="_images/0936e165845a620415c33d7d24f69a7dfd2df4fba8d27f93578f50740eb24e1d.png" />
 </div>
 </div>
-</section>
 <section id="ejemplo-en-reconocimiento-de-rosotros-eigenfaces">
 <h2>Ejemplo en reconocimiento de rosotros (EigenFaces)<a class="headerlink" href="#ejemplo-en-reconocimiento-de-rosotros-eigenfaces" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -1392,8 +1384,9 @@ Best parameters validation score: 0.842
 <img alt="_images/0bba496cb8a1c817bbb453fb8ab03d3bff732805eae55216f2f8b9219012dd78.png" src="_images/0bba496cb8a1c817bbb453fb8ab03d3bff732805eae55216f2f8b9219012dd78.png" />
 </div>
 </div>
+</section>
 <section id="seleccion-del-numero-de-componentes">
-<h3>Selección del número de componentes<a class="headerlink" href="#seleccion-del-numero-de-componentes" title="Link to this heading">#</a></h3>
+<h2>Selección del número de componentes<a class="headerlink" href="#seleccion-del-numero-de-componentes" title="Link to this heading">#</a></h2>
 <li> Realizar un gráfico de $\lambda_i$ contra $i$ </li>
 <li>  Seleccionar los primeros componentes hasta cubrir una proporción determinada de varianza, como por ejemplo el 80%, 90% o 95%</li>
 <li>  Desechar aquellos componentes asociados a valores propios inferiores a una cota, la cual es usualmente la varianza media</li>
@@ -1413,8 +1406,7 @@ Best parameters validation score: 0.842
 </div>
 </div>
 <section id="referencias">
-<h4>Referencias<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h4>
-</section>
+<h3>Referencias<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -1483,13 +1475,9 @@ Best parameters validation score: 0.842
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#veamos-algunas-proyecciones-posibles">Veamos algunas proyecciones posibles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formalmente">Formalmente…</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-en-reconocimiento-de-rosotros-eigenfaces">Ejemplo en reconocimiento de rosotros (EigenFaces)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-numero-de-componentes">Selección del número de componentes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referencias</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplo-en-reconocimiento-de-rosotros-eigenfaces">Ejemplo en reconocimiento de rosotros (EigenFaces)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleccion-del-numero-de-componentes">Selección del número de componentes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referencias</a></li>
 </ul>
 </li>
 </ul>
