@@ -40,12 +40,12 @@ Se realiza una avance parcial del proyecto que incluye partes I y II de la guía
 
 ## Sesiones sincrónicas (Modalidad Virtual)
 
-Para acceder a las sesiones sincrónicas: Martes - Jueves: [zoom link](https://udearroba.zoom.us/j/96637484177)
+Para acceder a las sesiones sincrónicas: Martes - Jueves: [zoom link](https://udearroba.zoom.us/j/94467054025)
 
 Para acceder a las grabaciones debe ingresar a [Ude@](https://udearroba.udea.edu.co), buscar el curso entre sus cursos matrículados e ingresar en la opción *Encuentros sincrónicos* que se encuentra en el menú de la izquierda.
 
-Laboratorios: - Presencial (Martes 8-10) [zoom link](https://udearroba.zoom.us/j/99672212508)
-              - Virtual (Lunes 10-12) [zoom link](https://udearroba.zoom.us/j/96637484177)
+Laboratorios: - Presencial (Martes 8-10) [zoom link](https://udearroba.zoom.us/j/94954699723)
+              - Virtual (Lunes 10-12) [zoom link](https://udearroba.zoom.us/j/94467054025)
 
 <!---
 Las grabaciones de las sesiones de Martes - Jueves pueden encontrarlas en: [zoom recordings](https://udearroba.zoom.us/meeting/93906419036)
