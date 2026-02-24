@@ -6,9 +6,13 @@
 
 ## Lecturas recomendadas
 
-- C. Bishop, **Pattern Recognition and Machine Learning**, Springer-Verlag [website](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
-- Hastie, Tibshirani, Friedman, **The Elements of Statistical Learning**, Springer-Verlag [website](https://web.stanford.edu/~hastie/ElemStatLearn/) [pdf](https://web.stanford.edu/~hastie/ElemStatLearn/printings/ESLII_print12.pdf)
-- Andrew R. Webb, Keith D. Copsey, **Statistical Pattern Recognition, 3rd Edition**, Wiley
+- C. Bishop, **Pattern Recognition and Machine Learning**, Springer-Verlag [pdf](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf)
+- Hastie, Tibshirani, Friedman, **The Elements of Statistical Learning**, Springer-Verlag [website](https://web.stanford.edu/~hastie/ElemStatLearn/) [pdf](https://hastie.su.domains/ElemStatLearn/printings/ESLII_print12_toc.pdf.download.html)
+- Andrew R. Webb, Keith D. Copsey, **Statistical Pattern Recognition, 3rd Edition**, Wiley [pdf](https://theswissbay.ch/pdf/Gentoomen%20Library/Artificial%20Intelligence/Pattern%20recognition/Statistical%20Pattern%20Recognition%202nd%20Ed%20-%20Andrew%20R.%20Webb.pdf)
+
+## Tópicos avanzados
+
+- K.P. Murphy, **Machine Learning a Probabilistic Perspective**, The MIT Press [pdf](https://raw.githubusercontent.com/kerasking/book-1/master/ML%20Machine%20Learning-A%20Probabilistic%20Perspective.pdf)
 
 ## Programa y Calendario
 
