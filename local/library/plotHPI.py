@@ -18,7 +18,7 @@ from sklearn.neighbors import KNeighborsRegressor
 
 df = pd.read_csv(
     "local/data/housing.data",
-    delim_whitespace=True,
+    sep=r'\s+',
     header=None,
     names=[
         "CRIM",
