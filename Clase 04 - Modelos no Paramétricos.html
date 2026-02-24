@@ -521,11 +521,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;frozen importlib._bootstrap&gt;:228: RuntimeWarning: scipy._lib.messagestream.MessageStream size changed, may indicate binary incompatibility. Expected 56 from C header, got 64 from PyObject
-</pre></div>
-</div>
-</div>
 </div>
 <p>Con lo visto hasta ahora podemos establecer que el aprendizaje de máquina se puede ver como el ajuste de un modelo <span class="math notranslate nohighlight">\(p(y/{\bf{x}})\)</span> o <span class="math notranslate nohighlight">\(p({\bf{x}})\)</span>. El primer caso corresponde a un problema de aprendizaje supervisado (regresión o clasifiación) y en el segundo caso a uno no supervisado. Por consiguiente, los problemas de aprendizaje están muy relacionados con seleccionar y ajustar un modelo que describa la densidad de probabilidad de un conjunto de puntos, ese problema se conoce como <b>estimación de densidad</b>.</p>
 <p>Pueden existir varias formas de clasificar los modelos de estimación, pero tal vez la más importante es:</p>
@@ -547,7 +542,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c6a253e1fc0e3e4d2bebde855b9a41255c4d0e22490d7c2f7e4548e59b98062c.png" src="_images/c6a253e1fc0e3e4d2bebde855b9a41255c4d0e22490d7c2f7e4548e59b98062c.png" />
+<img alt="_images/7fb505ebda2c85ff602c4a5979eae831697789d18935610fd403299242878a9d.png" src="_images/7fb505ebda2c85ff602c4a5979eae831697789d18935610fd403299242878a9d.png" />
 </div>
 </div>
 <p>En el cual definimos un ancho para los intervalos y un número de intervalos y simplemente contamos el número de puntos que cayeron en cada intervalo. En una dimensión, si la línea real es dividida en un número de celdas iguales, la estimación de densidad para un punto <span class="math notranslate nohighlight">\(x\)</span> cualquiera será:</p>
@@ -581,12 +576,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a4a84eb545ea8d8e55d0a116af596177ef359135615c70187e2f8f6a1396683a.png" src="_images/a4a84eb545ea8d8e55d0a116af596177ef359135615c70187e2f8f6a1396683a.png" />
+<img alt="_images/5c6417dde1ab523875cb3ece507285842866ced668b4e7d2d67f28b0327b560c.png" src="_images/5c6417dde1ab523875cb3ece507285842866ced668b4e7d2d67f28b0327b560c.png" />
 </div>
 </div>
 <p>En este caso, tenemos 2 variables y cada una se divide en un número finito de celdas. Si todas las celdas son de igual tamaño, la estimación de probabilidad para una muestra <span class="math notranslate nohighlight">\(\bf{x}\)</span>, será:</p>
 <div class="math notranslate nohighlight">
-\[\hat{p}(x) = \frac{n_j}{N}\]</div>
+\[\hat{p}({\bf{x}}) = \frac{n_j}{N}\]</div>
 <p>donde <span class="math notranslate nohighlight">\(N\)</span> es el número total de muestras. ¿Cómo se puede llevar a cabo una predicción empleando el método del histograma?</p>
 <p>Para el caso de un problema de clasificación es muy simple, y se parece mucho al problema abordado en la clase anterior. Construimos un histograma diferente para cada clase (una fdp por cada clase), usando los mismos intervalos y el mismo número de bins para todas las clases. Cuando al sistema llegue una nueva muestras, evaluamos la probabilidad de pertenecer a cada clase de acuerdo con el histograma y asignamos la muestra a la clase que proporcione mayor probabilidad.</p>
 <p>Para el caso de regresión es un poco más complejo. El modelo de regresión se puede ver como el valor esperado de la función de probabilidad condicional <span class="math notranslate nohighlight">\(p(y|{\bf{x}})\)</span>, es decir:</p>
@@ -612,7 +607,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7a243419a4a07e9bc06f2832a7ca7a9489a5f803f1eea5fcf61b0806de17219a.png" src="_images/7a243419a4a07e9bc06f2832a7ca7a9489a5f803f1eea5fcf61b0806de17219a.png" />
+<img alt="_images/8001cc0e698b3e50e0eea663fb26b0abd83b67dac7e4860c152ac9170b6ca900.png" src="_images/8001cc0e698b3e50e0eea663fb26b0abd83b67dac7e4860c152ac9170b6ca900.png" />
 </div>
 </div>
 <p>Veamos que sucede si utilizamos algún modelo paramétrico como una regresión de órden uno u órden dos.</p>
@@ -624,7 +619,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f473905ced585e6d1d6611291f5604d4d004a4d4552cb2db6e6dd74be432806e.png" src="_images/f473905ced585e6d1d6611291f5604d4d004a4d4552cb2db6e6dd74be432806e.png" />
+<img alt="_images/6b33e2fa535c36f0bf8dfd589e67d3a8585ab3dd6855917f8dbce2af5fbe2cb1.png" src="_images/6b33e2fa535c36f0bf8dfd589e67d3a8585ab3dd6855917f8dbce2af5fbe2cb1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -635,7 +630,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e11c61bb1de042f386ddd64d6e159de0d4294ffcb16d50670ab1fc1057c12d5c.png" src="_images/e11c61bb1de042f386ddd64d6e159de0d4294ffcb16d50670ab1fc1057c12d5c.png" />
+<img alt="_images/d242464498c473d1f329c603a5d597deffa6feb4a0febffe69aa61d77cbe6020.png" src="_images/d242464498c473d1f329c603a5d597deffa6feb4a0febffe69aa61d77cbe6020.png" />
 </div>
 </div>
 <p>Como podemos observar la aproximación a los puntos no es muy buena. Veamos que sucede si utilizamos el método del histograma, recordemos que en este caso es necesario definir el tamaño de las celdas y el punto donde comienza la primera celda.</p>
@@ -687,30 +682,34 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># KNN</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">DiscriminatorKNN</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
-    <span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
-    <span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span> 
-    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calculando ... &#39;</span><span class="p">)</span>
-    <span class="c1">#Evaluando las fdp&#39;s en una malla de valores</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-            <span class="c1">#print([xx[1,i],yy[j,1]])</span>
-            <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">neigh</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="n">xx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">],</span><span class="n">yy</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="mi">1</span><span class="p">]]])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Listo&#39;</span><span class="p">)</span>        
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Clasificación k-vecinos, k = &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Característica 1&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Característica 2&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">CMAP_LIGHT</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">);</span>
-<span class="n">interact</span><span class="p">(</span><span class="n">DiscriminatorKNN</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">150</span><span class="p">]);</span>  
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Cambie el valor de k para ver su efecto en las fronteras. Valores sugeridos 3,5,11,20,50,100,150</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">neigh</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+<span class="n">neigh</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span> 
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Calculando ... &#39;</span><span class="p">)</span>
+<span class="c1">#Evaluando las fdp&#39;s en una malla de valores</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="c1">#print([xx[1,i],yy[j,1]])</span>
+        <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">neigh</span><span class="o">.</span><span class="n">predict</span><span class="p">([[</span><span class="n">xx</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">],</span><span class="n">yy</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="mi">1</span><span class="p">]]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Listo&#39;</span><span class="p">)</span>        
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Clasificación k-vecinos, k = &#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Característica 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Característica 2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">CMAP_LIGHT</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4045933972c44151a2c7c6372668d97f", "version_major": 2, "version_minor": 0}</script></div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculando ... 
+Listo
+</pre></div>
+</div>
+<img alt="_images/99f8e79b37c376abc2e18ddc903accd999881bcce743ebb8d590e77528bece6e.png" src="_images/99f8e79b37c376abc2e18ddc903accd999881bcce743ebb8d590e77528bece6e.png" />
+</div>
 </div>
 <p>Si aplicamos el método de <span class="math notranslate nohighlight">\(k\)</span>-vecinos al problema de predicción de HPI, obtendremos lo siguiente:</p>
 <div class="cell docutils container">
@@ -890,23 +889,25 @@ document.write(`
 <span class="n">y_nadayara</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">X_nadayara</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 <span class="n">y_nadayara</span> <span class="o">+=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">y_nadayara</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">nadayara</span><span class="p">(</span><span class="n">h</span><span class="o">=</span><span class="mf">0.48859075319621886</span><span class="p">):</span>
-    <span class="c1">#ndwM = ndw(h)</span>
-    <span class="n">pred</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_nadayara</span><span class="p">)):</span>
-        <span class="n">pred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plothpi</span><span class="o">.</span><span class="n">nadaraya_watson</span><span class="p">(</span><span class="n">X_nadayara</span><span class="p">,</span> <span class="n">X_nadayara</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_nadayara</span><span class="p">,</span><span class="n">h</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_nadayara</span><span class="p">,</span> <span class="n">y_nadayara</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Datos Originales&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_nadayara</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span><span class="s1">&#39;--&#39;</span> <span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;NadarayaWatson&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;input variable&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">interact</span><span class="p">(</span><span class="n">nadayara</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0001</span><span class="p">,</span><span class="mf">0.001</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.48859075319621886</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.8</span><span class="p">]);</span>   
+<span class="c1">#def nadayara(h=0.48859075319621886):</span>
+<span class="c1">#ndwM = ndw(h)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_nadayara</span><span class="p">)):</span>
+    <span class="n">pred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plothpi</span><span class="o">.</span><span class="n">nadaraya_watson</span><span class="p">(</span><span class="n">X_nadayara</span><span class="p">,</span> <span class="n">X_nadayara</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_nadayara</span><span class="p">,</span><span class="n">h</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_nadayara</span><span class="p">,</span> <span class="n">y_nadayara</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Datos Originales&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_nadayara</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span><span class="s1">&#39;--&#39;</span> <span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;NadarayaWatson&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;input variable&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;target&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1">#interact(nadayara, h=[0.0001,0.001,0.01,0.1,0.48859075319621886,0.5,0.6,0.7,0.8]);   </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6c2356324c1f4292a982e2d8465d4418", "version_major": 2, "version_minor": 0}</script></div>
+<img alt="_images/004ecab1b69dea5296781d39e8f74b4ed0c9f163f5430f4c2d0f484af1cf5862.png" src="_images/004ecab1b69dea5296781d39e8f74b4ed0c9f163f5430f4c2d0f484af1cf5862.png" />
+</div>
 </div>
 <hr class="docutils" />
 <p>Los modelos no paramétricos son muy flexibles porque permiten construir fronteras de decisión o funciones de regresión muy variadas, pero son computacionalmente muy ineficientes para conjuntos de datos muy grandes debido a que como hemos visto, para la mayoría, es necesario almacenar todas las muestras de entrenamiento y realizar cáculos de distancia con respecto a todas las muetras de entrenamiento cada vez que necesitemos realizar una nueva predicción. Por esta razón se han propuesto muchas variantes para trabajar con conjuntos de datos masivos.</p>
