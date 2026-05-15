@@ -593,16 +593,16 @@ document.write(`
 <p>El problema de aprendizaje en este caso, corresponde a estimar el conjunto de parámetros <span class="math notranslate nohighlight">\(\Theta\)</span> para cada una de las clases, dada un conjunto de muestras de entrenamiento <span class="math notranslate nohighlight">\(\mathcal{D} = \left\lbrace  \left( {\bf{x}}_k, y_k \right) \right\rbrace _{k=1} ^{N}\)</span>. Del total de muestras de entrenamiento, <span class="math notranslate nohighlight">\(N_i\)</span> pertenecen a la clase <span class="math notranslate nohighlight">\(i\)</span>, es decir <span class="math notranslate nohighlight">\(\sum_{i=1}^{\mathcal{C}} N_i = N\)</span>, donde <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> es el número de clases en el conjunto de muestras de entrenamiento (<span class="math notranslate nohighlight">\(y_k\)</span> puede tomar valores <span class="math notranslate nohighlight">\(1,2,...,\mathcal{C}\)</span>), es decir que el modelo de cada clase se ajusta únicamentente utilizando las <span class="math notranslate nohighlight">\(N_i\)</span> muestras pertenecientes a dicha clase.</p>
 <p>Como el entrenamiento de un modelo GMM corresponde al ajuste de una fdp, el criterio que nuevamente puede ser de utilidad es el criterio de máxima verosimilitud. Asumiendo entonces que las muestras de entrenamiento de la clase <span class="math notranslate nohighlight">\(i\)</span> son i.i.d., podemos expresar el problema de aprendizaje como:</p>
 <div class="math notranslate nohighlight">
-\[\mathop {\max }\limits_\Theta  \log \prod\limits_{k = 1}^{N_i} {p\left( {{\bf{x}}_k |\Theta_i } \right)}\]</div>
+\[\mathop {\arg \max }\limits_\Theta  \log \prod\limits_{k = 1}^{N_i} {p\left( {{\bf{x}}_k |\Theta_i } \right)}\]</div>
 <p>reemplazando la forma general del modelo GMM para la clase <span class="math notranslate nohighlight">\(i\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[ = \mathop {\max }\limits_\Theta  \log \prod\limits_{k = 1}^{N_i} {\sum\limits_{j = 1}^M {w_{ij}{\mathcal N}\left( {{\bf{x}}_k|\mu _{ij} ,\Sigma _{ij} } \right)} }\]</div>
+\[ = \mathop {\arg \max }\limits_\Theta  \log \prod\limits_{k = 1}^{N_i} {\sum\limits_{j = 1}^M {w_{ij}{\mathcal N}\left( {{\bf{x}}_k|\mu _{ij} ,\Sigma _{ij} } \right)} }\]</div>
 <div class="math notranslate nohighlight">
-\[= \mathop {\max }\limits_\Theta  \sum\limits_{k = 1}^{N_i} \log {\sum\limits_{j = 1}^M {w_{ij}
+\[= \mathop {\arg \max }\limits_\Theta  \sum\limits_{k = 1}^{N_i} \log {\sum\limits_{j = 1}^M {w_{ij}
 {\mathcal N}\left( {{\bf{x}}_k|\mu _{ij} ,\Sigma _{ij} } \right)} }\]</div>
 <p>Para encontrar los parámetros que maximizan la función de verosimilitud debemos derivar con respecto a cada uno e igualar a cero. Derivando con respecto a <span class="math notranslate nohighlight">\(\mu_{il}\)</span> tenemos:</p>
 <div class="math notranslate nohighlight">
-\[ 0 = - \sum_{k=1}^{N_i} \frac{{w_{il}}\mathcal{N}({\bf{x}}_k|\mu _{il} ,\Sigma _{il})}{\sum _{j} w _{ij} \mathcal{N}({\bf{x}}_k|\mu _{ij} ,\Sigma _{ij})} \Sigma _{il}^{-1}({\bf{x}}_k- \mu _{il})\]</div>
+\[ 0 = \sum_{k=1}^{N_i} \frac{{w_{il}}\mathcal{N}({\bf{x}}_k|\mu _{il} ,\Sigma _{il})}{\sum _{j} w _{ij} \mathcal{N}({\bf{x}}_k|\mu _{ij} ,\Sigma _{ij})} \Sigma _{il}^{-1}({\bf{x}}_k- \mu _{il})\]</div>
 <p>Si observamos con detenimiento el término</p>
 <div class="math notranslate nohighlight">
 \[\gamma_{kl} = \frac{{w_{il}}\mathcal{N}({\bf{x}}_k|\mu _{il} ,\Sigma _{il})}{\sum _{j} w _{ij} \mathcal{N}({\bf{x}}_k|\mu _{ij} ,\Sigma _{ij})}\]</div>
