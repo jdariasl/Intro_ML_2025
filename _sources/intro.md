@@ -20,9 +20,9 @@
 
 ## Evaluación
 
-- Laboratorios 30%
+- Laboratorios 25%
 - Exámenes teóricos 50%
-- Proyecto del curso 20%
+- Proyecto del curso 25%
 
 ### Fechas de entregas
 
@@ -42,6 +42,11 @@ Una vez comience el semestre se compartirán algunos archivos que contienen algu
 
 Se realiza una avance parcial del proyecto que incluye partes I y II de la guía y la entrega final con el desarrollo completo.
 
+## Laboratorios
+
+- Presencial (Martes 8-10) [zoom link](https://udearroba.zoom.us/j/93972063145)
+
+<!-- 
 ## Sesiones sincrónicas (Modalidad Virtual)
 
 Para acceder a las sesiones sincrónicas: Martes - Jueves: [zoom link](https://udearroba.zoom.us/j/94467054025)
@@ -53,4 +58,5 @@ Laboratorios: - Presencial (Martes 8-10) [zoom link](https://udearroba.zoom.us/j
 
 <!---
 Las grabaciones de las sesiones de Martes - Jueves pueden encontrarlas en: [zoom recordings](https://udearroba.zoom.us/meeting/93906419036)
+-->
 -->
