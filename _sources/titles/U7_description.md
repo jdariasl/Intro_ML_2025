@@ -19,3 +19,7 @@
 **55 - Esquema uno vs. todos**: [Video 27mins](https://youtu.be/G3xqz0uvfOw) <br/> Se presenta el esquema básico de uno vs. todos que permite resolver problemas multiclase a partir de modelos biclase y sus implicaciones en términos de costo computacional y de diseño. Este esquema es aplicable a partir de cualquier modelo biclase, entre los que se incluyen las SVC, y permite resolver problemas multiclase y multietiqueta.
 
 **56 - Esquemas uno vs. uno y jerárquico**: [Video 10mins](https://youtu.be/ikKTW69E0cM) <br/> Se presentan los esquemas uno vs uno y jerárquico que, al igual que el esquema anterior, permiten resolver problemas multiclase a partir de modelos biclase. Se discuten las implicaciones en términos de costo computacional de estos esquemas en comparación con el esquema uno vs. todos.
+
+## SVC de una clase
+
+**57 - Clsificador de una clase bsado en SVM**: [Video 10mins]() <br/> Se presenta la versión equivalente $\nu-SVM$ de la máquina de vectores de soporte para clasificación y cómo esta versión se utiliza para resolver el problema de clasificación de una clase, así como la interpretación que en este caso tiene el parámetro $\nu$.

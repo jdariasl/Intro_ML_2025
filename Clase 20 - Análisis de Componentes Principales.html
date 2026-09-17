@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -556,7 +556,18 @@ cualquiera <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> sobr
 <div class="math notranslate nohighlight">
 \[z_i={\bf{u}}_1^T {\bf{x}}_i\]</div>
 <p>Graficamente:</p>
-<img src="./Local/imgs/PCA1.png" alt="SFS" width="400"/><p>Para intentar conservar la estructura original se puede plantear que la distancia entre el punto original y su proyección sea la más corta posible, por lo tanto si <span class="math notranslate nohighlight">\(r_i\)</span> es la distancia entre el punto <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> y su proyección sobre la dirección <span class="math notranslate nohighlight">\({\bf{u}}_1\)</span>, el objetivo es:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/PCA1.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b8cf54be3716c8ca52267c6d94635ae52b51a0dd5d644841bbb0f37ccea5fa84.png" src="_images/b8cf54be3716c8ca52267c6d94635ae52b51a0dd5d644841bbb0f37ccea5fa84.png" />
+</div>
+</div>
+<p>Para intentar conservar la estructura original se puede plantear que la distancia entre el punto original y su proyección sea la más corta posible, por lo tanto si <span class="math notranslate nohighlight">\(r_i\)</span> es la distancia entre el punto <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> y su proyección sobre la dirección <span class="math notranslate nohighlight">\({\bf{u}}_1\)</span>, el objetivo es:</p>
 <div class="math notranslate nohighlight">
 \[\mathop {\min }\limits_{{\bf{u}}_1} \sum_{i=1}^{N} r_{i}^{2} = \mathop {\min }\limits_{{\bf{u}}_1} \sum_{i=1}^{N} |{\bf{x}}_i - z_i {\bf{u}}_1|^{2}\]</div>
 <p>Lo que implica encontrar el vector <span class="math notranslate nohighlight">\({\bf{u}}_1\)</span> que maximice <span class="math notranslate nohighlight">\(z_i^{2}\)</span>, osea:</p>
@@ -581,7 +592,17 @@ cualquiera <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> sobr
 <p>Esto significa que <span class="math notranslate nohighlight">\({\bf{u}}_1\)</span> es un vector propio de la matriz <span class="math notranslate nohighlight">\({\bf{S}}\)</span> y está asociado al valor propio <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 <p>Si premultiplicamos a ambos lados de la ecuación anterior por <span class="math notranslate nohighlight">\({\bf{u}}_1^T\)</span> nos da como resultado la covarianza de <span class="math notranslate nohighlight">\({\bf{z}}_1\)</span> y como el objetivo es que la varianza sea muy grande, entonces eso implica que el vector propio que debemos seleccionar es aquel que esté asociado al mayor valor propio. En resumen, el vector propio asociado al mayor valor propio <span class="math notranslate nohighlight">\({\bf{S}}\)</span> corresponde al <b>primer componente principal</b>.</p>
 <p>En general, es posible hallar el espacio de dimensión <span class="math notranslate nohighlight">\(p&lt;d\)</span> que mejor represente los datos, el cual está dado por los vectores propios asociados a los <span class="math notranslate nohighlight">\(p\)</span> mayores valores propios de <span class="math notranslate nohighlight">\({\bf{S}}\)</span>. Estas nuevas direcciones se denominan direcciones principales de los datos y las proyecciones de los datos originales sobre estas direcciones se conocen como <b>componentes principales</b>.</p>
-<img src="./Local/imgs/PCA2.png" alt="SFS" width="600"/><div class="cell docutils container">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/PCA2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0984244200f4dacb6b4ce834a47534a67b90ea51269402981165a71ca1fabd46.png" src="_images/0984244200f4dacb6b4ce834a47534a67b90ea51269402981165a71ca1fabd46.png" />
+</div>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
 <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>

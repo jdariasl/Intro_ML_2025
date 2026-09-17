@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -481,7 +481,17 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="redes-neuronales-artificiales">
 <h1>Redes Neuronales Artificiales<a class="headerlink" href="#redes-neuronales-artificiales" title="Link to this heading">#</a></h1>
 <p>Una de las principales razones que inspiró la aparición de las redes neuronales artificiales (en inglés Artificial Neural Networks - ANN), es el hecho de que las tareas cognitivas complejas realizadas por el ser humano, requieren un nivel de paralelismo el cual es llevado a cabo a través de una compleja red de neuronas interconectadas.</p>
-<p><img alt="alt text" src="_images/NN.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/NN.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/eba7dc93f09d5b396f00c7ceda78699aadf4784d61d6b0d5307d0e884a0457da.png" src="_images/eba7dc93f09d5b396f00c7ceda78699aadf4784d61d6b0d5307d0e884a0457da.png" />
+</div>
+</div>
 <p>Algunas estadísticas interesantes que nos ayudan a entender el poder de la red de neuronas en el ser humano:</p>
 <li>Se estima que el cerebro humano contiene una densa red de neuronas interconectadas de alrededor de $10^{11}$ neuronas.  </li>
 <li>Cada neurona se conecta en promedio con otras $10^{4}$ neuronas.</li>
@@ -489,7 +499,16 @@ document.write(`
 <li>La velocidad de cambio de estado de una neurona en el mejor de los casos es del orden de $10^{−3}$ seg. Comparado con los computadores actuales es estramadamente lento. Sin embargo los humanos pueden tomar decisiones sorprendentemente complejas en muy poco tiempo. Por ejemplo Ud requiere aproximadamente $10^{−1}$ segs reconocer visualmente a su madre.</li><section id="el-perceptron">
 <h2>El perceptrón<a class="headerlink" href="#el-perceptron" title="Link to this heading">#</a></h2>
 <p>Uno de los tipos más usados de RNA está basado en una unidad llamada Perceptrón. Un perceptrón toma un vector de valores reales como entrada, calcula una combinación lineal de dichas entradas y produce una salida 1 si el resultado es mayor a algún umbral y -1 en otro caso.</p>
-<p><img alt="alt text" src="_images/Perceptron01.jpg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/Perceptron01.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ae9b18f18b906918377af5094d6d52e530bc23b0f322101423017c8739ccc51f.jpg" src="_images/ae9b18f18b906918377af5094d6d52e530bc23b0f322101423017c8739ccc51f.jpg" />
+</div>
+</div>
 <p>Si observamos con detenimiento, el perceptrón es equivalente a la regresión logística vista en las primeras clases del curso. El umbral que determina si la salida es 1 o -1 es igual al negativo del término independiente en la regresión logística. Formalmente, dada una muestra <span class="math notranslate nohighlight">\({\bf{x}} =  \left\lbrace x_1, x_2,..., x_d \right\rbrace \;\;\)</span>,              la salida <span class="math notranslate nohighlight">\(O({\bf{x}}) = O(x_1,x_2,...,x_d) \;\;\;\;\;\)</span>     computada por el perceptrón es:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}O(x_1,x_2,...,x_d) = \left\{
@@ -515,7 +534,16 @@ document.write(`
                 \end{array}
               \right. \end{split}\]</div>
 <p>El perceptrón puede se visto como la representación de una superficie de decisión en el espacio <span class="math notranslate nohighlight">\(d\)</span>-dimensional en el cual se ubican las muestras. El perceptrón asigna valores 1 para las muestras (puntos) que se ubican a un lado del hiperplano y −1 para las que se ubican al otro lado.</p>
-<p><img alt="alt text" src="_images/Perceptron2.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/Perceptron2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1d151651cfc783e89e3d014eeb01beb6681c83af15b9235ed87ae41cdfd9ae8f.png" src="_images/1d151651cfc783e89e3d014eeb01beb6681c83af15b9235ed87ae41cdfd9ae8f.png" />
+</div>
+</div>
 </section>
 <section id="entrenamiento-del-perceptron">
 <h2>Entrenamiento del perceptrón<a class="headerlink" href="#entrenamiento-del-perceptron" title="Link to this heading">#</a></h2>
@@ -529,10 +557,28 @@ document.write(`
 <p>Una forma alternativa que puede ser utilizada aún cuando las muestras no sean linealmente separables, es definir una medida de error e intentar minizarla a través de una regla de gradiente. Es decir, si asumimos:</p>
 <p>podemos utilizar la regla del gradiente descedente para encontrar el conjunto de pesos que hagan el error mínimo (no tiene que ser cero). Esta definición ya fue estudiada cuando vimos el modelo de regresión logística. El único inconveniente es que la salida del percetrón depende de la función <i>sgn</i> y la regla del gradiente necesita calcular la derivada. Sin embargo podemos asumir que si <span class="math notranslate nohighlight">\({\bf{w}}^T{\bf{x}}\;\;\)</span> tiende a 1 (o −1 según sea del caso), la aplicación de la función sgn obtendrá por consiguiente un buen resultado.</p>
 <p>Consideremos ahora el tipo de problemas que podremos resolver utilizando un solo perceptron.</p>
-<p><img alt="alt text" src="_images/ORANDXOR.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/ORANDXOR.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1916bfba80c8c91f7c0f7952c0d4629788e5087b96715440f6a7951f86f6c2d3.png" src="_images/1916bfba80c8c91f7c0f7952c0d4629788e5087b96715440f6a7951f86f6c2d3.png" />
+</div>
+</div>
 <p>La gráfica anterior nos muestra 3 problemas de clasifiación haciendo una analogía a las funciones Booleanas OR, AND y XOR. Es posible observar que los dos primeros problemas de clasificación se pueden resolver a partir de una frontera de decisión lineal, sin embargo, en la última gráfica no es posible separa las círculos negros de los círculos blancos utilizando únicamente una función lineal.</p>
 <p>Como sabemos, la función XOR se puede construir a partir de funciones AND y funciones OR. De la misma forma podemos resolver el problema de la gráfica 3 utilizando la combinación de dos fronteras de decisión lineales:</p>
-<p><img alt="alt text" src="_images/XOR.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/XOR.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/33d1c2ac794d5122b0a84b84e4393dfc7c30f8f9d96b2b71f639492e99d39144.png" src="_images/33d1c2ac794d5122b0a84b84e4393dfc7c30f8f9d96b2b71f639492e99d39144.png" />
+</div>
+</div>
 <p>Si utilizamos la combinación de perceptrones mostrada en la figura, podremos obtener una salida del modelo <span class="math notranslate nohighlight">\(a=1\;\;\)</span> para la zona sombreada y una salida <span class="math notranslate nohighlight">\(a= 0\;\;\)</span> para el resto del espacio, obteniendo de esa manera una clasificación perfecta. La red de perceptrones interconectados de la figura anterior coresponde entonces a una <b>Red Neuronal Artificial</b>, en la que cada neurona es un perceptrón y la combinación de los perceptrones, que son modelos simples, permitió la solución de un problema más complejo.</p>
 <p>El problema que surge en este momento, es que el algoritmo de entrenamiento que fue descrito para un único perceptrón no puede ser aplicado en este caso, debido a que ahora en la salida de toda la red intervienen varios perceptrones, razón por la cual es necesario aplicar la función <i>sgn</i> antes de poder obtener la salida final de la red y por consiguiente el método de gradiente no puede ser aplicado porque la función de salida de la red nuevamente es NO derivable.</p>
 <p>Para poder resolver el problema, debemos entonces encontrar una función equivalente a la función <i>sgn</i>, pero que pueda ser derivable para poder usar el error cuadrático medio como criterio de entrenamiento. De manera similar al a regresión logística, una solución es usar la función sigmoide:</p>
@@ -575,7 +621,16 @@ f(u) = \frac{\exp(u)}{1 + \exp(u)}
 </div>
 <p>Si se observa con detenimiento veremos que el rango de valores que toma la función sigmoide está en el intervalo <span class="math notranslate nohighlight">\([0,1]\)</span>, mientras que la tangente hiperbólica está entre <span class="math notranslate nohighlight">\([-1,1]\;\)</span>. A las funciones de salida de los perceptrones se les conoce como <b> funciones de activación</b>.</p>
 <p>Utilizar funciones de activación nolineales, también permite que las fronteras de decisión no estén restringidas a rectas, permitiendo la definición de fronteras cada vez más complejas. Una red neuronal artificial es entonces un modelo que utiliza varias neuronas interconectadas y que puede a partir de ellas resolver problemas complejos como el mostrado en la siguiente figura.</p>
-<p><img alt="alt text" src="_images/RNA.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/RNA.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ba6d61f4a1ad6f58e1299da209b5751d23186586775e68b33a0733061443bd46.png" src="_images/ba6d61f4a1ad6f58e1299da209b5751d23186586775e68b33a0733061443bd46.png" />
+</div>
+</div>
 <p>Como podemos observar en la figura, una Red Neuronal Artificial (RNA) tiene tres tipos de capas:</p>
 <li>La capa de entrada la cual recibe las características o variables de las muestras a ser evaluadas.  </li>
 <li>La o las capas ocultas son capas de perceptrones que permiten llevar a cabo la definición de fronteras complejas, como en el caso de la función XOR, en la cual se tenía una capa oculta con 2 perceptrones que llevaban a cabo funciones AND .</li>
@@ -586,7 +641,16 @@ f(u) = \frac{\exp(u)}{1 + \exp(u)}
 <p>El criterio de entrenamiento puede ser ajustado al tipo de problema e incluso pueden usarse diferentes criterios para problemas similares. Para explicar el principio de funcionamiento del algoritmo usaremos como criterio la minimización del error cuadrático medio entre las salidas de la red y los valores deseados (objetivos) para dichas salidas. El algoritmo utiliza un técnica de gradiente descendente para llevar a cabo el entrenamiento de la red.</p>
 <p>La principal diferencia en el caso de redes multicapa es que la función de error, utilizada como criterio para el entrenamiento, puede tener múltiples mínimos locales a diferencia de un solo perceptrón en el cual existe un sólo mínimo. Esto significa que desafortunadamente no se puede garantizar la convergencia a un mínimo global.</p>
 <p>Los perceptrones multicapa (<b>MultiLayer Perceptrón - MLP</b>) son por definición redes neuronales de propagación hacia adelante ya que la activación de las neuronas se hace desde la entrada (lugar donde se conectan las variables) hacia las neuronas de salida las cuales entregan la predicción deseada.</p>
-<p><img alt="alt text" src="_images/RNA2.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/RNA2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2c91544d2565847861008b2ac75a527e771da980a39e713cb56f533632c20203.png" src="_images/2c91544d2565847861008b2ac75a527e771da980a39e713cb56f533632c20203.png" />
+</div>
+</div>
 <p>Para poder describir el algoritmo Backpropagation es necesario ponernos de acuerdo en la notación utilizada:</p>
 <li> La capa de entrada tendrá tantos nodos como variables (atributos o características), que notaremos $d$.</li>
 <li> Un nodo es una entrada a la red o una salida de alguna unidad en la red.</li>
@@ -791,10 +855,28 @@ The goal of learning is reached
 <section id="batch-minibatch-and-online-learning">
 <h2>Batch, Minibatch and online learning<a class="headerlink" href="#batch-minibatch-and-online-learning" title="Link to this heading">#</a></h2>
 <p>Durante el entrenamiento de un MLP las siguientes cantidades deben ser estimadas en cada iteración:</p>
-<img src="Local/imgs/ForwardBackward.png" alt="FBI" width="500"/>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/ForwardBackward.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f69bcbd4028dfb950d195978e2cbc81b485ed73e11a379e839b4d69fea8efe27.png" src="_images/f69bcbd4028dfb950d195978e2cbc81b485ed73e11a379e839b4d69fea8efe27.png" />
+</div>
+</div>
 <p>El entrenamiento que acumula todos los errores cometidos a partir de todas las meutras de entrenamiento antes de llevar a cabo la actualización de los pesos se conoce como <strong>Batch training</strong>. Desafortunadamente si el número de muestras es muy grande, el algoritmo presenta problemas de computo no sólo por la cantidad de cálculos sino de memoria necesaria para realizar la multiplicación de matrices. Pero el problema más significativo es que la trayectoria del gradiente Batch tiende a estancarse en puntos silla (<strong>saddle point</strong>) de la función de costo.</p>
 <p>Como alternativa el entrenamiento se puede realizar propagando una sola muestra hacia adelante y realizando la actualización de los pesos a partir del error que se comete con esa muestra. Los dos pasos son repetidos para todas las muestras de entrenamiento. Esta estrategia es llamada <strong>on-line learning</strong> y el algoritmo resultante es llamado <strong>Stochastic Gradient Descent (SGD)</strong>. Debido a que el algoritmo usa una muestra aleatoria a la vez, la convergencia al óptimo es más ruidosa, pero eso ayuda al algoritmo a escapar de óptimos locales y puntos silla.</p>
-<img src="Local/imgs/SGD_MB.png" alt="SGD" width="600"/>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/SGD_MB.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/387bab65fa02403a60d7aeba7a7354ebf7fa2ef1e935823126434ca8308414e2.png" src="_images/387bab65fa02403a60d7aeba7a7354ebf7fa2ef1e935823126434ca8308414e2.png" />
+</div>
+</div>
 <p>Uno de los problemas del algoritmo SGD es que requiere muchas iteraciones para converger. Por consiguiente una solución intermedia, llamada <strong>Mini-batch gradient descent</strong>, parte las muestras de entrenamiento en mini-batchs, y se realiza los pasos forward y backward por cada mini-batch.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

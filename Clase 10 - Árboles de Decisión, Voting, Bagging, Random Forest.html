@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -557,7 +557,17 @@ document.write(`
 <h2>Definición<a class="headerlink" href="#definicion" title="Link to this heading">#</a></h2>
 <p>El aprendizaje de árboles de decisión es un método para la predicción de variables a partir de funciones discretas, en los cuales la función aprendida es representada a través de un árbol de decisión. Son en general métodos de aprendizaje inductivo muy empleados, pueden representarse en forma de conjuntos de reglas <b>if-then</b> y han sido aplicados con éxito en el desarrollo de sistemas de apoyo al diagnóstico médico, riesgo de crédito y solicitud de préstamos, entre otros.</p>
 <p>Una particularidad de los árboles de decisión es que no utilizan todo el conjunto de características en cada nivel, sino que por el contrario utilizan diferentes características en cada nivel decisión.</p>
-<p><img alt="alt text" src="_images/Arbol.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Arbol.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a0de919ea5a81f94660387c846678f21d5b2fc60871aa6d1b75cc434ae1d0bdf.png" src="_images/a0de919ea5a81f94660387c846678f21d5b2fc60871aa6d1b75cc434ae1d0bdf.png" />
+</div>
+</div>
 <li>Los círculos representan los nodos internos, que son variables y umbrales.</li>
 <li> Los cuadros representan las hojas o nodos terminales y determinan la clase o el valor de salida que asignará el modelo a las muestras que se ubiquen en dicho nodo.</li>
 <li>El nodo superior es la raíz del árbol.</li><p>Existen diferentes métodos de aprendizade de árboles de decisión, algunos de ellos pueden ser empleados tanto en problemas de regresión como en problemas de clasificación. El algoritmo básico para el aprendizaje de árboles de decisión es conocido como ID3 y fue propuesto por Ross Quinlan en 1986. El algoritmo ID3 construye la estructura del árbol de arriba hacia abajo y utiliza en cada decisión una sola variable. Dicho algoritmo fue evolucionando y posteriormente se publicaron las versiones C4.5 y C5.0, que incluyeron modificaciones en la selección de los umbrales a evaluar. Sin embargo, los principios de funcionamiento general continuaron siendo los mismos.</p>
@@ -749,9 +759,16 @@ document.write(`
 <section id="comite-de-maquinas-metodos-de-ensamble">
 <h2>Comité de Máquinas (Métodos de ensamble)<a class="headerlink" href="#comite-de-maquinas-metodos-de-ensamble" title="Link to this heading">#</a></h2>
 <p>Es usual en el aprendizaje de máquina no dejar la responsabilidad de la decisión a un solo modelo, sino por el contrario combinar la decisión de varios modelos para tomar una decisión final. Existen muchas maneras de combinar modelos de ML, lo que se conoce como métodos de ensamble. La más sencilla es entrenar modelos diferentes diferentes (<strong>ensamble de modelos</strong>) con el objetivo de combinar las fortalezas de cada uno y tomar la decisión basada en concenso. A este método se le conoce como <strong>voting</strong>.</p>
-<p><img src="local/imgs/Voting.jpg"
-     alt="Árbol de decisión"
-     width="600px" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Voting.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f3c90ecce4de181e3c7a1ae7c1c63137e71d200590c6795cf9b082990be65883.jpg" src="_images/f3c90ecce4de181e3c7a1ae7c1c63137e71d200590c6795cf9b082990be65883.jpg" />
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">VotingClassifier</span>
@@ -1222,7 +1239,16 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <h2>Bagging<a class="headerlink" href="#bagging" title="Link to this heading">#</a></h2>
 <p>Sin embargo existen otras alternativas que usan como modelos bases un mismo modelo de ML, pero modifican las estrategias de combinación. Una de esas estrategias es conocida como <b>Bagging</b> “Bootstrap Agreggating”, la cual consiste en realizar <span class="math notranslate nohighlight">\(B\)</span> muestreos (con substitución) a partir del conjunto de entrenamiento y entrenar un modelos a partir de cada uno de los conjuntos de muestras.</p>
 <p>La decisión final se toma dependiendo de si el problema es de clasificación o de regresión, si el problema es de clasificación se utiliza la regla del mayor voto (moda) y si por el contrario el problema es de regresión se usa el promedio de las predicción de cada clasificador. Este tipo de aproximaciones permiten reducir la varianza en el error obtenido por el modelo predictivo.</p>
-<p><img alt="alt text" src="_images/Bagging.jpeg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/Bagging.jpeg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b370135394a9411264515f2e5c090cdef04d589ed0a6ef2775ba3c01edf11414.jpg" src="_images/b370135394a9411264515f2e5c090cdef04d589ed0a6ef2775ba3c01edf11414.jpg" />
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaggingClassifier</span>

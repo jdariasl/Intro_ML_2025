@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -488,9 +488,28 @@ document.write(`
 </div>
 <p>Las redes neuronales recurrentes (En inglés Recurrent Neural Networks - RNN) son una familia de redes neuronales para procesar datos secuenciales, las cuales se basan en el principio de compartir parámetros a lo largo de diferentes partes del modelo, lo que permite aplicar el modelo a datos con estructuras diferentes (por ejemplo diferentes longitudes) y generalizar sobre ellos. Si por el contrario se tuviera un párametro para cada índice de tiempo, no se podría generalizar a longitudes de secuencias no vistas durante el entrenamiento, o compartir patrones detectados por el modelo a lo largo de diferentes longitudes de secuencias y posiciones en el tiempo; dicha propiedad es particularmente importante cuando una pieza de información específica puede ocurrir en múltiples posiciones dentro de una secuencia [1].</p>
 <p>La red permanece Feed-forward pero mantiene el estado interno a través de nodos de contexto los cuales influencian la capa oculta en entradas subsecuentes. Existen diferentes arquitecturas de RNN, las más conocidas son (Figura tomada de <a href="https://www.ibm.com/developerworks/library/cc-cognitive-recurrent-neural-networks/index.html">Link</a>.):</p>
-<p><img alt="alt text" src="_images/RNN2.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/RNN2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/03deb2dc2ddf4b60aa5426e50c1dc1fa552bec3bea64766ec294f9700597e0a4.png" src="_images/03deb2dc2ddf4b60aa5426e50c1dc1fa552bec3bea64766ec294f9700597e0a4.png" />
+</div>
+</div>
 <p>Las RNN pueden resolver diferentes paradigmas de aprendizaje, es decir, tienen la capacidad de ajustarse a diferentes configuraciones en los datos. El diagrama construido por <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">Andrej Karpathy</a> representa muy bien dicha capacidad:</p>
-<p><img alt="alt text" src="_images/RNN-Topol.jpeg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/RNN-Topol.jpeg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/869c5a57b979a6c83c35bfcf95451340b650211082c73c9da76477679d161b1c.jpg" src="_images/869c5a57b979a6c83c35bfcf95451340b650211082c73c9da76477679d161b1c.jpg" />
+</div>
+</div>
 <p>El primer caso corresponde a una MLP convencional en la cual se tiene una salida por cada entrada y no existe información compartida a través de las capas ocultas. El segundo caso corresponde a un problema en el que a una entrada, el modelo debe producir una salida compuesta de varios elementos, como por ejemplo un sistema al cual se le presente una imágen y proporcione como salida una descripción o listado de los objetos en la imágen (problema conocido como caption generation). La tercera opción corresponde a un problema en el que al sistema se le presenta una secuencia y el modelo debe proporcionar una única salida para toda la secuencia, por ejemplo en el problema de <em>Sentiment Analysis</em>, usualmente el objetivo es que el sistema catalogue un texto como positivo o negativo. El cuarto caso corresponde a problemas en los que la entrada es una secuencia y la salida otra, sin que necesariamente ambas secuencias deban tener la misma longitud (esta configuración también se conoce como sequence-to-sequence). Un ejemplo de este tipo de paradigmas se presenta en la traducción automática de textos en la que la oración en el lenguaje original puede tener un número mayor o menor de palabras que en el lenguaje objetivo. El quinto caso corresponde a un problema en el que para cada entrada el sistema debe proporcionar una salida (la longitud de las secuencias entrada y salida es la misma), a este tipo de paradigmas corresponde la predicción de series de tiempo, el etiquetado morfosintáctico, varias tareas en Bioinformática, entre otros.</p>
 <p>La arquitectura Elman de las RNN es la más comunmente usada. De acuerdo con la notación definida en la primera figura, la descripción matemática de una red de este tipo con una sola capa oculta y una capa de salida estaría dada por:</p>
 <div class="math notranslate nohighlight">
@@ -501,7 +520,16 @@ document.write(`
 <section id="backpropagation-through-time-bptt">
 <h2>Backpropagation through time (BPTT)<a class="headerlink" href="#backpropagation-through-time-bptt" title="Link to this heading">#</a></h2>
 <p>Para incorporar las habilidades descritas, una RNN incluye la capacidad de mantener memoria interna y usar la información almacenada a través de lazos de realimentación y de esa manera darle soporte al modelamiento temporal, es decir, a la condición de dependencia estadística de observaciones consecutivas. Como se puede observar en la siguiente figura, la salida de las neuronas en la capa oculta, es usada nuevamente como entrada a la misma capa. Figura tomada de <a href="https://future-tech-association.org/2018/01/16/kotoba_kioku_tech/">Link</a>.</p>
-<p><img alt="alt text" src="_images/RNN3.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/RNN3.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b112a93527a9849a71d4eeb882dc8fe69be40c80f5441c33b519d49a9abe4363.png" src="_images/b112a93527a9849a71d4eeb882dc8fe69be40c80f5441c33b519d49a9abe4363.png" />
+</div>
+</div>
 <p>El entrenamiento de una RNN puede realizarse usando el algoritmo Backpropagation descrito en clases anteriores, teniendo en cuenta  el modelo desdoblado mostrado en la primera figura. Es decir, es necesario propagar la red hacia adelante, almacenar todas las salidas parciales de las diferentes neuronas en cada una de las capas y tiempos <span class="math notranslate nohighlight">\(t\)</span>, y a partir de la función de costo definida, propagar el error hacia atrás. La pérdida total para una secuencia de valores <span class="math notranslate nohighlight">\(\bf{x}\)</span> y su correspondiente secuencia de salida <span class="math notranslate nohighlight">\(\bf{y}\)</span> (tenga en cuenta que la red puede tener múltiples salidas, entonces cada salida corresponde a un vector), corresponderá entonces a la suma de las pérdidas para cada uno de los tiempos en la secuencia. La función de costo de la red será entonces:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}L(\{ {\bf{x}}^{(1)},{\bf{x}}^{(2)},\cdots,{\bf{x}}^{(\tau)} \}, \{ {\bf{y}}^{(1)},{\bf{y}}^{(2)},\cdots,{\bf{y}}^{(\tau)} \}) \\
@@ -684,15 +712,42 @@ Epoch [500/500], Loss: 0.0136
 <section id="redes-neuronales-recurrentes-bidireccionales">
 <h2>Redes Neuronales Recurrentes Bidireccionales<a class="headerlink" href="#redes-neuronales-recurrentes-bidireccionales" title="Link to this heading">#</a></h2>
 <p>En algunos problemas la información necesaria para hacer la predicción en un punto de la secuencia, implica conocer información del pasado, pero también del futuro. Por ejemplo en problemas de reconocimiento de voz o traducción, es usual que se requiera conocer la información de la secuencia completa. Las Bidirectional RNN (BRNN) corresponden a una modificación de las RNN en las que se incluye una capa adicional que en lugar de transmitir la información del tiempo <span class="math notranslate nohighlight">\((t)\)</span> al tiempo <span class="math notranslate nohighlight">\((t + 1)\)</span>, lo hace al contrario. Las dos capas ocultas en este caso no tiene interconexión entre ellas, pero si con la capa de salida.</p>
-<p><img alt="alt text" src="_images/RNN_arc_3.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/RNN_arc_3.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c5fb7017c9fd98d0988b1a87f42c04fd5d3cfab7221d71da3d5d5be95dc8fdec.png" src="_images/c5fb7017c9fd98d0988b1a87f42c04fd5d3cfab7221d71da3d5d5be95dc8fdec.png" />
+</div>
+</div>
 <p>Este tipo de arquitecturas se emplean tanto en casos en los que para cada entrada se requiere producir una salida, como en casos en los que se desea producir una única salida para toda la secuencia.</p>
 </section>
 <section id="long-short-term-memory-rnn-lstm">
 <h2>Long Short Term Memory RNN (LSTM)<a class="headerlink" href="#long-short-term-memory-rnn-lstm" title="Link to this heading">#</a></h2>
 <p>El principal problema de las RNN convencionales es su incapacidad para aprender dependencias de orden superior en los datos, es decir, que el modelo capture información que le permita determinar la influencia que tiene un dato visto por el modelo hace varios tiempos atrás con respecto a la salida del modelo en el tiempo actual. Incluso, que pueda capturar depdencias cortas y dependencias largas al mismo tiempo. Esto sucede debido a que si se analizan con detenimiento las funciones de actualización de los parámetros, la matriz <span class="math notranslate nohighlight">\(\bf{V}\)</span> que contiene los pesos de los lazos de realimentación se multiplica así misma <span class="math notranslate nohighlight">\((\tau-1)\)</span> veces, lo que implica que si sus valores son inferiores a cero, terminan desvaneciendose y si son muy grandes, terminarán divergiendo. A este hecho se suma que la aplicación consecutiva de múltiples funciones de activación, terminan por desvaner el resultado.</p>
-<p><img alt="alt text" src="_images/sigmoid_vanishing_gradient.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/sigmoid_vanishing_gradient.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/90d6fe1c81a1e4c2f5cd474e7703d8425985bf3e372b5e0faa6974308bb1191d.png" src="_images/90d6fe1c81a1e4c2f5cd474e7703d8425985bf3e372b5e0faa6974308bb1191d.png" />
+</div>
+</div>
 <p>Este problema ha sido estudiado ampliamente y se han propuesto múltiples alternativas desde finales de los años 80 y comienzos de los 90. De todas las arquitecturas propuestas, la de mayor éxito es una en la que se reemplazan los perceptrones por otro tipo de unidades básicas, llamadas celulas. Las redes neuronales recurrentes compuestas por dichas célculas se conocen con el nombre de Long-Short-Term-Memory Neural Networks (LSTM). Las LSTM fueron propuestas en 1997 y tienen la capacidad de aprender dependencias de tiempo corto, largo y así mismo de decir cuándo olvidar.</p>
-<p><img alt="alt text" src="_images/LSTM2.jpeg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/LSTM2.jpeg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/148b8b7ca39be4353cc71b317ce1eecb2a79f0c485096d8f417bba8cca18ada8.jpg" src="_images/148b8b7ca39be4353cc71b317ce1eecb2a79f0c485096d8f417bba8cca18ada8.jpg" />
+</div>
+</div>
 <section id="exponential-weighted-average">
 <h3>Exponential Weighted Average<a class="headerlink" href="#exponential-weighted-average" title="Link to this heading">#</a></h3>
 <p>Las LSTM usan como principio el promedio acumulado conocido como Exponential Weighted Moving Average (EWMA) y que originalmente fue propuesto para unas unidades conocidas como “Leaky Units”. El EWMA tiene en cuenta más o menos información del pasado, de acuerdo con un parámetero. La regla de acumulación está dada por: <span class="math notranslate nohighlight">\(\mu^{(t)} \leftarrow \beta \mu^{(t-1)} + (1 - \beta)\upsilon^{(t)}\)</span>.</p>
@@ -731,7 +786,16 @@ Epoch [500/500], Loss: 0.0136
 </div>
 <p>Como se puede observar en la gráfica anterior, el parámetro <span class="math notranslate nohighlight">\(\beta\)</span> controla si la salida del promedio toma más en cuenta el dato actual (línea roja), o el histórico (línea azul).</p>
 <p>Las LSTM usan el mismo principio para controlar el nivel de memoria o de dependencia en el tiempo, pero en lugar de usar un parámetro constante, definen <b>compuertas</b> que son entrenadas como parte del algoritmo de entrenamiento y que deciden cuándo mantener y cuándo olvidar la información precedente. Una celula LSTM contiene tres compuertas, que se representan en la gráfica por la letra <span class="math notranslate nohighlight">\(\sigma\)</span>, las cuales representan funciones sigmoide que garantizan que dichos valores están en el intervalo <span class="math notranslate nohighlight">\((0,1)\)</span>. Adicionalmente, una célula LSTM define una variable adicional llamada <b>estado</b>. Las tres compuertas le permiten a la célula olvidar su estado o no, escribir o no, y leer o no.</p>
-<p><img alt="alt text" src="_images/LSTM2.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/LSTM2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6429c23f7cfacc848b297460cf64739affdd8e1fe85f40a09c2f4712da5bd18e.png" src="_images/6429c23f7cfacc848b297460cf64739affdd8e1fe85f40a09c2f4712da5bd18e.png" />
+</div>
+</div>
 <p>Usando la notación de la gráfica anterior, para el tiempo <span class="math notranslate nohighlight">\(t\)</span> y la célula <span class="math notranslate nohighlight">\(l\)</span>, la célula estará descrita por las siguientes funciones:</p>
 <div class="math notranslate nohighlight">
 \[f_l^{(t)} = \sigma \left( b_l^f + \sum_j U_{l,j}^f x_j^{(t)} + \sum_j V_{l,j}^f h_j^{(t-1)}\right)\]</div>

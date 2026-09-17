@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -816,10 +816,7 @@ w_j[\tau] = w_j[\tau - 1] - \frac{\eta}{N} \sum_{i=1}^{N}\left( \sum_{k=0}^{d} w
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;frozen importlib._bootstrap&gt;:228: RuntimeWarning: scipy._lib.messagestream.MessageStream size changed, may indicate binary incompatibility. Expected 56 from C header, got 64 from PyObject
-</pre></div>
-</div>
-<img alt="_images/a7e184f38b983f1bcc4405ac76c023d29d0b2960bea6a71cfea46f220358f833.png" src="_images/a7e184f38b983f1bcc4405ac76c023d29d0b2960bea6a71cfea46f220358f833.png" />
+<img alt="_images/5395103298ff461d25e9b1bb0994b39b4157020f6194d90e21160a6db22a051d.png" src="_images/5395103298ff461d25e9b1bb0994b39b4157020f6194d90e21160a6db22a051d.png" />
 </div>
 </div>
 <p>Cuando es posible dejar todas las muestras de una clase a un lado de la recta y las muestras de la otra clase al otro, el problema se conoce como linealmente separable. Sin embargo eso no sucede en la gran mayoría de problemas reales. El problema de clasificación se puede entonces pensar como el problema de encontrar una función <span class="math notranslate nohighlight">\(f\)</span> que pueda dividir los conjuntos de datos de las diferentes clases.</p>
@@ -867,7 +864,7 @@ g(u) = \frac{\exp(u)}{1 + \exp(u)}
 <p>El método que utiliza la función sigmoidal para encontrar una frontera de separación polinomial se conoce como <b>Regresión Logística</b>. La función objetivo (criterio de entrenamiento) está dada por:</p>
 <div class="math notranslate nohighlight">
 \[
-J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -y_i \log(g(f({\bf{x}}))) - (1-y_i)\log(1 - g(f({\bf{x}})))
+J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -y_i \log(g(f({\bf{x}}_i))) - (1-y_i)\log(1 - g(f({\bf{x}}_i)))
 \]</div>
 <p>Si se analiza con detenimiento, la función criterio <span class="math notranslate nohighlight">\(J\)</span> minimiza el error de clasificación. Es necesario tener en cuenta que dicha función está definida para <span class="math notranslate nohighlight">\(t_i\)</span> que toman valores <span class="math notranslate nohighlight">\(\left\lbrace 0,1 \right\rbrace\)</span>. La ventaja del método de regresión logística es que la función para la actualización de los pesos <span class="math notranslate nohighlight">\(\bf{w}\)</span> es muy similar a la función para la regresión lineal. La derivada de <span class="math notranslate nohighlight">\(J\)</span> está dada por:</p>
 <div class="math notranslate nohighlight">
@@ -929,7 +926,7 @@ J({\bf{w}}) = \frac{1}{N} \sum_{i=1}^{N} -y_i \log(g(f({\bf{x}}))) - (1-y_i)\log
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ec4132d9e5f94f2181d64770936b0620", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "58874fc5a6934415b071235131b359a1", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7033d217208c4747b411520360f221d1", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "540d4f7f63ca441981303a5f93c3208e", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 <section id="veamos-el-mismo-proceso-en-el-espacio-de-busqueda">

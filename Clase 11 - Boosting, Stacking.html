@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -486,10 +486,28 @@ document.write(`
 </div>
 </div>
 <p>Como vimos en la clase anterior, en Machine Learning los métodos de ensamble sigen la idea de entrenar múltiples modelos simples y combinar sus respuestas para producir un mejor resultado. A diferencia del Bagging en Boosting la combinación se hace de manera secuencial y no paralela:</p>
-<p><img alt="alt text" src="_images/Boosting1.png" /></p>
-<p>La idea central de los métodos de Boosting es entrenar modelos secuencialmente haciendo que los modelos subsiguientes se enfoquen en las muestras que no han podido ser modeladas correctamente por los modelos anteriores. Cada modelo tiene un peso diferente dentro de la decisión final. La forma de asignar el peso a las muestras y a los clasificadores dependen del método de Boosting particular.</p>
-<p><img alt="alt text" src="_images/Boosting2.png" /></p>
-<p>Imágenes tomadas de: <a class="reference external" href="https://quantdare.com/what-is-the-difference-between-bagging-and-boosting/">https://quantdare.com/what-is-the-difference-between-bagging-and-boosting/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/Boosting1.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/05f7f8696976e6042e1ac9a03463c23c8a7511fbf4a740e74bb6bdd68057068c.png" src="_images/05f7f8696976e6042e1ac9a03463c23c8a7511fbf4a740e74bb6bdd68057068c.png" />
+</div>
+</div>
+<p>La idea central de los métodos de Boosting es entrenar modelos secuencialmente haciendo que los modelos subsiguientes se enfoquen en las muestras que no han podido ser modeladas correctamente por los modelos anteriores. Cada modelo tiene un peso diferente dentro de la decisión final. La forma de asignar el peso a las muestras y a los clasificadores depende del método de Boosting particular.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/Boosting2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e158c39993e39209d01287a429dee44411c1d4aef1fc8dd8c10f40961c3b8450.png" src="_images/e158c39993e39209d01287a429dee44411c1d4aef1fc8dd8c10f40961c3b8450.png" />
+</div>
+</div>
 <p>Los dos métodos reducen el error por varianza; boosting es mejor para reducir el bias pero puede presentar problemas de sobreajuste, razón por la cual algunos métodos de boosting requieren un ajuste cuidados de parámetros de regularización.</p>
 <section id="adapting-boosting-adaboost">
 <h2>Adapting Boosting (Adaboost)<a class="headerlink" href="#adapting-boosting-adaboost" title="Link to this heading">#</a></h2>
@@ -513,15 +531,32 @@ document.write(`
 </li>
 <li><p>El modelo obtenido será igual a <span class="math notranslate nohighlight">\(F({\bf{x}}) = \text{sign}\left(\sum_{m=1}^M \alpha_m f_m({\bf{x}})\right)\)</span></p></li>
 </ul>
-<p><img alt="alt text" src="_images/AdaBoostAlgorithm2.png" /></p>
-<p>Imagen tomada de: <a class="reference external" href="https://towardsdatascience.com/understanding-adaboost-2f94f22d5bfe">https://towardsdatascience.com/understanding-adaboost-2f94f22d5bfe</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/AdaBoostAlgorithm2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c8944003ab4b6f8e7d068a28666b756a90f876d217c44739bf96a297581cf9c5.png" src="_images/c8944003ab4b6f8e7d068a28666b756a90f876d217c44739bf96a297581cf9c5.png" />
+</div>
+</div>
 <p>Los pesos de cada una de las muestras dentro del algoritmo AdaBoost pueden ser tenidos en cuenta de dos formas:</p>
 <ul class="simple">
 <li><p>Los pesos de cada muestra se pueden usar para establecer una nueva distribución <span class="math notranslate nohighlight">\(D_{m+1}(i) = \frac{D_{m}(i)\exp(-\alpha_m y_i f_m({\bf{x}}_i))}{Z_m}\)</span>, donde <span class="math notranslate nohighlight">\(Z_m\)</span> es un factor de normalización que garantiza que la distribución cumpla la restricción estocástica <span class="math notranslate nohighlight">\(\sum_{\forall i} D_{m}(i) = 1\)</span>. Se puede usar un proceso de muestreo sobre la distribución <span class="math notranslate nohighlight">\(D_{m+1}\)</span> en la cual tendrán mayor probabilidad de aparición las muestras sobre las que el modelo ha cometido más errores. Dicho muestreo se puede realizar fácilmente usando una distribución multinomial (<code class="docutils literal notranslate"><span class="pre">numpy.random.multinomial</span></code>).</p></li>
 <li><p>Los pesos de cada muestra se pueden usar con clasificadores base que puedan tratar cada muestra con una importancia diferente. En el caso de los árboles de decisión, se puede, por ejemplo, usar el peso de cada muestra para medir la ganancia de información. Cuando se estima la probabilidad de quedar a cada lado de una partición <span class="math notranslate nohighlight">\(a\)</span>, en lugar de contar 1 por cada muestra, se usa el peso de dicha muestra (sample_weight).</p></li>
 </ul>
 <p>Para el caso de sklearn los pesos de las muestras se pueden pasar como parámetro durante el llamado al método fit:</p>
-<p><img alt="alt text" src="_images/Sample_Weight.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/Sample_Weight.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/69d5c5083e6c13d631b3017d0219397d0f81629b18c77d4be64361d6001f0ac6.png" src="_images/69d5c5083e6c13d631b3017d0219397d0f81629b18c77d4be64361d6001f0ac6.png" />
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdaBoostClassifier</span>
@@ -646,8 +681,17 @@ La función de salida en el paso <span class="math notranslate nohighlight">\(m 
 <p>\begin{equation*}
 \gamma_m = \arg\min_{\gamma} \sum_{i=1}^{N} L\left(y_i, F_{m-1}({\bf{x}}_i) + \gamma f_m({\bf{x}}_i) \right)
 \end{equation*}</p>
-<p>Los algoritmos para clasificación y regresión sólo difieren en la función de opérdida <span class="math notranslate nohighlight">\(L\)</span>.</p>
-<p><img alt="alt text" src="_images/Gradient_Boosting3.png" /></p>
+<p>Los algoritmos para clasificación y para regresión sólo difieren en la función de pérdida <span class="math notranslate nohighlight">\(L\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/Gradient_Boosting3.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/00f2c5b7b6823b06bf95c54bcac7082cf1a247f9337efb73f6ec7535906705b4.png" src="_images/00f2c5b7b6823b06bf95c54bcac7082cf1a247f9337efb73f6ec7535906705b4.png" />
+</div>
+</div>
 <p>Aunque el Gradient Boosting puede ser implementado para cualquier clasificador base, el algoritmo más usado usa <strong>árboles de decisión</strong> como modelos base.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -729,10 +773,17 @@ La función de salida en el paso <span class="math notranslate nohighlight">\(m 
 </section>
 <section id="stacking">
 <h2>Stacking<a class="headerlink" href="#stacking" title="Link to this heading">#</a></h2>
-<p>Staking es similar al primer algoritmo de ensamble descrito en la clase anterior, en el que se usan modelos base diferentes entrenados sobre el mismo conjunto de datos. Sin embargo, a diferencia del ensamble de modelos en el que la decisión final se toma en consenso entre los clasificadores base (<strong>voting</strong>), en Stacking la combinación de los modelos se realiza usando un modelo adicional (meta-modelo), en un areglo de dos capas. En la primera capa se entrenan los modelos base y en la segunda se entrena un nuevo modelo que toma como entradas las salidas de los modelos en la primera capa y produce la decisión final.</p>
-<p><img src="./Local/imgs/Stacking.png"
-     alt="Árbol de decisión"
-     width="500px" /></p>
+<p>Staking es similar al primer algoritmo de ensamble descrito en la clase anterior, en el que se usan modelos base diferentes entrenados sobre el mismo conjunto de datos. Sin embargo, a diferencia del ensamble de modelos en el que la decisión final se toma en consenso entre los clasificadores base (<strong>voting</strong>), en Stacking la combinación de los modelos se realiza usando un modelo adicional (meta-modelo), en un arreglo de dos capas. En la primera capa se entrenan los modelos base y en la segunda se entrena un nuevo modelo que toma como entradas las salidas de los modelos en la primera capa y produce la decisión final.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/Stacking.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/237e490ded4e839d462eb80c0662ead5cc99b9e455532585c70ea26a38278a84.png" src="_images/237e490ded4e839d462eb80c0662ead5cc99b9e455532585c70ea26a38278a84.png" />
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">StackingClassifier</span>

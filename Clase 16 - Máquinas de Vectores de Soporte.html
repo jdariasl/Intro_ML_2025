@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -529,7 +529,18 @@ document.write(`
 </div>
 <p>Sin embargo podríamos tener muchas otras fronteras, la pregunta que surge es <b>¿cuál de todas las posibles soluciones es la mejor?</b></p>
 <p>Las Máquinas de Vectores de Soporte (En inglés <b> Support Vector Machines) </b>) son un tipo de modelos de aprendizaje que permiten encontrar la mejor solución utilizando como criterio de ajuste la máximización del márgen, entendiendo márgen como la distancia más corta entre la frontera de decisión y cualquiera de las muestras.</p>
-<img src="./Local/imgs/Margin.png" alt="Margin" width="400"/><p>Recordemos cómo se mide la distancia de un punto a un plano:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/Margin.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1e47adccabed69fd71faa6d92db89974ee34c3a5327955ee11c5a5346c7437a3.png" src="_images/1e47adccabed69fd71faa6d92db89974ee34c3a5327955ee11c5a5346c7437a3.png" />
+</div>
+</div>
+<p>Recordemos cómo se mide la distancia de un punto a un plano:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
@@ -591,7 +602,17 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[a_n \left\lbrace t_n y({\bf{x}}_n) - 1 \right\rbrace = 0\]</div>
 <p>De acuerdo con la tercera condición, para cada punto <span class="math notranslate nohighlight">\({\bf{x}}_n\)</span>, se debe cumplir una de las siguientes dos opciones: su multiplicador de Largrange es <span class="math notranslate nohighlight">\(a_n\)</span> es igual a 0, ó el término <span class="math notranslate nohighlight">\(t_n y({\bf{x}}_n)\)</span> es igual a 1. En otras palabras, si una muestra se encuentra en el punto más cercano a la frontera <span class="math notranslate nohighlight">\(a_n \neq 0\)</span>, de lo contrario <span class="math notranslate nohighlight">\(a_n = 0\)</span>. Los puntos con <span class="math notranslate nohighlight">\(a_n = 0\)</span>, no cuentan en la sumatoria de la función de decisión y pueden descartarse, los demás se conocen como <b>vectores de soporte </b>.</p>
-<img src="./Local/imgs/SV.jpg" alt="SupportVectors" width="500"/><p>Esto implica que no es necesario almacenar todos los puntos sino únicamente los que el algoritmo de optimización seleccione como vectores de soporte. Una vez se hayan encontrado los valores de <span class="math notranslate nohighlight">\(\bf{a}\)</span>, el valor de <span class="math notranslate nohighlight">\(b\)</span> se puede obtener fácilmente utilizando cualquier vector de soporte y reemplazando en la segunda restricción, <span class="math notranslate nohighlight">\(t_n y({\bf{x}}_n)= 1 \)</span>. Sin embargo, una solución numérica más estable corresponde a usar todos los vectores de soporte y sacar un promedio de los diferentes <span class="math notranslate nohighlight">\(b\)</span> obtenidos:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/SV.jpg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a0cb3a6a67c99c712a38ed28211770cebb348b04871229ecf1d97bef740f2932.jpg" src="_images/a0cb3a6a67c99c712a38ed28211770cebb348b04871229ecf1d97bef740f2932.jpg" />
+</div>
+</div>
+<p>Esto implica que no es necesario almacenar todos los puntos sino únicamente los que el algoritmo de optimización seleccione como vectores de soporte. Una vez se hayan encontrado los valores de <span class="math notranslate nohighlight">\(\bf{a}\)</span>, el valor de <span class="math notranslate nohighlight">\(b\)</span> se puede obtener fácilmente utilizando cualquier vector de soporte y reemplazando en la segunda restricción, <span class="math notranslate nohighlight">\(t_n y({\bf{x}}_n)= 1 \)</span>. Sin embargo, una solución numérica más estable corresponde a usar todos los vectores de soporte y sacar un promedio de los diferentes <span class="math notranslate nohighlight">\(b\)</span> obtenidos:</p>
 <div class="math notranslate nohighlight">
 \[b = \frac{1}{N_{sv}} \sum_{n \in sv} \left(t_n - \sum_{m \in sv} a_m t_m k({\bf{x}}_n,{\bf{x}}_m) \right)\]</div>
 <p>donde <span class="math notranslate nohighlight">\(N_{sv}\)</span> es el número total de vectores de soporte.</p>
@@ -1234,7 +1255,17 @@ E_\epsilon(y({\bf{x}})-t) =
 \[t_n \leq y({\bf{x}}_n) + \epsilon + \xi_n^{+}\]</div>
 <div class="math notranslate nohighlight">
 \[t_n \geq y({\bf{x}}_n) - \epsilon - \xi_n^{-}\]</div>
-<img src="./Local/imgs/SVR1.png" alt="SVR_Regression" width="500"/><p>Cada muestra <span class="math notranslate nohighlight">\({\bf{x}}_n\)</span> debe garantizar las dos condiciones. Por consiguiente, la función de error para el modelo de regresión por vectores de soporte se puede expresar como:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/SVR1.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bec7d3aa2ed92b4dd3ffb2367345f855cfa67d4422dba9ae3eca140ffd328868.png" src="_images/bec7d3aa2ed92b4dd3ffb2367345f855cfa67d4422dba9ae3eca140ffd328868.png" />
+</div>
+</div>
+<p>Cada muestra <span class="math notranslate nohighlight">\({\bf{x}}_n\)</span> debe garantizar las dos condiciones. Por consiguiente, la función de error para el modelo de regresión por vectores de soporte se puede expresar como:</p>
 <div class="math notranslate nohighlight">
 \[C\sum_{n=1}^{N}(\xi_n^{+} + \xi_n^{-}) + \frac{1}{2}\|{\bf{w}}\|^2\]</div>
 <p>La cual debe ser minimizada sujeto a las restricciones anteriores y a <span class="math notranslate nohighlight">\(\xi_n^{+} \geq 0\)</span> y <span class="math notranslate nohighlight">\(\xi_n^{-} \geq 0\)</span>.</p>
@@ -1271,8 +1302,7 @@ E_\epsilon(y({\bf{x}})-t) =
 <p>La siguiente figura muestra un ejemplo de frontera que puede ser obtenida usando una SVR con kernel RBF. Imagen tomada de: <a class="reference external" href="https://basilio.dev/screenshots.html">https://basilio.dev/screenshots.html</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./Local/imgs/SVR.jpg&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;./Local/imgs/SVR.jpg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

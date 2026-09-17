@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -555,7 +555,18 @@ document.write(`
 </ul>
 <p>De esa manera podemos garantizar que el conjunto de test no ha sido usado ni para el ajuste de los parámetros del modelo, ni para la selección de los hiperparámetros del mismo. En todos los casos, se deben hacer varias repeticiones usando metodologı́as como validación cruzada o bootstrapping, para obtener medidas de desempeño ± IC.</p>
 <p>Adicionalmente, en modelos muy flexibles que cuentan con un número de parámetros muy elevado (por ejemplo en las redes neuronales artificiales), se suele usar una estrategia para evitar el sobreajuste llamada parada anticipada. Esta estrategia consiste en evaluar el error en el conjunto de entrenamiento y el error en el conjunto de validación durante cada época o iteración del algoritmo de entrenamiento, cuando el error de validación deja de reducirse, aunque el error de entrenamiento continúe disminuyendo, el algoritmo de entrenamiento se detiene. Esto evita que el algoritmo continúe ajustándose a los datos de entrenamiento, pero deje de representar la estructura subyacente en los datos del problema que se está modelando.</p>
-<img src="local/imgs/ParadaAnticipada.png" alt="ParadaAnticipada" width="600"/><p>En Sklearn:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/ParadaAnticipada.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2d43775939cf342ad0e8923fa8aae7ce70d9c9eec951d0ded4471f60b548c7c9.png" src="_images/2d43775939cf342ad0e8923fa8aae7ce70d9c9eec951d0ded4471f60b548c7c9.png" />
+</div>
+</div>
+<p>En Sklearn:</p>
 <p><strong>early_stopping: bool</strong>, default=False</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Whether to use early stopping to terminate training when validation score is not improving. If set to true, it will automatically set aside 10% of training data as validation and terminate training when validation score is not improving by at least tol for n_iter_no_change consecutive epochs. The split is stratified, except in a multilabel setting. Only effective when solver=&#39;sgd&#39; or &#39;adam&#39;.
 </pre></div>
@@ -651,7 +662,17 @@ $<span class="math notranslate nohighlight">\({\bf{w}} = \left( {\bf{X}}^T {\bf{
 </div>
 </div>
 <p>La restricción que estamos usando en el término de regularización corresponde a la norma <span class="math notranslate nohighlight">\(L_2\)</span> del vector <span class="math notranslate nohighlight">\(\bf{w}\)</span>. También es posible usar otro tipo de normas, entre ellas la norma <span class="math notranslate nohighlight">\(L_1\)</span> es también muy usada, ya que garantiza no sólo que la magnitud de los pesos en el vector <span class="math notranslate nohighlight">\(\bf{w}\)</span> no se desboder, sino que además causa que algunos de los pesos tomen un valor de cero. La regresión con este tipo de regularización se conoce como LASSO y será analizada en detalle más adelante en el curso.</p>
-<img src="local/imgs/L1L2.png" alt="ParadaAnticipada" width="600"/><div class="cell docutils container">
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/L1L2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/25e4b3a95905cee13e398368e1134f94b880166d6718b8b1f71beafb70c34833.png" src="_images/25e4b3a95905cee13e398368e1134f94b880166d6718b8b1f71beafb70c34833.png" />
+</div>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn</span><span class="w"> </span><span class="kn">import</span> <span class="n">linear_model</span><span class="p">,</span> <span class="n">datasets</span>
 <span class="n">diabetes</span><span class="o">=</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_diabetes</span><span class="p">()</span>

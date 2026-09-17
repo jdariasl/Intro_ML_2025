@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -539,8 +539,27 @@ document.write(`
 <li>Manejo de características no numéricas</li>
 </ul><hr class="docutils" />
 <p>En primer lugar es necesario clarificar porqué razón es necesario llevar a cabo un análisis en conjunto de todas las variables, en lugar de realizar análisis individuales. La gráfica siguiente representa la capacidad discriminante de cuatro variables en un problema de clasificación.</p>
-<p><img alt="image alt &gt;" src="_images/Var12.png" />
-<img alt="image alt &lt;" src="_images/Var34.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/Var12.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/14c1e6dd17955a35221ee37a664adef8e5546ec897dfab611377e1a6f7df4116.png" src="_images/14c1e6dd17955a35221ee37a664adef8e5546ec897dfab611377e1a6f7df4116.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/Var34.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/92bc8442e89a784378b8b5e48cad87f27781a1f94fc6505cc6adeeac9fdf9453.png" src="_images/92bc8442e89a784378b8b5e48cad87f27781a1f94fc6505cc6adeeac9fdf9453.png" />
+</div>
+</div>
 <p>Si realizamos un análisis individual, por ejemplo basado en el índice de correlación o el índice discriminante de Fisher, el resultado indicará que la mejor variable es la 1 y que la peor es la 4. Sin embargo, si el análisis evalúa diferentes subconjuntos de variables, podría darse cuenta que la únión de esas dos variables obteniene un resultado que, en conjunto, es mejor que cualquiera de las variables individuales, por lo que no sería una buena decisión eliminar la variable 4 usando como criterio únicamente un análisis individual de la capacidad discriminante de dicha característica.</p>
 </section>
 <section id="problema">
@@ -635,7 +654,17 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[J(X) = -2x_1x_2 + 3x_1 + 5x_2 - 2x_1x_2x_3 + 7x_3 + 4x_4 - 2x_1x_2x_3x_4\]</div>
 <p><b>Solución:</b></p>
-<img src="./local/imgs/SFS.png" alt="SFS" width="600"/></section>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/SFS.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/88126be82e16d0ff1951bf5c5d57ded4dc54f2b6f5d238958fbd826773559d92.png" src="_images/88126be82e16d0ff1951bf5c5d57ded4dc54f2b6f5d238958fbd826773559d92.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="seleccion-secuencial-hacia-atras-sequential-backward-selection-sbs">
 <h3>2. Selección secuencial hacia atrás (Sequential Backward Selection - SBS)<a class="headerlink" href="#seleccion-secuencial-hacia-atras-sequential-backward-selection-sbs" title="Link to this heading">#</a></h3>

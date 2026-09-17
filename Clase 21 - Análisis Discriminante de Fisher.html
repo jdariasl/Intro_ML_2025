@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -549,7 +549,18 @@ busca direcciones que son eficientes para discriminación, es decir que permiten
 <li> $n_1$ muestras clase 1 </li>
 <li> $n_2$ muestras clase 2 </li>
 <p>Consideremos la proyección de un punto (muestra) con respecto una dirección representada por un vector unitario <span class="math notranslate nohighlight">\({\bf{v}}\)</span></p>
-<img src="./local/imgs/FDA2.png" alt="FDA2" width="300"/><p>El escalar <span class="math notranslate nohighlight">\({\bf{v}}^{T}{\bf{x}}_i\)</span> corresponde a la distancia de la proyección de <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> desde el origen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;local/imgs/FDA2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4f42e5ae2e7a2577e1ad8c0e93849d3d1c5d0d2a3b04bc5bea393c676cdbbad5.png" src="_images/4f42e5ae2e7a2577e1ad8c0e93849d3d1c5d0d2a3b04bc5bea393c676cdbbad5.png" />
+</div>
+</div>
+<p>El escalar <span class="math notranslate nohighlight">\({\bf{v}}^{T}{\bf{x}}_i\)</span> corresponde a la distancia de la proyección de <span class="math notranslate nohighlight">\({\bf{x}}_i\)</span> desde el origen.</p>
 <p>¿Cómo medir la separación de las proyecciones de diferentes clases?</p>
 <li> Sea $\widetilde{\mu}_1$ y $\widetilde{\mu}_2$ las medias de las proyecciones de las clases 1 y 2 respectivamente. </li>
 <li> Sea $\mu_1$ y $\mu_2$ las medias de las clases 1 y 2 en el espacio original. </li>
@@ -676,7 +687,16 @@ busca direcciones que son eficientes para discriminación, es decir que permiten
 <div class="math notranslate nohighlight">
 \[J({\bf{V}}) = \frac{\det\left( {\bf{V}}^{T}{\bf{S}}_B{\bf{V}}\right) }{\det\left( {\bf{V}}^{T}{\bf{S}}_W{\bf{V}}\right) }\]</div>
 <p>donde <span class="math notranslate nohighlight">\({\bf{V}}\)</span> es llamada la matriz de proyección.</p>
-<p><img src="./Local/imgs/FDA4.png" alt="FDA4" width="600"/> Image taken from [1].</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;Local/imgs/FDA4.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/03f78fd76a696199cefcf883e97ec5cf29708cd3d1b727603ba152f157ceacb9.png" src="_images/03f78fd76a696199cefcf883e97ec5cf29708cd3d1b727603ba152f157ceacb9.png" />
+</div>
+</div>
 <section id="otros-ejemplos">
 <h2>Otros ejemplos:<a class="headerlink" href="#otros-ejemplos" title="Link to this heading">#</a></h2>
 <p>Veamos un ejemplo usando la base de datos iris:</p>
