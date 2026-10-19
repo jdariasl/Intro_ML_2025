@@ -2,9 +2,9 @@
 
 ## ¿Qué es Machine Learning?
 
-**01 - Definiciones básicas y aplicaciones típicas**: [Video 13mins]() <br/> Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
+**01 - Definiciones básicas y aplicaciones típicas**: [Video 8mins](https://youtu.be/Ryh5xyTcias) <br/> Se introduce el concepto de Machine Learning y se discuten algunas aplicaciones típicas.
 
-**02 - Modelos controlados por datos**: [Video 19mins]() <br/> Se discuten los conceptos básicos de los modelos controaldos por datos que rigen a todos los modelos de ML.
+**02 - Modelos controlados por datos**: [Video 22mins](https://youtu.be/A4XNSI03p74) <br/> Se discuten los conceptos básicos de los modelos controlados por datos que rigen a todos los modelos de ML.
 
 **03 - Tipos de aprendizaje automático**: [Video 22mins](https://youtu.be/lJCyJJV6khY) <br/> Se presentan los tipos de aprendizaje automático más comunes: supervisado, no supervisado, auto supervisado y por refuerzo, así como la nomenclatura matemática básica que se usa para representar los problemas supervisados y no supervisados.
 
@@ -19,11 +19,11 @@
 
 **07 - Algoritmo de gradiente descendente**: [Video 13mins](https://youtu.be/sh1hM3d_APs) <br/> Se continúa con el análisis de la regresión múltiple desde perspectivas de mediano y bajo nivel, y para esta última se explica el funcionamiento del algoritmo de gradiente descendente.
 
-**08 - Regresión logística**: [Video 33mins]() <br/> Con base en un modelo de regresión y en el algoritmo de gradiente descedente se introduce el modelo de regresión logística que sirve para resolver problemas de clasificación y se explica su función de costo conocida como <em>cross-entropy</em>.
+**08 - Regresión logística**: [Video 26mins](https://youtu.be/GzhUUBQVX6Y) <br/> Con base en un modelo de regresión y en el algoritmo de gradiente descendente se introduce el modelo de regresión logística que sirve para resolver problemas de clasificación y se explica su función de costo conocida como <em>cross-entropy</em>.
 
 [Deducción de la función de entropía cruzada](https://github.com/jdariasl/Intro_ML_2025/tree/main/local/docs/CrossEntropy.pdf)
 
-**09 - Análisis del entrenamiento de una regresión logística**: [Video 11mins]() <br/> Se presentan algunos resultados de la ejecución del proceso de entrenamiento de un modelo de regresión logística, para ayudar a comprender el proceso de minimización de la función de costo a partir del algoritmo de gradiente descendente, la modificación iterativa de la frontera de decisión hasta alcanzar la ubicación óptima (de acuerdo con la función de costo) y su correspondiente interpretación en el espacio de búsqueda.
+**09 - Análisis del entrenamiento de una regresión logística**: [Video 9mins](https://youtu.be/WdMvHCJeoKQ) <br/> Se presentan algunos resultados de la ejecución del proceso de entrenamiento de un modelo de regresión logística, para ayudar a comprender el proceso de minimización de la función de costo a partir del algoritmo de gradiente descendente, la modificación iterativa de la frontera de decisión hasta alcanzar la ubicación óptima (de acuerdo con la función de costo) y su correspondiente interpretación en el espacio de búsqueda.
 
 **10 - Fronteras no lineales con regresión logística**: [Video 14mins](https://youtu.be/dSHtZ-FAOXg) <br/> Se discute cómo se pueden obtener fronteras de decisión no lineales usando el modelo de regresión logística y los ajustes que deben realizarse para su implementación.
 
