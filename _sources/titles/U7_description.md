@@ -22,4 +22,4 @@
 
 ## SVC de una clase
 
-**57 - Clsificador de una clase bsado en SVM**: [Video 10mins]() <br/> Se presenta la versión equivalente $\nu-SVM$ de la máquina de vectores de soporte para clasificación y cómo esta versión se utiliza para resolver el problema de clasificación de una clase, así como la interpretación que en este caso tiene el parámetro $\nu$.
+**57 - Clasificador de una clase basado en SVM**: [Video 10mins](https://youtu.be/nsVKZsHFAcQ) <br/> Se presenta la versión equivalente $\nu-SVM$ de la máquina de vectores de soporte para clasificación y cómo esta versión se utiliza para resolver el problema de clasificación de una clase, así como la interpretación que en este caso tiene el parámetro $\nu$.

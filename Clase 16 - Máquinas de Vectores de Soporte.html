@@ -507,7 +507,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4976dd7d3ca22fc03bb2f43775123fd05046583090dd134ce9f79feae6a65141.png" src="_images/4976dd7d3ca22fc03bb2f43775123fd05046583090dd134ce9f79feae6a65141.png" />
+<img alt="_images/7897bef5bdbd9aa3ad37911bbaa01f3fb0b185b0996d65aa82f1ba170311abc2.png" src="_images/7897bef5bdbd9aa3ad37911bbaa01f3fb0b185b0996d65aa82f1ba170311abc2.png" />
 </div>
 </div>
 <p>Podemos encontrar muchas fronteras diferentes que separan perfectamente las dos clases. Si utilizamos el criterio de minimizar el error de clasificación vamos a encontrar alguna solución que satisface el criterio:</p>
@@ -1229,7 +1229,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <p>Es necesario tener en cuenta que durante el proceso de entrenamiento tendremos entonces que definir el valor del parámetro <span class="math notranslate nohighlight">\(C\)</span> y el o los parámetros del kernel que seleccionemos.</p>
-<p><strong>Nota</strong> Dada la importancia del porcentaje de vectores de soporte como medida de desempeño esperado, existe una formulación llamada <span class="math notranslate nohighlight">\(\nu\)</span>-SVM que reemplaza el término <span class="math notranslate nohighlight">\(C\sum_i^n \xi_i\)</span> por <span class="math notranslate nohighlight">\(\frac{1}{\nu n}\sum_i^n \xi_i - \rho\)</span> en la función de costo. El parámetro de regularización <span class="math notranslate nohighlight">\(C\)</span> se reemplaza por el parámetro <span class="math notranslate nohighlight">\(\nu \in [0,1]\)</span>, el cual se puede interpretar como el límite inferior de muestras será seleccionadas como vectores de soporte y el límite superior que de muestras que cauerán en el lado incorrecto del hiperplano. Por su parte, <span class="math notranslate nohighlight">\(2 \rho / \|{\bf{w}}\|\)</span> es el margen de separación entre las clases. Las dos versiones son equivalentes, pero se considera que el parámetro <span class="math notranslate nohighlight">\(\nu\)</span> es más interpretable y, por lo tanto, más fácil de definir que <span class="math notranslate nohighlight">\(C\)</span> [2].</p>
+<p><strong>Nota</strong> Dada la importancia del porcentaje de vectores de soporte como medida de desempeño esperado, existe una formulación llamada <span class="math notranslate nohighlight">\(\nu\)</span>-SVM que reemplaza el término <span class="math notranslate nohighlight">\(C\sum_{n=1}^N \zeta_n\)</span> por <span class="math notranslate nohighlight">\(\frac{1}{\nu N}\sum_{n=1}^N \zeta_n - \rho\)</span> en la función de costo. El parámetro de regularización <span class="math notranslate nohighlight">\(C\)</span> se reemplaza por el parámetro <span class="math notranslate nohighlight">\(\nu \in [0,1]\)</span>, el cual se puede interpretar como el límite inferior de muestras será seleccionadas como vectores de soporte y el límite superior de muestras que caerán en el lado incorrecto del hiperplano. Por su parte, <span class="math notranslate nohighlight">\(2 \rho / \|{\bf{w}}\|\)</span> es el margen de separación entre las clases. Las dos versiones son equivalentes, pero se considera que el parámetro <span class="math notranslate nohighlight">\(\nu\)</span> es más interpretable y, por lo tanto, más fácil de definir que <span class="math notranslate nohighlight">\(C\)</span> [2]. En el caso de <span class="math notranslate nohighlight">\(\nu\)</span>-SVM, las restricciones de separación involucran al parámetro de margen <span class="math notranslate nohighlight">\(\rho\)</span> y se definen como: <span class="math notranslate nohighlight">\(t_n y({\bf{x}}_n) \geq \rho - \zeta_n\)</span>.</p>
+<p>La función dual del problema de optimización se mantiene igual que la vista antes, pero los multiplicadores de Lagrange debe satisfacer la restricción <span class="math notranslate nohighlight">\(0 \leq a_n \leq 1/(\nu N)\)</span>.</p>
 <p>Su implementación está disponible en: <code class="docutils literal notranslate"><span class="pre">sklearn.svm.NuSVC</span></code></p>
 </section>
 </section>
@@ -1504,7 +1505,20 @@ E_\epsilon(y({\bf{x}})-t) =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/591c33749b690815f9d8ac75ae10bab2c22233243742bd8dba57b11768854983.png" src="_images/591c33749b690815f9d8ac75ae10bab2c22233243742bd8dba57b11768854983.png" />
+<img alt="_images/5ad2dae9ad3c850661723105dfa6e9f57a090556e7efc4f44f7525bb0d4136b4.png" src="_images/5ad2dae9ad3c850661723105dfa6e9f57a090556e7efc4f44f7525bb0d4136b4.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">perc</span> <span class="o">=</span> <span class="n">ocsvm</span><span class="o">.</span><span class="n">n_support_</span><span class="o">/</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">perc</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.065625]
+</pre></div>
+</div>
 </div>
 </div>
 </section>
