@@ -405,7 +405,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -421,6 +423,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arboles-de-decision">Árboles de decisión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comites-de-maquina">Comités de máquina</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -432,6 +443,19 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="u5-modelos-de-arboles-y-ensambles">
 <h1>U5. MODELOS DE ÁRBOLES Y ENSAMBLES<a class="headerlink" href="#u5-modelos-de-arboles-y-ensambles" title="Link to this heading">#</a></h1>
+<section id="arboles-de-decision">
+<h2>Árboles de decisión<a class="headerlink" href="#arboles-de-decision" title="Link to this heading">#</a></h2>
+<p><strong>31 - Árboles de decisión para clasificación</strong>: <a class="reference internal" href="#"><span class="xref myst">Video 21mins</span></a> <br/> Se presenta la intuición detrás de los árboles de decisión, el concepto de impureza y la manera en la que se puede medir, así como la función criterio en este caso conocida como ganancia de información. También se discuten algunos de los hiperparámetros más relevantes de los modelos de árboles de decisión.</p>
+<p><strong>32 - Árboles de decisión para regresión</strong>: <a class="reference internal" href="#"><span class="xref myst">Video 21mins</span></a> <br/> Se presenta la extensión del modelo de árboles de decisión a problemas de regresión. Se discuten las capacidades de los modelos basados en árboles de abordar problemas de múltiples salidas o múltiples tareas.</p>
+</section>
+<section id="comites-de-maquina">
+<h2>Comités de máquina<a class="headerlink" href="#comites-de-maquina" title="Link to this heading">#</a></h2>
+<p><strong>33 - Comités de máquinas y bagging</strong>: <a class="reference internal" href="#"><span class="xref myst">Video 21mins</span></a> <br/> Se introduce el concepto de comité de máquinas y se presentan las técnicas de combinación paralela más conocidas: voting y bagging.</p>
+<p><strong>34 - Random Forest</strong>: <a class="reference internal" href="#"><span class="xref myst">Video 21mins</span></a> <br/> Se presenta una variante de la técncia Bagging específica para modelos de árboles de decisión conocida como Random Forest.</p>
+<p><strong>35 - Boosting y AdaBoost</strong>: <a class="reference internal" href="#"><span class="xref myst">Video 21mins</span></a> <br/> Se introduce la técnica de combinación de modelos secuencial conocida como Boosting y uno de los algoritmos clásicos que hacen uso de ésta.</p>
+<p><strong>36 - Gradient Boosting Trees</strong>: <a class="reference internal" href="#"><span class="xref myst">Video 21mins</span></a> <br/> Se introduce una variante del Boosting conocida como Gradient Boosting y su implementación a partir de árboles de decisión.</p>
+<p><strong>37 - Isolation Forest</strong>: <a class="reference external" href="https://youtu.be/MfxdckSCWwk">Video 8mins</a> <br/> Se presenta un modelo basado en comités de árboles de decisión que permite abordar problemas de clasificación de una clase o de detección de anomalías y su uso en un conjunto de datos simulado.</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -490,6 +514,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arboles-de-decision">Árboles de decisión</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comites-de-maquina">Comités de máquina</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
