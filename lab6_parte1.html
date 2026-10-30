@@ -545,10 +545,10 @@ document.write(`
 <span class="sd">        splits : número de particiones  a realizar</span>
 
 <span class="sd">      Retorna:</span>
-<span class="sd">      1. El modelo entreando</span>
-<span class="sd">      2. El vector de errores</span>
-<span class="sd">      3. El Intervalo de confianza</span>
-<span class="sd">      4. El tiempo de procesamiento</span>
+<span class="sd">      1. El modelo entrenado</span>
+<span class="sd">      2. El desempeño promedio</span>
+<span class="sd">      3. El intervalo de confianza de la medida de desempeño</span>
+<span class="sd">      4. El tiempo de procesamiento promedio</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
@@ -573,17 +573,13 @@ document.write(`
         <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
 
         <span class="c1"># Scores para ROC AUC</span>
-        <span class="n">y_score</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-        <span class="n">y_test_bin</span> <span class="o">=</span> <span class="n">label_binarize</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">clases</span><span class="p">)</span>
-
-        <span class="c1"># Scores para ROC AUC</span>
         <span class="n">y_score</span> <span class="o">=</span> <span class="o">...</span>
         <span class="n">y_test_bin</span> <span class="o">=</span> <span class="n">label_binarize</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">clases</span><span class="p">)</span>
 
         <span class="c1"># Cálculo del AUC con estrategia One-vs-One</span>
         <span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="o">....</span>
 
-        <span class="n">Errores</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">auc</span>
+        <span class="n">score</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">auc</span>
         <span class="n">times</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tiempo_i</span>
         <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
 
