@@ -3,7 +3,7 @@
 
 ## Modelo de mezclas de funciones Gausianas
 
-**28 - Modelo de mezclas de funciones Gausianas**: [Video 21mins]() <br/> Se presenta el modelo de mezclas de funciones Gausianas (en inglés Gaussian Mixture Model), su principio de funcionamiento y se deriva de manera intuitiva el algoritmo de Esperanza y Maximización, que corresponde a la aplicación del criterio de máxima verosimilitud para este caso. El algoritmo se introduce para resolver un problema de clasificación desde una perspectiva generativa y luego se discute su funcionalidad como método no supervisado de agrupamiento.
+**28 - Modelo de mezclas de funciones Gausianas**: [Video 45mins](https://youtu.be/rwZOMA-uLlg) <br/> Se presenta el modelo de mezclas de funciones gaussianas (en inglés, Gaussian Mixture Model), su principio de funcionamiento y se deriva de manera intuitiva el algoritmo de esperanza y maximización, que corresponde a la aplicación del criterio de máxima verosimilitud para este caso. El algoritmo se introduce para resolver un problema de clasificación desde una perspectiva generativa y luego se discute su funcionalidad como método no supervisado de agrupamiento.
 
 ## Clustering
 

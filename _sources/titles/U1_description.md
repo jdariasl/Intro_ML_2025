@@ -27,8 +27,8 @@
 
 **10 - Fronteras no lineales con regresión logística**: [Video 14mins](https://youtu.be/dSHtZ-FAOXg) <br/> Se discute cómo se pueden obtener fronteras de decisión no lineales usando el modelo de regresión logística y los ajustes que deben realizarse para su implementación.
 
+**11 - Problemas desbalanceados con regresión logística**: [Video 19mins](https://youtu.be/PGuBGkfEMZI) <br/> Se discute cómo compensar, durante el entrenamiento de modelos discriminativos, el posible sesgo que pueden generar al entrenarse con bases de datos desbalanceadas.
+
 ## Modelos discriminativos vs modelos generativos
 
-**11 - Funciones discriminantes Gausianas**: [Video 38mins]() <br/> Se discuten los modelos generativos los cuales utilizan un principio de funcionamiento diferente para resolver los problemas de clasificación y se presenta el modelo de funcionaes discriminantes Gausianas, además se explica el criterio de Máxima Verosimilitud a partir del cual se estiman los parámetros del modelo.
-
-**12 - Modelos discriminante lineal, discriminante cuadrático y Naïve Bayes**: [Video 22mins]() <br/> Se presentan varios modelos derivados de las funciones discriminantes Gausianas a partir de diferentes configuraciones de la matriz de covarianza del modelo.
+**12 - Funciones discriminantes Gausianas**: [Video 31mins](https://youtu.be/-GY_72IrvRg) <br/> Se discuten los modelos generativos, los cuales utilizan un principio de funcionamiento diferente para resolver los problemas de clasificación, y se presenta el modelo de funciones discriminantes gaussianas; además, se explica el criterio de máxima verosimilitud a partir del cual se estiman los parámetros del modelo. Asimismo, se presentan varios modelos derivados de las funciones discriminantes gaussianas, basados en distintas configuraciones de la matriz de covarianza del modelo.
